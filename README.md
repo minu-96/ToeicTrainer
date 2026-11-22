@@ -56,7 +56,7 @@ python3 -m http.server 8000
 ## 배포 (GitHub Pages)
 
 1. 레포 Settings → Pages → Branch: `main` / `(root)` → Save
-2. 주소: `https://minu-96.github.io/ToeicTrainer/`
+2. 주소: https://minu-96.github.io/ToeicTrainer/
 3. 아이폰 Safari에서 열고 공유 → **홈 화면에 추가**
 
 ## 업데이트할 때
