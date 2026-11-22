@@ -11,6 +11,7 @@ export const DEFAULT_SETTINGS = {
   levelUpRate: 0.8,
   voice: '',
   speechRate: 0.9,
+  autoSpeak: true,
 };
 
 export function emptyState() {
