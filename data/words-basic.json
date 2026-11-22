@@ -1,0 +1,1442 @@
+[
+ {
+  "id": "b001",
+  "word": "available",
+  "pos": "형",
+  "meaning": "이용 가능한, 시간이 되는",
+  "example": "The conference room is available after 3 p.m.",
+  "exampleKo": "회의실은 오후 3시 이후에 이용할 수 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b002",
+  "word": "schedule",
+  "pos": "명·동",
+  "meaning": "일정; 일정을 잡다",
+  "example": "The interview is scheduled for Monday.",
+  "exampleKo": "면접은 월요일로 잡혀 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b003",
+  "word": "deadline",
+  "pos": "명",
+  "meaning": "마감 기한",
+  "example": "The deadline for the report is Friday.",
+  "exampleKo": "보고서 마감은 금요일이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b004",
+  "word": "submit",
+  "pos": "동",
+  "meaning": "제출하다",
+  "example": "Please submit your application by email.",
+  "exampleKo": "지원서를 이메일로 제출해 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b005",
+  "word": "department",
+  "pos": "명",
+  "meaning": "부서",
+  "example": "She works in the marketing department.",
+  "exampleKo": "그녀는 마케팅 부서에서 일한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b006",
+  "word": "employee",
+  "pos": "명",
+  "meaning": "직원",
+  "example": "All employees must attend the training.",
+  "exampleKo": "모든 직원은 교육에 참석해야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b007",
+  "word": "customer",
+  "pos": "명",
+  "meaning": "고객",
+  "example": "The store offers free delivery to customers.",
+  "exampleKo": "그 가게는 고객에게 무료 배송을 제공한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b008",
+  "word": "purchase",
+  "pos": "명·동",
+  "meaning": "구매; 구매하다",
+  "example": "You can purchase tickets online.",
+  "exampleKo": "표는 온라인으로 구매할 수 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b009",
+  "word": "receipt",
+  "pos": "명",
+  "meaning": "영수증",
+  "example": "Keep your receipt for a refund.",
+  "exampleKo": "환불을 위해 영수증을 보관하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b010",
+  "word": "refund",
+  "pos": "명·동",
+  "meaning": "환불; 환불하다",
+  "example": "The company will refund the full amount.",
+  "exampleKo": "회사는 전액을 환불할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b011",
+  "word": "invoice",
+  "pos": "명",
+  "meaning": "송장, 청구서",
+  "example": "The invoice was sent to the client yesterday.",
+  "exampleKo": "청구서는 어제 고객에게 발송되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b012",
+  "word": "shipment",
+  "pos": "명",
+  "meaning": "배송(품), 선적",
+  "example": "The shipment will arrive next week.",
+  "exampleKo": "배송품은 다음 주에 도착할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b013",
+  "word": "deliver",
+  "pos": "동",
+  "meaning": "배달하다",
+  "example": "The package was delivered this morning.",
+  "exampleKo": "소포는 오늘 아침에 배달되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b014",
+  "word": "order",
+  "pos": "명·동",
+  "meaning": "주문; 주문하다",
+  "example": "I'd like to order ten boxes of paper.",
+  "exampleKo": "종이 열 상자를 주문하고 싶습니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b015",
+  "word": "confirm",
+  "pos": "동",
+  "meaning": "확인하다",
+  "example": "Please confirm your reservation by phone.",
+  "exampleKo": "전화로 예약을 확인해 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b016",
+  "word": "reservation",
+  "pos": "명",
+  "meaning": "예약",
+  "example": "I made a reservation for two people.",
+  "exampleKo": "두 명으로 예약했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b017",
+  "word": "cancel",
+  "pos": "동",
+  "meaning": "취소하다",
+  "example": "The flight was canceled due to bad weather.",
+  "exampleKo": "악천후로 항공편이 취소되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b018",
+  "word": "postpone",
+  "pos": "동",
+  "meaning": "연기하다",
+  "example": "The meeting has been postponed until Thursday.",
+  "exampleKo": "회의가 목요일로 연기되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b019",
+  "word": "attend",
+  "pos": "동",
+  "meaning": "참석하다",
+  "example": "About 200 people attended the conference.",
+  "exampleKo": "약 200명이 회의에 참석했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b020",
+  "word": "conference",
+  "pos": "명",
+  "meaning": "회의, 학회",
+  "example": "The annual conference is held in Seoul.",
+  "exampleKo": "연례 회의는 서울에서 열린다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b021",
+  "word": "agenda",
+  "pos": "명",
+  "meaning": "안건, 의제",
+  "example": "The first item on the agenda is the budget.",
+  "exampleKo": "첫 번째 안건은 예산이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b022",
+  "word": "budget",
+  "pos": "명",
+  "meaning": "예산",
+  "example": "We need to stay within the budget.",
+  "exampleKo": "우리는 예산 안에서 해결해야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b023",
+  "word": "expense",
+  "pos": "명",
+  "meaning": "비용, 경비",
+  "example": "Travel expenses will be reimbursed.",
+  "exampleKo": "출장 경비는 환급될 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b024",
+  "word": "reimburse",
+  "pos": "동",
+  "meaning": "환급하다, 변제하다",
+  "example": "The company will reimburse you for the taxi fare.",
+  "exampleKo": "회사가 택시비를 환급해 줄 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b025",
+  "word": "approve",
+  "pos": "동",
+  "meaning": "승인하다",
+  "example": "The manager approved the new design.",
+  "exampleKo": "관리자가 새 디자인을 승인했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b026",
+  "word": "request",
+  "pos": "명·동",
+  "meaning": "요청; 요청하다",
+  "example": "We received your request for more information.",
+  "exampleKo": "추가 정보 요청을 받았습니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b027",
+  "word": "require",
+  "pos": "동",
+  "meaning": "요구하다, 필요로 하다",
+  "example": "This position requires three years of experience.",
+  "exampleKo": "이 직책은 3년의 경력을 요구한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b028",
+  "word": "qualified",
+  "pos": "형",
+  "meaning": "자격을 갖춘",
+  "example": "We are looking for qualified candidates.",
+  "exampleKo": "자격을 갖춘 지원자를 찾고 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b029",
+  "word": "candidate",
+  "pos": "명",
+  "meaning": "후보자, 지원자",
+  "example": "Five candidates were invited for interviews.",
+  "exampleKo": "지원자 다섯 명이 면접에 초대되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b030",
+  "word": "applicant",
+  "pos": "명",
+  "meaning": "지원자",
+  "example": "Applicants should send a résumé.",
+  "exampleKo": "지원자는 이력서를 보내야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b031",
+  "word": "hire",
+  "pos": "동",
+  "meaning": "고용하다",
+  "example": "The company plans to hire ten new staff members.",
+  "exampleKo": "회사는 신입 직원 10명을 고용할 계획이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b032",
+  "word": "position",
+  "pos": "명",
+  "meaning": "직책, 자리",
+  "example": "She applied for the sales manager position.",
+  "exampleKo": "그녀는 영업 관리자 직책에 지원했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b033",
+  "word": "promote",
+  "pos": "동",
+  "meaning": "승진시키다, 홍보하다",
+  "example": "He was promoted to senior manager.",
+  "exampleKo": "그는 부장으로 승진했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b034",
+  "word": "retire",
+  "pos": "동",
+  "meaning": "은퇴하다",
+  "example": "Mr. Kim will retire at the end of the year.",
+  "exampleKo": "김 씨는 연말에 은퇴할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b035",
+  "word": "colleague",
+  "pos": "명",
+  "meaning": "동료",
+  "example": "I had lunch with my colleagues.",
+  "exampleKo": "동료들과 점심을 먹었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b036",
+  "word": "supervisor",
+  "pos": "명",
+  "meaning": "상사, 관리자",
+  "example": "Report any problems to your supervisor.",
+  "exampleKo": "문제가 있으면 상사에게 보고하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b037",
+  "word": "responsible",
+  "pos": "형",
+  "meaning": "책임이 있는",
+  "example": "Who is responsible for the project?",
+  "exampleKo": "누가 그 프로젝트를 책임지나요?",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b038",
+  "word": "assign",
+  "pos": "동",
+  "meaning": "배정하다, 맡기다",
+  "example": "Each team was assigned a different task.",
+  "exampleKo": "각 팀에 다른 업무가 배정되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b039",
+  "word": "task",
+  "pos": "명",
+  "meaning": "업무, 과제",
+  "example": "Finishing the report is my main task today.",
+  "exampleKo": "보고서 마무리가 오늘의 주요 업무다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b040",
+  "word": "complete",
+  "pos": "동·형",
+  "meaning": "완료하다, 작성하다; 완전한",
+  "example": "Please complete the form before the interview.",
+  "exampleKo": "면접 전에 양식을 작성해 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b041",
+  "word": "form",
+  "pos": "명",
+  "meaning": "양식, 서식",
+  "example": "Fill out this form and return it to the front desk.",
+  "exampleKo": "이 양식을 작성해서 안내 데스크에 제출하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b042",
+  "word": "document",
+  "pos": "명",
+  "meaning": "문서",
+  "example": "Please bring the signed documents.",
+  "exampleKo": "서명된 문서를 가져오세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b043",
+  "word": "sign",
+  "pos": "동",
+  "meaning": "서명하다",
+  "example": "Both parties signed the contract.",
+  "exampleKo": "양측이 계약서에 서명했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b044",
+  "word": "contract",
+  "pos": "명",
+  "meaning": "계약(서)",
+  "example": "The contract expires in June.",
+  "exampleKo": "계약은 6월에 만료된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b045",
+  "word": "expire",
+  "pos": "동",
+  "meaning": "만료되다",
+  "example": "Your membership will expire next month.",
+  "exampleKo": "회원권이 다음 달에 만료된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b046",
+  "word": "renew",
+  "pos": "동",
+  "meaning": "갱신하다",
+  "example": "You can renew your subscription online.",
+  "exampleKo": "구독은 온라인으로 갱신할 수 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b047",
+  "word": "subscription",
+  "pos": "명",
+  "meaning": "구독",
+  "example": "The magazine subscription costs $30 a year.",
+  "exampleKo": "잡지 구독료는 1년에 30달러다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b048",
+  "word": "offer",
+  "pos": "명·동",
+  "meaning": "제안; 제공하다",
+  "example": "The hotel offers free breakfast.",
+  "exampleKo": "그 호텔은 무료 조식을 제공한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b049",
+  "word": "discount",
+  "pos": "명",
+  "meaning": "할인",
+  "example": "Members receive a 10 percent discount.",
+  "exampleKo": "회원은 10퍼센트 할인을 받는다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b050",
+  "word": "price",
+  "pos": "명",
+  "meaning": "가격",
+  "example": "The price includes tax.",
+  "exampleKo": "가격에는 세금이 포함되어 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b051",
+  "word": "include",
+  "pos": "동",
+  "meaning": "포함하다",
+  "example": "Breakfast is included in the room rate.",
+  "exampleKo": "조식이 객실 요금에 포함되어 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b052",
+  "word": "rate",
+  "pos": "명",
+  "meaning": "요금, 비율",
+  "example": "The hotel's room rates are reasonable.",
+  "exampleKo": "그 호텔의 객실 요금은 합리적이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b053",
+  "word": "reasonable",
+  "pos": "형",
+  "meaning": "합리적인, (가격이) 적당한",
+  "example": "The restaurant serves good food at reasonable prices.",
+  "exampleKo": "그 식당은 적당한 가격에 좋은 음식을 판다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b054",
+  "word": "product",
+  "pos": "명",
+  "meaning": "제품",
+  "example": "The new product will be launched in May.",
+  "exampleKo": "신제품은 5월에 출시될 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b055",
+  "word": "launch",
+  "pos": "동·명",
+  "meaning": "출시하다; 출시",
+  "example": "The company launched a new smartphone.",
+  "exampleKo": "회사는 새 스마트폰을 출시했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b056",
+  "word": "advertise",
+  "pos": "동",
+  "meaning": "광고하다",
+  "example": "The job was advertised in the newspaper.",
+  "exampleKo": "그 일자리는 신문에 광고되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b057",
+  "word": "market",
+  "pos": "명·동",
+  "meaning": "시장; 판매하다",
+  "example": "The company is expanding into the Asian market.",
+  "exampleKo": "회사는 아시아 시장으로 확장하고 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b058",
+  "word": "sales",
+  "pos": "명",
+  "meaning": "매출, 판매",
+  "example": "Sales increased by 20 percent this quarter.",
+  "exampleKo": "이번 분기에 매출이 20퍼센트 증가했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b059",
+  "word": "increase",
+  "pos": "동·명",
+  "meaning": "증가하다; 증가",
+  "example": "The number of visitors has increased.",
+  "exampleKo": "방문객 수가 증가했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b060",
+  "word": "decrease",
+  "pos": "동·명",
+  "meaning": "감소하다; 감소",
+  "example": "Costs decreased after the change.",
+  "exampleKo": "변경 후 비용이 감소했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b061",
+  "word": "profit",
+  "pos": "명",
+  "meaning": "이익",
+  "example": "The company made a large profit last year.",
+  "exampleKo": "회사는 작년에 큰 이익을 냈다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b062",
+  "word": "revenue",
+  "pos": "명",
+  "meaning": "수익, 매출",
+  "example": "Annual revenue reached $5 million.",
+  "exampleKo": "연간 수익이 500만 달러에 달했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b063",
+  "word": "quarter",
+  "pos": "명",
+  "meaning": "분기",
+  "example": "Results for the second quarter were announced.",
+  "exampleKo": "2분기 실적이 발표되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b064",
+  "word": "announce",
+  "pos": "동",
+  "meaning": "발표하다",
+  "example": "The CEO announced a new plan.",
+  "exampleKo": "최고경영자가 새 계획을 발표했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b065",
+  "word": "notice",
+  "pos": "명·동",
+  "meaning": "공지; 알아차리다",
+  "example": "A notice was posted on the bulletin board.",
+  "exampleKo": "게시판에 공지가 붙었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b066",
+  "word": "inform",
+  "pos": "동",
+  "meaning": "알리다",
+  "example": "Please inform us of any changes.",
+  "exampleKo": "변경 사항이 있으면 알려 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b067",
+  "word": "update",
+  "pos": "동·명",
+  "meaning": "갱신하다; 최신 정보",
+  "example": "We will update the website next week.",
+  "exampleKo": "다음 주에 웹사이트를 업데이트할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b068",
+  "word": "replace",
+  "pos": "동",
+  "meaning": "교체하다",
+  "example": "The old printer will be replaced.",
+  "exampleKo": "오래된 프린터가 교체될 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b069",
+  "word": "repair",
+  "pos": "동·명",
+  "meaning": "수리하다; 수리",
+  "example": "The elevator is being repaired.",
+  "exampleKo": "엘리베이터가 수리 중이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b070",
+  "word": "maintenance",
+  "pos": "명",
+  "meaning": "유지 보수",
+  "example": "The system will be down for maintenance.",
+  "exampleKo": "유지 보수로 시스템이 중단될 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b071",
+  "word": "equipment",
+  "pos": "명",
+  "meaning": "장비",
+  "example": "The lab has the latest equipment.",
+  "exampleKo": "그 실험실에는 최신 장비가 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b072",
+  "word": "install",
+  "pos": "동",
+  "meaning": "설치하다",
+  "example": "New software was installed on all computers.",
+  "exampleKo": "모든 컴퓨터에 새 소프트웨어가 설치되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b073",
+  "word": "facility",
+  "pos": "명",
+  "meaning": "시설",
+  "example": "The facility is open 24 hours a day.",
+  "exampleKo": "그 시설은 24시간 운영된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b074",
+  "word": "located",
+  "pos": "형",
+  "meaning": "~에 위치한",
+  "example": "The office is located near the station.",
+  "exampleKo": "사무실은 역 근처에 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b075",
+  "word": "relocate",
+  "pos": "동",
+  "meaning": "이전하다",
+  "example": "The headquarters will relocate to Busan.",
+  "exampleKo": "본사가 부산으로 이전할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b076",
+  "word": "branch",
+  "pos": "명",
+  "meaning": "지점",
+  "example": "The bank opened a new branch downtown.",
+  "exampleKo": "은행이 시내에 새 지점을 열었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b077",
+  "word": "headquarters",
+  "pos": "명",
+  "meaning": "본사",
+  "example": "The company's headquarters is in New York.",
+  "exampleKo": "그 회사의 본사는 뉴욕에 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b078",
+  "word": "manufacture",
+  "pos": "동",
+  "meaning": "제조하다",
+  "example": "These parts are manufactured in Korea.",
+  "exampleKo": "이 부품들은 한국에서 제조된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b079",
+  "word": "supply",
+  "pos": "명·동",
+  "meaning": "공급(품); 공급하다",
+  "example": "Office supplies are kept in the storage room.",
+  "exampleKo": "사무용품은 창고에 보관되어 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b080",
+  "word": "inventory",
+  "pos": "명",
+  "meaning": "재고",
+  "example": "We check the inventory every Friday.",
+  "exampleKo": "우리는 매주 금요일에 재고를 확인한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b081",
+  "word": "stock",
+  "pos": "명",
+  "meaning": "재고, 주식",
+  "example": "That item is currently out of stock.",
+  "exampleKo": "그 상품은 현재 품절이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b082",
+  "word": "vendor",
+  "pos": "명",
+  "meaning": "판매 업체, 공급 업체",
+  "example": "We changed our paper vendor.",
+  "exampleKo": "우리는 종이 공급 업체를 바꿨다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b083",
+  "word": "client",
+  "pos": "명",
+  "meaning": "고객, 의뢰인",
+  "example": "She is meeting a client at 2 p.m.",
+  "exampleKo": "그녀는 오후 2시에 고객을 만난다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b084",
+  "word": "negotiate",
+  "pos": "동",
+  "meaning": "협상하다",
+  "example": "They negotiated a better price.",
+  "exampleKo": "그들은 더 나은 가격으로 협상했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b085",
+  "word": "agreement",
+  "pos": "명",
+  "meaning": "합의, 협정",
+  "example": "The two companies reached an agreement.",
+  "exampleKo": "두 회사는 합의에 이르렀다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b086",
+  "word": "policy",
+  "pos": "명",
+  "meaning": "정책, 방침",
+  "example": "Please read our return policy.",
+  "exampleKo": "저희 반품 정책을 읽어 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b087",
+  "word": "regulation",
+  "pos": "명",
+  "meaning": "규정",
+  "example": "Safety regulations must be followed.",
+  "exampleKo": "안전 규정을 지켜야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b088",
+  "word": "safety",
+  "pos": "명",
+  "meaning": "안전",
+  "example": "Wear a helmet for your safety.",
+  "exampleKo": "안전을 위해 헬멧을 착용하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b089",
+  "word": "procedure",
+  "pos": "명",
+  "meaning": "절차",
+  "example": "Follow the procedure carefully.",
+  "exampleKo": "절차를 주의 깊게 따르세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b090",
+  "word": "instruction",
+  "pos": "명",
+  "meaning": "지시, 설명서",
+  "example": "Read the instructions before using the machine.",
+  "exampleKo": "기계를 사용하기 전에 설명서를 읽으세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b091",
+  "word": "survey",
+  "pos": "명·동",
+  "meaning": "설문 조사; 조사하다",
+  "example": "Customers were asked to complete a survey.",
+  "exampleKo": "고객들은 설문 조사 작성을 요청받았다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b092",
+  "word": "feedback",
+  "pos": "명",
+  "meaning": "의견, 피드백",
+  "example": "We appreciate your feedback.",
+  "exampleKo": "의견을 주셔서 감사합니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b093",
+  "word": "improve",
+  "pos": "동",
+  "meaning": "개선하다",
+  "example": "The new system improved efficiency.",
+  "exampleKo": "새 시스템이 효율을 개선했다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b094",
+  "word": "efficient",
+  "pos": "형",
+  "meaning": "효율적인",
+  "example": "This printer is more efficient than the old one.",
+  "exampleKo": "이 프린터는 예전 것보다 효율적이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b095",
+  "word": "recommend",
+  "pos": "동",
+  "meaning": "추천하다",
+  "example": "I recommend the seafood pasta.",
+  "exampleKo": "해산물 파스타를 추천합니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b096",
+  "word": "directions",
+  "pos": "명",
+  "meaning": "길 안내, 지시",
+  "example": "Can you give me directions to the museum?",
+  "exampleKo": "박물관 가는 길을 알려 줄 수 있나요?",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b097",
+  "word": "itinerary",
+  "pos": "명",
+  "meaning": "여행 일정표",
+  "example": "Your travel itinerary is attached.",
+  "exampleKo": "여행 일정표를 첨부했습니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b098",
+  "word": "accommodation",
+  "pos": "명",
+  "meaning": "숙박 시설",
+  "example": "Accommodation is provided for all speakers.",
+  "exampleKo": "모든 연사에게 숙소가 제공된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b099",
+  "word": "depart",
+  "pos": "동",
+  "meaning": "출발하다",
+  "example": "The train departs at 9:30.",
+  "exampleKo": "기차는 9시 30분에 출발한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b100",
+  "word": "arrive",
+  "pos": "동",
+  "meaning": "도착하다",
+  "example": "Guests will arrive at noon.",
+  "exampleKo": "손님들은 정오에 도착할 것이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b101",
+  "word": "delay",
+  "pos": "명·동",
+  "meaning": "지연; 지연시키다",
+  "example": "The flight was delayed by two hours.",
+  "exampleKo": "항공편이 두 시간 지연되었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b102",
+  "word": "passenger",
+  "pos": "명",
+  "meaning": "승객",
+  "example": "Passengers should arrive one hour early.",
+  "exampleKo": "승객은 한 시간 일찍 도착해야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b103",
+  "word": "luggage",
+  "pos": "명",
+  "meaning": "짐, 수하물",
+  "example": "Please do not leave your luggage unattended.",
+  "exampleKo": "짐을 방치하지 마세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b104",
+  "word": "register",
+  "pos": "동",
+  "meaning": "등록하다",
+  "example": "You must register for the workshop in advance.",
+  "exampleKo": "워크숍에 미리 등록해야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b105",
+  "word": "workshop",
+  "pos": "명",
+  "meaning": "워크숍, 연수회",
+  "example": "The workshop focuses on leadership skills.",
+  "exampleKo": "그 워크숍은 리더십 기술에 초점을 맞춘다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b106",
+  "word": "participate",
+  "pos": "동",
+  "meaning": "참여하다",
+  "example": "Everyone is encouraged to participate.",
+  "exampleKo": "모두 참여하도록 권장된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b107",
+  "word": "opportunity",
+  "pos": "명",
+  "meaning": "기회",
+  "example": "This is a great opportunity to learn.",
+  "exampleKo": "이것은 배울 수 있는 좋은 기회다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b108",
+  "word": "experience",
+  "pos": "명·동",
+  "meaning": "경험, 경력; 경험하다",
+  "example": "She has five years of experience in sales.",
+  "exampleKo": "그녀는 영업 분야 경력이 5년이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b109",
+  "word": "recently",
+  "pos": "부",
+  "meaning": "최근에",
+  "example": "The store recently opened a second location.",
+  "exampleKo": "그 가게는 최근 두 번째 매장을 열었다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b110",
+  "word": "currently",
+  "pos": "부",
+  "meaning": "현재",
+  "example": "We are currently hiring engineers.",
+  "exampleKo": "우리는 현재 엔지니어를 채용 중이다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b111",
+  "word": "immediately",
+  "pos": "부",
+  "meaning": "즉시",
+  "example": "Please call me back immediately.",
+  "exampleKo": "즉시 다시 전화 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b112",
+  "word": "approximately",
+  "pos": "부",
+  "meaning": "대략",
+  "example": "The tour takes approximately two hours.",
+  "exampleKo": "투어는 약 두 시간 걸린다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b113",
+  "word": "additional",
+  "pos": "형",
+  "meaning": "추가의",
+  "example": "Additional fees may apply.",
+  "exampleKo": "추가 요금이 부과될 수 있다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b114",
+  "word": "previous",
+  "pos": "형",
+  "meaning": "이전의",
+  "example": "Sales were higher than in the previous year.",
+  "exampleKo": "매출이 전년보다 높았다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b115",
+  "word": "annual",
+  "pos": "형",
+  "meaning": "연례의, 연간의",
+  "example": "The annual report will be published in March.",
+  "exampleKo": "연례 보고서는 3월에 발행된다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b116",
+  "word": "due",
+  "pos": "형",
+  "meaning": "~하기로 되어 있는, 기한인",
+  "example": "The payment is due on the 15th.",
+  "exampleKo": "대금은 15일까지 내야 한다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b117",
+  "word": "payment",
+  "pos": "명",
+  "meaning": "지불, 납부",
+  "example": "We accept payment by credit card.",
+  "exampleKo": "신용카드 결제가 가능합니다.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b118",
+  "word": "account",
+  "pos": "명",
+  "meaning": "계좌, 계정",
+  "example": "Log in to your account to check your order.",
+  "exampleKo": "주문을 확인하려면 계정에 로그인하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b119",
+  "word": "contact",
+  "pos": "동·명",
+  "meaning": "연락하다; 연락",
+  "example": "Contact us if you have any questions.",
+  "exampleKo": "질문이 있으면 연락 주세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ },
+ {
+  "id": "b120",
+  "word": "assistance",
+  "pos": "명",
+  "meaning": "도움, 지원",
+  "example": "Please ask the staff for assistance.",
+  "exampleKo": "직원에게 도움을 요청하세요.",
+  "level": "basic",
+  "tags": [
+   "기초"
+  ]
+ }
+]
