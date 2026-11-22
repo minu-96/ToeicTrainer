@@ -12,6 +12,10 @@ export const DEFAULT_SETTINGS = {
   voice: '',
   speechRate: 0.9,
   autoSpeak: true,
+  clozeHint: true, // 빈칸 문제에서 해석을 바로 보여줄지
+  startLevel: 'basic', // 새 단어 시작 수준: basic | mid
+  level: '', // 시작 화면에서 고른 현재 점수대
+  onboarded: false,
 };
 
 export function emptyState() {
@@ -79,19 +83,19 @@ export async function requestPersist() {
 }
 
 // 내장 단어 합치기: 새 단어는 추가, 기존 단어는 학습 기록(srs)을 유지한 채 내용만 갱신
-export function mergeBuiltin(state, list) {
+export function mergeBuiltin(state, list, offset = 0) {
   const byId = new Map(state.words.map((w) => [w.id, w]));
   let changed = 0;
   list.forEach((w, i) => {
     const cur = byId.get(w.id);
     if (!cur) {
-      state.words.push({ ...w, source: 'builtin', order: i, srs: null });
+      state.words.push({ ...w, source: 'builtin', order: offset + i, srs: null });
       changed++;
     } else if (cur.source === 'builtin') {
       const fields = ['word', 'meaning', 'pos', 'example', 'exampleKo', 'level', 'tags'];
-      if (fields.some((f) => JSON.stringify(cur[f]) !== JSON.stringify(w[f])) || cur.order !== i) {
+      if (fields.some((f) => JSON.stringify(cur[f]) !== JSON.stringify(w[f])) || cur.order !== offset + i) {
         fields.forEach((f) => (cur[f] = w[f]));
-        cur.order = i;
+        cur.order = offset + i;
         changed++;
       }
     }

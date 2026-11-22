@@ -4,6 +4,7 @@ import { shuffle, canCloze } from './quiz.js';
 
 export const BATCH = 5; // 새 단어는 5개씩 묶어서 외우기
 const RETRY_GAP = 3; // 틀린 문제는 3문제 뒤에 다시
+const MAX_FAILS = 3; // 한 학습에서 같은 단어를 3번 틀리면 오늘은 그만 (내일 다시)
 
 // 복습 문제 유형: 외울수록 어렵게
 export function reviewStep(w) {
@@ -42,6 +43,8 @@ export function create(kind, { reviews = [], fresh = [], practice = [] }) {
     total: new Set(tasks.map((t) => t.id)).size,
     done: new Set(),
     failed: new Set(),
+    fails: new Map(), // 단어별 틀린 횟수
+    givenUp: 0,
     firstResult: new Map(), // 단어별 첫 결과 (요약용)
     learned: 0,
     reviewed: 0,
@@ -110,9 +113,20 @@ export function submit(s, state, w, result, t) {
 
   if (!ok) {
     s.failed.add(w.id);
+    const fails = (s.fails.get(w.id) || 0) + 1;
+    s.fails.set(w.id, fails);
     if (task.phase === 'review' && !task.retry) w.srs = { box: 1, due: t }; // 오늘 다시 맞혀야 함
     if (task.phase === 'practice') w.srs = { box: 1, due: srs.addDays(t, 1) };
-    insertRetry(s, task);
+    if (fails < MAX_FAILS) {
+      insertRetry(s, task);
+      return advance(s);
+    }
+    // 너무 많이 틀린 단어는 붙잡고 있지 않고 내일 다시 (지치지 않게)
+    s.tasks = s.tasks.filter((x, k) => k <= s.i || x.id !== w.id);
+    if (task.phase === 'new') graduateNew(state, w, t);
+    else w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
+    s.givenUp++;
+    s.done.add(w.id);
     return advance(s);
   }
 
@@ -140,5 +154,6 @@ function advance(s) {
   s.question = null;
   s.answered = null;
   s.revealed = false;
+  s.hint = false;
   s.shownAt = performance.now();
 }

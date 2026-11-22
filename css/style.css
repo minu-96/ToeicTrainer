@@ -378,3 +378,34 @@ input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--primary)
   z-index: 10;
 }
 #toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- v1.2: 시작 화면 · 단계 · 거르기 ---------- */
+.welcome { padding: 8px 4px 4px; }
+.welcome-badge { display: inline-block; margin: 0; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary); font-size: 12px; font-weight: 700; }
+.welcome h2 { margin: 10px 0 12px; font-size: 24px; letter-spacing: -0.02em; }
+.how { margin: 0 0 18px; padding-left: 20px; display: grid; gap: 8px; color: var(--text); }
+.how li::marker { color: var(--primary); font-weight: 700; }
+.level-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.level { min-height: 56px; padding: 8px; border: 2px solid var(--line); border-radius: 14px; background: var(--bg); font-weight: 600; font-size: 15px; }
+.level.on { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, var(--surface)); color: var(--primary); }
+.card .field { margin-top: 14px; }
+.card #begin { margin-top: 16px; }
+
+.stage-guide { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+.stage-guide li { display: flex; align-items: center; gap: 8px; }
+.stage-guide b { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.stage-guide em { font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stage-guide span { margin-left: auto; color: var(--muted); }
+.tag.stage.s1 { background: color-mix(in srgb, var(--seg1) 20%, transparent); color: var(--seg1); }
+.tag.stage.s2 { background: color-mix(in srgb, var(--seg2) 22%, transparent); color: #b07a10; }
+.tag.stage.s3 { background: color-mix(in srgb, var(--seg3) 22%, transparent); color: #4c8a2c; }
+.tag.stage.s4 { background: color-mix(in srgb, var(--seg4) 18%, transparent); color: var(--seg4); }
+.tag.stage.s5 { background: color-mix(in srgb, var(--seg5) 14%, transparent); color: var(--seg5); }
+
+.card.link { display: grid; gap: 2px; }
+.card.link small { color: var(--muted); font-weight: 500; font-size: 13px; }
+.filter-btn { margin: -4px 0 14px; }
+.answer-row.even { grid-template-columns: 1fr 1fr; }
+.hint.center { text-align: center; line-height: 1.7; }
+.link-btn.small { font-size: 13px; margin-top: 8px; }
+.link-btn.inline { display: inline; margin: 0; padding: 4px 0; }

@@ -1,0 +1,962 @@
+[
+ {
+  "id": "m001",
+  "word": "acquire",
+  "pos": "동",
+  "meaning": "인수하다, 획득하다",
+  "example": "The firm acquired a small software company.",
+  "exampleKo": "그 회사는 작은 소프트웨어 회사를 인수했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m002",
+  "word": "merger",
+  "pos": "명",
+  "meaning": "합병",
+  "example": "The merger was completed in April.",
+  "exampleKo": "합병은 4월에 완료되었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m003",
+  "word": "subsidiary",
+  "pos": "명",
+  "meaning": "자회사",
+  "example": "The subsidiary operates in three countries.",
+  "exampleKo": "그 자회사는 세 나라에서 운영된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m004",
+  "word": "implement",
+  "pos": "동",
+  "meaning": "시행하다, 실행하다",
+  "example": "The new policy will be implemented next month.",
+  "exampleKo": "새 정책은 다음 달에 시행될 것이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m005",
+  "word": "comply",
+  "pos": "동",
+  "meaning": "준수하다",
+  "example": "All staff must comply with the safety rules.",
+  "exampleKo": "모든 직원은 안전 규칙을 준수해야 한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m006",
+  "word": "compliance",
+  "pos": "명",
+  "meaning": "준수",
+  "example": "The audit checks compliance with tax laws.",
+  "exampleKo": "그 감사는 세법 준수 여부를 확인한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m007",
+  "word": "audit",
+  "pos": "명·동",
+  "meaning": "회계 감사; 감사하다",
+  "example": "The annual audit begins next week.",
+  "exampleKo": "연례 회계 감사가 다음 주에 시작된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m008",
+  "word": "allocate",
+  "pos": "동",
+  "meaning": "할당하다, 배분하다",
+  "example": "More funds were allocated to research.",
+  "exampleKo": "연구에 더 많은 자금이 배정되었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m009",
+  "word": "estimate",
+  "pos": "명·동",
+  "meaning": "견적, 추정; 추정하다",
+  "example": "Please send us a cost estimate.",
+  "exampleKo": "비용 견적서를 보내 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m010",
+  "word": "quote",
+  "pos": "명·동",
+  "meaning": "견적(가); 견적을 내다",
+  "example": "The supplier quoted a lower price.",
+  "exampleKo": "공급 업체가 더 낮은 가격을 제시했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m011",
+  "word": "tentative",
+  "pos": "형",
+  "meaning": "잠정적인",
+  "example": "The tentative date for the event is May 3.",
+  "exampleKo": "행사의 잠정 날짜는 5월 3일이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m012",
+  "word": "preliminary",
+  "pos": "형",
+  "meaning": "예비의",
+  "example": "The preliminary results look promising.",
+  "exampleKo": "예비 결과가 유망해 보인다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m013",
+  "word": "comprehensive",
+  "pos": "형",
+  "meaning": "종합적인, 포괄적인",
+  "example": "We offer a comprehensive training program.",
+  "exampleKo": "우리는 종합적인 교육 프로그램을 제공한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m014",
+  "word": "mandatory",
+  "pos": "형",
+  "meaning": "의무적인",
+  "example": "Attendance at the meeting is mandatory.",
+  "exampleKo": "회의 참석은 의무다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m015",
+  "word": "eligible",
+  "pos": "형",
+  "meaning": "자격이 있는",
+  "example": "Full-time employees are eligible for the bonus.",
+  "exampleKo": "정규직 직원은 보너스를 받을 자격이 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m016",
+  "word": "exempt",
+  "pos": "형",
+  "meaning": "면제된",
+  "example": "Small businesses are exempt from the fee.",
+  "exampleKo": "소규모 사업체는 그 수수료가 면제된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m017",
+  "word": "prompt",
+  "pos": "형",
+  "meaning": "즉각적인, 신속한",
+  "example": "Thank you for your prompt reply.",
+  "exampleKo": "빠른 답장 감사합니다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m018",
+  "word": "promptly",
+  "pos": "부",
+  "meaning": "즉시, 정각에",
+  "example": "The meeting will start promptly at 9 a.m.",
+  "exampleKo": "회의는 오전 9시 정각에 시작한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m019",
+  "word": "thoroughly",
+  "pos": "부",
+  "meaning": "철저히",
+  "example": "Please review the contract thoroughly.",
+  "exampleKo": "계약서를 철저히 검토해 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m020",
+  "word": "temporarily",
+  "pos": "부",
+  "meaning": "일시적으로",
+  "example": "The store is temporarily closed for renovations.",
+  "exampleKo": "그 가게는 보수 공사로 일시 휴업 중이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m021",
+  "word": "renovation",
+  "pos": "명",
+  "meaning": "보수, 개조",
+  "example": "The lobby renovation will take two weeks.",
+  "exampleKo": "로비 보수 공사는 2주가 걸린다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m022",
+  "word": "vacancy",
+  "pos": "명",
+  "meaning": "공석, 빈방",
+  "example": "There is a vacancy in the accounting team.",
+  "exampleKo": "회계팀에 공석이 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m023",
+  "word": "personnel",
+  "pos": "명",
+  "meaning": "인원, 직원",
+  "example": "Only authorized personnel may enter.",
+  "exampleKo": "허가된 인원만 출입할 수 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m024",
+  "word": "credential",
+  "pos": "명",
+  "meaning": "자격 증명, 자격",
+  "example": "Please submit your professional credentials.",
+  "exampleKo": "전문 자격 증명서를 제출해 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m025",
+  "word": "commensurate",
+  "pos": "형",
+  "meaning": "(~에) 상응하는",
+  "example": "Salary will be commensurate with experience.",
+  "exampleKo": "급여는 경력에 상응하여 지급된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m026",
+  "word": "incentive",
+  "pos": "명",
+  "meaning": "장려책, 혜택",
+  "example": "The company offers incentives for early payment.",
+  "exampleKo": "회사는 조기 납부에 대한 혜택을 제공한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m027",
+  "word": "reimbursement",
+  "pos": "명",
+  "meaning": "상환, 환급",
+  "example": "Submit receipts to receive reimbursement.",
+  "exampleKo": "환급을 받으려면 영수증을 제출하세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m028",
+  "word": "expenditure",
+  "pos": "명",
+  "meaning": "지출",
+  "example": "Expenditures rose sharply last quarter.",
+  "exampleKo": "지난 분기에 지출이 급격히 늘었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m029",
+  "word": "surplus",
+  "pos": "명",
+  "meaning": "흑자, 잉여",
+  "example": "The city reported a budget surplus.",
+  "exampleKo": "시는 예산 흑자를 발표했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m030",
+  "word": "deficit",
+  "pos": "명",
+  "meaning": "적자",
+  "example": "The company is trying to reduce its deficit.",
+  "exampleKo": "회사는 적자를 줄이려 하고 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m031",
+  "word": "fluctuate",
+  "pos": "동",
+  "meaning": "변동하다",
+  "example": "Fuel prices fluctuate every week.",
+  "exampleKo": "연료 가격은 매주 변동한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m032",
+  "word": "substantial",
+  "pos": "형",
+  "meaning": "상당한",
+  "example": "The project requires a substantial investment.",
+  "exampleKo": "그 프로젝트에는 상당한 투자가 필요하다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m033",
+  "word": "considerable",
+  "pos": "형",
+  "meaning": "상당한, 많은",
+  "example": "The new law caused considerable confusion.",
+  "exampleKo": "새 법은 상당한 혼란을 일으켰다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m034",
+  "word": "significantly",
+  "pos": "부",
+  "meaning": "상당히, 크게",
+  "example": "Sales have increased significantly.",
+  "exampleKo": "매출이 크게 늘었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m035",
+  "word": "consecutive",
+  "pos": "형",
+  "meaning": "연속적인",
+  "example": "Profits rose for three consecutive years.",
+  "exampleKo": "이익이 3년 연속 증가했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m036",
+  "word": "projected",
+  "pos": "형",
+  "meaning": "예상되는",
+  "example": "The projected cost is $2 million.",
+  "exampleKo": "예상 비용은 200만 달러다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m037",
+  "word": "forecast",
+  "pos": "명·동",
+  "meaning": "예측; 예측하다",
+  "example": "The sales forecast for next year is positive.",
+  "exampleKo": "내년 매출 전망은 긍정적이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m038",
+  "word": "outstanding",
+  "pos": "형",
+  "meaning": "뛰어난, 미지불된",
+  "example": "Please pay the outstanding balance.",
+  "exampleKo": "미지불 잔액을 납부해 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m039",
+  "word": "overdue",
+  "pos": "형",
+  "meaning": "기한이 지난",
+  "example": "Your library books are overdue.",
+  "exampleKo": "도서관 책 반납 기한이 지났다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m040",
+  "word": "commence",
+  "pos": "동",
+  "meaning": "시작하다",
+  "example": "Construction will commence in June.",
+  "exampleKo": "공사는 6월에 시작될 것이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m041",
+  "word": "adjacent",
+  "pos": "형",
+  "meaning": "인접한",
+  "example": "The parking lot is adjacent to the building.",
+  "exampleKo": "주차장은 건물에 인접해 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m042",
+  "word": "spacious",
+  "pos": "형",
+  "meaning": "넓은",
+  "example": "The new office is bright and spacious.",
+  "exampleKo": "새 사무실은 밝고 넓다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m043",
+  "word": "amenity",
+  "pos": "명",
+  "meaning": "편의 시설",
+  "example": "The hotel has many amenities, including a gym.",
+  "exampleKo": "그 호텔에는 헬스장을 포함한 편의 시설이 많다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m044",
+  "word": "complimentary",
+  "pos": "형",
+  "meaning": "무료의",
+  "example": "Guests receive a complimentary breakfast.",
+  "exampleKo": "투숙객은 무료 조식을 받는다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m045",
+  "word": "courtesy",
+  "pos": "명",
+  "meaning": "예의, 호의",
+  "example": "A courtesy shuttle runs to the airport.",
+  "exampleKo": "공항까지 무료 셔틀이 운행된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m046",
+  "word": "inquiry",
+  "pos": "명",
+  "meaning": "문의",
+  "example": "We received many inquiries about the product.",
+  "exampleKo": "그 제품에 대한 문의를 많이 받았다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m047",
+  "word": "respond",
+  "pos": "동",
+  "meaning": "응답하다",
+  "example": "Please respond to this email by Friday.",
+  "exampleKo": "금요일까지 이 이메일에 답장해 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m048",
+  "word": "accommodate",
+  "pos": "동",
+  "meaning": "수용하다, 맞추다",
+  "example": "The hall can accommodate 300 people.",
+  "exampleKo": "그 홀은 300명을 수용할 수 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m049",
+  "word": "alternative",
+  "pos": "명·형",
+  "meaning": "대안; 대체의",
+  "example": "We need an alternative plan.",
+  "exampleKo": "우리는 대안이 필요하다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m050",
+  "word": "feasible",
+  "pos": "형",
+  "meaning": "실행 가능한",
+  "example": "The plan is not financially feasible.",
+  "exampleKo": "그 계획은 재정적으로 실행 가능하지 않다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m051",
+  "word": "prospective",
+  "pos": "형",
+  "meaning": "장래의, 잠재적인",
+  "example": "We met with several prospective clients.",
+  "exampleKo": "우리는 여러 잠재 고객을 만났다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m052",
+  "word": "potential",
+  "pos": "형·명",
+  "meaning": "잠재적인; 잠재력",
+  "example": "The product has great potential.",
+  "exampleKo": "그 제품은 잠재력이 크다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m053",
+  "word": "enhance",
+  "pos": "동",
+  "meaning": "향상시키다, 강화하다",
+  "example": "The update enhances the app's security.",
+  "exampleKo": "그 업데이트는 앱의 보안을 강화한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m054",
+  "word": "streamline",
+  "pos": "동",
+  "meaning": "간소화하다, 효율화하다",
+  "example": "We streamlined the ordering process.",
+  "exampleKo": "우리는 주문 절차를 간소화했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m055",
+  "word": "expedite",
+  "pos": "동",
+  "meaning": "신속히 처리하다",
+  "example": "Can you expedite the shipping?",
+  "exampleKo": "배송을 빨리 처리해 줄 수 있나요?",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m056",
+  "word": "oversee",
+  "pos": "동",
+  "meaning": "감독하다",
+  "example": "She oversees a team of twelve engineers.",
+  "exampleKo": "그녀는 12명의 엔지니어 팀을 감독한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m057",
+  "word": "delegate",
+  "pos": "동",
+  "meaning": "위임하다",
+  "example": "Good managers delegate tasks effectively.",
+  "exampleKo": "좋은 관리자는 업무를 효과적으로 위임한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m058",
+  "word": "coordinate",
+  "pos": "동",
+  "meaning": "조정하다, 조율하다",
+  "example": "He coordinates events for the marketing team.",
+  "exampleKo": "그는 마케팅팀의 행사를 조율한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m059",
+  "word": "collaborate",
+  "pos": "동",
+  "meaning": "협력하다",
+  "example": "The two firms collaborated on the design.",
+  "exampleKo": "두 회사는 디자인에 협력했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m060",
+  "word": "consult",
+  "pos": "동",
+  "meaning": "상담하다, 참고하다",
+  "example": "Consult the manual for details.",
+  "exampleKo": "자세한 내용은 설명서를 참고하세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m061",
+  "word": "verify",
+  "pos": "동",
+  "meaning": "확인하다, 검증하다",
+  "example": "Please verify your email address.",
+  "exampleKo": "이메일 주소를 확인해 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m062",
+  "word": "authorize",
+  "pos": "동",
+  "meaning": "승인하다, 권한을 주다",
+  "example": "Only managers can authorize refunds.",
+  "exampleKo": "관리자만 환불을 승인할 수 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m063",
+  "word": "revise",
+  "pos": "동",
+  "meaning": "수정하다",
+  "example": "The schedule was revised twice.",
+  "exampleKo": "일정이 두 번 수정되었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m064",
+  "word": "draft",
+  "pos": "명·동",
+  "meaning": "초안; 초안을 작성하다",
+  "example": "Please send me the first draft by Monday.",
+  "exampleKo": "월요일까지 초안을 보내 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m065",
+  "word": "tenant",
+  "pos": "명",
+  "meaning": "세입자",
+  "example": "The tenant signed a two-year lease.",
+  "exampleKo": "세입자는 2년 임대차 계약에 서명했다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m066",
+  "word": "lease",
+  "pos": "명·동",
+  "meaning": "임대차 계약; 임대하다",
+  "example": "The company leases office space downtown.",
+  "exampleKo": "그 회사는 시내에 사무실 공간을 임대한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m067",
+  "word": "premises",
+  "pos": "명",
+  "meaning": "부지, 구내",
+  "example": "Smoking is not allowed on the premises.",
+  "exampleKo": "구내에서는 흡연이 금지된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m068",
+  "word": "warranty",
+  "pos": "명",
+  "meaning": "품질 보증(서)",
+  "example": "The laptop comes with a one-year warranty.",
+  "exampleKo": "그 노트북은 1년 품질 보증이 제공된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m069",
+  "word": "defective",
+  "pos": "형",
+  "meaning": "결함이 있는",
+  "example": "Defective items can be returned for free.",
+  "exampleKo": "결함이 있는 제품은 무료로 반품할 수 있다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m070",
+  "word": "durable",
+  "pos": "형",
+  "meaning": "내구성이 있는, 튼튼한",
+  "example": "These boots are durable and waterproof.",
+  "exampleKo": "이 부츠는 튼튼하고 방수가 된다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m071",
+  "word": "affordable",
+  "pos": "형",
+  "meaning": "(가격이) 알맞은",
+  "example": "We offer affordable housing options.",
+  "exampleKo": "우리는 알맞은 가격의 주택을 제공한다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m072",
+  "word": "distribute",
+  "pos": "동",
+  "meaning": "배포하다, 유통하다",
+  "example": "Brochures were distributed to all visitors.",
+  "exampleKo": "모든 방문객에게 안내 책자가 배포되었다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m073",
+  "word": "retail",
+  "pos": "명·형",
+  "meaning": "소매; 소매의",
+  "example": "She has ten years of retail experience.",
+  "exampleKo": "그녀는 소매업 경력이 10년이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m074",
+  "word": "wholesale",
+  "pos": "명·형",
+  "meaning": "도매; 도매의",
+  "example": "We buy coffee beans at wholesale prices.",
+  "exampleKo": "우리는 커피 원두를 도매가로 산다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m075",
+  "word": "patronage",
+  "pos": "명",
+  "meaning": "애용, 후원",
+  "example": "Thank you for your continued patronage.",
+  "exampleKo": "변함없이 이용해 주셔서 감사합니다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m076",
+  "word": "endorse",
+  "pos": "동",
+  "meaning": "지지하다, 보증하다",
+  "example": "The proposal was endorsed by the board.",
+  "exampleKo": "그 제안은 이사회의 지지를 받았다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m077",
+  "word": "reputation",
+  "pos": "명",
+  "meaning": "평판",
+  "example": "The hotel has an excellent reputation.",
+  "exampleKo": "그 호텔은 평판이 아주 좋다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m078",
+  "word": "dedicated",
+  "pos": "형",
+  "meaning": "헌신적인, 전용의",
+  "example": "She is a dedicated and reliable worker.",
+  "exampleKo": "그녀는 헌신적이고 믿을 만한 직원이다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m079",
+  "word": "reliable",
+  "pos": "형",
+  "meaning": "믿을 만한",
+  "example": "We need a reliable supplier.",
+  "exampleKo": "우리는 믿을 만한 공급 업체가 필요하다.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ },
+ {
+  "id": "m080",
+  "word": "punctual",
+  "pos": "형",
+  "meaning": "시간을 지키는",
+  "example": "Please be punctual for the interview.",
+  "exampleKo": "면접 시간을 꼭 지켜 주세요.",
+  "level": "mid",
+  "tags": [
+   "중급"
+  ]
+ }
+]

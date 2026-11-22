@@ -3,6 +3,19 @@
 export const INTERVALS = [1, 3, 7, 14, 30];
 export const MAX_BOX = INTERVALS.length;
 
+// 암기 단계 이름 (0 = 아직 안 본 단어)
+export const STAGES = ['새 단어', '외우는 중', '익히는 중', '익숙함', '거의 외움', '완벽'];
+export function stageName(box) {
+  return STAGES[box || 0] || STAGES[0];
+}
+
+// 새 단어가 나오는 순서: 직접 추가 → '몰라요'로 고른 단어 → 시작 수준 단어 → 나머지
+export function newWordOrder(settings) {
+  const start = settings?.startLevel || 'basic';
+  const rank = (w) => (w.source !== 'builtin' ? 0 : w.flagged ? 1 : w.level === start ? 2 : 3);
+  return (a, b) => rank(a) - rank(b) || (a.order ?? a.addedAt ?? 0) - (b.order ?? b.addedAt ?? 0);
+}
+
 // 기기 현지 시간 기준 YYYY-MM-DD (UTC로 계산하면 한국에서는 오전 9시 전에 날짜가 어긋남)
 export function today(d = new Date()) {
   const y = d.getFullYear();
@@ -43,10 +56,11 @@ export function buildQueue(words, settings, introduced, t) {
     .sort((a, b) => a.srs.due.localeCompare(b.srs.due) || a.srs.box - b.srs.box);
 
   // 직접 추가한 단어는 하루 한도와 상관없이 바로 나온다 (한도는 내장 단어에만 적용)
-  const mine = words.filter((w) => !w.srs && w.source !== 'builtin').sort((a, b) => (a.addedAt ?? 0) - (b.addedAt ?? 0));
+  const order = newWordOrder(settings);
+  const mine = words.filter((w) => !w.srs && w.source !== 'builtin').sort(order);
   const builtin = words
     .filter((w) => !w.srs && w.source === 'builtin')
-    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .sort(order)
     .slice(0, builtinRoom(settings, introduced, t));
 
   return [...due, ...mine, ...builtin].map((w) => w.id);
