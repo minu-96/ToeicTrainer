@@ -8,6 +8,7 @@ let state = store.load();
 let view = 'home';
 let session = null;
 let advanceTimer = null;
+let filter = null; // 아는 단어 거르기 진행 상태
 const ui = { search: '', filter: 'all', openId: null, addOpen: false };
 
 const EXTRA_NEW = 10; // "새 단어 더" 한 번에 추가할 수
@@ -21,6 +22,13 @@ const SOON = {
   notes: { title: '오답노트', desc: '앱에서 틀린 문제와 교재 오답을 기록하는 곳이에요. 6단계에서 만들어요.' },
   stats: { title: '분석', desc: '유형별 정답률과 실수 유형 TOP 3를 보여줄 곳이에요. 풀이 기록은 지금부터 쌓이고 있어요.' },
 };
+
+const LEVELS = [
+  { id: '200', label: '300점 이하', daily: 10, start: 'basic', hint: true, target: 600 },
+  { id: '400', label: '300~600점', daily: 15, start: 'basic', hint: true, target: 800 },
+  { id: '600', label: '600~800점', daily: 20, start: 'mid', hint: false, target: 850 },
+  { id: '800', label: '800점 이상', daily: 20, start: 'mid', hint: false, target: 900 },
+];
 
 const SESSION_TITLE = { daily: '오늘 학습', extra: '새 단어 추가 학습', practice: '약한 단어 연습' };
 
@@ -44,6 +52,15 @@ function toast(msg) {
   el.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), 2400);
+}
+
+const POS_NAMES = { 명: '명사', 동: '동사', 형: '형용사', 부: '부사', 전: '전치사', 접: '접속사' };
+function posLabel(p) {
+  return String(p || '')
+    .split('·')
+    .map((x) => POS_NAMES[x.trim()] || x.trim())
+    .filter(Boolean)
+    .join(' · ');
 }
 
 function wordById(id) {
@@ -72,7 +89,7 @@ function dailyPlan(t = srs.today()) {
 function extraFresh() {
   return state.words
     .filter((w) => !w.srs)
-    .sort((a, b) => (a.source === 'builtin') - (b.source === 'builtin') || (a.order ?? a.addedAt ?? 0) - (b.order ?? b.addedAt ?? 0))
+    .sort(srs.newWordOrder(state.settings))
     .slice(0, EXTRA_NEW);
 }
 
@@ -105,15 +122,17 @@ function render() {
     const tab = b.dataset.tab;
     b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study'));
   });
-  document.body.classList.toggle('studying', view === 'study');
+  document.body.classList.toggle('studying', ['study', 'filter', 'welcome'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
   else if (view === 'words') renderWords();
   else if (view === 'study') renderStudy();
   else if (view === 'settings') renderSettings();
+  else if (view === 'welcome') renderWelcome();
+  else if (view === 'filter') renderFilter();
   else renderSoon(view);
 }
 
@@ -137,6 +156,12 @@ function extraButtons() {
     </div>`;
 }
 
+function bindGoButtons(root = $view) {
+  root.querySelectorAll('[data-go]').forEach((b) =>
+    b.addEventListener('click', () => (b.dataset.go === 'filter' ? startFilter() : go(b.dataset.go))),
+  );
+}
+
 function bindStartButtons(root = $view) {
   root.querySelectorAll('[data-start]').forEach((b) => b.addEventListener('click', () => startSession(b.dataset.start)));
 }
@@ -155,14 +180,7 @@ function renderHome() {
   const answeredToday = state.attempts.filter((a) => a.date === t).length;
   const goal = Number(state.settings.dailyNewWords) || 0;
 
-  const segs = [
-    ['새 단어', counts[0], 'seg0'],
-    ['1칸', counts[1], 'seg1'],
-    ['2칸', counts[2], 'seg2'],
-    ['3칸', counts[3], 'seg3'],
-    ['4칸', counts[4], 'seg4'],
-    ['5칸', counts[5], 'seg5'],
-  ];
+  const segs = srs.STAGES.map((label, i) => [label, counts[i], 'seg' + i]);
 
   $view.innerHTML = `
     <section class="hero">
@@ -187,14 +205,22 @@ function renderHome() {
     <section class="card">
       <h2>단어 진행 상황 <small>${state.words.length}개</small></h2>
       <div class="bar">${segs.map(([, n, c]) => (n ? `<i class="${c}" style="flex:${n / total}"></i>` : '')).join('')}</div>
-      <ul class="legend">${segs.map(([label, n, c]) => `<li><b class="${c}"></b>${label} ${n}</li>`).join('')}</ul>
-      <p class="hint">칸이 올라갈수록 복습 간격이 길어져요 (1일 → 3일 → 7일 → 14일 → 30일).</p>
+      <ol class="stage-guide">
+        <li><b class="seg0"></b>새 단어<em>${counts[0]}</em><span>아직 안 본 단어</span></li>
+        ${srs.STAGES.slice(1).map((n, i) => `<li><b class="seg${i + 1}"></b>${n}<em>${counts[i + 1]}</em><span>${srs.INTERVALS[i]}일 뒤 복습</span></li>`).join('')}
+      </ol>
+      <p class="hint">맞힐수록 한 단계씩 올라가고 복습 간격이 길어져요. 틀리면 '외우는 중'으로 돌아가요.</p>
     </section>
 
+    ${
+      ['600', '800'].includes(state.settings.level) && !state.settings.filterUsed && filterCandidates().length
+        ? `<button class="card link" data-go="filter"><b>아는 단어 빠르게 거르기 →</b><small>이미 아는 기초 단어는 건너뛰고 모르는 단어만 학습해요</small></button>`
+        : ''
+    }
     ${!exam ? `<button class="card link" data-go="settings">시험 날짜를 정하면 D-day가 표시돼요 →</button>` : ''}
   `;
   bindStartButtons();
-  $view.querySelector('[data-go]')?.addEventListener('click', () => go('settings'));
+  bindGoButtons();
 }
 
 // 새 단어 1개 ≈ 소개+문제 2개, 복습 1개 ≈ 문제 1개
@@ -230,7 +256,7 @@ function renderStudy() {
   const progress = session.i / session.tasks.length; // 틀리면 문제가 늘어나서 바가 살짝 뒤로 갈 수 있음
   const tags = [
     task.phase === 'new' && task.step === 'intro' ? '<span class="tag new">새 단어</span>' : '',
-    task.phase === 'review' && w.srs ? `<span class="tag">${w.srs.box}칸</span>` : '',
+    task.phase === 'review' && w.srs ? `<span class="tag stage s${w.srs.box}">${srs.stageName(w.srs.box)}</span>` : '',
     task.phase === 'practice' ? '<span class="tag">연습</span>' : '',
     task.retry ? '<span class="tag warn">다시</span>' : '',
   ].join('');
@@ -257,7 +283,7 @@ function exampleBlock(w) {
 }
 
 function cardBody(task, w, q, a) {
-  const pos = w.pos ? `<p class="pos">${esc(w.pos)}</p>` : '';
+  const pos = w.pos ? `<p class="pos">${esc(posLabel(w.pos))}</p>` : '';
   switch (task.step) {
     case 'intro':
       return `
@@ -284,7 +310,13 @@ function cardBody(task, w, q, a) {
         <p class="cloze">${
           a ? quiz.highlight(w.example, w.word, esc) : `${esc(q.before)}<span class="blank">&nbsp;</span>${esc(q.after)}`
         }</p>
-        ${w.exampleKo ? `<p class="example-ko">${esc(w.exampleKo)}</p>` : ''}
+        ${
+          w.exampleKo
+            ? a || state.settings.clozeHint || session.hint
+              ? `<p class="example-ko">${esc(w.exampleKo)}</p>`
+              : `<button class="link-btn small" data-act="hint">해석 보기</button>`
+            : ''
+        }
         ${a ? `<p class="meaning small">${esc(w.word)} · ${esc(w.meaning)}</p>` : ''}`;
     case 'recall':
       return `
@@ -376,6 +408,9 @@ function act(name) {
     case 'reveal':
       session.revealed = true;
       return renderStudy();
+    case 'hint':
+      session.hint = true;
+      return renderStudy();
     case 'dontknow':
       if (session.answered) return;
       session.answered = { choice: -1, ok: false };
@@ -424,7 +459,7 @@ function renderSummary() {
       missed.length
         ? `<section class="card"><h2>헷갈린 단어</h2><ul class="mini-list">
             ${missed.map((w) => `<li><b>${esc(w.word)}</b><span>${esc(w.meaning)}</span></li>`).join('')}
-          </ul><p class="hint">${s.kind === 'practice' ? '1칸으로 내려서 내일 다시 나와요.' : '내일 다시 나와요.'}</p></section>`
+          </ul><p class="hint">${s.kind === 'practice' ? "'외우는 중'으로 돌아가서 내일 다시 나와요." : '내일 다시 나와요.'}</p></section>`
         : ''
     }
   `;
@@ -435,9 +470,10 @@ function renderSummary() {
 
 // ---------- 단어장 ----------
 function statusOf(w, t) {
-  if (!w.srs) return { label: '새 단어', cls: 'seg0' };
-  if (w.srs.due <= t) return { label: `${w.srs.box}칸 · 오늘 복습`, cls: `seg${w.srs.box}` };
-  return { label: `${w.srs.box}칸 · ${w.srs.due.slice(5).replace('-', '/')}`, cls: `seg${w.srs.box}` };
+  if (!w.srs) return { label: w.flagged ? '새 단어 · 먼저 학습' : '새 단어', cls: 'seg0' };
+  const name = srs.stageName(w.srs.box);
+  if (w.srs.due <= t) return { label: `${name} · 오늘 복습`, cls: `seg${w.srs.box}` };
+  return { label: `${name} · ${w.srs.due.slice(5).replace('-', '/')}`, cls: `seg${w.srs.box}` };
 }
 
 function filteredWords() {
@@ -451,6 +487,8 @@ function filteredWords() {
       case 'weak': return w.srs && w.srs.box <= 2;
       case 'done': return w.srs && w.srs.box === srs.MAX_BOX;
       case 'mine': return w.source !== 'builtin';
+      case 'basic': return w.source === 'builtin' && w.level === 'basic';
+      case 'mid': return w.source === 'builtin' && w.level === 'mid';
       default: return true;
     }
   });
@@ -466,6 +504,11 @@ function renderWords() {
         ? `<button class="btn primary big" data-start="daily">오늘 학습 시작 (${todo}개)</button>`
         : extraButtons()
     }
+    ${
+      filterCandidates().length
+        ? `<button class="btn ghost wide filter-btn" data-go="filter">아는 단어 빠르게 거르기 (${filterCandidates().length}개)</button>`
+        : ''
+    }
 
     <section class="card add ${ui.addOpen ? 'open' : ''}">
       <button class="add-toggle" id="add-toggle">${ui.addOpen ? '닫기' : '+ 단어 직접 추가'}</button>
@@ -477,7 +520,7 @@ function renderWords() {
               <label>품사
                 <select name="pos">
                   <option value="">선택 안 함</option>
-                  ${['명', '동', '형', '부', '전', '접', '명·동'].map((p) => `<option>${p}</option>`).join('')}
+                  ${['명', '동', '형', '부', '전', '접', '명·동'].map((p) => `<option value="${p}">${posLabel(p)}</option>`).join('')}
                 </select>
               </label>
               <label>예문 (선택 · 넣으면 빈칸 문제로도 나와요)<input name="example" placeholder="영어 예문" autocapitalize="off"></label>
@@ -494,8 +537,10 @@ function renderWords() {
           ['all', '전체'],
           ['due', '오늘 복습'],
           ['new', '새 단어'],
-          ['weak', '약한 단어 (1~2칸)'],
-          ['done', '5칸 완료'],
+          ['weak', '약한 단어 (외우는 중·익히는 중)'],
+          ['done', '완벽'],
+          ['basic', '기초 단어'],
+          ['mid', '중급 단어'],
           ['mine', '내가 추가'],
         ].map(([v, l]) => `<option value="${v}" ${ui.filter === v ? 'selected' : ''}>${l}</option>`).join('')}
       </select>
@@ -505,6 +550,7 @@ function renderWords() {
 
   renderWordList();
   bindStartButtons();
+  bindGoButtons();
   $view.querySelector('#add-toggle').addEventListener('click', () => {
     ui.addOpen = !ui.addOpen;
     renderWords();
@@ -543,7 +589,7 @@ function renderWordList() {
         ${
           open
             ? `<div class="detail">
-                ${w.pos ? `<p class="pos">${esc(w.pos)}</p>` : ''}
+                ${w.pos ? `<p class="pos">${esc(posLabel(w.pos))}</p>` : ''}
                 ${exampleBlock(w)}
                 <div class="detail-actions">
                   <button class="btn ghost small" data-act="speak">발음 듣기</button>
@@ -631,6 +677,13 @@ function renderSettings() {
         <input type="number" id="dailyNewWords" min="0" max="200" value="${esc(s.dailyNewWords)}" inputmode="numeric">
       </label>
       <p class="hint">목표를 채운 뒤에도 '새 단어 ${EXTRA_NEW}개 더'로 추가 학습할 수 있어요.</p>
+      <label class="field">새 단어 시작 수준
+        <select id="startLevel">
+          <option value="basic" ${s.startLevel === 'basic' ? 'selected' : ''}>기초 단어부터</option>
+          <option value="mid" ${s.startLevel === 'mid' ? 'selected' : ''}>중급 단어부터</option>
+        </select>
+      </label>
+      <label class="switch"><span>빈칸 문제 해석 바로 보기</span><input type="checkbox" id="clozeHint" ${s.clozeHint ? 'checked' : ''}></label>
     </section>
 
     <section class="card">
@@ -666,7 +719,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 1단계 (단어) v1.1</p>
+    <p class="version">토익 트레이너 · 1단계 (단어) v1.2</p>
   `;
 
   const num = (id, min, max) => {
@@ -683,6 +736,16 @@ function renderSettings() {
   };
   num('targetScore', 10, 990);
   num('dailyNewWords', 0, 200);
+
+  $view.querySelector('#startLevel').addEventListener('change', (e) => {
+    state.settings.startLevel = e.target.value;
+    persist();
+    toast('저장했어요');
+  });
+  $view.querySelector('#clozeHint').addEventListener('change', (e) => {
+    state.settings.clozeHint = e.target.checked;
+    persist();
+  });
 
   $view.querySelector('#examDate').addEventListener('change', (e) => {
     state.settings.examDate = e.target.value;
@@ -720,7 +783,7 @@ function renderSettings() {
     await loadBuiltin();
     persist();
     toast('초기화했어요');
-    go('home');
+    go('welcome');
   });
 }
 
@@ -765,6 +828,170 @@ async function importBackup(e) {
   }
 }
 
+// ---------- 시작 화면 ----------
+function renderWelcome() {
+  const sel = LEVELS.find((l) => l.id === ui.level);
+  $view.innerHTML = `
+    <section class="welcome">
+      <p class="welcome-badge">처음 오셨네요</p>
+      <h2>매일 조금씩, 잊을 때쯤 다시</h2>
+      <ol class="how">
+        <li><b>새 단어를 5개씩</b> 외우고, 바로 문제로 확인해요.</li>
+        <li>맞힐수록 <b>외우는 중 → 완벽</b>으로 올라가고, 잊을 때쯤 다시 나와요.</li>
+        <li>오늘 목표를 끝낸 뒤 <b>더 하고 싶으면</b> 추가로 할 수 있어요.</li>
+      </ol>
+    </section>
+    <section class="card">
+      <h2>지금 토익 점수는 어느 정도인가요?</h2>
+      <div class="level-grid">
+        ${LEVELS.map((l) => `<button class="level ${ui.level === l.id ? 'on' : ''}" data-level="${l.id}">${esc(l.label)}</button>`).join('')}
+      </div>
+      <p class="hint">${
+        sel
+          ? `하루 새 단어 ${sel.daily}개 · ${sel.start === 'mid' ? '중급 단어부터' : '기초 단어부터'} 시작해요. 나중에 설정에서 바꿀 수 있어요.`
+          : '점수대에 맞춰 하루 학습량과 단어 수준을 정해 드려요. 아직 시험을 안 봤다면 300점 이하를 고르세요.'
+      }</p>
+      ${
+        sel
+          ? `<label class="field">목표 점수
+              <input type="number" id="w-target" min="10" max="990" step="5" value="${esc(ui.target ?? sel.target)}" inputmode="numeric">
+            </label>`
+          : ''
+      }
+      <button class="btn primary big" id="begin" ${sel ? '' : 'disabled'}>시작하기</button>
+    </section>`;
+  $view.querySelectorAll('[data-level]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.level = b.dataset.level;
+      ui.target = null;
+      renderWelcome();
+    }),
+  );
+  $view.querySelector('#w-target')?.addEventListener('input', (e) => (ui.target = e.target.value));
+  $view.querySelector('#begin').addEventListener('click', () => {
+    if (!sel) return;
+    const target = Math.min(990, Math.max(10, Math.round(Number(ui.target ?? sel.target)) || sel.target));
+    Object.assign(state.settings, {
+      level: sel.id,
+      dailyNewWords: sel.daily,
+      startLevel: sel.start,
+      clozeHint: sel.hint,
+      targetScore: target,
+      onboarded: true,
+    });
+    persist();
+    go('home');
+  });
+}
+
+// ---------- 아는 단어 빠르게 거르기 ----------
+function filterCandidates() {
+  return state.words
+    .filter((w) => !w.srs && w.source === 'builtin' && !w.flagged)
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+}
+
+function startFilter() {
+  const ids = filterCandidates().map((w) => w.id);
+  if (!ids.length) return toast('거를 새 단어가 없어요');
+  filter = { ids, i: 0, known: 0, unknown: 0, reveal: false, history: [] };
+  go('filter');
+}
+
+function renderFilter() {
+  if (!filter) return go('home');
+  if (filter.i >= filter.ids.length) return renderFilterDone();
+  const w = wordById(filter.ids[filter.i]);
+  if (!w) {
+    filter.i++;
+    return renderFilter();
+  }
+  $view.innerHTML = `
+    <div class="study-top">
+      <button class="icon-btn" id="quit" aria-label="그만하기">${ICON.close}</button>
+      <div class="progress"><i style="width:${(filter.i / filter.ids.length) * 100}%"></i></div>
+      <span class="progress-text">${filter.i}/${filter.ids.length}</span>
+    </div>
+    <article class="qcard">
+      <div class="flash-tags"><span class="tag">${w.level === 'mid' ? '중급' : '기초'}</span></div>
+      <button class="icon-btn speak" id="speak" aria-label="발음 듣기">${ICON.speaker}</button>
+      <p class="q-label">뜻을 바로 알 수 있는 단어인가요?</p>
+      <p class="flash-word">${esc(w.word)}</p>
+      ${
+        filter.reveal
+          ? `<p class="pos">${esc(posLabel(w.pos))}</p><p class="meaning">${esc(w.meaning)}</p>`
+          : `<button class="link-btn" id="reveal">뜻 보고 판단하기</button>`
+      }
+    </article>
+    <div class="answer-area">
+      <div class="answer-row even">
+        <button class="btn ghost" id="unknown">몰라요</button>
+        <button class="btn success" id="known">알아요</button>
+      </div>
+      <p class="hint center">알아요 → '익숙함'으로 올리고 일주일 뒤 빈칸 문제로 확인해요<br>몰라요 → 다음 학습에 먼저 나와요
+      ${filter.history.length ? `<br><button class="link-btn small inline" id="undo">방금 선택 되돌리기</button>` : ''}</p>
+    </div>`;
+  $view.querySelector('#quit').addEventListener('click', () => renderFilterDone());
+  $view.querySelector('#speak').addEventListener('click', () => say(w.word));
+  $view.querySelector('#reveal')?.addEventListener('click', () => {
+    filter.reveal = true;
+    renderFilter();
+  });
+  $view.querySelector('#known').addEventListener('click', () => filterAnswer(true));
+  $view.querySelector('#unknown').addEventListener('click', () => filterAnswer(false));
+  $view.querySelector('#undo')?.addEventListener('click', filterUndo);
+}
+
+function filterAnswer(known) {
+  const w = wordById(filter.ids[filter.i]);
+  filter.history.push({ id: w.id, srs: w.srs, flagged: w.flagged, known });
+  if (known) {
+    w.srs = { box: 3, due: srs.addDays(srs.today(), srs.INTERVALS[2]) };
+    filter.known++;
+  } else {
+    w.flagged = true;
+    filter.unknown++;
+  }
+  state.settings.filterUsed = true;
+  filter.i++;
+  filter.reveal = false;
+  persist();
+  renderFilter();
+}
+
+function filterUndo() {
+  const h = filter.history.pop();
+  if (!h) return;
+  const w = wordById(h.id);
+  w.srs = h.srs;
+  if (h.flagged) w.flagged = true;
+  else delete w.flagged;
+  if (h.known) filter.known--;
+  else filter.unknown--;
+  filter.i--;
+  persist();
+  renderFilter();
+}
+
+function renderFilterDone() {
+  const f = filter;
+  filter = null;
+  if (!f || !f.history.length) return go('home');
+  $view.innerHTML = `
+    <section class="hero done">
+      <p class="hero-title">거르기 완료!</p>
+      <div class="today-grid two">
+        <div><strong>${f.known}</strong><span>알아요</span></div>
+        <div><strong>${f.unknown}</strong><span>몰라요</span></div>
+      </div>
+      <p class="hint">아는 단어는 일주일 뒤에 빈칸 문제로 한 번 확인해요. 틀리면 다시 학습 대상이 돼요.</p>
+      <button class="btn primary big" data-start="daily">모르는 단어 학습 시작</button>
+      <button class="btn ghost wide home-btn" id="home">홈으로</button>
+    </section>`;
+  bindStartButtons();
+  $view.querySelector('#home').addEventListener('click', () => go('home'));
+}
+
 function renderSoon(key) {
   const s = SOON[key];
   $view.innerHTML = `
@@ -778,10 +1005,17 @@ function renderSoon(key) {
 // ---------- 시작 ----------
 async function loadBuiltin() {
   try {
-    const res = await fetch('./data/words-basic.json');
-    if (!res.ok) throw new Error(res.status);
-    const list = await res.json();
-    if (store.mergeBuiltin(state, list)) persist();
+    const sets = [
+      ['./data/words-basic.json', 0],
+      ['./data/words-mid.json', 1000],
+    ];
+    let changed = 0;
+    for (const [url, offset] of sets) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(url + ' ' + res.status);
+      changed += store.mergeBuiltin(state, await res.json(), offset);
+    }
+    if (changed) persist();
   } catch (e) {
     console.warn('내장 단어를 불러오지 못했어요', e);
   }
@@ -798,6 +1032,7 @@ function leaveStudyOk() {
   // 답할 때마다 저장되므로 확인 없이 나가도 됨
   clearTimeout(advanceTimer);
   session = null;
+  filter = null;
   return true;
 }
 
@@ -815,6 +1050,15 @@ function bindGlobal() {
 
   // 키보드 (Mac에서 테스트할 때): 1~4 보기 선택, Enter 다음/확인
   document.addEventListener('keydown', (e) => {
+    if (view === 'filter' && filter && filter.i < filter.ids.length && !e.target.matches('input, select, textarea')) {
+      if (e.key === 'ArrowLeft' || e.key === '1') filterAnswer(false);
+      else if (e.key === 'ArrowRight' || e.key === '2') filterAnswer(true);
+      else if (e.key === ' ') {
+        filter.reveal = true;
+        renderFilter();
+      } else return;
+      return e.preventDefault();
+    }
     if (view !== 'study' || !session || Session.finished(session) || e.target.matches('input, select, textarea')) return;
     const task = Session.current(session);
     const n = Number(e.key);
@@ -848,6 +1092,12 @@ function registerSW() {
 async function init() {
   bindGlobal();
   await loadBuiltin();
+  // 이미 쓰던 사람은 시작 화면 건너뛰기
+  if (!state.settings.onboarded && state.words.some((w) => w.srs)) {
+    state.settings.onboarded = true;
+    persist();
+  }
+  view = state.settings.onboarded ? 'home' : 'welcome';
   render();
   registerSW();
   store.requestPersist();
