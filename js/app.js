@@ -23,12 +23,15 @@ const SOON = {
   stats: { title: '분석', desc: '유형별 정답률과 실수 유형 TOP 3를 보여줄 곳이에요. 풀이 기록은 지금부터 쌓이고 있어요.' },
 };
 
+// 시작 화면 점수대: 못하는 사람 / 적당한 사람 / 잘하는 사람
 const LEVELS = [
-  { id: '200', label: '300점 이하', daily: 10, start: 'basic', hint: true, target: 600 },
-  { id: '400', label: '300~600점', daily: 15, start: 'basic', hint: true, target: 800 },
-  { id: '600', label: '600~800점', daily: 20, start: 'mid', hint: false, target: 850 },
-  { id: '800', label: '800점 이상', daily: 20, start: 'mid', hint: false, target: 900 },
+  { id: 'low', label: '500점 이하', who: '아직 시험 전이거나 기초가 부족해요', daily: 10, start: 'basic', hint: true, target: 700 },
+  { id: 'mid', label: '500~750점', who: '기본은 되는데 점수를 더 올리고 싶어요', daily: 15, start: 'mid', hint: false, target: 850 },
+  { id: 'high', label: '750점 이상', who: '고득점을 굳히고 900점대를 노려요', daily: 20, start: 'adv', hint: false, target: 950 },
 ];
+// 예전 버전에서 저장한 점수대 값 호환
+const LEVEL_ALIAS = { 200: 'low', 400: 'low', 600: 'mid', 800: 'high' };
+const levelGroup = (id) => LEVEL_ALIAS[id] || id;
 
 const SESSION_TITLE = { daily: '오늘 학습', extra: '새 단어 추가 학습', practice: '약한 단어 연습' };
 
@@ -213,8 +216,10 @@ function renderHome() {
     </section>
 
     ${
-      ['600', '800'].includes(state.settings.level) && !state.settings.filterUsed && filterCandidates().length
-        ? `<button class="card link" data-go="filter"><b>아는 단어 빠르게 거르기 →</b><small>이미 아는 기초 단어는 건너뛰고 모르는 단어만 학습해요</small></button>`
+      ['mid', 'high'].includes(levelGroup(state.settings.level)) && !state.settings.filterUsed && filterCandidates().length
+        ? `<button class="card link" data-go="filter"><b>아는 단어 빠르게 거르기 →</b><small>${
+            state.settings.startLevel === 'adv' ? '기초·중급' : '기초'
+          } 단어 중 이미 아는 건 건너뛰고 모르는 단어만 학습해요</small></button>`
         : ''
     }
     ${!exam ? `<button class="card link" data-go="settings">시험 날짜를 정하면 D-day가 표시돼요 →</button>` : ''}
@@ -489,6 +494,7 @@ function filteredWords() {
       case 'mine': return w.source !== 'builtin';
       case 'basic': return w.source === 'builtin' && w.level === 'basic';
       case 'mid': return w.source === 'builtin' && w.level === 'mid';
+      case 'adv': return w.source === 'builtin' && w.level === 'adv';
       default: return true;
     }
   });
@@ -541,6 +547,7 @@ function renderWords() {
           ['done', '완벽'],
           ['basic', '기초 단어'],
           ['mid', '중급 단어'],
+          ['adv', '고급 단어'],
           ['mine', '내가 추가'],
         ].map(([v, l]) => `<option value="${v}" ${ui.filter === v ? 'selected' : ''}>${l}</option>`).join('')}
       </select>
@@ -681,6 +688,7 @@ function renderSettings() {
         <select id="startLevel">
           <option value="basic" ${s.startLevel === 'basic' ? 'selected' : ''}>기초 단어부터</option>
           <option value="mid" ${s.startLevel === 'mid' ? 'selected' : ''}>중급 단어부터</option>
+          <option value="adv" ${s.startLevel === 'adv' ? 'selected' : ''}>고급 단어부터</option>
         </select>
       </label>
       <label class="switch"><span>빈칸 문제 해석 바로 보기</span><input type="checkbox" id="clozeHint" ${s.clozeHint ? 'checked' : ''}></label>
@@ -719,7 +727,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 1단계 (단어) v1.2</p>
+    <p class="version">토익 트레이너 · 1단계 (단어) v1.3</p>
   `;
 
   const num = (id, min, max) => {
@@ -843,13 +851,18 @@ function renderWelcome() {
     </section>
     <section class="card">
       <h2>지금 토익 점수는 어느 정도인가요?</h2>
-      <div class="level-grid">
-        ${LEVELS.map((l) => `<button class="level ${ui.level === l.id ? 'on' : ''}" data-level="${l.id}">${esc(l.label)}</button>`).join('')}
+      <div class="level-list">
+        ${LEVELS.map(
+          (l) => `<button class="level ${ui.level === l.id ? 'on' : ''}" data-level="${l.id}">
+            <span class="level-top"><b>${esc(l.label)}</b><em>${srs.LEVEL_NAMES[l.start]}부터</em></span>
+            <small>${esc(l.who)}</small>
+          </button>`,
+        ).join('')}
       </div>
       <p class="hint">${
         sel
-          ? `하루 새 단어 ${sel.daily}개 · ${sel.start === 'mid' ? '중급 단어부터' : '기초 단어부터'} 시작해요. 나중에 설정에서 바꿀 수 있어요.`
-          : '점수대에 맞춰 하루 학습량과 단어 수준을 정해 드려요. 아직 시험을 안 봤다면 300점 이하를 고르세요.'
+          ? `하루 새 단어 ${sel.daily}개 · ${srs.LEVEL_NAMES[sel.start]} 단어부터 시작해요. 나중에 설정에서 바꿀 수 있어요.`
+          : '점수대에 맞춰 하루 학습량과 단어 수준을 정해 드려요.'
       }</p>
       ${
         sel
@@ -888,7 +901,7 @@ function renderWelcome() {
 function filterCandidates() {
   return state.words
     .filter((w) => !w.srs && w.source === 'builtin' && !w.flagged)
-    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0)); // 기초 → 중급 → 고급 순
 }
 
 function startFilter() {
@@ -913,7 +926,7 @@ function renderFilter() {
       <span class="progress-text">${filter.i}/${filter.ids.length}</span>
     </div>
     <article class="qcard">
-      <div class="flash-tags"><span class="tag">${w.level === 'mid' ? '중급' : '기초'}</span></div>
+      <div class="flash-tags"><span class="tag">${srs.LEVEL_NAMES[w.level] || '기초'}</span></div>
       <button class="icon-btn speak" id="speak" aria-label="발음 듣기">${ICON.speaker}</button>
       <p class="q-label">뜻을 바로 알 수 있는 단어인가요?</p>
       <p class="flash-word">${esc(w.word)}</p>
@@ -1008,6 +1021,7 @@ async function loadBuiltin() {
     const sets = [
       ['./data/words-basic.json', 0],
       ['./data/words-mid.json', 1000],
+      ['./data/words-adv.json', 2000],
     ];
     let changed = 0;
     for (const [url, offset] of sets) {
