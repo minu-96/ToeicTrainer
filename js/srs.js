@@ -1,5 +1,5 @@
-// 간격 반복 (라이트너 박스 5칸)
-// 박스 1~5의 복습 간격(일). 맞히면 다음 칸, 틀리면 1칸으로.
+// 간격 반복: 암기 단계 5개 (외우는 중 → 완벽)
+// 단계별 복습 간격(일). 맞히면 한 단계 위, 틀리면 외우는 중으로.
 export const INTERVALS = [1, 3, 7, 14, 30];
 export const MAX_BOX = INTERVALS.length;
 
@@ -9,10 +9,19 @@ export function stageName(box) {
   return STAGES[box || 0] || STAGES[0];
 }
 
-// 새 단어가 나오는 순서: 직접 추가 → '몰라요'로 고른 단어 → 시작 수준 단어 → 나머지
+// 단어 수준 3단계
+export const LEVEL_ORDER = ['basic', 'mid', 'adv'];
+export const LEVEL_NAMES = { basic: '기초', mid: '중급', adv: '고급' };
+
+// 새 단어가 나오는 순서: 직접 추가 → '몰라요'로 고른 단어 → 시작 수준 → 그보다 높은 수준 → 낮은 수준
 export function newWordOrder(settings) {
-  const start = settings?.startLevel || 'basic';
-  const rank = (w) => (w.source !== 'builtin' ? 0 : w.flagged ? 1 : w.level === start ? 2 : 3);
+  const start = Math.max(0, LEVEL_ORDER.indexOf(settings?.startLevel || 'basic'));
+  const rank = (w) => {
+    if (w.source !== 'builtin') return 0;
+    if (w.flagged) return 1;
+    const li = Math.max(0, LEVEL_ORDER.indexOf(w.level));
+    return 2 + (li >= start ? li - start : 10 + (start - li));
+  };
   return (a, b) => rank(a) - rank(b) || (a.order ?? a.addedAt ?? 0) - (b.order ?? b.addedAt ?? 0);
 }
 

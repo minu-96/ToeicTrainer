@@ -1,0 +1,962 @@
+[
+ {
+  "id": "a001",
+  "word": "adhere",
+  "pos": "동",
+  "meaning": "고수하다, 준수하다",
+  "example": "Employees must adhere to the dress code.",
+  "exampleKo": "직원들은 복장 규정을 지켜야 한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a002",
+  "word": "stipulate",
+  "pos": "동",
+  "meaning": "명시하다, 규정하다",
+  "example": "The contract stipulates a 30-day notice period.",
+  "exampleKo": "계약서는 30일의 통보 기간을 명시한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a003",
+  "word": "discrepancy",
+  "pos": "명",
+  "meaning": "불일치, 차이",
+  "example": "We found a discrepancy in the sales figures.",
+  "exampleKo": "매출 수치에서 불일치를 발견했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a004",
+  "word": "reconcile",
+  "pos": "동",
+  "meaning": "조정하다, 맞추다",
+  "example": "The accountant reconciled the two reports.",
+  "exampleKo": "회계사는 두 보고서를 맞춰 정리했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a005",
+  "word": "contingent",
+  "pos": "형",
+  "meaning": "~에 달린, 조건부의",
+  "example": "The deal is contingent on board approval.",
+  "exampleKo": "그 거래는 이사회 승인에 달려 있다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a006",
+  "word": "provisional",
+  "pos": "형",
+  "meaning": "임시의, 잠정적인",
+  "example": "A provisional schedule has been released.",
+  "exampleKo": "임시 일정이 발표되었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a007",
+  "word": "imperative",
+  "pos": "형",
+  "meaning": "필수적인, 긴요한",
+  "example": "It is imperative that we meet the deadline.",
+  "exampleKo": "마감을 지키는 것이 반드시 필요하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a008",
+  "word": "conducive",
+  "pos": "형",
+  "meaning": "도움이 되는",
+  "example": "The quiet office is conducive to concentration.",
+  "exampleKo": "조용한 사무실은 집중에 도움이 된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a009",
+  "word": "meticulous",
+  "pos": "형",
+  "meaning": "꼼꼼한",
+  "example": "She is meticulous about checking details.",
+  "exampleKo": "그녀는 세부 사항 확인에 꼼꼼하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a010",
+  "word": "diligent",
+  "pos": "형",
+  "meaning": "성실한, 부지런한",
+  "example": "He is a diligent and loyal employee.",
+  "exampleKo": "그는 성실하고 충직한 직원이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a011",
+  "word": "versatile",
+  "pos": "형",
+  "meaning": "다재다능한, 다용도의",
+  "example": "This versatile printer also scans documents.",
+  "exampleKo": "이 다용도 프린터는 문서 스캔도 된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a012",
+  "word": "proficient",
+  "pos": "형",
+  "meaning": "능숙한",
+  "example": "Applicants must be proficient in Spanish.",
+  "exampleKo": "지원자는 스페인어에 능숙해야 한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a013",
+  "word": "adept",
+  "pos": "형",
+  "meaning": "능숙한, 숙련된",
+  "example": "She is adept at handling difficult clients.",
+  "exampleKo": "그녀는 까다로운 고객을 다루는 데 능숙하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a014",
+  "word": "indispensable",
+  "pos": "형",
+  "meaning": "없어서는 안 될",
+  "example": "Your input has been indispensable to the project.",
+  "exampleKo": "당신의 의견은 프로젝트에 없어서는 안 될 것이었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a015",
+  "word": "integral",
+  "pos": "형",
+  "meaning": "필수적인, 핵심적인",
+  "example": "Training is an integral part of the program.",
+  "exampleKo": "교육은 그 프로그램의 핵심 부분이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a016",
+  "word": "pertinent",
+  "pos": "형",
+  "meaning": "관련 있는, 적절한",
+  "example": "Please include all pertinent information.",
+  "exampleKo": "관련된 정보를 모두 포함해 주세요.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a017",
+  "word": "applicable",
+  "pos": "형",
+  "meaning": "해당되는, 적용 가능한",
+  "example": "Applicable taxes will be added at checkout.",
+  "exampleKo": "해당 세금은 결제 시 추가된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a018",
+  "word": "viable",
+  "pos": "형",
+  "meaning": "실행 가능한",
+  "example": "We need a viable solution by Friday.",
+  "exampleKo": "금요일까지 실행 가능한 해결책이 필요하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a019",
+  "word": "lucrative",
+  "pos": "형",
+  "meaning": "수익성이 좋은",
+  "example": "The company signed a lucrative contract.",
+  "exampleKo": "그 회사는 수익성 좋은 계약을 맺었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a020",
+  "word": "sluggish",
+  "pos": "형",
+  "meaning": "부진한, 느린",
+  "example": "Sales have been sluggish this quarter.",
+  "exampleKo": "이번 분기 매출이 부진하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a021",
+  "word": "robust",
+  "pos": "형",
+  "meaning": "탄탄한, 견고한",
+  "example": "The economy showed robust growth.",
+  "exampleKo": "경제가 탄탄한 성장을 보였다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a022",
+  "word": "volatile",
+  "pos": "형",
+  "meaning": "변동이 심한",
+  "example": "The stock market has been volatile lately.",
+  "exampleKo": "최근 주식 시장의 변동이 심하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a023",
+  "word": "stagnant",
+  "pos": "형",
+  "meaning": "정체된",
+  "example": "Wages have remained stagnant for years.",
+  "exampleKo": "임금이 수년째 정체되어 있다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a024",
+  "word": "plummet",
+  "pos": "동",
+  "meaning": "급락하다",
+  "example": "Profits plummeted after the recall.",
+  "exampleKo": "리콜 이후 이익이 급락했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a025",
+  "word": "soar",
+  "pos": "동",
+  "meaning": "급등하다, 치솟다",
+  "example": "Demand for the product soared in summer.",
+  "exampleKo": "여름에 그 제품의 수요가 치솟았다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a026",
+  "word": "surpass",
+  "pos": "동",
+  "meaning": "능가하다, 넘어서다",
+  "example": "Sales surpassed our expectations.",
+  "exampleKo": "매출이 기대를 넘어섰다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a027",
+  "word": "curtail",
+  "pos": "동",
+  "meaning": "줄이다, 축소하다",
+  "example": "The firm curtailed travel spending.",
+  "exampleKo": "회사는 출장비 지출을 줄였다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a028",
+  "word": "mitigate",
+  "pos": "동",
+  "meaning": "완화하다",
+  "example": "New measures will mitigate the risk.",
+  "exampleKo": "새 조치가 위험을 완화할 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a029",
+  "word": "alleviate",
+  "pos": "동",
+  "meaning": "완화하다, 덜어주다",
+  "example": "The new road will alleviate traffic congestion.",
+  "exampleKo": "새 도로는 교통 혼잡을 덜어줄 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a030",
+  "word": "bolster",
+  "pos": "동",
+  "meaning": "강화하다, 북돋우다",
+  "example": "The campaign bolstered the brand's image.",
+  "exampleKo": "그 캠페인은 브랜드 이미지를 강화했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a031",
+  "word": "augment",
+  "pos": "동",
+  "meaning": "늘리다, 보강하다",
+  "example": "We hired temporary staff to augment the team.",
+  "exampleKo": "팀을 보강하기 위해 임시 직원을 고용했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a032",
+  "word": "consolidate",
+  "pos": "동",
+  "meaning": "통합하다, 강화하다",
+  "example": "The two offices will be consolidated.",
+  "exampleKo": "두 사무실은 통합될 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a033",
+  "word": "divest",
+  "pos": "동",
+  "meaning": "(사업을) 매각하다",
+  "example": "The company divested its retail division.",
+  "exampleKo": "회사는 소매 부문을 매각했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a034",
+  "word": "liquidate",
+  "pos": "동",
+  "meaning": "청산하다",
+  "example": "The firm was forced to liquidate its assets.",
+  "exampleKo": "그 회사는 자산을 청산해야 했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a035",
+  "word": "solicit",
+  "pos": "동",
+  "meaning": "요청하다, 구하다",
+  "example": "We are soliciting feedback from customers.",
+  "exampleKo": "고객들에게 의견을 요청하고 있다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a036",
+  "word": "procure",
+  "pos": "동",
+  "meaning": "조달하다, 구하다",
+  "example": "The department procures office equipment.",
+  "exampleKo": "그 부서는 사무 장비를 조달한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a037",
+  "word": "disburse",
+  "pos": "동",
+  "meaning": "지급하다",
+  "example": "Funds will be disbursed next month.",
+  "exampleKo": "자금은 다음 달에 지급될 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a038",
+  "word": "remit",
+  "pos": "동",
+  "meaning": "송금하다",
+  "example": "Please remit payment within 30 days.",
+  "exampleKo": "30일 이내에 대금을 송금해 주세요.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a039",
+  "word": "waive",
+  "pos": "동",
+  "meaning": "(권리를) 포기하다, 면제하다",
+  "example": "The bank agreed to waive the fee.",
+  "exampleKo": "은행은 수수료를 면제해 주기로 했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a040",
+  "word": "rescind",
+  "pos": "동",
+  "meaning": "철회하다, 취소하다",
+  "example": "The board rescinded its earlier decision.",
+  "exampleKo": "이사회는 이전 결정을 철회했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a041",
+  "word": "ratify",
+  "pos": "동",
+  "meaning": "비준하다, 승인하다",
+  "example": "Shareholders ratified the agreement.",
+  "exampleKo": "주주들이 그 협정을 승인했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a042",
+  "word": "scrutinize",
+  "pos": "동",
+  "meaning": "면밀히 조사하다",
+  "example": "Auditors will scrutinize the accounts.",
+  "exampleKo": "감사관들이 계좌를 면밀히 조사할 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a043",
+  "word": "deteriorate",
+  "pos": "동",
+  "meaning": "악화되다, 나빠지다",
+  "example": "The building has deteriorated over time.",
+  "exampleKo": "그 건물은 시간이 지나며 노후되었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a044",
+  "word": "replenish",
+  "pos": "동",
+  "meaning": "다시 채우다, 보충하다",
+  "example": "Please replenish the paper supply.",
+  "exampleKo": "용지를 다시 채워 주세요.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a045",
+  "word": "refurbish",
+  "pos": "동",
+  "meaning": "새로 단장하다",
+  "example": "The hotel was refurbished last year.",
+  "exampleKo": "그 호텔은 작년에 새로 단장했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a046",
+  "word": "inaugurate",
+  "pos": "동",
+  "meaning": "개시하다, 취임시키다",
+  "example": "The new branch was inaugurated in May.",
+  "exampleKo": "새 지점이 5월에 문을 열었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a047",
+  "word": "commemorate",
+  "pos": "동",
+  "meaning": "기념하다",
+  "example": "The event commemorates our 50th anniversary.",
+  "exampleKo": "그 행사는 창립 50주년을 기념한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a048",
+  "word": "reiterate",
+  "pos": "동",
+  "meaning": "되풀이하다, 거듭 강조하다",
+  "example": "The CEO reiterated the company's goals.",
+  "exampleKo": "최고경영자는 회사의 목표를 거듭 강조했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a049",
+  "word": "elaborate",
+  "pos": "동·형",
+  "meaning": "자세히 설명하다; 정교한",
+  "example": "Could you elaborate on your proposal?",
+  "exampleKo": "제안에 대해 자세히 설명해 주시겠어요?",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a050",
+  "word": "concise",
+  "pos": "형",
+  "meaning": "간결한",
+  "example": "Please keep your report concise.",
+  "exampleKo": "보고서를 간결하게 작성해 주세요.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a051",
+  "word": "unanimous",
+  "pos": "형",
+  "meaning": "만장일치의",
+  "example": "The decision was unanimous.",
+  "exampleKo": "그 결정은 만장일치였다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a052",
+  "word": "tenure",
+  "pos": "명",
+  "meaning": "재임 기간",
+  "example": "During his tenure, sales doubled.",
+  "exampleKo": "그의 재임 기간 동안 매출이 두 배가 되었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a053",
+  "word": "liability",
+  "pos": "명",
+  "meaning": "법적 책임, 부채",
+  "example": "The company denied any liability.",
+  "exampleKo": "회사는 어떠한 책임도 부인했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a054",
+  "word": "asset",
+  "pos": "명",
+  "meaning": "자산",
+  "example": "Our employees are our greatest asset.",
+  "exampleKo": "직원은 우리의 가장 큰 자산이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a055",
+  "word": "collateral",
+  "pos": "명",
+  "meaning": "담보",
+  "example": "The loan requires collateral.",
+  "exampleKo": "그 대출에는 담보가 필요하다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a056",
+  "word": "dividend",
+  "pos": "명",
+  "meaning": "배당금",
+  "example": "Shareholders will receive a dividend.",
+  "exampleKo": "주주들은 배당금을 받을 것이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a057",
+  "word": "tariff",
+  "pos": "명",
+  "meaning": "관세",
+  "example": "New tariffs were imposed on imports.",
+  "exampleKo": "수입품에 새로운 관세가 부과되었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a058",
+  "word": "levy",
+  "pos": "명·동",
+  "meaning": "부과금; 부과하다",
+  "example": "The city levies a tax on hotel stays.",
+  "exampleKo": "시는 호텔 숙박에 세금을 부과한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a059",
+  "word": "quota",
+  "pos": "명",
+  "meaning": "할당량",
+  "example": "The sales team met its monthly quota.",
+  "exampleKo": "영업팀은 월 할당량을 달성했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a060",
+  "word": "benchmark",
+  "pos": "명",
+  "meaning": "기준, 척도",
+  "example": "This product sets a new benchmark for quality.",
+  "exampleKo": "이 제품은 품질의 새 기준을 세운다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a061",
+  "word": "contingency",
+  "pos": "명",
+  "meaning": "만일의 사태, 비상",
+  "example": "We have a contingency plan for delays.",
+  "exampleKo": "지연에 대비한 비상 계획이 있다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a062",
+  "word": "prerequisite",
+  "pos": "명",
+  "meaning": "전제 조건",
+  "example": "A degree is a prerequisite for the job.",
+  "exampleKo": "학위는 그 일자리의 전제 조건이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a063",
+  "word": "itemize",
+  "pos": "동",
+  "meaning": "항목별로 쓰다",
+  "example": "Please itemize all expenses.",
+  "exampleKo": "모든 경비를 항목별로 작성해 주세요.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a064",
+  "word": "discretion",
+  "pos": "명",
+  "meaning": "재량, 신중함",
+  "example": "Bonuses are paid at the manager's discretion.",
+  "exampleKo": "보너스는 관리자 재량으로 지급된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a065",
+  "word": "jurisdiction",
+  "pos": "명",
+  "meaning": "관할권",
+  "example": "The case falls under federal jurisdiction.",
+  "exampleKo": "그 사건은 연방 관할에 속한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a066",
+  "word": "ambiguous",
+  "pos": "형",
+  "meaning": "모호한",
+  "example": "The instructions were ambiguous.",
+  "exampleKo": "지시 사항이 모호했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a067",
+  "word": "inadvertently",
+  "pos": "부",
+  "meaning": "무심코, 실수로",
+  "example": "I inadvertently deleted the file.",
+  "exampleKo": "실수로 파일을 삭제했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a068",
+  "word": "tentatively",
+  "pos": "부",
+  "meaning": "잠정적으로",
+  "example": "The meeting is tentatively set for Tuesday.",
+  "exampleKo": "회의는 잠정적으로 화요일로 잡혀 있다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a069",
+  "word": "exclusively",
+  "pos": "부",
+  "meaning": "독점적으로, 오로지",
+  "example": "This offer is available exclusively online.",
+  "exampleKo": "이 혜택은 온라인에서만 제공된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a070",
+  "word": "provided",
+  "pos": "접",
+  "meaning": "~라면, ~라는 조건으로",
+  "example": "You may leave early provided the work is done.",
+  "exampleKo": "일이 끝났다면 일찍 퇴근해도 된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a071",
+  "word": "notwithstanding",
+  "pos": "전",
+  "meaning": "~에도 불구하고",
+  "example": "Notwithstanding the delay, the project succeeded.",
+  "exampleKo": "지연에도 불구하고 프로젝트는 성공했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a072",
+  "word": "whereas",
+  "pos": "접",
+  "meaning": "~인 반면",
+  "example": "Sales rose in Asia, whereas they fell in Europe.",
+  "exampleKo": "매출이 아시아에서는 늘어난 반면 유럽에서는 줄었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a073",
+  "word": "albeit",
+  "pos": "접",
+  "meaning": "비록 ~이지만",
+  "example": "The plan worked, albeit slowly.",
+  "exampleKo": "비록 느리지만 계획은 효과가 있었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a074",
+  "word": "henceforth",
+  "pos": "부",
+  "meaning": "앞으로, 이후로",
+  "example": "Henceforth, all reports must be submitted online.",
+  "exampleKo": "앞으로 모든 보고서는 온라인으로 제출해야 한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a075",
+  "word": "forthcoming",
+  "pos": "형",
+  "meaning": "다가오는, 곧 나올",
+  "example": "Details will be announced in the forthcoming newsletter.",
+  "exampleKo": "자세한 내용은 곧 나올 소식지에서 발표된다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a076",
+  "word": "imminent",
+  "pos": "형",
+  "meaning": "임박한",
+  "example": "The merger announcement is imminent.",
+  "exampleKo": "합병 발표가 임박했다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a077",
+  "word": "unprecedented",
+  "pos": "형",
+  "meaning": "전례 없는",
+  "example": "The company saw unprecedented growth.",
+  "exampleKo": "회사는 전례 없는 성장을 이루었다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a078",
+  "word": "obsolete",
+  "pos": "형",
+  "meaning": "구식의, 쓸모없게 된",
+  "example": "The old system is now obsolete.",
+  "exampleKo": "예전 시스템은 이제 구식이다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a079",
+  "word": "proprietary",
+  "pos": "형",
+  "meaning": "독점의, 소유권이 있는",
+  "example": "The software uses proprietary technology.",
+  "exampleKo": "그 소프트웨어는 독점 기술을 사용한다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ },
+ {
+  "id": "a080",
+  "word": "stringent",
+  "pos": "형",
+  "meaning": "엄격한",
+  "example": "The factory follows stringent safety standards.",
+  "exampleKo": "그 공장은 엄격한 안전 기준을 따른다.",
+  "level": "adv",
+  "tags": [
+   "고급"
+  ]
+ }
+]
