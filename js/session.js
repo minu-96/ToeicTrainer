@@ -5,12 +5,18 @@ import { shuffle, canCloze } from './quiz.js';
 export const BATCH = 5; // 새 단어는 5개씩 묶어서 외우기
 const RETRY_GAP = 3; // 틀린 문제는 3문제 뒤에 다시
 const MAX_FAILS = 3; // 한 학습에서 같은 단어를 3번 틀리면 오늘은 그만 (내일 다시)
+export const SLOW_MS = 10000; // 복습 문제를 맞혀도 10초 넘게 걸리면 단계 유지
+export const HARD_LAPSES = 3; // 외우는 중으로 3번 이상 떨어지면 '어려운 단어'
 
-// 복습 문제 유형: 외울수록 어렵게
+export const isHard = (w) => (w.lapses || 0) >= HARD_LAPSES;
+
+// 복습 문제 유형: 단계가 오를수록 어렵게
+// 외우는 중: 뜻 고르기 → 익히는 중: 예문 빈칸 → 익숙함: 뜻 보고 단어 고르기 → 거의 외움·완벽: 보기 없이 떠올리기
 export function reviewStep(w) {
   const box = w.srs?.box || 1;
-  if (box <= 2) return 'meaning';
-  if (box === 3) return canCloze(w) ? 'cloze' : 'word';
+  if (box === 1) return 'meaning';
+  if (box === 2) return canCloze(w) ? 'cloze' : 'word';
+  if (box === 3) return 'word';
   return 'recall';
 }
 
@@ -27,7 +33,10 @@ function newTasks(words) {
 
 // kind: 'daily' | 'extra' | 'practice'
 export function create(kind, { reviews = [], fresh = [], practice = [] }) {
+  // 어려운 단어가 외우는 중으로 복습에 나오면, 문제 전에 단어 카드를 한 번 다시 보여줌
+  const relearn = reviews.filter((w) => isHard(w) && w.srs?.box === 1);
   const tasks = [
+    ...relearn.map((w) => ({ id: w.id, step: 'intro', phase: 'review', relearn: true })),
     ...shuffle(reviews).map((w) => ({ id: w.id, step: reviewStep(w), phase: 'review' })),
     ...newTasks(fresh),
     ...shuffle(practice).map((w) => ({
@@ -47,10 +56,15 @@ export function create(kind, { reviews = [], fresh = [], practice = [] }) {
     givenUp: 0,
     firstResult: new Map(), // 단어별 첫 결과 (요약용)
     learned: 0,
+    newPerfect: 0, // 한 번도 안 틀려서 익히는 중으로 간 새 단어
+    newShaky: 0, // 틀려서 외우는 중으로 간 새 단어
     reviewed: 0,
+    reviewUp: 0, // 복습에서 단계가 오른 단어
+    reviewKeep: 0, // 맞혔지만 느리거나 헷갈려서 그대로·아래인 단어
+    reviewDown: 0, // 틀려서 외우는 중으로 간 단어
     skipped: 0,
     question: null, // 지금 문제(보기 순서 고정용)
-    answered: null, // { choice, ok }
+    answered: null, // { choice, ok, timeMs }
     revealed: false, // 떠올리기 카드에서 뜻을 봤는지
     shownAt: performance.now(),
   };
@@ -69,8 +83,13 @@ function insertRetry(s, task) {
   s.tasks.splice(Math.min(s.i + 1 + RETRY_GAP, s.tasks.length), 0, { ...task, step, retry: true });
 }
 
-function graduateNew(state, w, t) {
-  w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
+// 새 단어 마무리: 한 번도 안 틀렸으면 익히는 중(3일 뒤), 틀린 적 있으면 외우는 중(내일)
+function graduateNew(s, state, w, t) {
+  const perfect = !s.failed.has(w.id);
+  const box = perfect ? 2 : 1;
+  w.srs = { box, due: srs.addDays(t, srs.INTERVALS[box - 1]) };
+  if (perfect) s.newPerfect++;
+  else s.newShaky++;
   if (w.source === 'builtin') {
     if (state.newIntroduced.date !== t) state.newIntroduced = { date: t, count: 0 };
     state.newIntroduced.count++;
@@ -81,7 +100,9 @@ function graduateNew(state, w, t) {
 export function submit(s, state, w, result, t) {
   const task = current(s);
   const ok = ['seen', 'correct', 'know', 'unsure'].includes(result);
-  const timeMs = Math.round(performance.now() - s.shownAt);
+  // 보기 문제는 고른 순간까지의 시간 (정답 표시 후 자동 넘김 시간은 빼고)
+  const timeMs = s.answered?.timeMs ?? Math.round(performance.now() - s.shownAt);
+  const slow = task.step !== 'recall' && task.step !== 'intro' && timeMs > SLOW_MS;
 
   if (task.step !== 'intro') {
     state.attempts.push({
@@ -94,7 +115,7 @@ export function submit(s, state, w, result, t) {
       targetId: w.id,
       level: w.level || 'basic',
       correct: ok,
-      grade: result,
+      grade: ok && slow ? 'slow' : result,
       timeMs,
       timedOut: false,
     });
@@ -102,7 +123,7 @@ export function submit(s, state, w, result, t) {
   }
   if (!state.studyDays.includes(t)) state.studyDays.push(t);
 
-  // 이미 아는 단어: 3칸으로 올리고 남은 문제 제거 (하루 새 단어 수에는 안 셈)
+  // 이미 아는 단어: 익숙함으로 올리고 남은 문제 제거 (하루 새 단어 수에는 안 셈)
   if (result === 'known') {
     w.srs = { box: 3, due: srs.addDays(t, srs.INTERVALS[2]) };
     s.tasks = s.tasks.filter((x, k) => k <= s.i || x.id !== w.id);
@@ -112,19 +133,26 @@ export function submit(s, state, w, result, t) {
   }
 
   if (!ok) {
+    const firstFailHere = !s.failed.has(w.id);
     s.failed.add(w.id);
     const fails = (s.fails.get(w.id) || 0) + 1;
     s.fails.set(w.id, fails);
-    if (task.phase === 'review' && !task.retry) w.srs = { box: 1, due: t }; // 오늘 다시 맞혀야 함
+    if (task.phase === 'review' && firstFailHere) {
+      w.srs = { box: 1, due: t }; // 오늘 다시 맞혀야 함
+      w.lapses = (w.lapses || 0) + 1;
+      s.reviewDown++;
+    }
     if (task.phase === 'practice') w.srs = { box: 1, due: srs.addDays(t, 1) };
     if (fails < MAX_FAILS) {
       insertRetry(s, task);
       return advance(s);
     }
-    // 너무 많이 틀린 단어는 붙잡고 있지 않고 내일 다시 (지치지 않게)
+    // 너무 많이 틀린 단어는 붙잡고 있지 않고 내일 다시 (지치지 않게), 어려운 단어로 기록
     s.tasks = s.tasks.filter((x, k) => k <= s.i || x.id !== w.id);
-    if (task.phase === 'new') graduateNew(state, w, t);
-    else w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
+    if (task.phase === 'new') {
+      graduateNew(s, state, w, t);
+      w.lapses = (w.lapses || 0) + 1;
+    } else w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
     s.givenUp++;
     s.done.add(w.id);
     return advance(s);
@@ -133,14 +161,23 @@ export function submit(s, state, w, result, t) {
   if (!hasLater(s, w.id)) {
     // 이 단어의 마지막 문제를 맞힘
     if (task.phase === 'new') {
-      graduateNew(state, w, t);
+      graduateNew(s, state, w, t);
       s.learned++;
     } else if (task.phase === 'review') {
-      if (s.failed.has(w.id)) w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
-      else if (result === 'unsure') {
+      if (s.failed.has(w.id)) {
+        w.srs = { box: 1, due: srs.addDays(t, srs.INTERVALS[0]) };
+      } else if (result === 'unsure') {
         const box = Math.max(1, w.srs.box - 1);
         w.srs = { box, due: srs.addDays(t, srs.INTERVALS[box - 1]) };
-      } else w.srs = srs.next(w.srs, true, t);
+        s.reviewKeep++;
+      } else if (slow) {
+        // 맞혔지만 오래 걸림: 단계 유지
+        w.srs = { box: w.srs.box, due: srs.addDays(t, srs.INTERVALS[w.srs.box - 1]) };
+        s.reviewKeep++;
+      } else {
+        w.srs = srs.next(w.srs, true, t);
+        s.reviewUp++;
+      }
       s.reviewed++;
     }
     // practice: 맞히면 일정 변화 없음
