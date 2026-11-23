@@ -423,3 +423,62 @@ input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--primary)
 .moves b { font-size: 14px; }
 .moves small { color: var(--muted); font-size: 12px; }
 .feedback small { display: block; font-weight: 500; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+/* ---------- v2: 어휘 문제 ---------- */
+.vcard-top { display: flex; align-items: baseline; justify-content: space-between; }
+.vcard-top h2 { margin-bottom: 10px; }
+.vcard .count { font-weight: 750; font-variant-numeric: tabular-nums; color: var(--primary); }
+.vcard .btn { margin-top: 12px; }
+.type-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.type-list button { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); text-align: left; }
+.type-list button:active { transform: scale(0.99); }
+.type-list div { display: grid; }
+.type-list small { color: var(--muted); font-size: 12px; }
+.rate { flex-shrink: 0; display: grid; justify-items: end; font-weight: 750; font-size: 17px; color: var(--muted); }
+.rate small { font-weight: 500; font-size: 11px; }
+.rate.low { color: var(--danger); }
+.rate.mid { color: var(--warn); }
+.rate.high { color: var(--success); }
+.soon-list ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--muted); font-size: 14px; }
+.soon-list li { display: flex; justify-content: space-between; }
+.soon-list span { font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--bg); }
+
+.qcard.vq { min-height: 22dvh; align-items: stretch; }
+.timer { position: absolute; top: 14px; right: 16px; font-size: 13px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.timer.over { color: var(--danger); }
+.cloze.left { text-align: left; font-size: 18px; }
+.qcard.vq .q-label { text-align: left; }
+
+.explain { margin-top: 14px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); animation: rise 0.18s ease; }
+.explain-head { margin: 0 0 10px; font-weight: 750; font-size: 17px; }
+.explain.ok .explain-head { color: var(--success); }
+.explain.ng .explain-head { color: var(--danger); }
+.explain-head small { margin-left: 6px; font-weight: 500; font-size: 13px; color: var(--muted); }
+.clue { margin: 0 0 10px; padding: 10px 12px; border-radius: 12px; background: color-mix(in srgb, var(--seg2) 18%, var(--surface)); font-weight: 600; font-size: 15px; }
+.clue b { display: block; font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.exp { margin: 0 0 8px; font-size: 15px; }
+.ko { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.choice-means { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; }
+.choice-means li { display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; border-radius: 10px; background: var(--bg); }
+.choice-means li span { color: var(--muted); text-align: right; }
+.choice-means li.ans { background: color-mix(in srgb, var(--success) 14%, var(--surface)); }
+.choice-means li.picked { background: color-mix(in srgb, var(--danger) 12%, var(--surface)); }
+.reason-label { margin: 14px 0 6px; font-size: 14px; font-weight: 600; }
+.reason-label small { color: var(--muted); font-weight: 500; }
+.reasons { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font-size: 13px; font-weight: 600; }
+.chip.on { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 12%, var(--surface)); color: var(--primary); }
+.added { margin: 12px 0 0; font-size: 13px; color: var(--primary); font-weight: 600; }
+.explain + .btn.big { margin-top: 12px; }
+
+.wrong-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.wrong-list li { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.wrong-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.wrong-list p { margin: 0 0 2px; font-size: 15px; }
+.wrong-list small { color: var(--muted); }
+
+.level-bars { margin: 0 0 16px; padding: 0; list-style: none; display: grid; gap: 10px; }
+.level-bars li { display: grid; grid-template-columns: 36px 1fr 44px; align-items: center; gap: 10px; font-size: 14px; }
+.level-bars b { text-align: right; font-variant-numeric: tabular-nums; }
+.rec { margin: 0 0 16px; font-size: 17px; }
+.rec small { color: var(--muted); font-size: 13px; }
