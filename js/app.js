@@ -4,6 +4,8 @@ import * as tts from './tts.js';
 import * as quiz from './quiz.js';
 import * as Session from './session.js';
 import * as Vocab from './vocab.js';
+import * as Stats from './stats.js';
+import * as Charts from './charts.js';
 
 let state = store.load();
 let view = 'home';
@@ -13,7 +15,7 @@ let filter = null; // 아는 단어 거르기 진행 상태
 let bank = []; // 어휘 문제 은행
 let vqs = null; // 어휘 문제 풀이 진행 상태
 let vqTimer = null;
-const ui = { search: '', filter: 'all', openId: null, addOpen: false };
+const ui = { search: '', filter: 'all', openId: null, addOpen: false, statMode: 'week' };
 
 const EXTRA_NEW = 10; // "새 단어 더" 한 번에 추가할 수
 const PRACTICE_MAX = 15;
@@ -23,7 +25,6 @@ const $title = document.getElementById('title');
 
 const SOON = {
   notes: { title: '오답노트', desc: '앱에서 틀린 문제와 교재 오답을 기록하는 곳이에요. 6단계에서 만들어요.' },
-  stats: { title: '분석', desc: '유형별 정답률과 실수 유형 TOP 3를 보여줄 곳이에요. 풀이 기록은 지금부터 쌓이고 있어요.' },
 };
 
 // 시작 화면 점수대: 못하는 사람 / 적당한 사람 / 잘하는 사람
@@ -48,6 +49,7 @@ function uid() {
 }
 
 function persist() {
+  Stats.takeSnapshot(state, srs.today());
   if (!store.save(state)) toast('저장 공간이 부족해서 저장하지 못했어요. 백업을 먼저 해 주세요.');
 }
 
@@ -130,7 +132,7 @@ function render() {
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', vq: vqs?.mode === 'test' ? '수준 진단' : '어휘 문제' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', vq: vqs?.mode === 'test' ? '수준 진단' : '어휘 문제' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -140,6 +142,7 @@ function render() {
   else if (view === 'welcome') renderWelcome();
   else if (view === 'filter') renderFilter();
   else if (view === 'quiz') renderQuizHome();
+  else if (view === 'stats') renderStats();
   else if (view === 'vq') renderVQ();
   else renderSoon(view);
 }
@@ -191,11 +194,8 @@ function renderHome() {
   const segs = srs.STAGES.map((label, i) => [label, counts[i], 'seg' + i]);
 
   $view.innerHTML = `
+    ${scoreCard(ddayText)}
     <section class="hero">
-      <div class="hero-top">
-        <span class="goal">목표 ${esc(state.settings.targetScore)}점</span>
-        ${ddayText ? `<span class="dday">${ddayText}</span>` : ''}
-      </div>
       <p class="hero-title">${todo ? '오늘 할 단어' : '오늘 목표 달성!'}</p>
       <div class="today-grid">
         <div><strong>${todo ? reviews.length : learnedToday}</strong><span>${todo ? '복습' : '오늘 외운 단어'}</span></div>
@@ -234,6 +234,204 @@ function renderHome() {
   bindStartButtons();
   bindGoButtons();
   bindVqButtons();
+  $view.querySelector('[data-score-start]')?.addEventListener('click', (e) => startVQ(e.currentTarget.dataset.scoreStart));
+}
+
+// ---------- 예상 점수 ----------
+function scoreCard(ddayText) {
+  const t = srs.today();
+  const target = Number(state.settings.targetScore) || 800;
+  const est = Stats.estimate(state.attempts);
+  const dday = ddayText ? `<span class="dday">${ddayText}</span>` : '';
+  if (!est) {
+    const n = state.attempts.filter((a) => a.kind === 'question').length;
+    return `
+      <button class="score-card empty" data-score-start="${n ? 'daily' : 'test'}">
+        <div class="score-top"><span class="score-label">예상 점수</span>${dday}</div>
+        <p class="score-empty">${n ? `어휘 문제를 ${Stats.MIN_Q - n}개 더 풀면 나와요` : '아직 계산할 기록이 없어요'}</p>
+        <small>${n ? '오늘의 어휘 문제 풀기 →' : '3분 진단을 받으면 바로 확인할 수 있어요 →'}</small>
+      </button>`;
+  }
+  const before = Stats.estimate(state.attempts, srs.addDays(t, -7));
+  const delta = before ? est.score - before.score : null;
+  const pos = (v) => ((v - 10) / 980) * 100;
+  return `
+    <button class="score-card" data-go="stats">
+      <div class="score-top"><span class="score-label">예상 점수 <small>어휘 기준</small></span>${dday}</div>
+      <div class="score-main">
+        <b>${est.score}</b><span class="score-range">${est.low}~${est.high}</span>
+        ${
+          delta === null || delta === 0
+            ? ''
+            : `<em class="delta ${delta > 0 ? 'up' : 'down'}">${delta > 0 ? '▲' : '▼'} ${Math.abs(delta)}<small>지난주보다</small></em>`
+        }
+      </div>
+      <div class="score-track" aria-hidden="true">
+        <i class="range" style="left:${pos(est.low)}%;width:${pos(est.high) - pos(est.low)}%"></i>
+        <i class="now" style="left:${pos(est.score)}%"></i>
+        <i class="goal" style="left:${pos(target)}%"></i>
+      </div>
+      <p class="score-foot">${est.score >= target ? `목표 ${target}점을 넘었어요!` : `목표 ${target}점까지 <b>${target - est.score}점</b>`}<span>성장 기록 보기 →</span></p>
+    </button>`;
+}
+
+// ---------- 성장 기록 ----------
+function fmtDelta(cur, prev, unit = '', digits = 0) {
+  if (cur === null || cur === undefined || prev === null || prev === undefined) return '';
+  const d = +(cur - prev).toFixed(digits);
+  if (d === 0) return `<em class="delta same">변화 없음</em>`;
+  return `<em class="delta ${d > 0 ? 'up' : 'down'}">${d > 0 ? '▲' : '▼'} ${Math.abs(d)}${unit}</em>`;
+}
+
+// 예상 점수 그래프 세로축: 100점 단위로 데이터와 목표가 다 보이게
+function scoreAxis(data, target) {
+  const vals = data.map((p) => p.score).filter((v) => v !== null);
+  const lo = Math.max(0, Math.floor((Math.min(...vals, target) - 60) / 100) * 100);
+  let hi = Math.min(1000, Math.ceil((Math.max(...vals, target) + 60) / 100) * 100);
+  let ticks = (hi - lo) / 100;
+  if (ticks > 5) {
+    ticks = Math.ceil(ticks / 2);
+    hi = Math.min(1000, lo + ticks * 200);
+    ticks = (hi - lo) / 200;
+  }
+  return { yMin: lo, yMax: hi, ticks: Math.max(1, Math.round(ticks)) };
+}
+
+function renderStats() {
+  const t = srs.today();
+  const mode = ui.statMode;
+  const M = Stats.MODES[mode];
+  const data = Stats.series(state, mode, t);
+  const cur = data[data.length - 1];
+  const prev = data[data.length - 2];
+  const target = Number(state.settings.targetScore) || 800;
+  const pct = (v) => (v === null ? null : Math.round(v * 100));
+  const totalAnswers = state.attempts.filter((a) => a.mode !== 'test').length;
+
+  if (!state.attempts.length) {
+    $view.innerHTML = `
+      <section class="card soon">
+        <h2>아직 기록이 없어요</h2>
+        <p>단어나 어휘 문제를 풀면 여기에 일·주·월별로 얼마나 성장했는지 쌓여요.</p>
+        <button class="btn primary wide" data-go="home">학습하러 가기</button>
+      </section>`;
+    return bindGoButtons();
+  }
+
+  const answers = (p) => p.wordAnswers + p.questionAnswers;
+  const tiles = [
+    ['예상 점수', cur.score ?? '—', cur.score !== null ? '점' : '', fmtDelta(cur.score, prev.score, '점')],
+    ['학습일', cur.studyDays, '일', fmtDelta(cur.studyDays, prev.studyDays, '일')],
+    ['답한 문제·단어', answers(cur), '개', fmtDelta(answers(cur), answers(prev), '개')],
+    ['새로 배운 단어', cur.learned, '개', fmtDelta(cur.learned, prev.learned, '개')],
+    ['어휘 정답률', pct(cur.qAcc) ?? '—', cur.qAcc !== null ? '%' : '', fmtDelta(pct(cur.qAcc), pct(prev.qAcc), '%p')],
+    ['단어 정답률', pct(cur.wordAcc) ?? '—', cur.wordAcc !== null ? '%' : '', fmtDelta(pct(cur.wordAcc), pct(prev.wordAcc), '%p')],
+  ];
+
+  const scorePts = data.map((p) => ({ label: p.label, values: { s: p.score }, tip: `<b>${p.label}</b><br>${p.score !== null ? `예상 ${p.score}점` : '기록 부족'}` }));
+  const volPts = data.map((p) => ({
+    label: p.label,
+    values: { w: p.wordAnswers, q: p.questionAnswers },
+    tip: `<b>${p.label}</b><br>단어 ${p.wordAnswers} · 어휘 문제 ${p.questionAnswers}<br>학습 ${Math.round(p.timeMs / 60000)}분`,
+  }));
+  const accPts = data.map((p) => ({
+    label: p.label,
+    values: { w: pct(p.wordAcc), q: pct(p.qAcc) },
+    tip: `<b>${p.label}</b><br>단어 ${pct(p.wordAcc) ?? '—'}% · 어휘 문제 ${pct(p.qAcc) ?? '—'}%`,
+  }));
+  const masPts = data.map((p) => ({ label: p.label, values: { m: p.mastered }, tip: `<b>${p.label}</b><br>익숙함 이상 ${p.mastered ?? '—'}개` }));
+  const hasScore = data.some((p) => p.score !== null);
+  const hasMastered = data.some((p) => p.mastered !== null);
+
+  $view.innerHTML = `
+    <div class="seg" role="tablist">
+      ${Object.entries(Stats.MODES).map(([k, v]) => `<button role="tab" class="${k === mode ? 'on' : ''}" data-mode="${k}">${v.name}</button>`).join('')}
+    </div>
+
+    <section class="card">
+      <h2>${M.curLabel} <small>${M.prevLabel}와 비교${mode === 'day' ? '' : ` · ${M.curLabel}는 아직 진행 중`}</small></h2>
+      <div class="tiles">
+        ${tiles.map(([l, v, u, d]) => `<div class="tile"><span>${l}</span><b>${v}<small>${u}</small></b>${d}</div>`).join('')}
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>예상 점수 추이</h2>
+      ${hasScore ? Charts.line({ points: scorePts, series: [{ key: 's', name: '예상 점수', cls: 'c1' }], ...scoreAxis(data, target), fmt: (v) => Math.round(v), ref: { value: target, label: `목표 ${target}` }, aria: '기간별 예상 점수' }) : `<p class="hint">어휘 문제를 ${Stats.MIN_Q}개 이상 풀면 그래프가 그려져요.</p>`}
+    </section>
+
+    <section class="card">
+      <h2>학습량 <small>답한 수</small></h2>
+      ${Charts.bars({ points: volPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '어휘 문제', cls: 'c2' }], fmt: (v) => Math.round(v), aria: '기간별 학습량' })}
+    </section>
+
+    <section class="card">
+      <h2>정답률</h2>
+      ${Charts.line({ points: accPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '어휘 문제', cls: 'c2' }], yMin: 0, yMax: 100, fmt: (v) => Math.round(v) + '%', aria: '기간별 정답률' })}
+    </section>
+
+    <section class="card">
+      <h2>익숙함 이상 단어 <small>지금 ${Stats.masteredCount(state.words)}개</small></h2>
+      ${hasMastered ? Charts.line({ points: masPts, series: [{ key: 'm', name: '익숙함 이상', cls: 'c1' }], fmt: (v) => Math.round(v), aria: '익숙함 이상 단어 수' }) : '<p class="hint">오늘부터 기록돼요.</p>'}
+    </section>
+
+    <section class="card">
+      <h2>학습 달력 <small>최근 12주</small></h2>
+      ${calendarHtml(t)}
+    </section>
+
+    <section class="card">
+      <h2>기록</h2>
+      <ul class="records">
+        <li><span>연속 학습</span><b>${srs.streak(state.studyDays, t)}일</b></li>
+        <li><span>최장 연속 학습</span><b>${Stats.longestStreak(state.studyDays)}일</b></li>
+        <li><span>총 학습일</span><b>${state.studyDays.length}일</b></li>
+        <li><span>총 답한 문제·단어</span><b>${totalAnswers}개</b></li>
+        <li><span>익숙함 이상 단어</span><b>${Stats.masteredCount(state.words)}개</b></li>
+      </ul>
+    </section>
+
+    <p class="hint center">예상 점수는 최근 어휘 문제 ${Stats.MIN_Q}~60개의 수준별 정답률로 계산한 대략적인 값이에요.<br>문법·독해·듣기가 추가되면 더 정확해져요.</p>
+  `;
+  $view.querySelectorAll('[data-mode]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.statMode = b.dataset.mode;
+      renderStats();
+    }),
+  );
+  Charts.bind($view);
+  $view.querySelectorAll('.cal i[data-d]').forEach((c) =>
+    c.addEventListener('click', () => {
+      $view.querySelectorAll('.cal i.sel').forEach((x) => x.classList.remove('sel'));
+      c.classList.add('sel');
+      $view.querySelector('#cal-cap').textContent = `${c.dataset.d.slice(5).replace('-', '/')} · ${c.dataset.n}개 답함`;
+    }),
+  );
+}
+
+function calendarHtml(t) {
+  const act = Stats.activityMap(state.attempts);
+  const [y, m, d] = t.split('-').map(Number);
+  const wd = (new Date(y, m - 1, d).getDay() + 6) % 7;
+  const start = srs.addDays(t, -wd - 7 * 11); // 12주 전 월요일
+  const lvl = (n) => (n === 0 ? 0 : n < 20 ? 1 : n < 50 ? 2 : n < 100 ? 3 : 4);
+  let cells = '';
+  for (let k = 0; k < 84; k++) {
+    const day = srs.addDays(start, Math.floor(k % 12) * 7 + Math.floor(k / 12));
+    if (day > t) {
+      cells += '<i class="future"></i>';
+      continue;
+    }
+    const n = act.get(day) || 0;
+    cells += `<i class="l${lvl(n)}" data-d="${day}" data-n="${n}" title="${day} ${n}개"></i>`;
+  }
+  return `
+    <div class="cal-wrap">
+      <div class="cal-days"><span>월</span><span></span><span>수</span><span></span><span>금</span><span></span><span>일</span></div>
+      <div class="cal">${cells}</div>
+    </div>
+    <div class="cal-foot"><span id="cal-cap">칸을 누르면 그날 기록이 보여요</span>
+      <span class="cal-legend">적음 <i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i> 많음</span></div>`;
 }
 
 // 새 단어 1개 ≈ 소개+문제 2개, 복습 1개 ≈ 문제 1개
@@ -771,7 +969,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.0</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.1</p>
   `;
 
   const num = (id, min, max) => {
