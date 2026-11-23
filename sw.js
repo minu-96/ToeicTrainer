@@ -1,5 +1,5 @@
 // 앱 파일을 바꾸면 이 버전을 올려야 휴대폰에서 새 버전으로 바뀐다.
-const CACHE = 'toeic-trainer-v5';
+const CACHE = 'toeic-trainer-v6';
 
 const ASSETS = [
   './',
@@ -11,9 +11,11 @@ const ASSETS = [
   './js/tts.js',
   './js/quiz.js',
   './js/session.js',
+  './js/vocab.js',
   './data/words-basic.json',
   './data/words-mid.json',
   './data/words-adv.json',
+  './data/vocab-questions.json',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',

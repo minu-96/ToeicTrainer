@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS = {
   voice: '',
   speechRate: 0.9,
   autoSpeak: true,
+  dailyQuestions: 10, // 오늘의 어휘 문제 수
   clozeHint: true, // 빈칸 문제에서 해석을 바로 보여줄지
   startLevel: 'basic', // 새 단어 시작 수준: basic | mid
   level: '', // 시작 화면에서 고른 현재 점수대
@@ -23,6 +24,7 @@ export function emptyState() {
     version: 1,
     words: [],
     attempts: [], // 모든 풀이 기록 (약점 분석의 재료)
+    qprog: {}, // 문제별 진행 상황 { 문제id: { seen, wrong, last, srs } }
     studyDays: [],
     newIntroduced: { date: '', count: 0 },
     settings: { ...DEFAULT_SETTINGS },
@@ -40,6 +42,7 @@ export function normalize(s) {
     version: 1,
     words: Array.isArray(s.words) ? s.words.filter(validWord) : [],
     attempts: Array.isArray(s.attempts) ? s.attempts : [],
+    qprog: s.qprog && typeof s.qprog === 'object' ? s.qprog : {},
     studyDays: Array.isArray(s.studyDays) ? s.studyDays.filter((d) => typeof d === 'string') : [],
     newIntroduced:
       s.newIntroduced && typeof s.newIntroduced.date === 'string'

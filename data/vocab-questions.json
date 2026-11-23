@@ -1,0 +1,1382 @@
+[
+ {
+  "id": "v-f01",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "Please read the instructions ____ before using the machine.",
+  "choices": [
+   "care",
+   "careful",
+   "carefully",
+   "caring"
+  ],
+  "answer": 2,
+  "clue": "동사 read + 목적어 뒤 → 동사를 꾸미는 부사",
+  "explanation": "목적어(the instructions)까지 문장이 끝났으니 빈칸은 동사 read를 꾸미는 부사 자리예요.",
+  "ko": "기계를 사용하기 전에 설명서를 주의 깊게 읽으세요.",
+  "meanings": {
+   "care": "주의, 돌보다",
+   "careful": "주의 깊은(형)",
+   "carefully": "주의 깊게(부)",
+   "caring": "배려하는(형)"
+  }
+ },
+ {
+  "id": "v-f02",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "The ____ of the new factory will create 300 jobs.",
+  "choices": [
+   "construct",
+   "construction",
+   "constructive",
+   "constructed"
+  ],
+  "answer": 1,
+  "clue": "The ____ of → 관사와 전치사 사이는 명사",
+  "explanation": "관사 The 뒤, 전치사 of 앞은 주어가 되는 명사 자리예요.",
+  "ko": "새 공장의 건설은 300개의 일자리를 만들 것이다.",
+  "meanings": {
+   "construct": "건설하다(동)",
+   "construction": "건설(명)",
+   "constructive": "건설적인(형)",
+   "constructed": "건설된(과거분사)"
+  }
+ },
+ {
+  "id": "v-f03",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "Our new software is very ____ for small businesses.",
+  "choices": [
+   "use",
+   "useful",
+   "usefully",
+   "usefulness"
+  ],
+  "answer": 1,
+  "clue": "be동사 + very + ____ → 형용사 보어",
+  "explanation": "be동사 뒤에서 주어를 설명하는 보어 자리이고, very가 꾸밀 수 있는 형용사가 와야 해요.",
+  "ko": "우리의 새 소프트웨어는 소규모 사업체에 매우 유용하다.",
+  "meanings": {
+   "use": "사용하다, 사용",
+   "useful": "유용한(형)",
+   "usefully": "유용하게(부)",
+   "usefulness": "유용성(명)"
+  }
+ },
+ {
+  "id": "v-f04",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "Mr. Lee will ____ the sales team starting next month.",
+  "choices": [
+   "leader",
+   "leading",
+   "lead",
+   "leadership"
+  ],
+  "answer": 2,
+  "clue": "조동사 will + 동사원형",
+  "explanation": "조동사 will 뒤에는 동사원형이 와요.",
+  "ko": "이 씨는 다음 달부터 영업팀을 이끌 것이다.",
+  "meanings": {
+   "leader": "지도자(명)",
+   "leading": "선두의(형)",
+   "lead": "이끌다(동)",
+   "leadership": "리더십(명)"
+  }
+ },
+ {
+  "id": "v-f05",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "All applications must be submitted ____ by Friday.",
+  "choices": [
+   "electronic",
+   "electronically",
+   "electronics",
+   "electrify"
+  ],
+  "answer": 1,
+  "clue": "수동태(be p.p.) 뒤 → 부사",
+  "explanation": "be submitted로 문장이 완성됐으니, 뒤에서 방법을 설명하는 부사가 와요.",
+  "ko": "모든 지원서는 금요일까지 온라인(전자 방식)으로 제출되어야 한다.",
+  "meanings": {
+   "electronic": "전자의(형)",
+   "electronically": "전자적으로(부)",
+   "electronics": "전자 기기(명)",
+   "electrify": "전기를 공급하다(동)"
+  }
+ },
+ {
+  "id": "v-f06",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "She gave a very ____ presentation at the conference.",
+  "choices": [
+   "impress",
+   "impression",
+   "impressive",
+   "impressively"
+  ],
+  "answer": 2,
+  "clue": "a + very + ____ + 명사 → 형용사",
+  "explanation": "명사 presentation을 꾸미고 very의 꾸밈을 받는 형용사 자리예요.",
+  "ko": "그녀는 학회에서 매우 인상적인 발표를 했다.",
+  "meanings": {
+   "impress": "감동시키다(동)",
+   "impression": "인상(명)",
+   "impressive": "인상적인(형)",
+   "impressively": "인상적으로(부)"
+  }
+ },
+ {
+  "id": "v-f07",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "The store will be closed ____ for repairs.",
+  "choices": [
+   "temporary",
+   "temporarily",
+   "temporariness",
+   "temporaries"
+  ],
+  "answer": 1,
+  "clue": "be closed(수동태) 뒤 → 부사",
+  "explanation": "수동태 뒤에서 '일시적으로'라고 동사를 꾸미는 부사가 와요.",
+  "ko": "그 가게는 수리를 위해 일시적으로 문을 닫을 것이다.",
+  "meanings": {
+   "temporary": "일시적인(형)",
+   "temporarily": "일시적으로(부)",
+   "temporariness": "일시성(명)",
+   "temporaries": "임시 직원들(명)"
+  }
+ },
+ {
+  "id": "v-f08",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "We are ____ to announce the opening of our new branch.",
+  "choices": [
+   "please",
+   "pleasure",
+   "pleased",
+   "pleasing"
+  ],
+  "answer": 2,
+  "clue": "사람 주어 + be ____ to → 감정은 과거분사",
+  "explanation": "사람(We)이 기쁜 감정을 느끼는 것이므로 과거분사 pleased를 써요. pleasing은 '기쁘게 하는'이에요.",
+  "ko": "새 지점의 개점을 알려 드리게 되어 기쁩니다.",
+  "meanings": {
+   "please": "기쁘게 하다(동)",
+   "pleasure": "기쁨(명)",
+   "pleased": "기쁜(과거분사)",
+   "pleasing": "즐거움을 주는(형)"
+  }
+ },
+ {
+  "id": "v-f09",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "Customer ____ is our top priority.",
+  "choices": [
+   "satisfy",
+   "satisfied",
+   "satisfaction",
+   "satisfying"
+  ],
+  "answer": 2,
+  "clue": "주어 자리 + 복합명사 customer satisfaction",
+  "explanation": "동사 is 앞 주어 자리이고, customer satisfaction(고객 만족)은 토익 빈출 복합명사예요.",
+  "ko": "고객 만족이 우리의 최우선 과제다.",
+  "meanings": {
+   "satisfy": "만족시키다(동)",
+   "satisfied": "만족한(형)",
+   "satisfaction": "만족(명)",
+   "satisfying": "만족스러운(형)"
+  }
+ },
+ {
+  "id": "v-f10",
+  "part": 5,
+  "type": "form",
+  "level": "basic",
+  "stem": "The hotel received many positive ____ from guests.",
+  "choices": [
+   "review",
+   "reviews",
+   "reviewed",
+   "reviewing"
+  ],
+  "answer": 1,
+  "clue": "many + 복수 명사",
+  "explanation": "many 뒤에는 셀 수 있는 명사의 복수형이 와요.",
+  "ko": "그 호텔은 투숙객들에게서 긍정적인 후기를 많이 받았다.",
+  "meanings": {
+   "review": "후기(단수), 검토하다",
+   "reviews": "후기들(복수)",
+   "reviewed": "검토된",
+   "reviewing": "검토하는"
+  }
+ },
+ {
+  "id": "v-f11",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "The marketing team worked ____ to meet the deadline.",
+  "choices": [
+   "diligent",
+   "diligence",
+   "diligently",
+   "more diligent"
+  ],
+  "answer": 2,
+  "clue": "자동사 worked 뒤 → 부사",
+  "explanation": "work는 목적어가 필요 없는 자동사라서 뒤에 동사를 꾸미는 부사가 와요.",
+  "ko": "마케팅팀은 마감을 맞추려고 부지런히 일했다.",
+  "meanings": {
+   "diligent": "성실한(형)",
+   "diligence": "성실함(명)",
+   "diligently": "부지런히(부)",
+   "more diligent": "더 성실한(비교급)"
+  }
+ },
+ {
+  "id": "v-f12",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "Ms. Park is ____ for approving all travel expenses.",
+  "choices": [
+   "responsible",
+   "responsibly",
+   "responsibility",
+   "responsibilities"
+  ],
+  "answer": 0,
+  "clue": "be ____ for → be responsible for (~을 책임지다)",
+  "explanation": "be동사 뒤 보어 자리 형용사이고, be responsible for는 통째로 외워 두면 좋아요.",
+  "ko": "박 씨는 모든 출장 경비 승인을 담당한다.",
+  "meanings": {
+   "responsible": "책임 있는(형)",
+   "responsibly": "책임감 있게(부)",
+   "responsibility": "책임(명)",
+   "responsibilities": "책무들(명)"
+  }
+ },
+ {
+  "id": "v-f13",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "Please contact us if you need further ____.",
+  "choices": [
+   "assist",
+   "assistant",
+   "assistance",
+   "assisted"
+  ],
+  "answer": 2,
+  "clue": "further(형용사) + ____ → 명사, 관사 없음 → 셀 수 없는 명사",
+  "explanation": "형용사 further 뒤 명사 자리예요. assistant(조수)는 셀 수 있는 명사라 관사가 필요해서 답이 될 수 없어요.",
+  "ko": "추가 도움이 필요하시면 연락 주세요.",
+  "meanings": {
+   "assist": "돕다(동)",
+   "assistant": "조수(명, 사람)",
+   "assistance": "도움(명)",
+   "assisted": "도움을 받은"
+  }
+ },
+ {
+  "id": "v-f14",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "The new policy will be ____ implemented next quarter.",
+  "choices": [
+   "gradual",
+   "gradually",
+   "graduate",
+   "graduation"
+  ],
+  "answer": 1,
+  "clue": "be ____ p.p. → be와 과거분사 사이는 부사",
+  "explanation": "수동태 be implemented 사이에 들어가 동사를 꾸미는 부사 자리예요.",
+  "ko": "새 정책은 다음 분기에 점진적으로 시행될 것이다.",
+  "meanings": {
+   "gradual": "점진적인(형)",
+   "gradually": "점진적으로(부)",
+   "graduate": "졸업하다(동)",
+   "graduation": "졸업(명)"
+  }
+ },
+ {
+  "id": "v-f15",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "Sales have increased ____ since the campaign began.",
+  "choices": [
+   "significant",
+   "significance",
+   "significantly",
+   "signify"
+  ],
+  "answer": 2,
+  "clue": "자동사 increase 뒤 → 부사",
+  "explanation": "increase가 목적어 없이 쓰였으니 뒤에 정도를 나타내는 부사가 와요.",
+  "ko": "캠페인이 시작된 이후 매출이 크게 늘었다.",
+  "meanings": {
+   "significant": "상당한(형)",
+   "significance": "중요성(명)",
+   "significantly": "상당히(부)",
+   "signify": "의미하다(동)"
+  }
+ },
+ {
+  "id": "v-f16",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "The company offers ____ salaries to attract skilled workers.",
+  "choices": [
+   "compete",
+   "competition",
+   "competitive",
+   "competitively"
+  ],
+  "answer": 2,
+  "clue": "명사 salaries 앞 → 형용사 (competitive salary)",
+  "explanation": "명사를 꾸미는 형용사 자리예요. competitive salary(경쟁력 있는 급여)는 채용 공고 빈출 표현이에요.",
+  "ko": "그 회사는 숙련된 인력을 끌어들이기 위해 경쟁력 있는 급여를 제공한다.",
+  "meanings": {
+   "compete": "경쟁하다(동)",
+   "competition": "경쟁(명)",
+   "competitive": "경쟁력 있는(형)",
+   "competitively": "경쟁적으로(부)"
+  }
+ },
+ {
+  "id": "v-f17",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "Only ____ personnel may enter the laboratory.",
+  "choices": [
+   "authorize",
+   "authorized",
+   "authorizing",
+   "authorization"
+  ],
+  "answer": 1,
+  "clue": "명사 앞 형용사 자리 + '허가받은' → 과거분사",
+  "explanation": "직원은 허가를 '받는' 쪽이므로 과거분사 authorized가 맞아요.",
+  "ko": "허가받은 직원만 실험실에 들어갈 수 있다.",
+  "meanings": {
+   "authorize": "권한을 주다(동)",
+   "authorized": "허가받은(과거분사)",
+   "authorizing": "권한을 주는",
+   "authorization": "허가(명)"
+  }
+ },
+ {
+  "id": "v-f18",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "The ____ of the two companies was announced yesterday.",
+  "choices": [
+   "merge",
+   "merger",
+   "merged",
+   "merging"
+  ],
+  "answer": 1,
+  "clue": "The ____ of → 명사",
+  "explanation": "관사와 전치사 of 사이 주어 자리라서 명사 merger(합병)가 와요.",
+  "ko": "두 회사의 합병이 어제 발표되었다.",
+  "meanings": {
+   "merge": "합병하다(동)",
+   "merger": "합병(명)",
+   "merged": "합병된",
+   "merging": "합병하는"
+  }
+ },
+ {
+  "id": "v-f19",
+  "part": 5,
+  "type": "form",
+  "level": "mid",
+  "stem": "The report must be reviewed ____ before it is submitted.",
+  "choices": [
+   "thorough",
+   "thoroughly",
+   "thoroughness",
+   "more thorough"
+  ],
+  "answer": 1,
+  "clue": "수동태(be reviewed) 뒤 → 부사",
+  "explanation": "수동태로 문장이 끝났으니 동사를 꾸미는 부사가 와요.",
+  "ko": "보고서는 제출 전에 철저히 검토되어야 한다.",
+  "meanings": {
+   "thorough": "철저한(형)",
+   "thoroughly": "철저히(부)",
+   "thoroughness": "철저함(명)",
+   "more thorough": "더 철저한"
+  }
+ },
+ {
+  "id": "v-f20",
+  "part": 5,
+  "type": "form",
+  "level": "adv",
+  "stem": "The negotiations were ____ successful, despite some delays.",
+  "choices": [
+   "large",
+   "largely",
+   "larger",
+   "largeness"
+  ],
+  "answer": 1,
+  "clue": "be + ____ + 형용사 → 형용사를 꾸미는 부사",
+  "explanation": "형용사 successful 앞에서 정도를 나타내는 부사 자리예요. largely = 대체로.",
+  "ko": "몇 번의 지연에도 불구하고 협상은 대체로 성공적이었다.",
+  "meanings": {
+   "large": "큰(형)",
+   "largely": "대체로(부)",
+   "larger": "더 큰",
+   "largeness": "큼(명)"
+  }
+ },
+ {
+  "id": "v-f21",
+  "part": 5,
+  "type": "form",
+  "level": "adv",
+  "stem": "Applicants must demonstrate ____ in at least one foreign language.",
+  "choices": [
+   "proficient",
+   "proficiency",
+   "proficiently",
+   "proficients"
+  ],
+  "answer": 1,
+  "clue": "타동사 demonstrate + 목적어 → 명사",
+  "explanation": "demonstrate(보여주다)의 목적어 자리라서 명사가 와요. proficiency in ~ = ~에 대한 능숙함.",
+  "ko": "지원자는 최소 한 가지 외국어에 능숙함을 보여야 한다.",
+  "meanings": {
+   "proficient": "능숙한(형)",
+   "proficiency": "능숙함(명)",
+   "proficiently": "능숙하게(부)",
+   "proficients": "(쓰지 않는 형태)"
+  }
+ },
+ {
+  "id": "v-f22",
+  "part": 5,
+  "type": "form",
+  "level": "adv",
+  "stem": "The board reached a ____ decision to approve the merger.",
+  "choices": [
+   "unanimous",
+   "unanimously",
+   "unanimity",
+   "unanimousness"
+  ],
+  "answer": 0,
+  "clue": "a + ____ + 명사 → 형용사",
+  "explanation": "관사와 명사 decision 사이에서 명사를 꾸미는 형용사 자리예요.",
+  "ko": "이사회는 합병을 승인하는 만장일치 결정을 내렸다.",
+  "meanings": {
+   "unanimous": "만장일치의(형)",
+   "unanimously": "만장일치로(부)",
+   "unanimity": "만장일치(명)",
+   "unanimousness": "(거의 안 쓰는 명사형)"
+  }
+ },
+ {
+  "id": "v-f23",
+  "part": 5,
+  "type": "form",
+  "level": "adv",
+  "stem": "Several files were ____ deleted from the database.",
+  "choices": [
+   "inadvertent",
+   "inadvertently",
+   "inadvertence",
+   "inadvertency"
+  ],
+  "answer": 1,
+  "clue": "be ____ p.p. → 부사",
+  "explanation": "수동태 were deleted 사이에서 동사를 꾸미는 부사 자리예요.",
+  "ko": "파일 몇 개가 실수로 데이터베이스에서 삭제되었다.",
+  "meanings": {
+   "inadvertent": "부주의한(형)",
+   "inadvertently": "무심코, 실수로(부)",
+   "inadvertence": "부주의(명)",
+   "inadvertency": "부주의(명)"
+  }
+ },
+ {
+  "id": "v-f24",
+  "part": 5,
+  "type": "form",
+  "level": "adv",
+  "stem": "Ms. Cho is known for her ____ attention to detail.",
+  "choices": [
+   "meticulous",
+   "meticulously",
+   "meticulousness",
+   "more meticulously"
+  ],
+  "answer": 0,
+  "clue": "소유격 her + ____ + 명사 → 형용사",
+  "explanation": "소유격과 명사 attention 사이에서 명사를 꾸미는 형용사 자리예요.",
+  "ko": "조 씨는 세부 사항에 대한 꼼꼼한 주의력으로 알려져 있다.",
+  "meanings": {
+   "meticulous": "꼼꼼한(형)",
+   "meticulously": "꼼꼼하게(부)",
+   "meticulousness": "꼼꼼함(명)",
+   "more meticulously": "더 꼼꼼하게"
+  }
+ },
+ {
+  "id": "v-c01",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "Please ____ the form and return it to the front desk.",
+  "choices": [
+   "fill out",
+   "take off",
+   "put on",
+   "turn down"
+  ],
+  "answer": 0,
+  "clue": "양식(form)을 '작성하다' → fill out",
+  "explanation": "form과 함께 쓰는 동사구는 fill out(작성하다)이에요.",
+  "ko": "양식을 작성해서 안내 데스크에 제출해 주세요.",
+  "meanings": {
+   "fill out": "작성하다",
+   "take off": "벗다, 이륙하다",
+   "put on": "입다",
+   "turn down": "거절하다"
+  }
+ },
+ {
+  "id": "v-c02",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "The flight was ____ because of heavy snow.",
+  "choices": [
+   "canceled",
+   "delivered",
+   "purchased",
+   "hired"
+  ],
+  "answer": 0,
+  "clue": "because of heavy snow → 항공편이 '취소됨'",
+  "explanation": "폭설 때문에 항공편에 일어날 수 있는 일은 취소예요.",
+  "ko": "폭설 때문에 항공편이 취소되었다.",
+  "meanings": {
+   "canceled": "취소된",
+   "delivered": "배달된",
+   "purchased": "구매된",
+   "hired": "고용된"
+  }
+ },
+ {
+  "id": "v-c03",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "Please keep your ____ in case you need a refund.",
+  "choices": [
+   "receipt",
+   "agenda",
+   "branch",
+   "survey"
+  ],
+  "answer": 0,
+  "clue": "refund(환불)에 필요한 것 → receipt(영수증)",
+  "explanation": "환불받으려면 영수증이 필요하죠.",
+  "ko": "환불이 필요할 경우를 대비해 영수증을 보관하세요.",
+  "meanings": {
+   "receipt": "영수증",
+   "agenda": "안건",
+   "branch": "지점",
+   "survey": "설문 조사"
+  }
+ },
+ {
+  "id": "v-c04",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "The meeting has been ____ until next Monday.",
+  "choices": [
+   "postponed",
+   "attended",
+   "renewed",
+   "approved"
+  ],
+  "answer": 0,
+  "clue": "until next Monday(다음 월요일까지) → 미뤄짐",
+  "explanation": "'~까지'와 어울리는 건 연기(postpone)예요.",
+  "ko": "회의가 다음 월요일로 연기되었다.",
+  "meanings": {
+   "postponed": "연기된",
+   "attended": "참석된",
+   "renewed": "갱신된",
+   "approved": "승인된"
+  }
+ },
+ {
+  "id": "v-c05",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "Breakfast is ____ in the room rate.",
+  "choices": [
+   "included",
+   "required",
+   "located",
+   "offered"
+  ],
+  "answer": 0,
+  "clue": "be included in ~ → ~에 포함되다",
+  "explanation": "be ____ in the room rate(객실 요금에) → 포함되다.",
+  "ko": "조식은 객실 요금에 포함되어 있다.",
+  "meanings": {
+   "included": "포함된",
+   "required": "요구되는",
+   "located": "위치한",
+   "offered": "제공되는"
+  }
+ },
+ {
+  "id": "v-c06",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "We need to ____ a meeting with the client next week.",
+  "choices": [
+   "arrange",
+   "refund",
+   "deliver",
+   "retire"
+  ],
+  "answer": 0,
+  "clue": "arrange a meeting → 회의를 잡다",
+  "explanation": "meeting과 짝을 이루는 동사는 arrange(마련하다, 잡다)예요.",
+  "ko": "다음 주에 고객과 회의를 잡아야 한다.",
+  "meanings": {
+   "arrange": "마련하다, 잡다",
+   "refund": "환불하다",
+   "deliver": "배달하다",
+   "retire": "은퇴하다"
+  }
+ },
+ {
+  "id": "v-c07",
+  "part": 5,
+  "type": "colloc",
+  "level": "basic",
+  "stem": "The new manager has ten years of ____ in sales.",
+  "choices": [
+   "experience",
+   "equipment",
+   "luggage",
+   "inventory"
+  ],
+  "answer": 0,
+  "clue": "years of ____ in sales → 경력",
+  "explanation": "몇 년의 '경력'을 말할 때 experience를 써요.",
+  "ko": "새 관리자는 영업 분야 경력이 10년이다.",
+  "meanings": {
+   "experience": "경험, 경력",
+   "equipment": "장비",
+   "luggage": "짐",
+   "inventory": "재고"
+  }
+ },
+ {
+  "id": "v-c08",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "The contract will ____ at the end of this month.",
+  "choices": [
+   "expire",
+   "comply",
+   "verify",
+   "enhance"
+  ],
+  "answer": 0,
+  "clue": "contract(계약)가 '만료되다' → expire",
+  "explanation": "계약, 회원권, 보증 기간과 함께 쓰는 동사가 expire예요.",
+  "ko": "계약은 이번 달 말에 만료된다.",
+  "meanings": {
+   "expire": "만료되다",
+   "comply": "준수하다",
+   "verify": "확인하다",
+   "enhance": "향상시키다"
+  }
+ },
+ {
+  "id": "v-c09",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "All staff must ____ with the new safety regulations.",
+  "choices": [
+   "comply",
+   "adhere",
+   "follow",
+   "obey"
+  ],
+  "answer": 0,
+  "clue": "____ with → comply with (준수하다)",
+  "explanation": "네 단어 모두 '지키다'지만 with와 함께 쓰는 건 comply뿐이에요. adhere는 to, follow·obey는 바로 목적어.",
+  "ko": "모든 직원은 새 안전 규정을 준수해야 한다.",
+  "meanings": {
+   "comply": "(with) 준수하다",
+   "adhere": "(to) 고수하다",
+   "follow": "따르다(목적어 바로)",
+   "obey": "복종하다(목적어 바로)"
+  }
+ },
+ {
+  "id": "v-c10",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "The hotel offers ____ breakfast to all guests.",
+  "choices": [
+   "complimentary",
+   "complementary",
+   "competitive",
+   "comprehensive"
+  ],
+  "answer": 0,
+  "clue": "호텔이 제공하는 '무료' 조식 → complimentary",
+  "explanation": "complimentary(무료의)와 complementary(보완하는)는 철자가 비슷해서 자주 나와요.",
+  "ko": "그 호텔은 모든 투숙객에게 무료 조식을 제공한다.",
+  "meanings": {
+   "complimentary": "무료의",
+   "complementary": "보완하는",
+   "competitive": "경쟁력 있는",
+   "comprehensive": "종합적인"
+  }
+ },
+ {
+  "id": "v-c11",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "Please ____ your email address by clicking the link.",
+  "choices": [
+   "verify",
+   "delegate",
+   "allocate",
+   "distribute"
+  ],
+  "answer": 0,
+  "clue": "이메일 주소를 '인증하다' → verify",
+  "explanation": "링크를 눌러 이메일 주소를 확인(인증)하는 상황이에요.",
+  "ko": "링크를 눌러 이메일 주소를 인증해 주세요.",
+  "meanings": {
+   "verify": "확인하다, 인증하다",
+   "delegate": "위임하다",
+   "allocate": "할당하다",
+   "distribute": "배포하다"
+  }
+ },
+ {
+  "id": "v-c12",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "The company plans to ____ more funds to research.",
+  "choices": [
+   "allocate",
+   "expire",
+   "comply",
+   "respond"
+  ],
+  "answer": 0,
+  "clue": "allocate A to B → A를 B에 배정하다",
+  "explanation": "자금(funds)을 연구(research)에 '배정하다'는 allocate ~ to예요.",
+  "ko": "회사는 연구에 더 많은 자금을 배정할 계획이다.",
+  "meanings": {
+   "allocate": "배정하다",
+   "expire": "만료되다",
+   "comply": "준수하다",
+   "respond": "응답하다"
+  }
+ },
+ {
+  "id": "v-c13",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "Salary will be ____ with experience.",
+  "choices": [
+   "commensurate",
+   "adjacent",
+   "eligible",
+   "tentative"
+  ],
+  "answer": 0,
+  "clue": "____ with experience → commensurate with (~에 상응하는)",
+  "explanation": "채용 공고에 자주 나오는 고정 표현이에요.",
+  "ko": "급여는 경력에 상응하여 지급된다.",
+  "meanings": {
+   "commensurate": "(with) 상응하는",
+   "adjacent": "(to) 인접한",
+   "eligible": "(for) 자격 있는",
+   "tentative": "잠정적인"
+  }
+ },
+ {
+  "id": "v-c14",
+  "part": 5,
+  "type": "colloc",
+  "level": "mid",
+  "stem": "The parking lot is ____ to the main building.",
+  "choices": [
+   "adjacent",
+   "eligible",
+   "prompt",
+   "overdue"
+  ],
+  "answer": 0,
+  "clue": "____ to the building → adjacent to (~에 인접한)",
+  "explanation": "위치를 말하면서 to와 함께 쓰는 형용사는 adjacent예요.",
+  "ko": "주차장은 본관에 인접해 있다.",
+  "meanings": {
+   "adjacent": "(to) 인접한",
+   "eligible": "자격 있는",
+   "prompt": "신속한",
+   "overdue": "기한이 지난"
+  }
+ },
+ {
+  "id": "v-c15",
+  "part": 5,
+  "type": "colloc",
+  "level": "adv",
+  "stem": "The deal is ____ on approval from the board.",
+  "choices": [
+   "contingent",
+   "imminent",
+   "concise",
+   "obsolete"
+  ],
+  "answer": 0,
+  "clue": "____ on approval → contingent on (~에 달린)",
+  "explanation": "on과 함께 '~에 달려 있다'를 나타내는 형용사예요.",
+  "ko": "그 거래는 이사회 승인에 달려 있다.",
+  "meanings": {
+   "contingent": "(on) ~에 달린",
+   "imminent": "임박한",
+   "concise": "간결한",
+   "obsolete": "구식의"
+  }
+ },
+ {
+  "id": "v-c16",
+  "part": 5,
+  "type": "colloc",
+  "level": "adv",
+  "stem": "New measures were introduced to ____ the risk of accidents.",
+  "choices": [
+   "mitigate",
+   "solicit",
+   "ratify",
+   "remit"
+  ],
+  "answer": 0,
+  "clue": "the risk(위험)를 '줄이다' → mitigate",
+  "explanation": "위험·영향·피해를 줄일 때 mitigate를 써요.",
+  "ko": "사고 위험을 줄이기 위해 새 조치가 도입되었다.",
+  "meanings": {
+   "mitigate": "완화하다",
+   "solicit": "요청하다",
+   "ratify": "비준하다",
+   "remit": "송금하다"
+  }
+ },
+ {
+  "id": "v-c17",
+  "part": 5,
+  "type": "colloc",
+  "level": "adv",
+  "stem": "The bank agreed to ____ the late fee this time.",
+  "choices": [
+   "waive",
+   "disburse",
+   "augment",
+   "inaugurate"
+  ],
+  "answer": 0,
+  "clue": "waive a fee → 수수료를 면제하다",
+  "explanation": "fee(수수료)·requirement(요건)와 짝을 이루는 동사가 waive예요.",
+  "ko": "은행은 이번에는 연체료를 면제해 주기로 했다.",
+  "meanings": {
+   "waive": "면제하다",
+   "disburse": "지급하다",
+   "augment": "늘리다",
+   "inaugurate": "개시하다"
+  }
+ },
+ {
+  "id": "v-c18",
+  "part": 5,
+  "type": "colloc",
+  "level": "adv",
+  "stem": "Bonuses are awarded at the manager's ____.",
+  "choices": [
+   "discretion",
+   "jurisdiction",
+   "tenure",
+   "collateral"
+  ],
+  "answer": 0,
+  "clue": "at one's discretion → ~의 재량으로",
+  "explanation": "at + 소유격 + discretion은 고정 표현이에요.",
+  "ko": "보너스는 관리자의 재량으로 지급된다.",
+  "meanings": {
+   "discretion": "재량",
+   "jurisdiction": "관할권",
+   "tenure": "재임 기간",
+   "collateral": "담보"
+  }
+ },
+ {
+  "id": "v-x01",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "The price of gas will ____ again next month.",
+  "choices": [
+   "rise",
+   "raise",
+   "arise",
+   "rouse"
+  ],
+  "answer": 0,
+  "clue": "목적어 없음 → 자동사 rise",
+  "explanation": "rise(오르다)는 목적어 없이, raise(올리다)는 목적어가 필요해요.",
+  "ko": "휘발유 가격이 다음 달에 또 오를 것이다.",
+  "meanings": {
+   "rise": "오르다(자동사)",
+   "raise": "올리다(타동사)",
+   "arise": "생기다, 발생하다",
+   "rouse": "깨우다"
+  }
+ },
+ {
+  "id": "v-x02",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "The company decided to ____ salaries by 5 percent.",
+  "choices": [
+   "raise",
+   "rise",
+   "arise",
+   "risen"
+  ],
+  "answer": 0,
+  "clue": "목적어 salaries → 타동사 raise",
+  "explanation": "급여'를' 올리는 것이니 목적어를 받는 raise예요.",
+  "ko": "회사는 급여를 5퍼센트 올리기로 했다.",
+  "meanings": {
+   "raise": "올리다(타동사)",
+   "rise": "오르다(자동사)",
+   "arise": "생기다",
+   "risen": "rise의 과거분사"
+  }
+ },
+ {
+  "id": "v-x03",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "The new rules will ____ all employees.",
+  "choices": [
+   "affect",
+   "effect",
+   "effective",
+   "affection"
+  ],
+  "answer": 0,
+  "clue": "will + 동사 → affect(영향을 미치다)",
+  "explanation": "affect는 동사, effect는 주로 명사(영향, 효과)예요.",
+  "ko": "새 규칙은 모든 직원에게 영향을 미칠 것이다.",
+  "meanings": {
+   "affect": "영향을 미치다(동)",
+   "effect": "영향, 효과(명)",
+   "effective": "효과적인(형)",
+   "affection": "애정(명)"
+  }
+ },
+ {
+  "id": "v-x04",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "The meeting lasted ____ three hours.",
+  "choices": [
+   "almost",
+   "most",
+   "mostly",
+   "the most"
+  ],
+  "answer": 0,
+  "clue": "숫자 앞 '거의' → almost",
+  "explanation": "숫자·all·every 앞에서 '거의'는 almost예요. most는 '대부분의'.",
+  "ko": "회의는 거의 세 시간 동안 계속되었다.",
+  "meanings": {
+   "almost": "거의",
+   "most": "대부분의",
+   "mostly": "주로",
+   "the most": "가장"
+  }
+ },
+ {
+  "id": "v-x05",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "Could you ____ me your pen for a minute?",
+  "choices": [
+   "lend",
+   "borrow",
+   "rent",
+   "owe"
+  ],
+  "answer": 0,
+  "clue": "나에게 빌려주다 → lend",
+  "explanation": "lend는 '빌려주다', borrow는 '빌리다'예요.",
+  "ko": "잠깐 펜 좀 빌려주시겠어요?",
+  "meanings": {
+   "lend": "빌려주다",
+   "borrow": "빌리다",
+   "rent": "임대하다, 임차하다",
+   "owe": "빚지다"
+  }
+ },
+ {
+  "id": "v-x06",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "She has worked here ____ 2019.",
+  "choices": [
+   "since",
+   "for",
+   "during",
+   "while"
+  ],
+  "answer": 0,
+  "clue": "현재완료 + 시작 시점 → since",
+  "explanation": "since + 시작 시점(2019), for + 기간(5 years)이에요.",
+  "ko": "그녀는 2019년부터 여기서 일해 왔다.",
+  "meanings": {
+   "since": "~부터, ~이래로",
+   "for": "~동안(기간)",
+   "during": "~동안(특정 기간 명사)",
+   "while": "~하는 동안(절)"
+  }
+ },
+ {
+  "id": "v-x07",
+  "part": 5,
+  "type": "confuse",
+  "level": "basic",
+  "stem": "Please wait here ____ the manager arrives.",
+  "choices": [
+   "until",
+   "by",
+   "during",
+   "since"
+  ],
+  "answer": 0,
+  "clue": "뒤에 절 + 계속 기다림 → until",
+  "explanation": "until은 '~할 때까지 계속', by는 '~까지(마감)'인 전치사라 절을 받지 못해요.",
+  "ko": "관리자가 올 때까지 여기서 기다려 주세요.",
+  "meanings": {
+   "until": "~까지 (계속)",
+   "by": "~까지 (마감)",
+   "during": "~동안",
+   "since": "~이래로"
+  }
+ },
+ {
+  "id": "v-x08",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "The report must be submitted ____ Friday.",
+  "choices": [
+   "by",
+   "until",
+   "since",
+   "during"
+  ],
+  "answer": 0,
+  "clue": "마감 기한 → by",
+  "explanation": "제출은 한 번에 끝나는 일이라 마감 기한의 by를 써요. until은 상태가 계속될 때.",
+  "ko": "보고서는 금요일까지 제출해야 한다.",
+  "meanings": {
+   "by": "~까지 (마감)",
+   "until": "~까지 (계속)",
+   "since": "~이래로",
+   "during": "~동안"
+  }
+ },
+ {
+  "id": "v-x09",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "Many employees were absent ____ the holiday season.",
+  "choices": [
+   "during",
+   "while",
+   "for",
+   "since"
+  ],
+  "answer": 0,
+  "clue": "명사구 앞 → 전치사 during",
+  "explanation": "the holiday season은 명사구라 전치사 during, while은 뒤에 절이 와요.",
+  "ko": "휴가철 동안 많은 직원이 결근했다.",
+  "meanings": {
+   "during": "~동안(전치사)",
+   "while": "~하는 동안(접속사)",
+   "for": "~동안(기간 길이)",
+   "since": "~이래로"
+  }
+ },
+ {
+  "id": "v-x10",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "The project is ____ complete; only a few tasks remain.",
+  "choices": [
+   "nearly",
+   "near",
+   "nearby",
+   "nearest"
+  ],
+  "answer": 0,
+  "clue": "형용사 앞 '거의' → 부사 nearly",
+  "explanation": "형용사 complete를 꾸미는 부사 자리예요. near는 '가까운/가까이'.",
+  "ko": "프로젝트는 거의 끝났고 몇 가지 일만 남았다.",
+  "meanings": {
+   "nearly": "거의",
+   "near": "가까운, 가까이",
+   "nearby": "근처의",
+   "nearest": "가장 가까운"
+  }
+ },
+ {
+  "id": "v-x11",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "He worked ____ to finish the report on time.",
+  "choices": [
+   "hard",
+   "hardly",
+   "harder than",
+   "hardness"
+  ],
+  "answer": 0,
+  "clue": "'열심히' → hard (hardly는 '거의 ~않다')",
+  "explanation": "hard는 형용사와 부사 모양이 같아요. hardly는 전혀 다른 뜻이에요.",
+  "ko": "그는 보고서를 제때 끝내려고 열심히 일했다.",
+  "meanings": {
+   "hard": "열심히, 어려운",
+   "hardly": "거의 ~않다",
+   "harder than": "~보다 더 열심히",
+   "hardness": "단단함"
+  }
+ },
+ {
+  "id": "v-x12",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "Have you heard from Mr. Kim ____?",
+  "choices": [
+   "lately",
+   "late",
+   "later",
+   "latest"
+  ],
+  "answer": 0,
+  "clue": "현재완료 + '최근에' → lately",
+  "explanation": "lately는 '최근에', late는 '늦게'예요.",
+  "ko": "최근에 김 씨에게서 소식 들었어요?",
+  "meanings": {
+   "lately": "최근에",
+   "late": "늦은, 늦게",
+   "later": "나중에",
+   "latest": "최신의"
+  }
+ },
+ {
+  "id": "v-x13",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "____ the heavy rain, the event started on time.",
+  "choices": [
+   "Despite",
+   "Although",
+   "Because of",
+   "Even though"
+  ],
+  "answer": 0,
+  "clue": "명사구 + 반대 내용 → 전치사 Despite",
+  "explanation": "the heavy rain은 명사구라 전치사가 필요하고, 비가 왔는데 제시간에 시작했으니 '~에도 불구하고'예요.",
+  "ko": "폭우에도 불구하고 행사는 제시간에 시작했다.",
+  "meanings": {
+   "Despite": "~에도 불구하고(전치사)",
+   "Although": "비록 ~지만(접속사, 절)",
+   "Because of": "~때문에",
+   "Even though": "비록 ~일지라도(접속사, 절)"
+  }
+ },
+ {
+  "id": "v-x14",
+  "part": 5,
+  "type": "confuse",
+  "level": "mid",
+  "stem": "The new design is ____ to the old one.",
+  "choices": [
+   "similar",
+   "same",
+   "alike",
+   "like"
+  ],
+  "answer": 0,
+  "clue": "____ to → similar to (~와 비슷한)",
+  "explanation": "전치사 to와 쓰는 건 similar예요. same은 the same as, alike는 명사 앞·to와 안 써요.",
+  "ko": "새 디자인은 예전 것과 비슷하다.",
+  "meanings": {
+   "similar": "(to) 비슷한",
+   "same": "(the same as) 같은",
+   "alike": "비슷한(서술적)",
+   "like": "~처럼"
+  }
+ },
+ {
+  "id": "v-x15",
+  "part": 5,
+  "type": "confuse",
+  "level": "adv",
+  "stem": "Sales rose in Asia, ____ they fell in Europe.",
+  "choices": [
+   "whereas",
+   "despite",
+   "notwithstanding",
+   "otherwise"
+  ],
+  "answer": 0,
+  "clue": "두 절을 대조 → 접속사 whereas",
+  "explanation": "뒤에 절(they fell)이 오고 앞 내용과 대조되니 접속사 whereas예요.",
+  "ko": "매출이 아시아에서는 늘어난 반면 유럽에서는 줄었다.",
+  "meanings": {
+   "whereas": "~인 반면(접속사)",
+   "despite": "~에도 불구하고(전치사)",
+   "notwithstanding": "~에도 불구하고(전치사)",
+   "otherwise": "그렇지 않으면(부사)"
+  }
+ },
+ {
+  "id": "v-x16",
+  "part": 5,
+  "type": "confuse",
+  "level": "adv",
+  "stem": "You may leave early ____ all your work is finished.",
+  "choices": [
+   "provided",
+   "unless",
+   "despite",
+   "whereas"
+  ],
+  "answer": 0,
+  "clue": "'~라면(조건)' → provided (that)",
+  "explanation": "일이 끝났다면 일찍 가도 된다는 조건이에요. unless는 '~하지 않으면'.",
+  "ko": "일이 다 끝났다면 일찍 퇴근해도 된다.",
+  "meanings": {
+   "provided": "~라면(조건)",
+   "unless": "~하지 않으면",
+   "despite": "~에도 불구하고",
+   "whereas": "~인 반면"
+  }
+ },
+ {
+  "id": "v-x17",
+  "part": 5,
+  "type": "confuse",
+  "level": "adv",
+  "stem": "The plan succeeded, ____ more slowly than expected.",
+  "choices": [
+   "albeit",
+   "despite",
+   "whereas",
+   "unless"
+  ],
+  "answer": 0,
+  "clue": "뒤에 절 없이 부사구 → albeit",
+  "explanation": "albeit(비록 ~이지만)는 뒤에 주어·동사 없이 형용사나 부사구가 바로 와요.",
+  "ko": "계획은 예상보다 느리긴 했지만 성공했다.",
+  "meanings": {
+   "albeit": "비록 ~이지만",
+   "despite": "~에도 불구하고(명사 앞)",
+   "whereas": "~인 반면(절 앞)",
+   "unless": "~하지 않으면(절 앞)"
+  }
+ },
+ {
+  "id": "v-x18",
+  "part": 5,
+  "type": "confuse",
+  "level": "adv",
+  "stem": "____ the budget cuts, the team completed the project.",
+  "choices": [
+   "Notwithstanding",
+   "Whereas",
+   "Albeit",
+   "Provided"
+  ],
+  "answer": 0,
+  "clue": "명사구 + 반대 내용 → 전치사 Notwithstanding",
+  "explanation": "the budget cuts는 명사구라 전치사가 필요해요. notwithstanding = despite.",
+  "ko": "예산 삭감에도 불구하고 팀은 프로젝트를 완료했다.",
+  "meanings": {
+   "Notwithstanding": "~에도 불구하고(전치사)",
+   "Whereas": "~인 반면(접속사)",
+   "Albeit": "비록 ~이지만",
+   "Provided": "~라면(접속사)"
+  }
+ }
+]
