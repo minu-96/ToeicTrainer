@@ -96,13 +96,13 @@ function extraFresh() {
     .slice(0, EXTRA_NEW);
 }
 
-// 약한 단어: 아직 복습일이 안 된 단어 중 1~2칸이거나 최근 7일 안에 틀린 단어
+// 약한 단어: 아직 복습일이 안 된 단어 중 외우는 중·익히는 중, 어려운 단어, 최근 7일 안에 틀린 단어
 function weakWords(t = srs.today()) {
   const since = srs.addDays(t, -7);
   const recentWrong = new Set(state.attempts.filter((a) => a.kind === 'word' && !a.correct && a.date >= since).map((a) => a.targetId));
   return state.words
-    .filter((w) => w.srs && !srs.isDue(w, t) && (w.srs.box <= 2 || recentWrong.has(w.id)))
-    .sort((a, b) => a.srs.box - b.srs.box || Math.random() - 0.5)
+    .filter((w) => w.srs && !srs.isDue(w, t) && (w.srs.box <= 2 || Session.isHard(w) || recentWrong.has(w.id)))
+    .sort((a, b) => Session.isHard(b) - Session.isHard(a) || a.srs.box - b.srs.box || Math.random() - 0.5)
     .slice(0, PRACTICE_MAX);
 }
 
@@ -261,6 +261,7 @@ function renderStudy() {
   const progress = session.i / session.tasks.length; // 틀리면 문제가 늘어나서 바가 살짝 뒤로 갈 수 있음
   const tags = [
     task.phase === 'new' && task.step === 'intro' ? '<span class="tag new">새 단어</span>' : '',
+    Session.isHard(w) ? '<span class="tag warn">어려운 단어</span>' : '',
     task.phase === 'review' && w.srs ? `<span class="tag stage s${w.srs.box}">${srs.stageName(w.srs.box)}</span>` : '',
     task.phase === 'practice' ? '<span class="tag">연습</span>' : '',
     task.retry ? '<span class="tag warn">다시</span>' : '',
@@ -292,7 +293,7 @@ function cardBody(task, w, q, a) {
   switch (task.step) {
     case 'intro':
       return `
-        <p class="q-label">새 단어를 외워 보세요</p>
+        <p class="q-label">${task.relearn ? '자주 틀리는 단어예요. 한 번 더 보고 가요' : '새 단어를 외워 보세요'}</p>
         <p class="flash-word">${esc(w.word)}</p>
         ${pos}
         <p class="meaning">${esc(w.meaning)}</p>
@@ -337,6 +338,9 @@ function cardBody(task, w, q, a) {
 }
 
 function answerArea(task, w, q, a) {
+  if (task.step === 'intro' && task.relearn) {
+    return `<button class="btn primary big" data-act="seen">다시 봤어요</button>`;
+  }
   if (task.step === 'intro') {
     return `
       <div class="answer-row">
@@ -370,7 +374,9 @@ function answerArea(task, w, q, a) {
     ${
       a
         ? a.ok
-          ? `<p class="feedback ok">정답!</p>`
+          ? a.slow
+            ? `<p class="feedback ok">정답! <small>10초 넘게 걸려서 단계는 그대로예요</small></p>`
+            : `<p class="feedback ok">정답!</p>`
           : `<button class="btn primary big" data-act="next">다음</button>`
         : `<button class="link-btn" data-act="dontknow">모르겠어요</button>`
     }`;
@@ -392,11 +398,14 @@ function choose(idx) {
   if (!session || session.answered) return;
   const q = session.question;
   const ok = idx === q.answer;
-  session.answered = { choice: idx, ok };
+  const timeMs = Math.round(performance.now() - session.shownAt);
+  const task = Session.current(session);
+  const slow = ok && task.phase === 'review' && timeMs > Session.SLOW_MS;
+  session.answered = { choice: idx, ok, timeMs, slow };
   renderStudy();
   if (ok) {
     clearTimeout(advanceTimer);
-    advanceTimer = setTimeout(() => submit('correct'), 700);
+    advanceTimer = setTimeout(() => submit('correct'), slow ? 1600 : 700);
   }
 }
 
@@ -418,7 +427,7 @@ function act(name) {
       return renderStudy();
     case 'dontknow':
       if (session.answered) return;
-      session.answered = { choice: -1, ok: false };
+      session.answered = { choice: -1, ok: false, timeMs: Math.round(performance.now() - session.shownAt) };
       return renderStudy();
     case 'next':
       return submit(session.answered?.ok ? 'correct' : 'wrong');
@@ -445,7 +454,7 @@ function renderSummary() {
   const todoLeft = stillTodo.reviews.length + stillTodo.fresh.length;
 
   const stats = [];
-  if (s.learned) stats.push([s.learned, '새로 외운 단어']);
+  if (s.newPerfect + s.newShaky) stats.push([s.newPerfect + s.newShaky, '새로 배운 단어']);
   if (s.reviewed) stats.push([s.reviewed, '복습한 단어']);
   if (s.kind === 'practice') stats.push([s.done.size, '연습한 단어']);
   if (s.skipped) stats.push([s.skipped, '이미 아는 단어']);
@@ -457,6 +466,7 @@ function renderSummary() {
       <div class="today-grid ${stats.length === 2 ? 'two' : ''}">
         ${stats.slice(0, 3).map(([n, l]) => `<div><strong>${n}</strong><span>${l}</span></div>`).join('')}
       </div>
+      ${stageMoves(s)}
       ${todoLeft ? `<button class="btn primary big" data-start="daily">남은 오늘 학습 이어하기 (${todoLeft}개)</button>` : extraButtons()}
       <button class="btn ghost wide home-btn" id="home">홈으로</button>
     </section>
@@ -473,10 +483,25 @@ function renderSummary() {
   $view.querySelector('#home').addEventListener('click', () => go('home'));
 }
 
+// 이번 학습에서 단어들이 어느 단계로 갔는지
+function stageMoves(s) {
+  const rows = [
+    [s.newPerfect, '새 단어 → 익히는 중', '한 번도 안 틀림 · 3일 뒤 복습', 's2'],
+    [s.newShaky, '새 단어 → 외우는 중', '틀린 적 있음 · 내일 복습', 's1'],
+    [s.reviewUp, '복습 → 한 단계 위', '빠르고 정확하게 맞힘', 's4'],
+    [s.reviewKeep, '복습 → 단계 유지·한 단계 아래', '느렸거나 헷갈림', 's3'],
+    [s.reviewDown, '복습 → 외우는 중', '틀림 · 내일 다시', 's1'],
+  ].filter(([n]) => n);
+  if (!rows.length) return '';
+  return `<ul class="moves">${rows
+    .map(([n, label, sub, c]) => `<li><span class="tag stage ${c}">${n}개</span><div><b>${label}</b><small>${sub}</small></div></li>`)
+    .join('')}</ul>`;
+}
+
 // ---------- 단어장 ----------
 function statusOf(w, t) {
   if (!w.srs) return { label: w.flagged ? '새 단어 · 먼저 학습' : '새 단어', cls: 'seg0' };
-  const name = srs.stageName(w.srs.box);
+  const name = (Session.isHard(w) ? '어려운 단어 · ' : '') + srs.stageName(w.srs.box);
   if (w.srs.due <= t) return { label: `${name} · 오늘 복습`, cls: `seg${w.srs.box}` };
   return { label: `${name} · ${w.srs.due.slice(5).replace('-', '/')}`, cls: `seg${w.srs.box}` };
 }
@@ -490,6 +515,7 @@ function filteredWords() {
       case 'new': return !w.srs;
       case 'due': return srs.isDue(w, t);
       case 'weak': return w.srs && w.srs.box <= 2;
+      case 'hard': return Session.isHard(w);
       case 'done': return w.srs && w.srs.box === srs.MAX_BOX;
       case 'mine': return w.source !== 'builtin';
       case 'basic': return w.source === 'builtin' && w.level === 'basic';
@@ -544,6 +570,7 @@ function renderWords() {
           ['due', '오늘 복습'],
           ['new', '새 단어'],
           ['weak', '약한 단어 (외우는 중·익히는 중)'],
+          ['hard', '어려운 단어 (자주 틀림)'],
           ['done', '완벽'],
           ['basic', '기초 단어'],
           ['mid', '중급 단어'],
@@ -727,7 +754,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 1단계 (단어) v1.3</p>
+    <p class="version">토익 트레이너 · 1단계 (단어) v1.4</p>
   `;
 
   const num = (id, min, max) => {
