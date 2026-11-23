@@ -25,6 +25,7 @@ export function emptyState() {
     words: [],
     attempts: [], // 모든 풀이 기록 (약점 분석의 재료)
     qprog: {}, // 문제별 진행 상황 { 문제id: { seen, wrong, last, srs } }
+    snapshots: {}, // 날짜별 단어 상태 { 날짜: { mastered, learned } }
     studyDays: [],
     newIntroduced: { date: '', count: 0 },
     settings: { ...DEFAULT_SETTINGS },
@@ -43,6 +44,7 @@ export function normalize(s) {
     words: Array.isArray(s.words) ? s.words.filter(validWord) : [],
     attempts: Array.isArray(s.attempts) ? s.attempts : [],
     qprog: s.qprog && typeof s.qprog === 'object' ? s.qprog : {},
+    snapshots: s.snapshots && typeof s.snapshots === 'object' ? s.snapshots : {},
     studyDays: Array.isArray(s.studyDays) ? s.studyDays.filter((d) => typeof d === 'string') : [],
     newIntroduced:
       s.newIntroduced && typeof s.newIntroduced.date === 'string'
