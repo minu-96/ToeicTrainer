@@ -9,7 +9,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "free, open"
  },
  {
   "id": "b002",
@@ -21,7 +22,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "arrange, plan"
  },
  {
   "id": "b003",
@@ -33,7 +35,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "due date"
  },
  {
   "id": "b004",
@@ -45,7 +48,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "hand in, turn in"
  },
  {
   "id": "b005",
@@ -93,7 +97,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "buy"
  },
  {
   "id": "b009",
@@ -105,7 +110,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "proof of purchase"
  },
  {
   "id": "b010",
@@ -117,7 +123,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "pay back, reimburse"
  },
  {
   "id": "b011",
@@ -141,7 +148,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "delivery"
  },
  {
   "id": "b013",
@@ -153,7 +161,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "send, ship"
  },
  {
   "id": "b014",
@@ -177,7 +186,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "verify, check"
  },
  {
   "id": "b016",
@@ -189,7 +199,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "booking"
  },
  {
   "id": "b017",
@@ -201,7 +212,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "call off"
  },
  {
   "id": "b018",
@@ -213,7 +225,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "put off, delay"
  },
  {
   "id": "b019",
@@ -225,7 +238,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "go to, be present at"
  },
  {
   "id": "b020",
@@ -237,7 +251,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "convention, meeting"
  },
  {
   "id": "b021",
@@ -249,7 +264,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "list of topics"
  },
  {
   "id": "b022",
@@ -261,7 +277,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "funds, spending plan"
  },
  {
   "id": "b023",
@@ -273,7 +290,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "cost"
  },
  {
   "id": "b024",
@@ -297,7 +315,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "authorize, OK"
  },
  {
   "id": "b026",
@@ -309,7 +328,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "ask for"
  },
  {
   "id": "b027",
@@ -321,7 +341,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "need, call for"
  },
  {
   "id": "b028",
@@ -333,7 +354,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "eligible, suitable"
  },
  {
   "id": "b029",
@@ -345,7 +367,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "applicant"
  },
  {
   "id": "b030",
@@ -369,7 +392,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "employ, recruit"
  },
  {
   "id": "b032",
@@ -381,7 +405,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "post, job, role"
  },
  {
   "id": "b033",
@@ -393,7 +418,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "advance, publicize"
  },
  {
   "id": "b034",
@@ -405,7 +431,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "leave work, step down"
  },
  {
   "id": "b035",
@@ -417,7 +444,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "coworker"
  },
  {
   "id": "b036",
@@ -429,7 +457,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "manager, boss"
  },
  {
   "id": "b037",
@@ -441,7 +470,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "in charge of"
  },
  {
   "id": "b038",
@@ -453,7 +483,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "allocate, give"
  },
  {
   "id": "b039",
@@ -465,7 +496,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "job, duty"
  },
  {
   "id": "b040",
@@ -477,7 +509,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "finish, fill out"
  },
  {
   "id": "b041",
@@ -501,7 +534,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "file, paper"
  },
  {
   "id": "b043",
@@ -525,7 +559,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "agreement"
  },
  {
   "id": "b045",
@@ -537,7 +572,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "run out, end"
  },
  {
   "id": "b046",
@@ -549,7 +585,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "extend"
  },
  {
   "id": "b047",
@@ -573,7 +610,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "provide"
  },
  {
   "id": "b049",
@@ -585,7 +623,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "reduction, % off"
  },
  {
   "id": "b050",
@@ -609,7 +648,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "contain, cover"
  },
  {
   "id": "b052",
@@ -633,7 +673,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "affordable, fair"
  },
  {
   "id": "b054",
@@ -657,7 +698,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "release, introduce"
  },
  {
   "id": "b056",
@@ -669,7 +711,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "promote"
  },
  {
   "id": "b057",
@@ -705,7 +748,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "rise, grow"
  },
  {
   "id": "b060",
@@ -717,7 +761,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "drop, decline"
  },
  {
   "id": "b061",
@@ -729,7 +774,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "earnings"
  },
  {
   "id": "b062",
@@ -741,7 +787,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "income, sales"
  },
  {
   "id": "b063",
@@ -765,7 +812,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "declare, make public"
  },
  {
   "id": "b065",
@@ -777,7 +825,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "announcement, see"
  },
  {
   "id": "b066",
@@ -789,7 +838,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "notify, tell"
  },
  {
   "id": "b067",
@@ -801,7 +851,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "revise, latest news"
  },
  {
   "id": "b068",
@@ -813,7 +864,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "substitute, change"
  },
  {
   "id": "b069",
@@ -825,7 +877,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "fix"
  },
  {
   "id": "b070",
@@ -837,7 +890,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "upkeep, servicing"
  },
  {
   "id": "b071",
@@ -849,7 +903,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "devices, tools"
  },
  {
   "id": "b072",
@@ -861,7 +916,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "set up"
  },
  {
   "id": "b073",
@@ -873,7 +929,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "building, site"
  },
  {
   "id": "b074",
@@ -897,7 +954,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "move"
  },
  {
   "id": "b076",
@@ -921,7 +979,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "main office, head office"
  },
  {
   "id": "b078",
@@ -933,7 +992,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "produce, make"
  },
  {
   "id": "b079",
@@ -945,7 +1005,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "provide"
  },
  {
   "id": "b080",
@@ -957,7 +1018,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "stock"
  },
  {
   "id": "b081",
@@ -981,7 +1043,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "supplier, seller"
  },
  {
   "id": "b083",
@@ -993,7 +1056,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "customer"
  },
  {
   "id": "b084",
@@ -1005,7 +1069,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "discuss terms"
  },
  {
   "id": "b085",
@@ -1017,7 +1082,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "deal, contract"
  },
  {
   "id": "b086",
@@ -1029,7 +1095,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "rule, guideline"
  },
  {
   "id": "b087",
@@ -1041,7 +1108,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "rule"
  },
  {
   "id": "b088",
@@ -1065,7 +1133,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "process, steps"
  },
  {
   "id": "b090",
@@ -1077,7 +1146,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "direction, guideline"
  },
  {
   "id": "b091",
@@ -1089,7 +1159,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "questionnaire, poll"
  },
  {
   "id": "b092",
@@ -1101,7 +1172,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "comments, opinions"
  },
  {
   "id": "b093",
@@ -1113,7 +1185,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "enhance, upgrade"
  },
  {
   "id": "b094",
@@ -1125,7 +1198,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "productive"
  },
  {
   "id": "b095",
@@ -1137,7 +1211,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "suggest"
  },
  {
   "id": "b096",
@@ -1161,7 +1236,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "travel schedule"
  },
  {
   "id": "b098",
@@ -1173,7 +1249,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "lodging"
  },
  {
   "id": "b099",
@@ -1185,7 +1262,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "leave"
  },
  {
   "id": "b100",
@@ -1197,7 +1275,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "reach, get to"
  },
  {
   "id": "b101",
@@ -1209,7 +1288,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "hold-up, postpone"
  },
  {
   "id": "b102",
@@ -1233,7 +1313,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "baggage"
  },
  {
   "id": "b104",
@@ -1245,7 +1326,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "sign up, enroll"
  },
  {
   "id": "b105",
@@ -1269,7 +1351,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "take part, join"
  },
  {
   "id": "b107",
@@ -1281,7 +1364,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "chance"
  },
  {
   "id": "b108",
@@ -1305,7 +1389,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "lately"
  },
  {
   "id": "b110",
@@ -1317,7 +1402,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "now, at present"
  },
  {
   "id": "b111",
@@ -1329,7 +1415,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "right away, at once"
  },
  {
   "id": "b112",
@@ -1341,7 +1428,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "about, roughly"
  },
  {
   "id": "b113",
@@ -1353,7 +1441,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "extra, further"
  },
  {
   "id": "b114",
@@ -1365,7 +1454,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "earlier, prior"
  },
  {
   "id": "b115",
@@ -1377,7 +1467,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "yearly"
  },
  {
   "id": "b116",
@@ -1389,7 +1480,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "expected, payable"
  },
  {
   "id": "b117",
@@ -1425,7 +1517,8 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "get in touch, reach"
  },
  {
   "id": "b120",
@@ -1437,6 +1530,7 @@
   "level": "basic",
   "tags": [
    "기초"
-  ]
+  ],
+  "syn": "help, support"
  }
 ]

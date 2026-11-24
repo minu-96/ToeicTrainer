@@ -6,8 +6,9 @@ import * as Session from './session.js';
 import * as Vocab from './vocab.js';
 import * as Stats from './stats.js';
 import * as Charts from './charts.js';
+import * as Engine from './engine.js';
 
-let state = store.load();
+let state = store.emptyState(); // init()에서 저장된 기록을 불러옴
 let view = 'home';
 let session = null;
 let advanceTimer = null;
@@ -128,11 +129,11 @@ function startSession(kind) {
 function render() {
   document.querySelectorAll('.tabbar button').forEach((b) => {
     const tab = b.dataset.tab;
-    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && view === 'vq'));
+    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && view === 'vq') || (tab === 'stats' && view === 'scores'));
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', vq: vqs?.mode === 'test' ? '수준 진단' : '어휘 문제' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', vq: vqs?.mode === 'test' ? '수준 진단' : '어휘 문제' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -143,6 +144,7 @@ function render() {
   else if (view === 'filter') renderFilter();
   else if (view === 'quiz') renderQuizHome();
   else if (view === 'stats') renderStats();
+  else if (view === 'scores') renderScores();
   else if (view === 'vq') renderVQ();
   else renderSoon(view);
 }
@@ -238,41 +240,138 @@ function renderHome() {
 }
 
 // ---------- 예상 점수 ----------
+const PART_NAME = { 1: 'Part 1 사진', 2: 'Part 2 응답', 3: 'Part 3 대화', 4: 'Part 4 담화', 5: 'Part 5 단문', 6: 'Part 6 장문', 7: 'Part 7 독해' };
+
+function reasonsText(reasons) {
+  return reasons.map((r) => `Part ${r.p} ${r.pts > 0 ? '+' : '−'}${Math.abs(r.pts)}`).join(' · ');
+}
+
 function scoreCard(ddayText) {
   const t = srs.today();
   const target = Number(state.settings.targetScore) || 800;
-  const est = Stats.estimate(state.attempts);
+  const est = Engine.estimate(state);
   const dday = ddayText ? `<span class="dday">${ddayText}</span>` : '';
-  if (!est) {
-    const n = state.attempts.filter((a) => a.kind === 'question').length;
-    return `
-      <button class="score-card empty" data-score-start="${n ? 'daily' : 'test'}">
-        <div class="score-top"><span class="score-label">예상 점수</span>${dday}</div>
-        <p class="score-empty">${n ? `어휘 문제를 ${Stats.MIN_Q - n}개 더 풀면 나와요` : '아직 계산할 기록이 없어요'}</p>
-        <small>${n ? '오늘의 어휘 문제 풀기 →' : '3분 진단을 받으면 바로 확인할 수 있어요 →'}</small>
-      </button>`;
-  }
-  const before = Stats.estimate(state.attempts, srs.addDays(t, -7));
-  const delta = before ? est.score - before.score : null;
+  const hasData = est.evCount > 0;
+  const before = hasData ? Engine.estimate(state, srs.addDays(t, -7), { range: false }) : null;
+  const beforeHas = state.attempts.some((a) => a.date <= srs.addDays(t, -7)) || (state.mocks || []).some((m) => m.date <= srs.addDays(t, -7));
+  const delta = before && beforeHas ? est.total - before.total : null;
+  const reasons = before && beforeHas ? Engine.changeReasons(est, before) : [];
   const pos = (v) => ((v - 10) / 980) * 100;
+  const secTag = (x) => (x.measured ? '' : '<small class="unmeasured">미측정</small>');
   return `
     <button class="score-card" data-go="stats">
-      <div class="score-top"><span class="score-label">예상 점수 <small>어휘 기준</small></span>${dday}</div>
+      <div class="score-top"><span class="score-label">예상 점수 <small>${hasData ? '추정치' : '시작 수준 기준'}</small></span>${dday}</div>
       <div class="score-main">
-        <b>${est.score}</b><span class="score-range">${est.low}~${est.high}</span>
+        <b>${est.total}</b><span class="score-range">${est.low}~${est.high}</span>
         ${
           delta === null || delta === 0
             ? ''
             : `<em class="delta ${delta > 0 ? 'up' : 'down'}">${delta > 0 ? '▲' : '▼'} ${Math.abs(delta)}<small>지난주보다</small></em>`
         }
       </div>
+      <div class="score-secs">
+        <span>LC <b>${est.lc.score}</b>${secTag(est.lc)}</span>
+        <span>RC <b>${est.rc.score}</b>${secTag(est.rc)}</span>
+      </div>
       <div class="score-track" aria-hidden="true">
         <i class="range" style="left:${pos(est.low)}%;width:${pos(est.high) - pos(est.low)}%"></i>
-        <i class="now" style="left:${pos(est.score)}%"></i>
+        <i class="now" style="left:${pos(est.total)}%"></i>
         <i class="goal" style="left:${pos(target)}%"></i>
       </div>
-      <p class="score-foot">${est.score >= target ? `목표 ${target}점을 넘었어요!` : `목표 ${target}점까지 <b>${target - est.score}점</b>`}<span>성장 기록 보기 →</span></p>
+      ${reasons.length ? `<p class="score-why">지난주 대비 ${reasonsText(reasons)}</p>` : ''}
+      ${!hasData ? `<p class="score-why">문제를 풀거나 교재 모의고사 점수를 넣으면 실력에 맞게 바뀌어요</p>` : ''}
+      <p class="score-foot">${est.total >= target ? `목표 ${target}점을 넘었어요!` : `목표 ${target}점까지 <b>${target - est.total}점</b>`}<span>성장 기록 보기 →</span></p>
     </button>`;
+}
+
+// ---------- 성적 기록 (공식 시험 · 교재 모의고사) ----------
+function renderScores() {
+  const mocks = [...(state.mocks || [])].sort((a, b) => b.date.localeCompare(a.date));
+  const form = ui.scoreForm || 'book';
+  const t = srs.today();
+  $view.innerHTML = `
+    <section class="card">
+      <h2>새 기록</h2>
+      <div class="seg two" role="tablist">
+        <button class="${form === 'book' ? 'on' : ''}" data-form="book">교재 모의고사</button>
+        <button class="${form === 'official' ? 'on' : ''}" data-form="official">공식 시험</button>
+      </div>
+      <form id="score-form" autocomplete="off">
+        <label class="field">날짜<input type="date" name="date" value="${t}" max="${t}" required></label>
+        ${
+          form === 'book'
+            ? `<label class="field">교재·회차 (선택)<input name="name" placeholder="예: ○○ 실전 모의고사 3회"></label>
+               <p class="hint">파트별로 맞힌 개수를 넣으세요. 안 푼 파트는 비워 두면 돼요.</p>
+               <div class="part-inputs">
+                 ${Engine.PARTS.map((x) => `<label>${PART_NAME[x.p]}<span><input type="number" name="p${x.p}" min="0" max="${x.n}" inputmode="numeric"> / ${x.n}</span></label>`).join('')}
+               </div>`
+            : `<div class="part-inputs two">
+                 <label>LC 점수<span><input type="number" name="lc" min="5" max="495" step="5" inputmode="numeric" required></span></label>
+                 <label>RC 점수<span><input type="number" name="rc" min="5" max="495" step="5" inputmode="numeric" required></span></label>
+               </div>
+               <p class="hint">공식 성적은 예상 점수를 실제 점수에 맞추는 보정에 쓰여요.</p>`
+        }
+        <button class="btn primary wide" type="submit">저장하기</button>
+      </form>
+    </section>
+    <section class="card">
+      <h2>기록 <small>${mocks.length}개</small></h2>
+      ${
+        mocks.length
+          ? `<ul class="score-list">${mocks
+              .map((m) => {
+                const sum = (secs) => secs.reduce((acc, p) => acc + (m.parts?.[p]?.k || 0), 0);
+                const tot = (secs) => secs.reduce((acc, p) => acc + (m.parts?.[p]?.n || 0), 0);
+                const body =
+                  m.source === 'official'
+                    ? `LC ${m.lc} · RC ${m.rc} · 총점 ${m.lc + m.rc}`
+                    : [tot([1, 2, 3, 4]) ? `LC ${sum([1, 2, 3, 4])}/${tot([1, 2, 3, 4])}` : '', tot([5, 6, 7]) ? `RC ${sum([5, 6, 7])}/${tot([5, 6, 7])}` : '']
+                        .filter(Boolean)
+                        .join(' · ');
+                return `<li><div><b>${m.source === 'official' ? '공식 시험' : esc(m.name || '교재 모의고사')}</b><small>${m.date}</small></div><span>${body}</span><button class="link-btn small" data-del="${esc(m.id)}">삭제</button></li>`;
+              })
+              .join('')}</ul>`
+          : '<p class="hint">아직 기록이 없어요. 교재 모의고사 한 회를 넣으면 예상 점수가 훨씬 정확해져요.</p>'
+      }
+    </section>`;
+  $view.querySelectorAll('[data-form]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.scoreForm = b.dataset.form;
+      renderScores();
+    }),
+  );
+  $view.querySelector('#score-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const date = String(f.get('date') || t);
+    const entry = { id: uid(), date, source: form };
+    if (form === 'official') {
+      entry.lc = Math.min(495, Math.max(5, Number(f.get('lc')) || 0));
+      entry.rc = Math.min(495, Math.max(5, Number(f.get('rc')) || 0));
+    } else {
+      entry.name = String(f.get('name') || '').trim();
+      entry.parts = {};
+      for (const x of Engine.PARTS) {
+        const v = f.get('p' + x.p);
+        if (v !== null && v !== '') entry.parts[x.p] = { k: Math.min(x.n, Math.max(0, Math.round(Number(v)))), n: x.n };
+      }
+      if (!Object.keys(entry.parts).length) return toast('맞힌 개수를 하나 이상 넣어 주세요');
+    }
+    const before = Engine.estimate(state, null, { range: false }).total;
+    state.mocks = [...(state.mocks || []), entry];
+    persist();
+    const after = Engine.estimate(state, null, { range: false }).total;
+    toast(after === before ? '저장했어요' : `저장했어요 · 예상 점수 ${before} → ${after}`);
+    renderScores();
+  });
+  $view.querySelectorAll('[data-del]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (!confirm('이 기록을 삭제할까요?')) return;
+      state.mocks = state.mocks.filter((m) => m.id !== b.dataset.del);
+      persist();
+      renderScores();
+    }),
+  );
 }
 
 // ---------- 성장 기록 ----------
@@ -308,12 +407,13 @@ function renderStats() {
   const pct = (v) => (v === null ? null : Math.round(v * 100));
   const totalAnswers = state.attempts.filter((a) => a.mode !== 'test').length;
 
-  if (!state.attempts.length) {
+  if (!state.attempts.length && !(state.mocks || []).length) {
     $view.innerHTML = `
       <section class="card soon">
         <h2>아직 기록이 없어요</h2>
         <p>단어나 어휘 문제를 풀면 여기에 일·주·월별로 얼마나 성장했는지 쌓여요.</p>
         <button class="btn primary wide" data-go="home">학습하러 가기</button>
+        <button class="btn ghost wide" data-go="scores" style="margin-top:8px">교재 모의고사·공식 성적 넣기</button>
       </section>`;
     return bindGoButtons();
   }
@@ -357,8 +457,12 @@ function renderStats() {
 
     <section class="card">
       <h2>예상 점수 추이</h2>
-      ${hasScore ? Charts.line({ points: scorePts, series: [{ key: 's', name: '예상 점수', cls: 'c1' }], ...scoreAxis(data, target), fmt: (v) => Math.round(v), ref: { value: target, label: `목표 ${target}` }, aria: '기간별 예상 점수' }) : `<p class="hint">어휘 문제를 ${Stats.MIN_Q}개 이상 풀면 그래프가 그려져요.</p>`}
+      ${hasScore ? Charts.line({ points: scorePts, series: [{ key: 's', name: '예상 점수', cls: 'c1' }], ...scoreAxis(data, target), fmt: (v) => Math.round(v), ref: { value: target, label: `목표 ${target}` }, aria: '기간별 예상 점수' }) : `<p class="hint">기록이 쌓이면 그래프가 그려져요.</p>`}
     </section>
+
+    ${partsCard()}
+
+    <button class="card link" data-go="scores"><b>성적 기록 →</b><small>교재 모의고사 ${(state.mocks || []).filter((m) => m.source === 'book').length}회 · 공식 시험 ${(state.mocks || []).filter((m) => m.source === 'official').length}회 · 넣을수록 예상 점수가 정확해져요</small></button>
 
     <section class="card">
       <h2>학습량 <small>답한 수</small></h2>
@@ -391,7 +495,7 @@ function renderStats() {
       </ul>
     </section>
 
-    <p class="hint center">예상 점수는 최근 어휘 문제 ${Stats.MIN_Q}~60개의 수준별 정답률로 계산한 대략적인 값이에요.<br>문법·독해·듣기가 추가되면 더 정확해져요.</p>
+    <p class="hint center">예상 점수는 문항 난이도·정답·풀이 시간으로 기술별 실력을 추정한 뒤, 실제 토익 파트별 문항 수와 시간(RC 75분)에 맞춰 계산한 추정치예요.<br>공식 환산표가 없어서 근사 환산을 쓰고, 성적 기록으로 보정해요.</p>
   `;
   $view.querySelectorAll('[data-mode]').forEach((b) =>
     b.addEventListener('click', () => {
@@ -400,6 +504,7 @@ function renderStats() {
     }),
   );
   Charts.bind($view);
+  bindGoButtons();
   $view.querySelectorAll('.cal i[data-d]').forEach((c) =>
     c.addEventListener('click', () => {
       $view.querySelectorAll('.cal i.sel').forEach((x) => x.classList.remove('sel'));
@@ -407,6 +512,34 @@ function renderStats() {
       $view.querySelector('#cal-cap').textContent = `${c.dataset.d.slice(5).replace('-', '/')} · ${c.dataset.n}개 답함`;
     }),
   );
+}
+
+// 파트별 예상 정답과 점수를 가장 많이 올릴 파트
+function partsCard() {
+  const est = Engine.estimate(state);
+  const lev = Engine.partLeverage(est);
+  const top = lev.slice(0, 2).map((x) => x.p);
+  const rel = (keys) => {
+    const w = keys.reduce((acc, k) => acc + est.skills[k].weight, 0);
+    return w >= 40 ? '높음' : w >= 10 ? '보통' : '낮음';
+  };
+  const partRel = { 1: rel(['lc_photo']), 2: rel(['lc_qr']), 3: rel(['lc_conv']), 4: rel(['lc_talk']), 5: rel(['vocab', 'grammar']), 6: rel(['vocab', 'grammar', 'reading']), 7: rel(['reading']) };
+  const row = (x) => {
+    const pct = (x.expected / x.n) * 100;
+    return `<li class="${top.includes(x.p) ? 'focus' : ''}"><span>${PART_NAME[x.p]}</span><div class="pbar"><i style="width:${pct}%"></i></div><b>${x.expected.toFixed(0)}/${x.n}</b><small class="rel ${partRel[x.p]}">${partRel[x.p]}</small></li>`;
+  };
+  return `
+    <section class="card">
+      <h2>파트별 예상 정답 <small>LC ${est.lc.low}~${est.lc.high} · RC ${est.rc.low}~${est.rc.high}</small></h2>
+      <p class="sec-label">LC ${est.lc.score}점${est.lc.measured ? '' : ' · 아직 측정 안 됨'}</p>
+      <ul class="parts">${est.parts.filter((x) => x.sec === 'lc').map(row).join('')}</ul>
+      <p class="sec-label">RC ${est.rc.score}점${est.unanswered > 0.5 ? ` · 시간 안에 약 ${Math.round(est.unanswered)}문항 못 풂` : ''}</p>
+      <ul class="parts">${est.parts.filter((x) => x.sec === 'rc').map(row).join('')}</ul>
+      <p class="hint">오른쪽은 측정 신뢰도예요. 강조된 파트는 정답률을 10%p 올렸을 때 점수가 가장 많이 오르는 곳이에요 (${lev
+        .slice(0, 2)
+        .map((x) => `Part ${x.p} +${x.pts}점`)
+        .join(', ')}).</p>
+    </section>`;
 }
 
 function calendarHtml(t) {
@@ -489,6 +622,11 @@ function renderStudy() {
   bindStudy(task, w, q);
 }
 
+// 패러프레이즈 짝: 지문·보기에서 같은 뜻의 다른 표현으로 나올 때를 대비
+function synLine(w) {
+  return w.syn ? `<p class="syn"><span>바꿔 쓰는 표현</span>${esc(w.syn)}</p>` : '';
+}
+
 function exampleBlock(w) {
   return `${w.example ? `<p class="example">${quiz.highlight(w.example, w.word, esc)}</p>` : ''}
           ${w.exampleKo ? `<p class="example-ko">${esc(w.exampleKo)}</p>` : ''}`;
@@ -503,12 +641,13 @@ function cardBody(task, w, q, a) {
         <p class="flash-word">${esc(w.word)}</p>
         ${pos}
         <p class="meaning">${esc(w.meaning)}</p>
+        ${synLine(w)}
         <div class="ex-box">${exampleBlock(w)}</div>`;
     case 'meaning':
       return `
         <p class="q-label">뜻을 고르세요</p>
         <p class="flash-word">${esc(w.word)}</p>
-        ${a ? `${pos}<div class="ex-box">${exampleBlock(w)}</div>` : ''}`;
+        ${a ? `${pos}${synLine(w)}<div class="ex-box">${exampleBlock(w)}</div>` : ''}`;
     case 'word':
       return `
         <p class="q-label">알맞은 단어를 고르세요</p>
@@ -536,7 +675,7 @@ function cardBody(task, w, q, a) {
         <p class="flash-word">${esc(w.word)}</p>
         ${
           session.revealed
-            ? `${pos}<p class="meaning">${esc(w.meaning)}</p><div class="ex-box">${exampleBlock(w)}</div>`
+            ? `${pos}<p class="meaning">${esc(w.meaning)}</p>${synLine(w)}<div class="ex-box">${exampleBlock(w)}</div>`
             : '<p class="tap-hint">떠올린 뒤 아래 버튼을 눌러 확인하세요</p>'
         }`;
   }
@@ -830,6 +969,7 @@ function renderWordList() {
           open
             ? `<div class="detail">
                 ${w.pos ? `<p class="pos">${esc(posLabel(w.pos))}</p>` : ''}
+                ${synLine(w)}
                 ${exampleBlock(w)}
                 <div class="detail-actions">
                   <button class="btn ghost small" data-act="speak">발음 듣기</button>
@@ -934,6 +1074,7 @@ function renderSettings() {
       <h2>수준</h2>
       <p class="hint">지금 설정: ${esc(srs.LEVEL_NAMES[s.startLevel] || '기초')} 단어부터 · 하루 새 단어 ${esc(s.dailyNewWords)}개</p>
       <button class="btn ghost wide" id="retest" style="margin-top:10px">3분 수준 진단 다시 받기</button>
+      <button class="btn ghost wide" data-go="scores" style="margin-top:8px">성적 기록 (교재 모의고사 · 공식 시험)</button>
     </section>
 
     <section class="card">
@@ -969,7 +1110,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.1</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.2</p>
   `;
 
   const num = (id, min, max) => {
@@ -988,6 +1129,7 @@ function renderSettings() {
   num('dailyNewWords', 0, 200);
   num('dailyQuestions', 1, 50);
   $view.querySelector('#retest').addEventListener('click', () => startVQ('test'));
+  bindGoButtons();
 
   $view.querySelector('#startLevel').addEventListener('change', (e) => {
     state.settings.startLevel = e.target.value;
@@ -1030,8 +1172,8 @@ function renderSettings() {
   $view.querySelector('#reset').addEventListener('click', async () => {
     if (!confirm('모든 학습 기록과 직접 추가한 단어가 지워져요. 계속할까요?')) return;
     if (!confirm('정말 지울까요? 되돌릴 수 없어요.')) return;
-    store.clearAll();
-    state = store.load();
+    await store.clearAll();
+    state = store.emptyState();
     await loadBuiltin();
     persist();
     toast('초기화했어요');
@@ -1650,6 +1792,8 @@ function registerSW() {
 }
 
 async function init() {
+  store.setErrorHandler(() => toast('저장하지 못했어요. 백업 파일을 저장해 두세요.'));
+  state = await store.load();
   bindGlobal();
   await loadBuiltin();
   // 이미 쓰던 사람은 시작 화면 건너뛰기

@@ -9,7 +9,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "buy, obtain"
  },
  {
   "id": "m002",
@@ -21,7 +22,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "combination of companies"
  },
  {
   "id": "m003",
@@ -45,7 +47,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "carry out, put into effect"
  },
  {
   "id": "m005",
@@ -57,7 +60,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "follow, obey"
  },
  {
   "id": "m006",
@@ -93,7 +97,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "assign, distribute"
  },
  {
   "id": "m009",
@@ -105,7 +110,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "quote, rough calculation"
  },
  {
   "id": "m010",
@@ -117,7 +123,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "price estimate"
  },
  {
   "id": "m011",
@@ -129,7 +136,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "provisional, not final"
  },
  {
   "id": "m012",
@@ -141,7 +149,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "initial, early"
  },
  {
   "id": "m013",
@@ -153,7 +162,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "thorough, complete"
  },
  {
   "id": "m014",
@@ -165,7 +175,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "required, compulsory"
  },
  {
   "id": "m015",
@@ -177,7 +188,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "qualified, entitled"
  },
  {
   "id": "m016",
@@ -189,7 +201,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "free from, excused"
  },
  {
   "id": "m017",
@@ -201,7 +214,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "quick, immediate"
  },
  {
   "id": "m018",
@@ -213,7 +227,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "right away, on time"
  },
  {
   "id": "m019",
@@ -225,7 +240,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "carefully, completely"
  },
  {
   "id": "m020",
@@ -237,7 +253,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "for now, for a short time"
  },
  {
   "id": "m021",
@@ -249,7 +266,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "remodeling, refurbishment"
  },
  {
   "id": "m022",
@@ -261,7 +279,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "opening, unfilled position"
  },
  {
   "id": "m023",
@@ -273,7 +292,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "staff, employees"
  },
  {
   "id": "m024",
@@ -309,7 +329,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "reward, bonus"
  },
  {
   "id": "m027",
@@ -333,7 +354,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "spending, expense"
  },
  {
   "id": "m029",
@@ -345,7 +367,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "excess"
  },
  {
   "id": "m030",
@@ -357,7 +380,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "shortfall, loss"
  },
  {
   "id": "m031",
@@ -369,7 +393,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "vary, change"
  },
  {
   "id": "m032",
@@ -381,7 +406,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "considerable, large"
  },
  {
   "id": "m033",
@@ -393,7 +419,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "significant, large"
  },
  {
   "id": "m034",
@@ -405,7 +432,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "greatly, considerably"
  },
  {
   "id": "m035",
@@ -417,7 +445,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "in a row, successive"
  },
  {
   "id": "m036",
@@ -441,7 +470,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "prediction, projection"
  },
  {
   "id": "m038",
@@ -453,7 +483,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "excellent, unpaid"
  },
  {
   "id": "m039",
@@ -465,7 +496,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "late, past due"
  },
  {
   "id": "m040",
@@ -477,7 +509,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "begin, start"
  },
  {
   "id": "m041",
@@ -489,7 +522,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "next to, beside"
  },
  {
   "id": "m042",
@@ -501,7 +535,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "roomy"
  },
  {
   "id": "m043",
@@ -513,7 +548,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "facility, convenience"
  },
  {
   "id": "m044",
@@ -525,7 +561,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "free, at no cost"
  },
  {
   "id": "m045",
@@ -549,7 +586,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "question, request"
  },
  {
   "id": "m047",
@@ -561,7 +599,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "reply, answer"
  },
  {
   "id": "m048",
@@ -573,7 +612,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "hold, fit, meet"
  },
  {
   "id": "m049",
@@ -585,7 +625,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "option, substitute"
  },
  {
   "id": "m050",
@@ -597,7 +638,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "possible, workable"
  },
  {
   "id": "m051",
@@ -609,7 +651,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "potential, future"
  },
  {
   "id": "m052",
@@ -633,7 +676,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "improve, boost"
  },
  {
   "id": "m054",
@@ -645,7 +689,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "simplify"
  },
  {
   "id": "m055",
@@ -657,7 +702,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "speed up, rush"
  },
  {
   "id": "m056",
@@ -669,7 +715,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "supervise, manage"
  },
  {
   "id": "m057",
@@ -681,7 +728,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "assign, hand over"
  },
  {
   "id": "m058",
@@ -693,7 +741,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "organize, arrange"
  },
  {
   "id": "m059",
@@ -705,7 +754,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "work together, cooperate"
  },
  {
   "id": "m060",
@@ -717,7 +767,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "ask, refer to"
  },
  {
   "id": "m061",
@@ -729,7 +780,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "confirm, check"
  },
  {
   "id": "m062",
@@ -741,7 +793,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "approve, permit"
  },
  {
   "id": "m063",
@@ -753,7 +806,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "modify, change"
  },
  {
   "id": "m064",
@@ -765,7 +819,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "first version"
  },
  {
   "id": "m065",
@@ -777,7 +832,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "renter, occupant"
  },
  {
   "id": "m066",
@@ -789,7 +845,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "rent"
  },
  {
   "id": "m067",
@@ -801,7 +858,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "site, property"
  },
  {
   "id": "m068",
@@ -813,7 +871,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "guarantee"
  },
  {
   "id": "m069",
@@ -825,7 +884,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "faulty, broken"
  },
  {
   "id": "m070",
@@ -837,7 +897,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "long-lasting, sturdy"
  },
  {
   "id": "m071",
@@ -849,7 +910,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "inexpensive, reasonable"
  },
  {
   "id": "m072",
@@ -861,7 +923,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "hand out, deliver"
  },
  {
   "id": "m073",
@@ -921,7 +984,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "image, standing"
  },
  {
   "id": "m078",
@@ -933,7 +997,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "committed, devoted"
  },
  {
   "id": "m079",
@@ -945,7 +1010,8 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "dependable, trustworthy"
  },
  {
   "id": "m080",
@@ -957,6 +1023,7 @@
   "level": "mid",
   "tags": [
    "중급"
-  ]
+  ],
+  "syn": "on time"
  }
 ]
