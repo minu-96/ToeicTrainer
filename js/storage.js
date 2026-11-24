@@ -26,6 +26,7 @@ export function emptyState() {
     attempts: [], // 모든 풀이 기록 (약점 분석의 재료)
     qprog: {}, // 문제별 진행 상황 { 문제id: { seen, wrong, last, srs } }
     snapshots: {}, // 날짜별 단어 상태 { 날짜: { mastered, learned } }
+    mocks: [], // 성적 기록: 교재 모의고사(파트별 맞힌 개수) · 공식 시험(LC·RC)
     studyDays: [],
     newIntroduced: { date: '', count: 0 },
     settings: { ...DEFAULT_SETTINGS },
@@ -45,6 +46,7 @@ export function normalize(s) {
     attempts: Array.isArray(s.attempts) ? s.attempts : [],
     qprog: s.qprog && typeof s.qprog === 'object' ? s.qprog : {},
     snapshots: s.snapshots && typeof s.snapshots === 'object' ? s.snapshots : {},
+    mocks: Array.isArray(s.mocks) ? s.mocks.filter((m) => m && typeof m.date === 'string') : [],
     studyDays: Array.isArray(s.studyDays) ? s.studyDays.filter((d) => typeof d === 'string') : [],
     newIntroduced:
       s.newIntroduced && typeof s.newIntroduced.date === 'string'
@@ -54,17 +56,80 @@ export function normalize(s) {
   };
 }
 
-export function load() {
+// ---------- IndexedDB (v2.2~) ----------
+// 풀이 기록이 쌓이면 localStorage(약 5MB)를 넘기 때문에 IndexedDB에 저장한다.
+// IndexedDB를 못 쓰는 환경에서는 예전처럼 localStorage를 쓴다.
+const DB_NAME = 'toeic-trainer';
+const STORE = 'kv';
+let dbPromise = null;
+let onError = () => {};
+
+export function setErrorHandler(fn) {
+  onError = fn;
+}
+
+function openDB() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve, reject) => {
+    if (!('indexedDB' in globalThis)) return reject(new Error('no indexedDB'));
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = () => req.result.createObjectStore(STORE);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+  return dbPromise;
+}
+
+function idb(mode, fn) {
+  return openDB().then(
+    (db) =>
+      new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE, mode);
+        const r = fn(tx.objectStore(STORE));
+        tx.oncomplete = () => resolve(r?.result);
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(tx.error);
+      }),
+  );
+}
+
+let useIDB = true;
+
+export async function load() {
   try {
+    const v = await idb('readonly', (st) => st.get('state'));
+    if (v) return normalize(v);
+    // 예전 버전(localStorage) 기록을 옮겨 오기
     const raw = localStorage.getItem(KEY);
-    return raw ? normalize(JSON.parse(raw)) : emptyState();
-  } catch (e) {
-    console.warn('저장된 데이터를 읽지 못했어요', e);
+    if (raw) {
+      const s = normalize(JSON.parse(raw));
+      await idb('readwrite', (st) => st.put(s, 'state'));
+      localStorage.removeItem(KEY);
+      return s;
+    }
     return emptyState();
+  } catch (e) {
+    console.warn('IndexedDB를 쓸 수 없어 localStorage를 사용해요', e);
+    useIDB = false;
+    try {
+      const raw = localStorage.getItem(KEY);
+      return raw ? normalize(JSON.parse(raw)) : emptyState();
+    } catch (e2) {
+      console.warn('저장된 데이터를 읽지 못했어요', e2);
+      return emptyState();
+    }
   }
 }
 
+// 저장은 기다리지 않는다 (IndexedDB는 put을 부르는 순간 데이터를 복사해 둠)
 export function save(state) {
+  if (useIDB) {
+    idb('readwrite', (st) => st.put(state, 'state')).catch((e) => {
+      console.error('저장 실패', e);
+      onError(e);
+    });
+    return true;
+  }
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
     return true;
@@ -74,8 +139,15 @@ export function save(state) {
   }
 }
 
-export function clearAll() {
+export async function clearAll() {
   localStorage.removeItem(KEY);
+  if (useIDB) {
+    try {
+      await idb('readwrite', (st) => st.delete('state'));
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 }
 
 // 브라우저가 저장 공간을 임의로 비우지 않도록 요청 (지원하는 경우만)
@@ -97,7 +169,7 @@ export function mergeBuiltin(state, list, offset = 0) {
       state.words.push({ ...w, source: 'builtin', order: offset + i, srs: null });
       changed++;
     } else if (cur.source === 'builtin') {
-      const fields = ['word', 'meaning', 'pos', 'example', 'exampleKo', 'level', 'tags'];
+      const fields = ['word', 'meaning', 'pos', 'example', 'exampleKo', 'level', 'tags', 'syn'];
       if (fields.some((f) => JSON.stringify(cur[f]) !== JSON.stringify(w[f])) || cur.order !== offset + i) {
         fields.forEach((f) => (cur[f] = w[f]));
         cur.order = offset + i;

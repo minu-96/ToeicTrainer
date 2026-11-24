@@ -2,35 +2,8 @@
 import * as srs from './srs.js';
 
 // ---------- 예상 점수 ----------
-// 지금은 어휘 문제만으로 추정한다 (문법·독해·듣기가 생기면 함께 반영).
-// 최근 60문제의 수준별 정답률에 수준별 기본값(기초 75%·중급 50%·고급 30%)을 2문제만큼 섞어 흔들림을 줄이고,
-// 가중 평균(기초 0.4 · 중급 0.35 · 고급 0.25)을 토익 점수로 바꾼다.
-export const MIN_Q = 10; // 이만큼 풀어야 예상 점수를 보여줌
-const WINDOW = 60;
-const WEIGHT = { basic: 0.4, mid: 0.35, adv: 0.25 };
-const PRIOR = { basic: 0.75, mid: 0.5, adv: 0.3 };
-const PRIOR_N = 2;
-
-const round5 = (x) => Math.round(x / 5) * 5;
-const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
-
-export function estimate(attempts, upto = null) {
-  const qs = attempts.filter((a) => a.kind === 'question' && (!upto || a.date <= upto));
-  if (qs.length < MIN_Q) return null;
-  const recent = qs.slice(-WINDOW);
-  let theta = 0;
-  const byLevel = {};
-  for (const lv of srs.LEVEL_ORDER) {
-    const r = recent.filter((a) => (a.level || 'basic') === lv);
-    const c = r.filter((a) => a.correct).length;
-    const acc = (c + PRIOR_N * PRIOR[lv]) / (r.length + PRIOR_N);
-    byLevel[lv] = { n: r.length, acc };
-    theta += WEIGHT[lv] * acc;
-  }
-  const score = clamp(round5(60 + 925 * theta), 10, 990);
-  const margin = round5(20 + 150 / Math.sqrt(recent.length));
-  return { score, low: clamp(score - margin, 10, 990), high: clamp(score + margin, 10, 990), n: recent.length, byLevel };
-}
+// v2.2부터 engine.js가 계산한다 (기술별 능력 → 파트별 기대 정답 → 환산)
+import * as Engine from './engine.js';
 
 // ---------- 기간 나누기 ----------
 const MD = (d) => `${Number(d.slice(5, 7))}/${Number(d.slice(8, 10))}`;
@@ -103,7 +76,8 @@ export function series(state, mode, t) {
     const q = as.filter((a) => a.kind === 'question' && a.mode !== 'test');
     let studyDays = 0;
     for (let d = b.start; d <= b.end; d = srs.addDays(d, 1)) if (days.has(d)) studyDays++;
-    const est = estimate(state.attempts, b.end);
+    const hasEv = state.attempts.some((a) => a.date <= b.end) || (state.mocks || []).some((m) => m.date <= b.end);
+    const est = hasEv ? Engine.estimate(state, b.end, { range: false }) : null;
     return {
       ...b,
       studyDays,
@@ -113,7 +87,9 @@ export function series(state, mode, t) {
       qAcc: q.length ? q.filter((a) => a.correct).length / q.length : null,
       learned: firsts.filter(in_).length,
       mastered: snapAt(state.snapshots, b.end, 'mastered'),
-      score: est ? est.score : null,
+      score: est ? est.total : null,
+      lc: est ? est.lc.score : null,
+      rc: est ? est.rc.score : null,
       timeMs: as.reduce((s, a) => s + (a.timeMs || 0), 0),
     };
   });

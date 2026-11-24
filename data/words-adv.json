@@ -9,7 +9,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "follow, stick to"
  },
  {
   "id": "a002",
@@ -21,7 +22,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "specify, require"
  },
  {
   "id": "a003",
@@ -33,7 +35,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "difference, mismatch"
  },
  {
   "id": "a004",
@@ -45,7 +48,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "match up, resolve"
  },
  {
   "id": "a005",
@@ -57,7 +61,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "dependent, conditional"
  },
  {
   "id": "a006",
@@ -69,7 +74,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "temporary, tentative"
  },
  {
   "id": "a007",
@@ -81,7 +87,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "essential, vital"
  },
  {
   "id": "a008",
@@ -105,7 +112,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "careful, thorough"
  },
  {
   "id": "a010",
@@ -117,7 +125,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "hardworking"
  },
  {
   "id": "a011",
@@ -129,7 +138,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "multipurpose, flexible"
  },
  {
   "id": "a012",
@@ -141,7 +151,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "skilled, competent"
  },
  {
   "id": "a013",
@@ -153,7 +164,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "skilled, expert"
  },
  {
   "id": "a014",
@@ -165,7 +177,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "essential"
  },
  {
   "id": "a015",
@@ -177,7 +190,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "essential, central"
  },
  {
   "id": "a016",
@@ -189,7 +203,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "relevant"
  },
  {
   "id": "a017",
@@ -201,7 +216,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "relevant, valid"
  },
  {
   "id": "a018",
@@ -213,7 +229,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "workable, feasible"
  },
  {
   "id": "a019",
@@ -225,7 +242,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "profitable"
  },
  {
   "id": "a020",
@@ -237,7 +255,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "slow, weak"
  },
  {
   "id": "a021",
@@ -249,7 +268,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "strong, solid"
  },
  {
   "id": "a022",
@@ -261,7 +281,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "unstable"
  },
  {
   "id": "a023",
@@ -273,7 +294,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "flat, not growing"
  },
  {
   "id": "a024",
@@ -285,7 +307,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "drop sharply, plunge"
  },
  {
   "id": "a025",
@@ -297,7 +320,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "rise sharply, surge"
  },
  {
   "id": "a026",
@@ -309,7 +333,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "exceed, outperform"
  },
  {
   "id": "a027",
@@ -321,7 +346,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "cut back, reduce"
  },
  {
   "id": "a028",
@@ -333,7 +359,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "reduce, ease"
  },
  {
   "id": "a029",
@@ -345,7 +372,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "relieve, ease"
  },
  {
   "id": "a030",
@@ -357,7 +385,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "strengthen, boost"
  },
  {
   "id": "a031",
@@ -369,7 +398,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "increase, add to"
  },
  {
   "id": "a032",
@@ -381,7 +411,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "combine, merge"
  },
  {
   "id": "a033",
@@ -417,7 +448,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "ask for, request"
  },
  {
   "id": "a036",
@@ -429,7 +461,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "obtain, acquire"
  },
  {
   "id": "a037",
@@ -441,7 +474,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "pay out"
  },
  {
   "id": "a038",
@@ -453,7 +487,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "send payment"
  },
  {
   "id": "a039",
@@ -465,7 +500,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "drop, cancel"
  },
  {
   "id": "a040",
@@ -477,7 +513,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "cancel, revoke"
  },
  {
   "id": "a041",
@@ -489,7 +526,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "approve formally"
  },
  {
   "id": "a042",
@@ -501,7 +539,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "examine closely"
  },
  {
   "id": "a043",
@@ -513,7 +552,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "worsen, decline"
  },
  {
   "id": "a044",
@@ -525,7 +565,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "refill, restock"
  },
  {
   "id": "a045",
@@ -537,7 +578,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "renovate, redecorate"
  },
  {
   "id": "a046",
@@ -549,7 +591,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "open, launch"
  },
  {
   "id": "a047",
@@ -561,7 +604,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "celebrate, honor"
  },
  {
   "id": "a048",
@@ -573,7 +617,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "repeat, restate"
  },
  {
   "id": "a049",
@@ -585,7 +630,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "explain in detail"
  },
  {
   "id": "a050",
@@ -597,7 +643,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "brief, short"
  },
  {
   "id": "a051",
@@ -609,7 +656,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "agreed by all"
  },
  {
   "id": "a052",
@@ -633,7 +681,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "responsibility, debt"
  },
  {
   "id": "a054",
@@ -645,7 +694,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "resource, property"
  },
  {
   "id": "a055",
@@ -681,7 +731,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "import tax, duty"
  },
  {
   "id": "a058",
@@ -693,7 +744,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "impose, charge"
  },
  {
   "id": "a059",
@@ -705,7 +757,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "target, allotment"
  },
  {
   "id": "a060",
@@ -717,7 +770,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "standard"
  },
  {
   "id": "a061",
@@ -741,7 +795,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "requirement"
  },
  {
   "id": "a063",
@@ -753,7 +808,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "list"
  },
  {
   "id": "a064",
@@ -789,7 +845,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "unclear, vague"
  },
  {
   "id": "a067",
@@ -801,7 +858,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "accidentally, by mistake"
  },
  {
   "id": "a068",
@@ -825,7 +883,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "only, solely"
  },
  {
   "id": "a070",
@@ -837,7 +896,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "as long as, if"
  },
  {
   "id": "a071",
@@ -849,7 +909,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "despite, in spite of"
  },
  {
   "id": "a072",
@@ -861,7 +922,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "while, but"
  },
  {
   "id": "a073",
@@ -873,7 +935,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "although, though"
  },
  {
   "id": "a074",
@@ -885,7 +948,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "from now on"
  },
  {
   "id": "a075",
@@ -897,7 +961,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "upcoming"
  },
  {
   "id": "a076",
@@ -909,7 +974,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "about to happen"
  },
  {
   "id": "a077",
@@ -921,7 +987,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "never seen before"
  },
  {
   "id": "a078",
@@ -933,7 +1000,8 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "outdated"
  },
  {
   "id": "a079",
@@ -957,6 +1025,7 @@
   "level": "adv",
   "tags": [
    "고급"
-  ]
+  ],
+  "syn": "strict"
  }
 ]

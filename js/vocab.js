@@ -148,6 +148,7 @@ export function record(state, q, ok, timeMs, t, mode) {
     kind: 'question',
     part: q.part || 5,
     type: q.type,
+    targetMs: TARGET_MS,
     mode,
     targetId: q.id,
     level: q.level,
