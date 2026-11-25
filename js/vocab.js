@@ -23,6 +23,12 @@ const levelRank = (settings) => {
   };
 };
 
+// 신고한 문제는 출제하지 않는다
+function usable(state, bank) {
+  const reported = new Set((state.reports || []).filter((r) => r.kind === 'question').map((r) => r.targetId));
+  return bank.filter((q) => !reported.has(q.id));
+}
+
 export function prog(state, id) {
   return state.qprog[id];
 }
@@ -55,7 +61,8 @@ function weakestType(state) {
 }
 
 // 오늘의 어휘 문제: 다시 풀 문제(틀렸던 문제) → 내 수준의 새 문제, 약한 유형은 더 자주
-export function buildDaily(state, bank, settings, t, n) {
+export function buildDaily(state, allBank, settings, t, n) {
+  const bank = usable(state, allBank);
   const due = shuffle(dueList(state, bank, t)).slice(0, n);
   const rank = levelRank(settings);
   const unseen = shuffle(bank.filter((q) => !state.qprog[q.id])).sort((a, b) => rank(a) - rank(b));
@@ -82,7 +89,8 @@ export function buildDaily(state, bank, settings, t, n) {
 }
 
 // 유형별 연습: 그 유형의 다시 풀 문제 → 안 푼 문제(내 수준부터) → 틀린 적 있는 문제 → 나머지
-export function buildType(state, bank, type, settings, t, n = 10) {
+export function buildType(state, allBank, type, settings, t, n = 10) {
+  const bank = usable(state, allBank);
   const rank = levelRank(settings);
   const pool = bank.filter((q) => q.type === type);
   const due = pool.filter((q) => state.qprog[q.id]?.srs?.due <= t);
@@ -184,4 +192,56 @@ export function addAnswerWord(state, q) {
   };
   state.words.push(w);
   return w;
+}
+
+// ---------- 오답 ----------
+// 문제별 풀이 기록을 모아서: 틀린 적 있음 + 마지막 두 번을 연속으로 맞히면 '해결'
+export function wrongQuestions(state, allBank) {
+  const bank = usable(state, allBank);
+  const byId = new Map(bank.map((q) => [q.id, q]));
+  const hist = new Map();
+  for (const a of state.attempts) {
+    if (a.kind !== 'question' || !byId.has(a.targetId)) continue;
+    if (!hist.has(a.targetId)) hist.set(a.targetId, []);
+    hist.get(a.targetId).push(a);
+  }
+  const out = [];
+  for (const [id, list] of hist) {
+    const wrong = list.filter((a) => !a.correct);
+    if (!wrong.length) continue;
+    const last2 = list.slice(-2);
+    const resolved = last2.length === 2 && last2.every((a) => a.correct) && list.indexOf(wrong.at(-1)) < list.length - 2;
+    out.push({
+      q: byId.get(id),
+      wrong: wrong.length,
+      tries: list.length,
+      lastDate: list.at(-1).date,
+      lastWrongDate: wrong.at(-1).date,
+      reason: wrong.at(-1).reasonTag || null,
+      resolved,
+    });
+  }
+  return out.sort((a, b) => b.lastWrongDate.localeCompare(a.lastWrongDate) || b.wrong - a.wrong);
+}
+
+// 오답만 다시 풀기: 해결 안 된 문제, 많이 틀린 것·오래된 것 먼저
+export function buildWrong(state, bank, n = 10) {
+  return shuffle(
+    wrongQuestions(state, bank)
+      .filter((x) => !x.resolved)
+      .sort((a, b) => b.wrong - a.wrong || a.lastDate.localeCompare(b.lastDate))
+      .slice(0, n)
+      .map((x) => x.q),
+  );
+}
+
+// 틀린 이유 집계 (최근 days일, 수준 진단 제외)
+export function reasonStats(state, t, days = 30) {
+  const since = srs.addDays(t, -days);
+  const counts = { meaning: 0, grammar: 0, time: 0, mistake: 0, none: 0 };
+  for (const a of state.attempts) {
+    if (a.kind !== 'question' || a.correct || a.mode === 'test' || a.date < since) continue;
+    counts[a.reasonTag && counts[a.reasonTag] !== undefined ? a.reasonTag : 'none']++;
+  }
+  return counts;
 }

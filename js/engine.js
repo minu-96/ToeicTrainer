@@ -100,9 +100,12 @@ export function evidence(state, upto = null) {
   const ev = [];
   const recency = (d) => 0.5 ** (Math.max(0, srs.diffDays(d, today)) / HALF_LIFE);
   const seenWordDay = new Set();
+  // '이 문제 이상해요'로 신고한 문제·단어는 점수 계산에서 뺀다
+  const reported = new Set((state.reports || []).map((r) => r.targetId));
 
   for (const a of state.attempts) {
     if (upto && a.date > upto) continue;
+    if (reported.has(a.targetId)) continue;
     if (a.kind === 'question') {
       const skills = a.skills || VOCAB_SKILLS[a.type] || { vocab: 1 };
       const target = a.targetMs || 20000;

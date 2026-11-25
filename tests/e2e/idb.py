@@ -1,0 +1,2 @@
+GET = """()=>new Promise((res,rej)=>{const r=indexedDB.open('toeic-trainer',1);r.onsuccess=()=>{const tx=r.result.transaction('kv','readonly');const g=tx.objectStore('kv').get('state');g.onsuccess=()=>res(g.result||null);g.onerror=()=>rej(g.error)};r.onerror=()=>rej(r.error)})"""
+PUT = """(s)=>new Promise((res,rej)=>{const r=indexedDB.open('toeic-trainer',1);r.onsuccess=()=>{const tx=r.result.transaction('kv','readwrite');tx.objectStore('kv').put(s,'state');tx.oncomplete=()=>res(true);tx.onerror=()=>rej(tx.error)};r.onerror=()=>rej(r.error)})"""

@@ -59,20 +59,33 @@ export function next(prev, correct, t, failedThisSession = false) {
 }
 
 // 오늘 학습할 카드 순서: 복습할 단어(오래 밀린 순) → 직접 추가한 새 단어 → 내장 새 단어
-export function buildQueue(words, settings, introduced, t) {
+// 복습 상한: 하루에 복습하는 단어 수를 제한하고, 밀린 복습이 많으면 새 단어를 줄인다
+// reviewedToday = 오늘 이미 복습한 단어 수
+export function reviewPlan(words, settings, introduced, t, reviewedToday = 0) {
   const due = words
     .filter((w) => isDue(w, t))
     .sort((a, b) => a.srs.due.localeCompare(b.srs.due) || a.srs.box - b.srs.box);
+  const cap = Math.max(0, Number(settings.dailyReviewMax ?? 60));
+  const capLeft = Math.max(0, cap - reviewedToday);
+  const backlog = due.length;
+  const base = builtinRoom(settings, introduced, t);
+  // 밀린 복습이 상한을 넘으면 새 단어 0개, 상한의 절반을 넘으면 절반으로
+  let room = base;
+  if (backlog > cap) room = 0;
+  else if (backlog > cap / 2) room = Math.floor(base / 2);
+  return { due, reviews: due.slice(0, capLeft), backlog, cap, capLeft, newRoom: room, newCut: base - room };
+}
 
+export function buildQueue(words, settings, introduced, t, reviewedToday = 0) {
+  const plan = reviewPlan(words, settings, introduced, t, reviewedToday);
   // 직접 추가한 단어는 하루 한도와 상관없이 바로 나온다 (한도는 내장 단어에만 적용)
   const order = newWordOrder(settings);
   const mine = words.filter((w) => !w.srs && w.source !== 'builtin').sort(order);
   const builtin = words
     .filter((w) => !w.srs && w.source === 'builtin')
     .sort(order)
-    .slice(0, builtinRoom(settings, introduced, t));
-
-  return [...due, ...mine, ...builtin].map((w) => w.id);
+    .slice(0, plan.newRoom);
+  return [...plan.reviews, ...mine, ...builtin].map((w) => w.id);
 }
 
 function builtinRoom(settings, introduced, t) {
@@ -80,10 +93,11 @@ function builtinRoom(settings, introduced, t) {
   return Math.max(0, (settings.dailyNewWords || 0) - usedToday);
 }
 
-export function newRemainingToday(words, settings, introduced, t) {
+export function newRemainingToday(words, settings, introduced, t, reviewedToday = 0) {
+  const plan = reviewPlan(words, settings, introduced, t, reviewedToday);
   const mine = words.filter((w) => !w.srs && w.source !== 'builtin').length;
   const builtin = words.filter((w) => !w.srs && w.source === 'builtin').length;
-  return mine + Math.min(builtin, builtinRoom(settings, introduced, t));
+  return mine + Math.min(builtin, plan.newRoom);
 }
 
 // 오늘 또는 어제까지 이어진 연속 학습일

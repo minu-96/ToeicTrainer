@@ -13,6 +13,8 @@ export const DEFAULT_SETTINGS = {
   speechRate: 0.9,
   autoSpeak: true,
   dailyQuestions: 10, // 오늘의 어휘 문제 수
+  dailyReviewMax: 60, // 하루 복습 상한 (밀리면 새 단어 자동 감소)
+  lastBackup: '', // 마지막으로 백업 파일을 저장한 날
   clozeHint: true, // 빈칸 문제에서 해석을 바로 보여줄지
   startLevel: 'basic', // 새 단어 시작 수준: basic | mid
   level: '', // 시작 화면에서 고른 현재 점수대
@@ -26,6 +28,7 @@ export function emptyState() {
     attempts: [], // 모든 풀이 기록 (약점 분석의 재료)
     qprog: {}, // 문제별 진행 상황 { 문제id: { seen, wrong, last, srs } }
     snapshots: {}, // 날짜별 단어 상태 { 날짜: { mastered, learned } }
+    reports: [], // '이 문제 이상해요' 신고 { id, kind, targetId, reason, memo, date }
     mocks: [], // 성적 기록: 교재 모의고사(파트별 맞힌 개수) · 공식 시험(LC·RC)
     studyDays: [],
     newIntroduced: { date: '', count: 0 },
@@ -46,6 +49,7 @@ export function normalize(s) {
     attempts: Array.isArray(s.attempts) ? s.attempts : [],
     qprog: s.qprog && typeof s.qprog === 'object' ? s.qprog : {},
     snapshots: s.snapshots && typeof s.snapshots === 'object' ? s.snapshots : {},
+    reports: Array.isArray(s.reports) ? s.reports.filter((r) => r && r.targetId) : [],
     mocks: Array.isArray(s.mocks) ? s.mocks.filter((m) => m && typeof m.date === 'string') : [],
     studyDays: Array.isArray(s.studyDays) ? s.studyDays.filter((d) => typeof d === 'string') : [],
     newIntroduced:
