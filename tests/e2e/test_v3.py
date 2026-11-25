@@ -64,14 +64,17 @@ async def main():
         await pg.click("[data-qtab=grammar]")
         await pg.click("[data-vq=gdaily]")
         c("문법 문제" in await pg.inner_text("header"), "제목 '문법 문제'")
-        for _ in range(10):
+        # 앞에서 푼 문법 문제만큼 오늘 남은 수가 줄어듦 → 끝날 때까지
+        n = int((await pg.inner_text(".progress-text")).split("/")[1])
+        for _ in range(n):
             await pg.wait_for_selector("[data-choice]:not([disabled])")
             await pg.click(f"[data-choice='{await pg.evaluate(PICK)}']")
             await pg.click("#vq-next")
         await pg.wait_for_selector(".hero.done")
         st = await pg.evaluate(GET)
         g = [a for a in st["attempts"] if a.get("module") == "grammar" and a.get("mode") == "gdaily"]
-        c(len(g) == 10 and all(a["correct"] for a in g), "문법 10문제 기록 (module=grammar)")
+        total = len([a for a in st["attempts"] if a.get("module") == "grammar" and a.get("mode") != "test"])
+        c(len(g) == n and total >= 10 and all(a["correct"] for a in g), f"오늘 문법 {total}문제 기록 (module=grammar)")
         c(len(st["words"]) == len(before["words"]), "문법 오답은 단어장에 안 들어감")
         await pg.click("[data-tab=home]") if await pg.locator("[data-tab=home]:visible").count() else None
         await pg.goto(pg.url.split("?")[0] + "?v3b")

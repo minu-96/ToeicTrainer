@@ -29,9 +29,20 @@ export const PART6_TYPES = {
   p6sent: { name: '문장 넣기', desc: '앞뒤 흐름에 맞는 문장 고르기' },
 };
 export const P6_TARGET_MS = 30000;
-export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES, ...PART6_TYPES };
-export const areaOf = (q) => (q.module === 'listening' ? 'listening' : q.module === 'part6' || PART6_TYPES[q.type] ? 'part6' : q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
-const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : area === 'part6' ? PART6_TYPES : TYPES);
+export const PART7_TYPES = {
+  p7main: { name: '주제·목적', desc: '글을 쓴 이유·중심 내용' },
+  p7detail: { name: '세부 정보', desc: '언제·어디서·무엇을' },
+  p7not: { name: 'NOT·TRUE', desc: '맞지 않는 것·맞는 것' },
+  p7infer: { name: '추론', desc: '직접 안 나온 사실 짐작' },
+  p7syn: { name: '동의어', desc: '문맥 속 같은 뜻' },
+  p7insert: { name: '문장 위치', desc: '주어진 문장이 들어갈 곳' },
+  p7intent: { name: '의도 파악', desc: '채팅 속 말의 속뜻' },
+  p7link: { name: '연계', desc: '두 지문을 이어서 풀기' },
+};
+const LC_Q_TYPES = { lc2: { name: '듣기 Part 2', desc: '' } };
+export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES, ...PART6_TYPES, ...PART7_TYPES, ...LC_Q_TYPES };
+export const areaOf = (q) => (q.module === 'listening' ? 'listening' : q.module === 'part7' || PART7_TYPES[q.type] ? 'part7' : q.module === 'part6' || PART6_TYPES[q.type] ? 'part6' : q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
+const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : area === 'part6' ? PART6_TYPES : area === 'part7' ? PART7_TYPES : TYPES);
 
 export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
 export const LEVEL_UP = { window: 20, min: 20 }; // 최근 20문제로 수준 판단
@@ -306,6 +317,8 @@ export function buildP6(state, sets, allBank, settings, t, nSets = 1) {
     .sort((a, b) => (lastOf(state, a.qs) || '').localeCompare(lastOf(state, b.qs) || ''));
   return [...due, ...fresh, ...old].slice(0, nSets).flatMap((x) => x.qs);
 }
+// 독해: 세트 단위로 고르는 방식은 장문 빈칸과 같음
+export const buildP7 = (state, sets, allBank, settings, t, nSets = 1) => buildP6(state, sets, allBank, settings, t, nSets);
 const lastOf = (state, qs) => qs.map((q) => state.qprog[q.id]?.last || '').sort().pop();
 
 // 수준 진단: 수준마다 5문제씩, 유형을 섞어서
@@ -313,6 +326,7 @@ export function buildTest(allBank) {
   const only = allBank.filter((q) => q.test);
   const vocab = only.filter((q) => areaOf(q) === 'vocab');
   const grammar = only.filter((q) => areaOf(q) === 'grammar');
+  const listening = only.filter((q) => areaOf(q) === 'listening');
   const out = [];
   for (const level of srs.LEVEL_ORDER) {
     // 수준마다 어휘 3 (품사·어울림·헷갈림) + 문법 2
@@ -321,8 +335,9 @@ export function buildTest(allBank) {
     const pickG = shuffle(grammar.filter((q) => q.level === level)).slice(0, 2);
     const pick = [...pickV, ...pickG];
     // 전용 문제가 모자라면 연습 문제로 채움
-    if (pick.length < 5) pick.push(...shuffle(allBank.filter((q) => !q.test && q.type !== 'para' && q.level === level && !pick.includes(q))).slice(0, 5 - pick.length));
-    out.push(...shuffle(pick));
+    if (pick.length < 5) pick.push(...shuffle(allBank.filter((q) => !q.test && q.type !== 'para' && areaOf(q) !== 'part7' && areaOf(q) !== 'part6' && q.level === level && !pick.includes(q))).slice(0, 5 - pick.length));
+    // 듣기 1문제는 수준마다 끝에 (소리를 켜도록 안내한 뒤)
+    out.push(...shuffle(pick), ...shuffle(listening.filter((q) => q.level === level)).slice(0, 1));
   }
   return out; // 쉬운 것부터
 }
@@ -341,7 +356,9 @@ export function testResult(results) {
 
 // 보기 순서 섞기
 export function view(q) {
-  const order = shuffle([0, 1, 2, 3]);
+  const idx = q.choices.map((_, i) => i);
+  // 문장 위치([1]~[4])처럼 순서가 의미 있는 보기는 섞지 않음
+  const order = q.qtype === 'insert' || q.fixedOrder ? idx : shuffle(idx);
   return { choices: order.map((i) => q.choices[i]), answer: order.indexOf(q.answer) };
 }
 
