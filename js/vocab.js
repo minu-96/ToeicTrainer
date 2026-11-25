@@ -29,9 +29,9 @@ export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
 export const LEVEL_UP = { window: 20, min: 20 }; // 최근 20문제로 수준 판단
 export const TARGET_MS = 20000; // Part 5 한 문제 목표 시간
 export const REASONS = [
-  ['meaning', '단어 뜻을 몰라서'],
-  ['grammar', '품사·문법이 헷갈려서'],
-  ['time', '시간에 쫓겨서'],
+  ['meaning', '뜻을 몰라서'],
+  ['grammar', '문법이 헷갈려서'],
+  ['time', '시간이 부족해서'],
   ['mistake', '실수'],
 ];
 
@@ -231,18 +231,18 @@ export function buildSpeed(state, allBank, settings, t, n = SPEED.n) {
 // 수준 진단: 수준마다 5문제씩, 유형을 섞어서
 export function buildTest(allBank) {
   const only = allBank.filter((q) => q.test);
-  const bank = only.length >= 15 ? only : allBank.filter((q) => q.type !== 'para');
+  const vocab = only.filter((q) => areaOf(q) === 'vocab');
+  const grammar = only.filter((q) => areaOf(q) === 'grammar');
   const out = [];
   for (const level of srs.LEVEL_ORDER) {
-    const pool = bank.filter((q) => q.level === level);
-    const byType = ['form', 'colloc', 'confuse'].map((tp) => shuffle(pool.filter((q) => q.type === tp)));
-    const pick = [];
-    let k = 0;
-    while (pick.length < 5 && byType.some((l) => l.length)) {
-      const l = byType[k++ % byType.length];
-      if (l.length) pick.push(l.pop());
-    }
-    out.push(...pick);
+    // 수준마다 어휘 3 (품사·어울림·헷갈림) + 문법 2
+    const v = vocab.filter((q) => q.level === level);
+    const pickV = ['form', 'colloc', 'confuse'].map((tp) => shuffle(v.filter((q) => q.type === tp))[0]).filter(Boolean);
+    const pickG = shuffle(grammar.filter((q) => q.level === level)).slice(0, 2);
+    const pick = [...pickV, ...pickG];
+    // 전용 문제가 모자라면 연습 문제로 채움
+    if (pick.length < 5) pick.push(...shuffle(allBank.filter((q) => !q.test && q.type !== 'para' && q.level === level && !pick.includes(q))).slice(0, 5 - pick.length));
+    out.push(...shuffle(pick));
   }
   return out; // 쉬운 것부터
 }

@@ -23,9 +23,12 @@ test('문제 은행: 연습 150개 이상, 수준·유형마다 15개 이상, �
 });
 
 test('진단은 전용 문제만, 연습에는 진단 문제가 안 나온다', () => {
-  const t = Vocab.buildTest(bank);
+  const gbank = JSON.parse(readFileSync('data/grammar-questions.json', 'utf8'));
+  const t = Vocab.buildTest(bank.concat(gbank));
   assert.equal(t.length, 15);
   assert.ok(t.every((q) => q.test));
+  assert.equal(t.filter((q) => Vocab.areaOf(q) === 'grammar').length, 6, '문법 6문제');
+  for (const level of ['basic', 'mid', 'adv']) assert.equal(t.filter((q) => q.level === level).length, 5);
   const state = { attempts: [], qprog: {}, reports: [], settings: {} };
   const daily = Vocab.buildDaily(state, bank, { startLevel: 'basic' }, T, 200);
   assert.ok(daily.length > 0 && daily.every((q) => !q.test));

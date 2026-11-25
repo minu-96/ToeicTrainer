@@ -2878,5 +2878,155 @@
    "the board did announce": "강조(도치 아님)",
    "announced the board": "틀린 도치"
   }
+ },
+ {
+  "id": "g-x1",
+  "part": 5,
+  "module": "grammar",
+  "type": "tense",
+  "level": "basic",
+  "stem": "Mr. Ford ____ the report yesterday.",
+  "choices": [
+   "finishes",
+   "finished",
+   "will finish",
+   "has finished"
+  ],
+  "answer": 1,
+  "clue": "yesterday → 과거",
+  "explanation": "과거 시점 yesterday가 있으면 과거 시제예요.",
+  "ko": "포드 씨는 어제 보고서를 끝냈다.",
+  "meanings": {
+   "finishes": "현재",
+   "finished": "과거",
+   "will finish": "미래",
+   "has finished": "현재완료"
+  },
+  "test": true
+ },
+ {
+  "id": "g-x2",
+  "part": 5,
+  "module": "grammar",
+  "type": "agree",
+  "level": "basic",
+  "stem": "The files on the desk ____ for Ms. Ruiz.",
+  "choices": [
+   "is",
+   "are",
+   "was",
+   "has been"
+  ],
+  "answer": 1,
+  "clue": "진짜 주어 The files(복수)",
+  "explanation": "on the desk는 수식어라 복수 주어 files에 맞춰 are예요.",
+  "ko": "책상 위 파일들은 루이즈 씨 것이다.",
+  "meanings": {
+   "is": "단수",
+   "are": "복수",
+   "was": "단수 과거",
+   "has been": "단수 완료"
+  },
+  "test": true
+ },
+ {
+  "id": "g-x3",
+  "part": 5,
+  "module": "grammar",
+  "type": "voice",
+  "level": "mid",
+  "stem": "The new branch ____ next spring.",
+  "choices": [
+   "will open",
+   "will be opened",
+   "opened",
+   "has opened"
+  ],
+  "answer": 1,
+  "clue": "지점은 '개설되는' 대상 + 목적어 없음 → 미래 수동",
+  "explanation": "지점이 스스로 여는 게 아니라 '개설되는' 것이고 next spring이라 will be opened예요.",
+  "ko": "새 지점은 내년 봄에 문을 열 것이다.",
+  "meanings": {
+   "will open": "능동 미래",
+   "will be opened": "수동 미래",
+   "opened": "과거",
+   "has opened": "현재완료"
+  },
+  "test": true
+ },
+ {
+  "id": "g-x4",
+  "part": 5,
+  "module": "grammar",
+  "type": "conj",
+  "level": "mid",
+  "stem": "____ the heavy traffic, Ms. Lim arrived on time.",
+  "choices": [
+   "Although",
+   "Despite",
+   "Because",
+   "Unless"
+  ],
+  "answer": 1,
+  "clue": "뒤에 명사(the heavy traffic) → 전치사",
+  "explanation": "명사가 오니 전치사 despite예요. although, because, unless는 접속사라 절이 와야 해요.",
+  "ko": "교통 체증에도 불구하고 임 씨는 제시간에 도착했다.",
+  "meanings": {
+   "Although": "접속사",
+   "Despite": "전치사",
+   "Because": "접속사",
+   "Unless": "접속사"
+  },
+  "test": true
+ },
+ {
+  "id": "g-x5",
+  "part": 5,
+  "module": "grammar",
+  "type": "relative",
+  "level": "adv",
+  "stem": "The supplier ____ products we ordered has closed its business.",
+  "choices": [
+   "who",
+   "whose",
+   "which",
+   "whom"
+  ],
+  "answer": 1,
+  "clue": "뒤에 명사(products) + '공급업체의 제품' → whose",
+  "explanation": "선행사의 소유 관계라 whose예요.",
+  "ko": "우리가 주문한 제품의 공급업체가 폐업했다.",
+  "meanings": {
+   "who": "주격",
+   "whose": "소유격",
+   "which": "사물",
+   "whom": "목적격"
+  },
+  "test": true
+ },
+ {
+  "id": "g-x6",
+  "part": 5,
+  "module": "grammar",
+  "type": "cond",
+  "level": "adv",
+  "stem": "Had the order been placed earlier, it ____ by now.",
+  "choices": [
+   "arrives",
+   "will arrive",
+   "would have arrived",
+   "had arrived"
+  ],
+  "answer": 2,
+  "clue": "Had + 주어 + p.p. (if 생략 도치) → would have p.p.",
+  "explanation": "가정법 과거완료 도치예요. 주절은 would have + p.p.예요.",
+  "ko": "주문을 더 일찍 했다면 지금쯤 도착했을 것이다.",
+  "meanings": {
+   "arrives": "현재",
+   "will arrive": "미래",
+   "would have arrived": "가정법 과거완료",
+   "had arrived": "과거완료"
+  },
+  "test": true
  }
 ]

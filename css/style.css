@@ -646,3 +646,25 @@ input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--primary)
 .concept .ex { margin: 0; font-weight: 600; }
 .concept .ex-ko { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
 .concept-link { margin: 0 0 8px; }
+
+/* ---------- v3.1: 오늘 할 일 · 틀린 이유 ---------- */
+.hero.today { text-align: left; }
+.today-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.today-head .hero-title { margin: 0; }
+.today-meta { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.todo-list { margin: 0 0 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.todo-list button { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); text-align: left; color: var(--text); }
+.todo-list .check { flex: 0 0 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #fff; }
+.todo-list li.done .check { background: var(--success); border-color: var(--success); }
+.todo-list li.done .todo-main b { color: var(--muted); text-decoration: line-through; }
+.todo-main { flex: 1; display: grid; min-width: 0; }
+.todo-main b { font-size: 15px; }
+.todo-main small { color: var(--muted); font-size: 12.5px; }
+.todo-min { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.reason-pick { margin-top: 14px; padding: 14px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); text-align: center; }
+.reason-pick .reason-label { margin: 0 0 10px; font-weight: 700; }
+.reason-pick .reason-label small { display: block; font-weight: 500; color: var(--muted); margin-top: 2px; }
+.reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.reason-grid .btn { min-height: 52px; font-size: 14px; }
+.reason-grid .btn.on { border-color: var(--primary); color: var(--primary); }
+.reason-pick .link-btn { margin-top: 10px; }
