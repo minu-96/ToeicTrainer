@@ -760,3 +760,22 @@ body.has-bar main { padding-bottom: calc(var(--safe-bottom) + 150px); }
 #dict-input { width: 100%; font-size: 16px; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); resize: none; }
 .muted-tile { cursor: default; }
 .sub-h { margin: 16px 0 6px; font-size: 14px; color: var(--muted); }
+
+/* ---------- v4.1 ---------- */
+.notes-seg { grid-template-columns: repeat(4, 1fr); }
+.lc-notes .row { cursor: default; }
+.lc-notes .link-btn { margin: 4px 0 0; }
+.novoice { display: grid; gap: 4px; margin: -2px 0 10px; padding: 10px 12px; border-radius: 12px; text-align: left; background: color-mix(in srgb, var(--warn) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--line)); }
+.novoice small { color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+.novoice .btn { justify-self: start; margin-top: 4px; }
+.field-label { margin: 12px 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); text-align: left; }
+.minutes-seg { grid-template-columns: repeat(4, 1fr); margin-bottom: 10px; }
+.area-acc { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.area-acc li { display: grid; grid-template-columns: 74px 1fr 64px; align-items: center; gap: 8px; font-size: 13.5px; }
+.area-acc b { text-align: right; font-variant-numeric: tabular-nums; }
+.area-acc small { color: var(--muted); font-weight: 500; }
+.more-charts { margin: 0 0 14px; }
+.more-charts > summary { list-style: none; cursor: pointer; padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.more-charts > summary::-webkit-details-marker { display: none; }
+.more-charts > summary small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.more-charts[open] > summary { color: var(--muted); }

@@ -9,16 +9,19 @@ import * as srs from '../../js/srs.js';
 const { part2, sets } = JSON.parse(readFileSync('data/listening.json', 'utf8'));
 const T = srs.today();
 
-test('듣기 데이터: Part 2 30문제(수준별 10), Part 3 6세트·Part 4 4세트, 세트마다 3문제', () => {
-  assert.equal(part2.length, 30);
-  for (const lv of ['basic', 'mid', 'adv']) assert.equal(part2.filter((q) => q.level === lv).length, 10);
+test('듣기 데이터: Part 2 90문제(수준별 30), Part 3·4 각 12세트, 세트마다 3문제', () => {
+  assert.equal(part2.length, 90);
+  for (const lv of ['basic', 'mid', 'adv']) assert.equal(part2.filter((q) => q.level === lv).length, 30);
+  assert.equal(new Set(part2.map((q) => q.id)).size, 90);
+  assert.equal(new Set(part2.map((q) => q.q)).size, 90, '같은 질문 없음');
   for (const q of part2) {
     assert.equal(q.choices.length, 3);
     assert.equal(new Set(q.choices).size, 3);
     for (const k of Object.keys(q.traps)) assert.notEqual(Number(k), q.answer, q.id + ' 정답에 함정 표시');
   }
-  assert.equal(sets.filter((s) => s.part === 3).length, 6);
-  assert.equal(sets.filter((s) => s.part === 4).length, 4);
+  assert.equal(sets.filter((s) => s.part === 3).length, 12);
+  assert.equal(sets.filter((s) => s.part === 4).length, 12);
+  assert.ok(sets.filter((s) => s.lines.some((l) => l.who === 'M2')).length >= 2, '3인 대화 2세트 이상');
   for (const s of sets) {
     assert.equal(s.questions.length, 3);
     assert.ok(s.lines.length >= 1 && s.ko.length > 20);

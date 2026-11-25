@@ -65,6 +65,22 @@ function snapAt(snapshots, end, key) {
   return best ? best[1][key] ?? null : null;
 }
 
+// 기록이 어느 영역 문제인지 (예전 기록은 module이 없어서 유형으로 판단)
+const G_TYPES = new Set(['tense', 'agree', 'voice', 'verbal', 'participle', 'relative', 'conj', 'pronoun', 'compare', 'cond']);
+export const AREAS = [
+  ['vocab', '어휘'],
+  ['grammar', '문법'],
+  ['part6', '장문 빈칸'],
+  ['listening', '듣기'],
+];
+export function areaOfAttempt(a) {
+  if (a.module) return a.module;
+  if (['lc2', 'lc3', 'lc4'].includes(a.type)) return 'listening';
+  if (G_TYPES.has(a.type)) return 'grammar';
+  if ((a.type || '').startsWith('p6')) return 'part6';
+  return 'vocab';
+}
+
 export function series(state, mode, t) {
   const bs = buckets(mode, t);
   const firsts = firstNewDates(state.attempts);
@@ -85,6 +101,12 @@ export function series(state, mode, t) {
       questionAnswers: q.length,
       wordAcc: w.length ? w.filter((a) => a.correct).length / w.length : null,
       qAcc: q.length ? q.filter((a) => a.correct).length / q.length : null,
+      areas: Object.fromEntries(
+        AREAS.map(([k]) => {
+          const l = q.filter((a) => areaOfAttempt(a) === k && !a.scripted);
+          return [k, { n: l.length, acc: l.length ? l.filter((a) => a.correct).length / l.length : null }];
+        }),
+      ),
       learned: firsts.filter(in_).length,
       mastered: snapAt(state.snapshots, b.end, 'mastered'),
       score: est ? est.total : null,

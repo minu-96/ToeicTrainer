@@ -19,6 +19,7 @@ export const DEFAULT_SETTINGS = {
   speedBest: null, // 스피드 모드 최고 기록
   lcAccentMix: true, // 듣기: 미국·영국·호주 음성 섞기
   lcRate: 1, // 듣기 말하기 속도
+  dailyMinutes: null, // 하루 학습 시간(분). 있으면 분량을 자동으로 나눔
   clozeHint: true, // 빈칸 문제에서 해석을 바로 보여줄지
   startLevel: 'basic', // 새 단어 시작 수준: basic | mid
   level: '', // 시작 화면에서 고른 현재 점수대
