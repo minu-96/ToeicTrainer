@@ -1220,7 +1220,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘 + 문법 + 장문 빈칸) v3.2</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘 + 문법 + 장문 빈칸) v3.3</p>
   `;
 
   const num = (id, min, max) => {

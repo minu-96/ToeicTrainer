@@ -49,3 +49,19 @@ test('문법 풀이는 문법 영역에만 반영되고 단어장에 추가되�
   assert.ok(e.skills.grammar.mean > base.skills.grammar.mean + 0.3);
   assert.ok(Math.abs(e.skills.vocab.mean - base.skills.vocab.mean) < 0.05);
 });
+
+test('문항 품질: 수준별 문장 길이가 점점 길어지고, 실제로 없는 형태의 보기가 없다', () => {
+  const vbank2 = JSON.parse(readFileSync('data/vocab-questions.json', 'utf8'));
+  const all = vbank2.concat(gbank);
+  const avg = (lv) => {
+    const l = all.filter((q) => q.level === lv).map((q) => q.stem.split(/\s+/).length);
+    return l.reduce((a, b) => a + b, 0) / l.length;
+  };
+  assert.ok(avg('basic') >= 9 && avg('basic') < avg('mid') && avg('mid') < avg('adv') && avg('adv') >= 15, `${avg('basic')} ${avg('mid')} ${avg('adv')}`);
+  const min = { basic: 8, mid: 11, adv: 15 };
+  for (const q of all) assert.ok(q.stem.split(/\s+/).length >= min[q.level], `${q.id} 문장이 짧음`);
+  for (const q of all) for (const m of Object.values(q.meanings)) assert.ok(!m.includes('틀린 형태') && !m.includes('틀린 짝'), `${q.id} 실제로 없는 형태`);
+  // 정답이 유독 가장 긴 보기인 비율 (35% 이하)
+  const longest = all.filter((q) => q.choices.every((c, i) => i === q.answer || c.length < q.choices[q.answer].length)).length;
+  assert.ok(longest / all.length <= 0.35, `정답 최장 비율 ${Math.round((longest / all.length) * 100)}%`);
+});

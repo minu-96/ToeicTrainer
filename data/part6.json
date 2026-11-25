@@ -19,8 +19,8 @@
    "level": "basic",
    "kind": "공지",
    "title": "Elevator maintenance",
-   "passage": "Attention, all tenants:\nThe elevators in Building A will be {1} for maintenance on Saturday, May 10, from 8 A.M. to 2 P.M. During this time, please use the stairs on the east side of the building. {2}. We apologize for any {3} this may cause. If you need assistance moving heavy items, please {4} the management office in advance.",
-   "ko": "모든 입주자분들께: A동 엘리베이터는 5월 10일 토요일 오전 8시부터 오후 2시까지 점검으로 운행이 중단됩니다. 이 시간에는 건물 동쪽 계단을 이용해 주세요. 점검은 오후 2시까지 끝날 예정입니다. 불편을 드려 죄송합니다. 무거운 물건을 옮기는 데 도움이 필요하면 관리사무소에 미리 연락해 주세요.",
+   "passage": "Attention, all tenants:\nRegular maintenance of the elevators in Building A has been scheduled for Saturday, May 10. The elevators {1} from 8 A.M. to 2 P.M. on that day. During this time, please use the stairs on the east side of the building. {2}. We apologize for any {3} this may cause. If you need assistance moving heavy items, please {4} the management office in advance.",
+   "ko": "모든 입주자분들께: A동 엘리베이터 정기 점검이 5월 10일 토요일로 예정되어 있습니다. 그날 오전 8시부터 오후 2시까지 엘리베이터를 이용할 수 없습니다. 이 시간에는 건물 동쪽 계단을 이용해 주세요. 점검은 오후 2시까지 끝날 예정입니다. 불편을 드려 죄송합니다. 무거운 물건을 옮기는 데 도움이 필요하면 관리사무소에 미리 연락해 주세요.",
    "questions": [
     "p6-s02-1",
     "p6-s02-2",
@@ -61,8 +61,8 @@
    "level": "mid",
    "kind": "이메일",
    "title": "Interview schedule",
-   "passage": "Dear Mr. Novak,\nThank you for your interest in the marketing coordinator position. We were impressed by your {1} and would like to invite you for an interview. The interview will take place on Thursday at 10 A.M. at our main office. {2}. Please bring a copy of your portfolio and two forms of identification. If this time is not {3} for you, please let us know as soon as possible so that we can {4} the schedule.\nBest regards,\nHannah Cho, Human Resources",
-   "ko": "노박 씨께, 마케팅 코디네이터 직책에 관심을 가져 주셔서 감사합니다. 지원서가 인상 깊어 면접에 초대하고자 합니다. 면접은 목요일 오전 10시 본사에서 진행됩니다. 면접은 약 45분 걸릴 예정입니다. 포트폴리오 사본과 신분증 두 가지를 가져오세요. 이 시간이 편하지 않으면 일정을 조정할 수 있도록 가능한 한 빨리 알려 주세요.",
+   "passage": "Dear Mr. Novak,\nThank you for your interest in the marketing coordinator position. We were impressed by your {1} and would like to invite you for an interview. The interview will take place on Thursday at 10 A.M. at our main office. {2}. Please bring a copy of your portfolio and two forms of identification. If this time is not {3} for you, please let us know as soon as possible. {4}, we can arrange a video interview instead.\nBest regards,\nHannah Cho, Human Resources",
+   "ko": "노박 씨께, 마케팅 코디네이터 직책에 관심을 가져 주셔서 감사합니다. 지원서가 인상 깊어 면접에 초대하고자 합니다. 면접은 목요일 오전 10시 본사에서 진행됩니다. 면접은 약 45분 걸릴 예정입니다. 포트폴리오 사본과 신분증 두 가지를 가져오세요. 이 시간이 편하지 않으면 가능한 한 빨리 알려 주세요. 아니면 대신 화상 면접을 잡을 수도 있습니다.",
    "questions": [
     "p6-s05-1",
     "p6-s05-2",
@@ -235,19 +235,19 @@
    "stem": "The chairs will be shipped within three business days. ____. If you have any questions, please contact our customer service team.",
    "choices": [
     "We will e-mail you a tracking number once the items are shipped",
-    "Our store is closed on national holidays",
-    "The chairs are available in five colors",
-    "Thank you for applying for the position"
+    "Unfortunately, the chairs you ordered are currently out of stock",
+    "Your refund will be issued to your credit card within a week",
+    "Please return the chairs in their original packaging"
    ],
    "answer": 0,
    "clue": "앞: 발송 일정 / 뒤: 문의·추적 안내",
-   "explanation": "앞뒤가 배송 이야기라 '발송되면 추적 번호를 보낸다'가 자연스러워요. 뒤 문장의 track your order와도 이어져요.",
+   "explanation": "앞 문장이 '3일 이내 발송', 뒤 문장이 '주문 추적'이라 발송 후 추적 번호 안내가 이어져요. 품절은 '주문이 처리되었다'와, 환불·반품은 아직 받지도 않은 상황과 맞지 않아요.",
    "ko": "",
    "meanings": {
-    "We will e-mail you a tracking number once the items are shipped": "발송되면 추적 번호를 이메일로 보냄",
-    "Our store is closed on national holidays": "공휴일 휴무",
-    "The chairs are available in five colors": "의자 색상 5가지",
-    "Thank you for applying for the position": "지원해 주셔서 감사"
+    "We will e-mail you a tracking number once the items are shipped": "정답: 앞뒤 흐름에 맞음",
+    "Unfortunately, the chairs you ordered are currently out of stock": "흐름·내용이 맞지 않음",
+    "Your refund will be issued to your credit card within a week": "흐름·내용이 맞지 않음",
+    "Please return the chairs in their original packaging": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -286,22 +286,22 @@
    "level": "basic",
    "set": "s02",
    "n": 1,
-   "stem": "The elevators in Building A will be ____ for maintenance on Saturday, May 10, from 8 A.M.",
+   "stem": "The elevators ____ from 8 A.M. to 2 P.M. on that day.",
    "choices": [
-    "closed",
-    "closing",
-    "close",
-    "closes"
+    "will be unavailable",
+    "were unavailable",
+    "have been unavailable",
+    "had been unavailable"
    ],
    "answer": 0,
-   "clue": "will be ____ (수동) → 과거분사",
-   "explanation": "엘리베이터가 '닫히는' 대상이라 will be closed예요.",
+   "clue": "앞 문장: 점검이 토요일로 '예정됨' → 미래",
+   "explanation": "빈칸 문장에는 시간 단서가 on that day뿐이라 앞 문장을 봐야 해요. 점검이 앞으로 예정되어 있으니 미래 will be unavailable이에요. 실제 Part 6에서 자주 나오는 문맥 시제 문제예요.",
    "ko": "",
    "meanings": {
-    "closed": "닫힌(과거분사)",
-    "closing": "닫는",
-    "close": "원형",
-    "closes": "3인칭 현재"
+    "will be unavailable": "미래",
+    "were unavailable": "과거",
+    "have been unavailable": "현재완료",
+    "had been unavailable": "과거완료"
    },
    "targetMs": 30000
   },
@@ -316,19 +316,19 @@
    "stem": "During this time, please use the stairs on the east side of the building. ____. We apologize for any inconvenience this may cause.",
    "choices": [
     "The work is expected to be completed by 2 P.M.",
-    "Parking spaces are assigned on a first-come basis",
-    "Rent payments are due on the first of each month",
-    "The building opened in 1998"
+    "The elevators were repaired last Saturday as planned",
+    "Tenants may use the elevators as usual during this time",
+    "Monthly maintenance fees will increase starting next month"
    ],
    "answer": 0,
    "clue": "앞: 계단 이용 안내 / 뒤: 불편 사과",
-   "explanation": "점검 공지 흐름이라 '오후 2시까지 끝날 예정'이 자연스러워요. 나머지는 주제와 관계없어요.",
+   "explanation": "점검 공지 중간이라 '오후 2시까지 끝날 예정'이 자연스러워요. 지난 토요일(과거)이나 '평소처럼 이용 가능'은 공지 내용과 모순이고, 관리비 인상은 흐름과 상관없어요.",
    "ko": "",
    "meanings": {
-    "The work is expected to be completed by 2 P.M.": "작업은 오후 2시까지 끝날 예정",
-    "Parking spaces are assigned on a first-come basis": "주차는 선착순",
-    "Rent payments are due on the first of each month": "월세는 매달 1일",
-    "The building opened in 1998": "건물은 1998년 개장"
+    "The work is expected to be completed by 2 P.M.": "정답: 앞뒤 흐름에 맞음",
+    "The elevators were repaired last Saturday as planned": "흐름·내용이 맞지 않음",
+    "Tenants may use the elevators as usual during this time": "흐름·내용이 맞지 않음",
+    "Monthly maintenance fees will increase starting next month": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -448,22 +448,22 @@
    "level": "basic",
    "set": "s03",
    "n": 3,
-   "stem": "Our menu includes fresh sandwiches, salads, and homemade desserts. ____. We are open every day from 7 A.M.",
+   "stem": "Our menu includes fresh sandwiches, salads, and homemade desserts. ____. We are open every day from 7 A.M. to 9 P.M. When you visit, be sure to ask about our loyalty card.",
    "choices": [
     "All of our ingredients come from local farms",
-    "Please submit your résumé by June 10",
-    "The parking lot will be repaved next week",
-    "Our office has moved to a new location"
+    "Unfortunately, the café will be closed on its opening day",
+    "Please note that coffee is not included in this special offer",
+    "Our second location will open across town next spring"
    ],
    "answer": 0,
    "clue": "앞: 메뉴 소개 / 뒤: 영업시간",
-   "explanation": "메뉴 이야기 바로 뒤라 재료 이야기가 자연스러워요.",
+   "explanation": "메뉴 소개 바로 뒤라 재료 이야기가 이어져요. 개업일 휴업·커피 제외는 앞의 무료 커피 행사와 모순이고, 두 번째 매장은 개업 광고 흐름에서 벗어나요.",
    "ko": "",
    "meanings": {
-    "All of our ingredients come from local farms": "재료는 모두 지역 농장산",
-    "Please submit your résumé by June 10": "6월 10일까지 이력서 제출",
-    "The parking lot will be repaved next week": "주차장 재포장",
-    "Our office has moved to a new location": "사무실 이전"
+    "All of our ingredients come from local farms": "정답: 앞뒤 흐름에 맞음",
+    "Unfortunately, the café will be closed on its opening day": "흐름·내용이 맞지 않음",
+    "Please note that coffee is not included in this special offer": "흐름·내용이 맞지 않음",
+    "Our second location will open across town next spring": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -475,7 +475,7 @@
    "level": "basic",
    "set": "s03",
    "n": 4,
-   "stem": "____ you visit, be sure to ask about our loyalty card.",
+   "stem": "We are open every day from 7 A.M. to 9 P.M. ____ you visit, be sure to ask about our loyalty card.",
    "choices": [
     "When",
     "Despite",
@@ -559,19 +559,19 @@
    "stem": "Requests received after this date will be included in the following month's order. ____. This change will help us control costs and reduce waste.",
    "choices": [
     "Urgent items may be handled as exceptions",
-    "The cafeteria menu changes every Monday",
-    "Our new printer arrived yesterday",
-    "Please remember to lock the doors at night"
+    "From now on, supplies will be ordered every week instead",
+    "Please send all supply requests to the finance department",
+    "Late requests will no longer be accepted for any reason"
    ],
    "answer": 0,
    "clue": "앞: 마감 후 요청 처리 / 뒤: 변경 이유",
-   "explanation": "주문 규칙 설명 중이라 '급한 물품은 예외'가 자연스러워요.",
+   "explanation": "주문 규칙(마감 후 요청은 다음 달로) 설명 중이라 '급한 물품은 예외'가 이어져요. 매주 주문·재무팀 제출·마감 후 불가는 앞 내용(월 1회, 나에게 제출, 다음 달 포함)과 모순이에요.",
    "ko": "",
    "meanings": {
-    "Urgent items may be handled as exceptions": "급한 물품은 예외 처리 가능",
-    "The cafeteria menu changes every Monday": "구내식당 메뉴 매주 월요일 변경",
-    "Our new printer arrived yesterday": "새 프린터 어제 도착",
-    "Please remember to lock the doors at night": "밤에 문 잠그기"
+    "Urgent items may be handled as exceptions": "정답: 앞뒤 흐름에 맞음",
+    "From now on, supplies will be ordered every week instead": "흐름·내용이 맞지 않음",
+    "Please send all supply requests to the finance department": "흐름·내용이 맞지 않음",
+    "Late requests will no longer be accepted for any reason": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -637,22 +637,22 @@
    "level": "mid",
    "set": "s05",
    "n": 2,
-   "stem": "at our main office. ____. Please bring a copy of your portfolio and two forms of identification.",
+   "stem": "The interview will take place on Thursday at 10 A.M. at our main office. ____. Please bring a copy of your portfolio and two forms of identification.",
    "choices": [
     "It is expected to last about 45 minutes",
-    "Our company was founded over 50 years ago",
-    "The position has already been filled",
-    "Lunch will be served in the cafeteria"
+    "Unfortunately, the position has already been filled",
+    "Your first day of work will be next Monday at 9 A.M.",
+    "Please send us your résumé before applying for the position"
    ],
    "answer": 0,
    "clue": "앞: 면접 일시·장소 / 뒤: 준비물",
-   "explanation": "면접 안내 흐름이라 소요 시간이 자연스러워요. 'already been filled'는 초대와 모순이에요.",
+   "explanation": "면접 일시·장소 다음이라 소요 시간이 자연스러워요. 이미 채용 완료는 초대와 모순이고, 첫 출근일은 면접 전이라 이르고, 이력서 제출은 이미 지원한 상황과 맞지 않아요.",
    "ko": "",
    "meanings": {
-    "It is expected to last about 45 minutes": "약 45분 소요 예정",
-    "Our company was founded over 50 years ago": "회사 설립 50년",
-    "The position has already been filled": "이미 채용 완료(모순)",
-    "Lunch will be served in the cafeteria": "구내식당 점심 제공"
+    "It is expected to last about 45 minutes": "정답: 앞뒤 흐름에 맞음",
+    "Unfortunately, the position has already been filled": "흐름·내용이 맞지 않음",
+    "Your first day of work will be next Monday at 9 A.M.": "흐름·내용이 맞지 않음",
+    "Please send us your résumé before applying for the position": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -664,7 +664,7 @@
    "level": "mid",
    "set": "s05",
    "n": 3,
-   "stem": "If this time is not ____ for you, please let us know as soon as possible so that we can adjust the schedule.",
+   "stem": "If this time is not ____ for you, please let us know as soon as possible.",
    "choices": [
     "convenient",
     "comfortable",
@@ -687,26 +687,26 @@
    "id": "p6-s05-4",
    "part": 6,
    "module": "part6",
-   "type": "p6grammar",
+   "type": "p6conn",
    "level": "mid",
    "set": "s05",
    "n": 4,
-   "stem": "If this time is not convenient for you, please let us know as soon as possible so that we can ____ the schedule.",
+   "stem": "____, we can arrange a video interview instead.",
    "choices": [
-    "adjust",
-    "adjusting",
-    "adjusted",
-    "adjustment"
+    "Alternatively",
+    "Consequently",
+    "Similarly",
+    "Previously"
    ],
    "answer": 0,
-   "clue": "so that we can ____ (조동사 뒤 원형)",
-   "explanation": "can 뒤에는 동사원형이에요.",
+   "clue": "앞: 시간이 안 되면 알려 달라 / 뒤: 대신 화상 면접 (다른 선택지)",
+   "explanation": "대면 면접이 어렵다면 다른 방법으로 화상 면접을 할 수 있다는 흐름이라 Alternatively(아니면, 그 대신)예요. Consequently는 결과, Similarly는 비슷한 내용 추가, Previously는 과거라 맞지 않아요.",
    "ko": "",
    "meanings": {
-    "adjust": "조정하다(원형)",
-    "adjusting": "-ing형",
-    "adjusted": "과거",
-    "adjustment": "명사"
+    "Alternatively": "아니면, 그 대신",
+    "Consequently": "그 결과",
+    "Similarly": "마찬가지로",
+    "Previously": "이전에"
    },
    "targetMs": 30000
   },
@@ -802,19 +802,19 @@
    "stem": "In addition, meals will be reimbursed up to $60 per day. ____. Please review the full policy on the company intranet.",
    "choices": [
     "Any amount above this limit will not be covered",
-    "Employees may now work from home on Fridays",
-    "The new cafeteria will open next month",
-    "Our sales increased by 10 percent last year"
+    "Receipts are no longer required for any travel expense",
+    "The previous policy will remain in effect after March 1",
+    "Travel expenses can now be submitted up to 90 days later"
    ],
    "answer": 0,
    "clue": "앞: 식비 한도 60달러 / 뒤: 전체 정책 확인",
-   "explanation": "한도 바로 뒤라 '초과분은 지원 안 됨'이 이어져요.",
+   "explanation": "하루 60달러 한도 바로 뒤라 '초과분은 지원 안 됨'이 이어져요. 영수증 불필요·이전 정책 유지·90일 제출은 앞의 새 규정(영수증 필수, 30일 이내)과 모순이에요.",
    "ko": "",
    "meanings": {
-    "Any amount above this limit will not be covered": "한도 초과분 미지원",
-    "Employees may now work from home on Fridays": "금요일 재택근무",
-    "The new cafeteria will open next month": "새 구내식당 개장",
-    "Our sales increased by 10 percent last year": "작년 매출 10% 증가"
+    "Any amount above this limit will not be covered": "정답: 앞뒤 흐름에 맞음",
+    "Receipts are no longer required for any travel expense": "흐름·내용이 맞지 않음",
+    "The previous policy will remain in effect after March 1": "흐름·내용이 맞지 않음",
+    "Travel expenses can now be submitted up to 90 days later": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -883,19 +883,19 @@
    "stem": "Owner Maria Lopez said the decision was made because of growing demand from customers who live in the area. ____. The downtown store is scheduled to open in September and will create about 15 new jobs.",
    "choices": [
     "She added that the new store will use the same recipes",
-    "The library will be closed for renovations",
-    "Bread prices have fallen across the country",
-    "The bakery was sold to a large chain last year"
+    "The bakery was sold to a large national chain last year",
+    "As a result, the downtown store already opened last spring",
+    "Riverside Bakery first opened its doors to the public in 2015"
    ],
    "answer": 0,
    "clue": "앞: 업주 발언 / 뒤: 개장 일정",
-   "explanation": "업주 인터뷰를 이어 가는 She added가 자연스러워요. 'sold to a large chain'은 가족 운영과 모순이에요.",
+   "explanation": "업주 인터뷰를 이어 가는 She added가 자연스러워요. 대기업 매각은 가족 운영과, 작년 봄 개장은 9월 개장 예정과, 2015년 개업은 40년 영업과 모순이에요.",
    "ko": "",
    "meanings": {
-    "She added that the new store will use the same recipes": "새 매장도 같은 조리법",
-    "The library will be closed for renovations": "도서관 보수 휴관",
-    "Bread prices have fallen across the country": "전국 빵값 하락",
-    "The bakery was sold to a large chain last year": "작년 대기업에 매각(모순)"
+    "She added that the new store will use the same recipes": "정답: 앞뒤 흐름에 맞음",
+    "The bakery was sold to a large national chain last year": "흐름·내용이 맞지 않음",
+    "As a result, the downtown store already opened last spring": "흐름·내용이 맞지 않음",
+    "Riverside Bakery first opened its doors to the public in 2015": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -937,19 +937,19 @@
    "stem": "We sincerely apologize for this problem. ____. A replacement lamp has already been sent to you by express mail, and it should arrive within two days.",
    "choices": [
     "We take this matter very seriously",
-    "Our lamps are made from recycled materials",
-    "The store will be closed for the holidays",
-    "Please pay the remaining balance by Friday"
+    "Please send the damaged lamp back to us before we can help",
+    "Unfortunately, we are unable to offer you a replacement",
+    "Our records show the lamp was delivered in perfect condition"
    ],
    "answer": 0,
    "clue": "앞: 사과 / 뒤: 교체품 발송",
-   "explanation": "사과 뒤에 '심각하게 받아들인다'로 이어지는 흐름이에요.",
+   "explanation": "사과 뒤에 '심각하게 받아들인다'가 이어져요. 먼저 반송·교체 불가·정상 배송 기록은 뒤의 '이미 교체품 발송, 반송 불필요'와 모순이에요.",
    "ko": "",
    "meanings": {
-    "We take this matter very seriously": "이 일을 심각하게 받아들임",
-    "Our lamps are made from recycled materials": "재활용 소재 램프",
-    "The store will be closed for the holidays": "연휴 휴무",
-    "Please pay the remaining balance by Friday": "잔금 금요일까지 납부"
+    "We take this matter very seriously": "정답: 앞뒤 흐름에 맞음",
+    "Please send the damaged lamp back to us before we can help": "흐름·내용이 맞지 않음",
+    "Unfortunately, we are unable to offer you a replacement": "흐름·내용이 맞지 않음",
+    "Our records show the lamp was delivered in perfect condition": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -1099,19 +1099,19 @@
    "stem": "To avoid any interruption in service, we recommend that you renew the contract before that date. ____. Renewing customers are also eligible for a 10 percent discount on their first quarterly payment.",
    "choices": [
     "The terms of the renewal will remain the same as your current agreement",
-    "We are currently hiring maintenance technicians",
-    "Your account has been closed as requested",
-    "Our headquarters will relocate next year"
+    "Our records show that your contract was canceled last month",
+    "Please note that this contract cannot be renewed this year",
+    "Unfortunately, renewing customers are not eligible for any discounts"
    ],
    "answer": 0,
    "clue": "앞: 갱신 권유 / 뒤: 갱신 고객 할인",
-   "explanation": "갱신 조건 이야기라 '조건은 동일'이 자연스러워요. 'account has been closed'는 갱신 권유와 모순이에요.",
+   "explanation": "갱신 권유 뒤라 '조건은 기존과 동일'이 이어져요. 지난달 해지·올해 갱신 불가는 갱신 권유와, 할인 불가는 뒤 문장의 10% 할인과 모순이에요.",
    "ko": "",
    "meanings": {
-    "The terms of the renewal will remain the same as your current agreement": "갱신 조건은 기존과 동일",
-    "We are currently hiring maintenance technicians": "정비 기사 채용 중",
-    "Your account has been closed as requested": "요청대로 계정 해지(모순)",
-    "Our headquarters will relocate next year": "본사 이전"
+    "The terms of the renewal will remain the same as your current agreement": "정답: 앞뒤 흐름에 맞음",
+    "Our records show that your contract was canceled last month": "흐름·내용이 맞지 않음",
+    "Please note that this contract cannot be renewed this year": "흐름·내용이 맞지 않음",
+    "Unfortunately, renewing customers are not eligible for any discounts": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -1180,19 +1180,19 @@
    "stem": "All messages sent during this period will be delivered once the system is restored. ____. Employees are advised to save any important attachments to their computers by Friday evening.",
    "choices": [
     "Existing messages and folders will be transferred automatically",
-    "The company picnic has been postponed until June",
-    "New employees must complete safety training",
-    "Printer paper is stored in the supply room"
+    "The migration to the new platform was completed last weekend",
+    "E-mail will remain fully available throughout the weekend",
+    "Employees should not save any work files to their own computers"
    ],
    "answer": 0,
    "clue": "앞: 작업 중 메일은 나중에 전달 / 뒤: 첨부 파일 저장 권고",
-   "explanation": "이메일 이전 안내 흐름이라 기존 메일 이전 이야기가 이어져요.",
+   "explanation": "작업 중 메일 처리 안내 뒤라 '기존 메일 자동 이전'이 이어져요. 지난 주말 완료(과거)·주말 내내 이용 가능은 공지와 모순이고, 컴퓨터에 저장하지 말라는 건 뒤 문장의 저장 권고와 반대예요.",
    "ko": "",
    "meanings": {
-    "Existing messages and folders will be transferred automatically": "기존 메일·폴더 자동 이전",
-    "The company picnic has been postponed until June": "회사 야유회 연기",
-    "New employees must complete safety training": "신입 안전 교육",
-    "Printer paper is stored in the supply room": "프린터 용지 보관 장소"
+    "Existing messages and folders will be transferred automatically": "정답: 앞뒤 흐름에 맞음",
+    "The migration to the new platform was completed last weekend": "흐름·내용이 맞지 않음",
+    "E-mail will remain fully available throughout the weekend": "흐름·내용이 맞지 않음",
+    "Employees should not save any work files to their own computers": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -1288,19 +1288,19 @@
    "stem": "The report found that sales increased by 35 percent, largely the result of lower prices and expanded bike lanes in major cities. ____. Analysts expect this trend to continue, although some caution that supply shortages could slow growth.",
    "choices": [
     "Demand was especially strong among commuters",
-    "Traditional bicycles are no longer manufactured",
-    "The association was founded in 1975",
-    "Gasoline prices remained unchanged"
+    "As a result, sales of electric bicycles fell last year",
+    "However, very few people in major cities ride bicycles today",
+    "The report did not include any figures on bicycle sales"
    ],
    "answer": 0,
    "clue": "앞: 판매 증가 원인 / 뒤: 추세 전망",
-   "explanation": "판매 증가를 구체화하는 문장이 이어져요. 'no longer manufactured'는 근거 없는 과장이에요.",
+   "explanation": "판매 증가 원인 뒤라 구체적인 수요 이야기가 이어져요. 판매 감소·대도시 이용자 적음·수치 없음은 앞의 35% 증가와 자전거 도로 확대 내용과 모순이에요.",
    "ko": "",
    "meanings": {
-    "Demand was especially strong among commuters": "특히 통근자 수요가 강함",
-    "Traditional bicycles are no longer manufactured": "일반 자전거 생산 중단(근거 없음)",
-    "The association was founded in 1975": "협회 설립 연도",
-    "Gasoline prices remained unchanged": "휘발유 가격 그대로"
+    "Demand was especially strong among commuters": "정답: 앞뒤 흐름에 맞음",
+    "As a result, sales of electric bicycles fell last year": "흐름·내용이 맞지 않음",
+    "However, very few people in major cities ride bicycles today": "흐름·내용이 맞지 않음",
+    "The report did not include any figures on bicycle sales": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
@@ -1344,17 +1344,17 @@
     "more",
     "most",
     "much",
-    "very"
+    "many"
    ],
    "answer": 0,
    "clue": "make + 목적어 + ____ affordable (비교: 더 저렴하게)",
-   "explanation": "지금보다 '더' 저렴하게라는 비교라 more예요.",
+   "explanation": "지금보다 '더' 저렴하게라는 비교라 more예요. much는 비교급 앞에서 강조할 때만 쓰고, many는 형용사를 꾸미지 못해요.",
    "ko": "",
    "meanings": {
     "more": "더(비교급)",
     "most": "가장",
     "much": "비교급 강조(단독 불가)",
-    "very": "매우"
+    "many": "많은(명사 수식)"
    },
    "targetMs": 30000
   },
@@ -1396,19 +1396,19 @@
    "stem": "The delay is due to unexpected compatibility issues with older devices. ____. In the meantime, I would ask that each team member review the updated timeline, which is attached to this memo.",
    "choices": [
     "The development team is already working on a solution",
-    "The app has received excellent reviews from users",
-    "Our design team will be expanded next year",
-    "The office will be closed on Monday"
+    "The app has already received excellent reviews from users",
+    "As a result, the launch date has been moved up by a week",
+    "The compatibility issues were fixed before the delay was announced"
    ],
    "answer": 0,
    "clue": "앞: 지연 원인 / 뒤: 그동안 일정 검토",
-   "explanation": "문제 원인 뒤에 '이미 해결 중'이 자연스러워요. 'excellent reviews'는 아직 출시 전이라 모순이에요.",
+   "explanation": "지연 원인 뒤라 '이미 해결 중'이 이어져요. 사용자 호평은 출시 전이라, 출시일 앞당김은 2주 연기와, 이미 해결은 '지연 중'과 모순이에요.",
    "ko": "",
    "meanings": {
-    "The development team is already working on a solution": "개발팀이 이미 해결 중",
-    "The app has received excellent reviews from users": "사용자 호평(출시 전이라 모순)",
-    "Our design team will be expanded next year": "내년 디자인팀 확대",
-    "The office will be closed on Monday": "월요일 휴무"
+    "The development team is already working on a solution": "정답: 앞뒤 흐름에 맞음",
+    "The app has already received excellent reviews from users": "흐름·내용이 맞지 않음",
+    "As a result, the launch date has been moved up by a week": "흐름·내용이 맞지 않음",
+    "The compatibility issues were fixed before the delay was announced": "흐름·내용이 맞지 않음"
    },
    "targetMs": 30000
   },
