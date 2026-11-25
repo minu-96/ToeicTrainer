@@ -33,8 +33,9 @@ async def main():
 
         # 문제 탭 → 시제 유형: 개념 카드 먼저
         await pg.click("[data-tab=quiz]")
+        await pg.click("[data-qtab=grammar]")
         qv = await pg.inner_text("#view")
-        c("문법 유형별 연습" in qv and "가정법" in qv, "문제 탭: 문법 유형 10개")
+        c(await pg.locator(".type-tile").count() == 10 and "가정법" in qv, "문제 탭: 문법 유형 10개")
         await pg.click("[data-vq=type][data-type=tense]")
         await pg.wait_for_selector(".concept")
         c("시제" in await pg.inner_text(".concept-title"), "처음 푸는 유형은 개념 카드부터")
@@ -52,6 +53,7 @@ async def main():
 
         # 두 번째는 개념 없이 바로
         await pg.click("[data-tab=quiz]")
+        await pg.click("[data-qtab=grammar]")
         await pg.click("[data-vq=type][data-type=tense]")
         c(await pg.locator("[data-choice]").count() == 4, "본 개념은 다시 안 띄움")
         await pg.click("#quit")
@@ -59,6 +61,7 @@ async def main():
         # 오늘의 문법 문제 10개
         before = (await pg.evaluate(GET))
         await pg.click("[data-tab=quiz]")
+        await pg.click("[data-qtab=grammar]")
         await pg.click("[data-vq=gdaily]")
         c("문법 문제" in await pg.inner_text("header"), "제목 '문법 문제'")
         for _ in range(10):
