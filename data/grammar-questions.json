@@ -5,7 +5,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "basic",
-  "stem": "Ms. Lee ____ to Tokyo last week.",
+  "stem": "Ms. Lee ____ to Tokyo for a business meeting last week.",
   "choices": [
    "travels",
    "traveled",
@@ -15,7 +15,7 @@
   "answer": 1,
   "clue": "last week → 과거",
   "explanation": "last week 같은 과거 시점 표현이 있으면 과거 시제예요. 현재완료는 명확한 과거 시점과 함께 못 써요.",
-  "ko": "이 씨는 지난주에 도쿄에 갔다.",
+  "ko": "이 씨는 지난주 업무 회의차 도쿄에 갔다.",
   "meanings": {
    "travels": "현재",
    "traveled": "과거",
@@ -29,7 +29,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "basic",
-  "stem": "The store ____ at 9 a.m. every day.",
+  "stem": "The bakery on Oak Street ____ at 9 a.m. every day.",
   "choices": [
    "opens",
    "opened",
@@ -39,7 +39,7 @@
   "answer": 0,
   "clue": "every day → 현재 (반복·습관)",
   "explanation": "매일 반복되는 일은 현재 시제예요.",
-  "ko": "그 가게는 매일 오전 9시에 문을 연다.",
+  "ko": "오크 스트리트의 빵집은 매일 오전 9시에 문을 연다.",
   "meanings": {
    "opens": "현재",
    "opened": "과거",
@@ -53,22 +53,22 @@
   "module": "grammar",
   "type": "tense",
   "level": "basic",
-  "stem": "We ____ the new product next month.",
+  "stem": "According to the plan, we ____ the new product at the trade show next month.",
   "choices": [
    "launched",
-   "launch",
+   "have launched",
    "will launch",
-   "have launched"
+   "had launched"
   ],
   "answer": 2,
-  "clue": "next month → 미래",
-  "explanation": "next month는 미래 시점이에요.",
-  "ko": "우리는 다음 달에 신제품을 출시할 것이다.",
+  "clue": "According to the plan + next month → 미래",
+  "explanation": "next month라는 미래 시점이 있고 보기 중 미래를 나타내는 건 will launch뿐이에요.",
+  "ko": "계획에 따르면 우리는 다음 달 무역 박람회에서 신제품을 출시할 것이다.",
   "meanings": {
    "launched": "과거",
-   "launch": "현재",
+   "have launched": "현재완료",
    "will launch": "미래",
-   "have launched": "현재완료"
+   "had launched": "과거완료"
   }
  },
  {
@@ -77,7 +77,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "basic",
-  "stem": "Mr. Ahn ____ a report right now.",
+  "stem": "Mr. Ahn ____ a report for the sales team right now.",
   "choices": [
    "writes",
    "is writing",
@@ -87,7 +87,7 @@
   "answer": 1,
   "clue": "right now → 현재진행",
   "explanation": "지금 이 순간 하고 있는 일은 현재진행(be + -ing)이에요.",
-  "ko": "안 씨는 지금 보고서를 쓰고 있다.",
+  "ko": "안 씨는 지금 영업팀을 위한 보고서를 쓰고 있다.",
   "meanings": {
    "writes": "현재",
    "is writing": "현재진행",
@@ -101,7 +101,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "mid",
-  "stem": "The company ____ in this building since 2015.",
+  "stem": "The software company ____ in this building on Pine Street since 2015.",
   "choices": [
    "is",
    "was",
@@ -111,7 +111,7 @@
   "answer": 2,
   "clue": "since + 과거 시점 → 현재완료",
   "explanation": "since 2015(2015년부터 지금까지)는 현재완료(have + p.p.)의 대표 단서예요.",
-  "ko": "그 회사는 2015년부터 이 건물에 있어 왔다.",
+  "ko": "그 소프트웨어 회사는 2015년부터 파인 스트리트의 이 건물에 있어 왔다.",
   "meanings": {
    "is": "현재",
    "was": "과거",
@@ -125,7 +125,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "mid",
-  "stem": "If it ____ tomorrow, the picnic will be canceled.",
+  "stem": "If it ____ tomorrow afternoon, the company picnic at Riverside Park will be canceled.",
   "choices": [
    "rains",
    "will rain",
@@ -135,7 +135,7 @@
   "answer": 0,
   "clue": "시간·조건 부사절(if/when) → 현재로 미래 표현",
   "explanation": "if·when 같은 시간·조건 부사절에서는 미래 일도 현재 시제로 써요.",
-  "ko": "내일 비가 오면 소풍은 취소될 것이다.",
+  "ko": "내일 오후에 비가 오면 리버사이드 공원의 회사 야유회는 취소될 것이다.",
   "meanings": {
    "rains": "현재",
    "will rain": "미래",
@@ -149,7 +149,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "mid",
-  "stem": "Sales ____ steadily over the past three years.",
+  "stem": "Sales of our organic snacks ____ steadily over the past three years.",
   "choices": [
    "increase",
    "increased",
@@ -159,7 +159,7 @@
   "answer": 2,
   "clue": "over the past + 기간 → 현재완료",
   "explanation": "over the past three years(지난 3년 동안 지금까지)는 현재완료 단서예요.",
-  "ko": "매출이 지난 3년 동안 꾸준히 증가해 왔다.",
+  "ko": "우리 유기농 간식 매출이 지난 3년 동안 꾸준히 증가해 왔다.",
   "meanings": {
    "increase": "현재",
    "increased": "과거",
@@ -173,7 +173,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "mid",
-  "stem": "When the manager arrived, the meeting ____ already.",
+  "stem": "When the regional manager arrived at the office, the meeting ____ already.",
   "choices": [
    "starts",
    "has started",
@@ -183,7 +183,7 @@
   "answer": 2,
   "clue": "과거(arrived)보다 더 이전 → 과거완료",
   "explanation": "과거의 한 시점보다 먼저 끝난 일은 과거완료(had + p.p.)예요.",
-  "ko": "매니저가 도착했을 때 회의는 이미 시작되어 있었다.",
+  "ko": "지역 매니저가 사무실에 도착했을 때 회의는 이미 시작되어 있었다.",
   "meanings": {
    "starts": "현재",
    "has started": "현재완료",
@@ -197,7 +197,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "adv",
-  "stem": "By the end of this year, the firm ____ over 500 employees.",
+  "stem": "If the current hiring plan goes as expected, the firm ____ over 500 employees by the end of this year.",
   "choices": [
    "hires",
    "hired",
@@ -207,7 +207,7 @@
   "answer": 3,
   "clue": "By + 미래 시점 → 미래완료",
   "explanation": "By the end of this year(올해 말까지)처럼 미래 시점까지 완료될 일은 미래완료(will have p.p.)예요.",
-  "ko": "올해 말까지 그 회사는 500명 넘게 채용하게 될 것이다.",
+  "ko": "현재 채용 계획이 예상대로 진행되면 그 회사는 올해 말까지 500명 넘게 채용하게 될 것이다.",
   "meanings": {
    "hires": "현재",
    "hired": "과거",
@@ -221,7 +221,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "adv",
-  "stem": "Ms. Park ____ for the company for ten years when she retired.",
+  "stem": "Ms. Park ____ for the company for more than ten years when she finally retired last spring.",
   "choices": [
    "works",
    "has worked",
@@ -231,7 +231,7 @@
   "answer": 2,
   "clue": "과거(retired)까지 이어진 기간 → 과거완료",
   "explanation": "은퇴한 과거 시점까지 10년간 이어진 일은 과거완료예요.",
-  "ko": "박 씨는 은퇴할 때 그 회사에서 10년 동안 일한 상태였다.",
+  "ko": "박 씨는 지난봄 마침내 은퇴했을 때 그 회사에서 10년 넘게 일한 상태였다.",
   "meanings": {
    "works": "현재",
    "has worked": "현재완료",
@@ -245,7 +245,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "adv",
-  "stem": "The shipment is expected to arrive as soon as the customs inspection ____.",
+  "stem": "According to the shipping company, the container is expected to arrive as soon as the customs inspection ____.",
   "choices": [
    "is completed",
    "will be completed",
@@ -255,7 +255,7 @@
   "answer": 0,
   "clue": "as soon as(시간 부사절) → 현재로 미래 표현",
   "explanation": "as soon as도 시간 부사절이라 미래 대신 현재(수동태 is completed)를 써요.",
-  "ko": "세관 검사가 끝나는 대로 화물이 도착할 예정이다.",
+  "ko": "운송 회사에 따르면 세관 검사가 끝나는 대로 컨테이너가 도착할 예정이다.",
   "meanings": {
    "is completed": "현재 수동",
    "will be completed": "미래 수동",
@@ -269,7 +269,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "adv",
-  "stem": "Since the merger, the two departments ____ closely together.",
+  "stem": "Since the merger was finalized last year, the two research departments ____ closely together on several projects.",
   "choices": [
    "work",
    "worked",
@@ -279,7 +279,7 @@
   "answer": 2,
   "clue": "Since + 사건 → 현재완료(진행)",
   "explanation": "합병 이후 지금까지 계속되는 일은 현재완료진행(have been -ing)이 자연스러워요.",
-  "ko": "합병 이후 두 부서는 긴밀하게 함께 일해 오고 있다.",
+  "ko": "작년에 합병이 마무리된 이후 두 연구 부서는 여러 프로젝트에서 긴밀하게 함께 일해 오고 있다.",
   "meanings": {
    "work": "현재",
    "worked": "과거",
@@ -293,7 +293,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "basic",
-  "stem": "The new employees ____ in the lobby.",
+  "stem": "The new employees from the Busan office ____ in the lobby.",
   "choices": [
    "is waiting",
    "are waiting",
@@ -303,7 +303,7 @@
   "answer": 1,
   "clue": "주어 employees(복수) → are",
   "explanation": "복수 주어에는 복수 동사(are)가 와요.",
-  "ko": "신입 직원들이 로비에서 기다리고 있다.",
+  "ko": "부산 사무소에서 온 신입 직원들이 로비에서 기다리고 있다.",
   "meanings": {
    "is waiting": "단수",
    "are waiting": "복수",
@@ -317,7 +317,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "basic",
-  "stem": "Each room ____ a desk and a chair.",
+  "stem": "Each room in the hotel ____ a desk and a chair.",
   "choices": [
    "have",
    "has",
@@ -327,7 +327,7 @@
   "answer": 1,
   "clue": "Each + 단수명사 → 단수 동사",
   "explanation": "each 뒤에는 단수 명사와 단수 동사가 와요.",
-  "ko": "각 방에는 책상과 의자가 있다.",
+  "ko": "그 호텔의 각 객실에는 책상과 의자가 있다.",
   "meanings": {
    "have": "복수",
    "has": "단수",
@@ -341,7 +341,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "basic",
-  "stem": "The price of these items ____ too high.",
+  "stem": "The price of these items in the catalog ____ too high.",
   "choices": [
    "is",
    "are",
@@ -351,7 +351,7 @@
   "answer": 0,
   "clue": "진짜 주어는 The price(단수)",
   "explanation": "of these items는 수식어예요. 진짜 주어 The price가 단수라 is예요.",
-  "ko": "이 물건들의 가격은 너무 비싸다.",
+  "ko": "카탈로그에 있는 이 물건들의 가격은 너무 비싸다.",
   "meanings": {
    "is": "단수",
    "are": "복수",
@@ -365,7 +365,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "basic",
-  "stem": "There ____ many people at the job fair.",
+  "stem": "There ____ many people at the job fair on Saturday.",
   "choices": [
    "was",
    "is",
@@ -375,7 +375,7 @@
   "answer": 2,
   "clue": "There + be + 주어(many people, 복수)",
   "explanation": "There be 구문은 뒤의 명사가 주어예요. people은 복수라 were예요.",
-  "ko": "채용 박람회에 사람이 많았다.",
+  "ko": "토요일 채용 박람회에 사람이 많았다.",
   "meanings": {
    "was": "단수 과거",
    "is": "단수 현재",
@@ -389,7 +389,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "mid",
-  "stem": "The number of applicants ____ increased this year.",
+  "stem": "The number of applicants for the summer internship ____ increased this year.",
   "choices": [
    "have",
    "has",
@@ -399,7 +399,7 @@
   "answer": 1,
   "clue": "The number of → 단수 / A number of → 복수",
   "explanation": "The number of(~의 수)는 단수 취급해요.",
-  "ko": "올해 지원자 수가 늘었다.",
+  "ko": "여름 인턴십 지원자 수가 올해 늘었다.",
   "meanings": {
    "have": "복수",
    "has": "단수",
@@ -413,7 +413,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "mid",
-  "stem": "A number of customers ____ about the delay.",
+  "stem": "A number of customers ____ about the delay in shipping this month.",
   "choices": [
    "has complained",
    "have complained",
@@ -423,7 +423,7 @@
   "answer": 1,
   "clue": "A number of + 복수명사 → 복수",
   "explanation": "A number of(많은)는 복수 취급해요.",
-  "ko": "많은 고객이 지연에 대해 불평했다.",
+  "ko": "이번 달 많은 고객이 배송 지연에 대해 불평했다.",
   "meanings": {
    "has complained": "단수",
    "have complained": "복수",
@@ -437,7 +437,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "mid",
-  "stem": "Neither the manager nor the assistants ____ aware of the change.",
+  "stem": "Neither the manager nor the assistants ____ aware of the change in the schedule.",
   "choices": [
    "was",
    "were",
@@ -447,7 +447,7 @@
   "answer": 1,
   "clue": "neither A nor B → B에 맞춤",
   "explanation": "neither A nor B, either A or B는 동사에 가까운 B에 수를 맞춰요. assistants가 복수라 were예요.",
-  "ko": "매니저도 비서들도 그 변경 사항을 몰랐다.",
+  "ko": "매니저도 비서들도 일정 변경을 몰랐다.",
   "meanings": {
    "was": "단수",
    "were": "복수",
@@ -461,7 +461,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "mid",
-  "stem": "Everyone in the department ____ to attend the workshop.",
+  "stem": "Everyone in the accounting department ____ to attend the workshop on Friday.",
   "choices": [
    "need",
    "needs",
@@ -471,7 +471,7 @@
   "answer": 1,
   "clue": "Everyone → 단수",
   "explanation": "everyone, everything, someone 같은 -one/-thing 대명사는 단수 동사를 써요.",
-  "ko": "부서의 모든 사람이 워크숍에 참석해야 한다.",
+  "ko": "회계부의 모든 사람이 금요일 워크숍에 참석해야 한다.",
   "meanings": {
    "need": "복수",
    "needs": "단수",
@@ -485,7 +485,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "adv",
-  "stem": "The list of finalists ____ been posted on the website.",
+  "stem": "The list of finalists for this year's design competition ____ been posted on the company website.",
   "choices": [
    "have",
    "has",
@@ -495,7 +495,7 @@
   "answer": 1,
   "clue": "진짜 주어 The list(단수)",
   "explanation": "of finalists는 수식어라 주어 The list에 맞춰 has예요.",
-  "ko": "결선 진출자 명단이 웹사이트에 게시되었다.",
+  "ko": "올해 디자인 대회 결선 진출자 명단이 회사 웹사이트에 게시되었다.",
   "meanings": {
    "have": "복수",
    "has": "단수",
@@ -509,7 +509,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "adv",
-  "stem": "Customers who ____ online receive a 10 percent discount.",
+  "stem": "Customers who ____ online through our mobile application receive a 10 percent discount on their first purchase.",
   "choices": [
    "order",
    "orders",
@@ -519,7 +519,7 @@
   "answer": 0,
   "clue": "관계절 동사는 선행사(Customers, 복수)에 맞춤",
   "explanation": "who의 선행사가 복수 Customers라 관계절 동사도 복수 order예요.",
-  "ko": "온라인으로 주문하는 고객은 10% 할인을 받는다.",
+  "ko": "모바일 앱으로 온라인 주문하는 고객은 첫 구매 시 10% 할인을 받는다.",
   "meanings": {
    "order": "복수",
    "orders": "단수",
@@ -533,7 +533,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "adv",
-  "stem": "Not only the CEO but also the board members ____ the proposal.",
+  "stem": "Not only the CEO but also the board members ____ the proposal to open a new factory in Vietnam.",
   "choices": [
    "supports",
    "support",
@@ -543,7 +543,7 @@
   "answer": 1,
   "clue": "not only A but also B → B에 맞춤",
   "explanation": "not only A but also B는 B(board members, 복수)에 수를 맞춰요.",
-  "ko": "CEO뿐 아니라 이사들도 그 제안을 지지한다.",
+  "ko": "CEO뿐 아니라 이사들도 베트남에 새 공장을 여는 제안을 지지한다.",
   "meanings": {
    "supports": "단수",
    "support": "복수",
@@ -557,7 +557,7 @@
   "module": "grammar",
   "type": "agree",
   "level": "adv",
-  "stem": "Twenty dollars ____ a reasonable price for this service.",
+  "stem": "For a full day of professional cleaning, twenty dollars ____ a reasonable price according to most customers.",
   "choices": [
    "are",
    "is",
@@ -567,7 +567,7 @@
   "answer": 1,
   "clue": "금액·기간·거리 한 덩어리 → 단수",
   "explanation": "Twenty dollars처럼 금액을 한 덩어리로 볼 때는 단수 취급해요.",
-  "ko": "20달러는 이 서비스에 합리적인 가격이다.",
+  "ko": "대부분의 고객에 따르면 하루 종일 전문 청소를 받는 데 20달러는 합리적인 가격이다.",
   "meanings": {
    "are": "복수",
    "is": "단수",
@@ -581,22 +581,22 @@
   "module": "grammar",
   "type": "voice",
   "level": "basic",
-  "stem": "The meeting room ____ every morning.",
+  "stem": "The meeting room on the third floor ____ every morning.",
   "choices": [
    "cleans",
    "is cleaned",
    "cleaning",
-   "has cleaning"
+   "has cleaned"
   ],
   "answer": 1,
   "clue": "방은 '청소되는' 대상 → 수동태",
   "explanation": "주어(meeting room)가 동작을 받으니 be + p.p. 수동태예요.",
-  "ko": "회의실은 매일 아침 청소된다.",
+  "ko": "3층 회의실은 매일 아침 청소된다.",
   "meanings": {
    "cleans": "능동",
    "is cleaned": "수동",
    "cleaning": "-ing형",
-   "has cleaning": "틀린 형태"
+   "has cleaned": "능동 완료(목적어 필요)"
   }
  },
  {
@@ -605,7 +605,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "basic",
-  "stem": "The manager ____ the new schedule yesterday.",
+  "stem": "The manager ____ the new schedule at the meeting yesterday.",
   "choices": [
    "announced",
    "was announced",
@@ -615,7 +615,7 @@
   "answer": 0,
   "clue": "뒤에 목적어(the new schedule) → 능동",
   "explanation": "동사 뒤에 목적어가 있으면 능동태예요.",
-  "ko": "매니저가 어제 새 일정을 발표했다.",
+  "ko": "매니저가 어제 회의에서 새 일정을 발표했다.",
   "meanings": {
    "announced": "능동 과거",
    "was announced": "수동",
@@ -629,7 +629,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "basic",
-  "stem": "All packages will ____ by Friday.",
+  "stem": "All packages ordered this week will ____ by Friday.",
   "choices": [
    "deliver",
    "be delivered",
@@ -639,7 +639,7 @@
   "answer": 1,
   "clue": "will + be + p.p. (미래 수동)",
   "explanation": "소포는 '배달되는' 것이라 수동이고, 조동사 뒤라 be delivered예요.",
-  "ko": "모든 소포는 금요일까지 배달될 것이다.",
+  "ko": "이번 주에 주문한 소포는 모두 금요일까지 배달될 것이다.",
   "meanings": {
    "deliver": "능동 원형",
    "be delivered": "수동 원형",
@@ -653,7 +653,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "basic",
-  "stem": "This bridge ____ in 1990.",
+  "stem": "This old stone bridge over the Han River ____ in 1990.",
   "choices": [
    "built",
    "was built",
@@ -663,7 +663,7 @@
   "answer": 1,
   "clue": "다리는 '지어진' 대상 + 과거",
   "explanation": "주어가 동작을 받고 과거 시점(1990)이니 was built예요.",
-  "ko": "이 다리는 1990년에 지어졌다.",
+  "ko": "한강 위의 이 오래된 돌다리는 1990년에 지어졌다.",
   "meanings": {
    "built": "능동 과거",
    "was built": "수동 과거",
@@ -677,7 +677,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "mid",
-  "stem": "The results of the survey ____ next week.",
+  "stem": "The results of the annual customer satisfaction survey ____ on our website next week.",
   "choices": [
    "will announce",
    "will be announced",
@@ -687,7 +687,7 @@
   "answer": 1,
   "clue": "결과는 '발표되는' 대상 + 미래",
   "explanation": "결과가 스스로 발표하지 않으니 수동이고, next week라 will be announced예요.",
-  "ko": "설문 결과는 다음 주에 발표될 것이다.",
+  "ko": "연례 고객 만족도 조사 결과는 다음 주 웹사이트에 발표될 것이다.",
   "meanings": {
    "will announce": "능동 미래",
    "will be announced": "수동 미래",
@@ -701,7 +701,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "mid",
-  "stem": "The proposal is currently ____ by the committee.",
+  "stem": "The proposal for the new community center is currently ____ by the committee.",
   "choices": [
    "reviewing",
    "being reviewed",
@@ -711,7 +711,7 @@
   "answer": 1,
   "clue": "is being + p.p. (진행 수동)",
   "explanation": "지금 검토되고 있는 중이니 진행 수동(be being p.p.)이에요.",
-  "ko": "그 제안은 현재 위원회에서 검토 중이다.",
+  "ko": "새 주민 센터 제안서는 현재 위원회에서 검토 중이다.",
   "meanings": {
    "reviewing": "능동 진행",
    "being reviewed": "수동 진행",
@@ -725,7 +725,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "mid",
-  "stem": "Employees are ____ to wear their ID badges at all times.",
+  "stem": "For security reasons, employees are ____ to wear their ID badges at all times.",
   "choices": [
    "require",
    "required",
@@ -735,7 +735,7 @@
   "answer": 1,
   "clue": "be required to (~하도록 요구되다)",
   "explanation": "be required to do는 공지문 빈출 수동 표현이에요.",
-  "ko": "직원들은 항상 사원증을 착용해야 한다.",
+  "ko": "보안상의 이유로 직원들은 항상 사원증을 착용해야 한다.",
   "meanings": {
    "require": "원형",
    "required": "과거분사(수동)",
@@ -749,7 +749,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "mid",
-  "stem": "The new software has ____ on all office computers.",
+  "stem": "The new accounting software has ____ on all office computers this week.",
   "choices": [
    "installed",
    "been installed",
@@ -759,7 +759,7 @@
   "answer": 1,
   "clue": "has been + p.p. (완료 수동)",
   "explanation": "소프트웨어는 '설치된' 대상이고 현재완료라 has been installed예요.",
-  "ko": "새 소프트웨어가 모든 사무실 컴퓨터에 설치되었다.",
+  "ko": "이번 주에 새 회계 소프트웨어가 모든 사무실 컴퓨터에 설치되었다.",
   "meanings": {
    "installed": "능동 완료",
    "been installed": "완료 수동",
@@ -773,7 +773,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "adv",
-  "stem": "Ms. Kang was ____ the Employee of the Year award.",
+  "stem": "At the annual banquet held last Friday, Ms. Kang was ____ the Employee of the Year award.",
   "choices": [
    "giving",
    "given",
@@ -783,7 +783,7 @@
   "answer": 1,
   "clue": "4형식 수동: be given + 목적어",
   "explanation": "give A B(A에게 B를 주다)의 A가 주어로 오면 be given B 형태로 목적어가 남아요.",
-  "ko": "강 씨는 올해의 직원상을 받았다.",
+  "ko": "지난 금요일 열린 연례 연회에서 강 씨는 올해의 직원상을 받았다.",
   "meanings": {
    "giving": "-ing형",
    "given": "과거분사(수동)",
@@ -797,7 +797,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "adv",
-  "stem": "The factory is expected ____ production next month.",
+  "stem": "After two weeks of repairs, the factory is expected ____ production at the beginning of next month.",
   "choices": [
    "resuming",
    "to resume",
@@ -807,7 +807,7 @@
   "answer": 1,
   "clue": "be expected to + 동사원형, 뒤에 목적어(production)",
   "explanation": "공장이 생산을 '재개하는' 능동이고 목적어가 있으니 to resume이에요.",
-  "ko": "그 공장은 다음 달 생산을 재개할 것으로 예상된다.",
+  "ko": "2주간의 수리를 마친 그 공장은 다음 달 초 생산을 재개할 것으로 예상된다.",
   "meanings": {
    "resuming": "-ing형",
    "to resume": "to부정사 능동",
@@ -821,7 +821,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "adv",
-  "stem": "The conference room must ____ at least a week in advance.",
+  "stem": "Because demand is high during the conference season, the meeting room must ____ at least a week in advance.",
   "choices": [
    "reserve",
    "be reserved",
@@ -831,7 +831,7 @@
   "answer": 1,
   "clue": "조동사 + be + p.p., 뒤에 목적어 없음",
   "explanation": "회의실은 '예약되는' 대상이고 목적어가 없으니 must be reserved예요.",
-  "ko": "회의실은 최소 일주일 전에 예약해야 한다.",
+  "ko": "학회 시즌에는 수요가 많아서 회의실은 최소 일주일 전에 예약해야 한다.",
   "meanings": {
    "reserve": "능동",
    "be reserved": "수동",
@@ -845,7 +845,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "adv",
-  "stem": "The CEO's speech was so ____ that it received a standing ovation.",
+  "stem": "The CEO's speech at the company's 50th anniversary event was so ____ that it received a standing ovation.",
   "choices": [
    "inspiring",
    "inspired",
@@ -855,7 +855,7 @@
   "answer": 0,
   "clue": "사물이 감정을 '일으키는' → -ing",
   "explanation": "연설이 감동을 '주는' 것이라 능동 의미 -ing예요. 감정을 '느끼는' 사람이 주어면 -ed예요.",
-  "ko": "CEO의 연설은 매우 감동적이어서 기립 박수를 받았다.",
+  "ko": "회사 창립 50주년 행사에서 CEO의 연설은 매우 감동적이어서 기립 박수를 받았다.",
   "meanings": {
    "inspiring": "감동을 주는",
    "inspired": "감동을 받은",
@@ -869,7 +869,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "basic",
-  "stem": "Mr. Cho decided ____ the job offer.",
+  "stem": "After a long discussion, Mr. Cho decided ____ the job offer.",
   "choices": [
    "accept",
    "to accept",
@@ -879,7 +879,7 @@
   "answer": 1,
   "clue": "decide + to부정사",
   "explanation": "decide, plan, want, hope, agree는 to부정사를 목적어로 써요.",
-  "ko": "조 씨는 일자리 제안을 받아들이기로 했다.",
+  "ko": "오랜 고민 끝에 조 씨는 일자리 제안을 받아들이기로 했다.",
   "meanings": {
    "accept": "원형",
    "to accept": "to부정사",
@@ -893,7 +893,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "basic",
-  "stem": "Please avoid ____ your phone during the meeting.",
+  "stem": "Please avoid ____ your phone during the staff meeting.",
   "choices": [
    "use",
    "to use",
@@ -903,7 +903,7 @@
   "answer": 2,
   "clue": "avoid + 동명사",
   "explanation": "avoid, enjoy, finish, consider, suggest는 동명사(-ing)를 목적어로 써요.",
-  "ko": "회의 중에는 휴대폰 사용을 피해 주세요.",
+  "ko": "직원 회의 중에는 휴대폰 사용을 피해 주세요.",
   "meanings": {
    "use": "원형",
    "to use": "to부정사",
@@ -917,7 +917,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "basic",
-  "stem": "Thank you for ____ our store.",
+  "stem": "Thank you for ____ our store during the holiday sale.",
   "choices": [
    "visit",
    "to visit",
@@ -927,7 +927,7 @@
   "answer": 2,
   "clue": "전치사(for) + 동명사",
   "explanation": "전치사 뒤에는 동명사가 와요.",
-  "ko": "저희 가게를 방문해 주셔서 감사합니다.",
+  "ko": "연휴 할인 기간에 저희 가게를 방문해 주셔서 감사합니다.",
   "meanings": {
    "visit": "원형",
    "to visit": "to부정사",
@@ -965,7 +965,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "mid",
-  "stem": "The manager suggested ____ the deadline by one week.",
+  "stem": "To give the team more time, the manager suggested ____ the deadline by one week.",
   "choices": [
    "extend",
    "to extend",
@@ -975,7 +975,7 @@
   "answer": 2,
   "clue": "suggest + 동명사",
   "explanation": "suggest는 to부정사가 아니라 동명사를 써요.",
-  "ko": "매니저는 마감일을 일주일 연장하자고 제안했다.",
+  "ko": "팀에 시간을 더 주기 위해 매니저는 마감일을 일주일 연장하자고 제안했다.",
   "meanings": {
    "extend": "원형",
    "to extend": "to부정사",
@@ -989,7 +989,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "mid",
-  "stem": "We look forward to ____ from you soon.",
+  "stem": "Thank you for your application, and we look forward to ____ from you soon.",
   "choices": [
    "hear",
    "hearing",
@@ -999,7 +999,7 @@
   "answer": 1,
   "clue": "look forward to + 동명사 (to는 전치사)",
   "explanation": "look forward to의 to는 전치사라 동명사가 와요.",
-  "ko": "곧 소식 듣기를 기대합니다.",
+  "ko": "지원해 주셔서 감사하며 곧 소식 듣기를 기대합니다.",
   "meanings": {
    "hear": "원형",
    "hearing": "동명사",
@@ -1013,7 +1013,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "mid",
-  "stem": "The new system allows employees ____ from home.",
+  "stem": "The new scheduling system allows employees ____ from home two days a week.",
   "choices": [
    "work",
    "to work",
@@ -1023,7 +1023,7 @@
   "answer": 1,
   "clue": "allow + 목적어 + to부정사",
   "explanation": "allow, enable, encourage, require는 목적어 뒤에 to부정사를 써요.",
-  "ko": "새 시스템 덕분에 직원들은 재택근무를 할 수 있다.",
+  "ko": "새 일정 시스템 덕분에 직원들은 일주일에 이틀 재택근무를 할 수 있다.",
   "meanings": {
    "work": "원형",
    "to work": "to부정사",
@@ -1037,7 +1037,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "mid",
-  "stem": "Ms. Ryu is responsible for ____ the annual budget.",
+  "stem": "In addition to her other duties, Ms. Ryu is responsible for ____ the annual budget.",
   "choices": [
    "prepare",
    "to prepare",
@@ -1047,7 +1047,7 @@
   "answer": 2,
   "clue": "be responsible for + 동명사",
   "explanation": "for가 전치사라 동명사예요.",
-  "ko": "류 씨는 연간 예산 준비를 맡고 있다.",
+  "ko": "다른 업무와 더불어 류 씨는 연간 예산 준비를 맡고 있다.",
   "meanings": {
    "prepare": "원형",
    "to prepare": "to부정사",
@@ -1061,7 +1061,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "adv",
-  "stem": "The company is committed to ____ its carbon emissions.",
+  "stem": "As stated in its sustainability report, the company is committed to ____ its carbon emissions by 2030.",
   "choices": [
    "reduce",
    "reducing",
@@ -1071,7 +1071,7 @@
   "answer": 1,
   "clue": "be committed to + 동명사",
   "explanation": "be committed/dedicated to, be used to의 to는 전치사라 동명사예요.",
-  "ko": "그 회사는 탄소 배출을 줄이는 데 전념하고 있다.",
+  "ko": "지속 가능성 보고서에 밝힌 대로 그 회사는 2030년까지 탄소 배출을 줄이는 데 전념하고 있다.",
   "meanings": {
    "reduce": "원형",
    "reducing": "동명사",
@@ -1085,7 +1085,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "adv",
-  "stem": "Visitors are asked to refrain from ____ photographs inside the museum.",
+  "stem": "To protect the artwork, visitors are asked to refrain from ____ photographs inside the museum.",
   "choices": [
    "take",
    "to take",
@@ -1095,7 +1095,7 @@
   "answer": 2,
   "clue": "refrain from + 동명사",
   "explanation": "from이 전치사라 동명사예요.",
-  "ko": "방문객은 박물관 내부에서 사진 촬영을 삼가 주시기 바랍니다.",
+  "ko": "작품 보호를 위해 방문객은 박물관 내부에서 사진 촬영을 삼가 주시기 바랍니다.",
   "meanings": {
    "take": "원형",
    "to take": "to부정사",
@@ -1109,7 +1109,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "adv",
-  "stem": "In order ____ costs, the firm outsourced its delivery service.",
+  "stem": "In order ____ operating costs, the firm decided last year to outsource its delivery service.",
   "choices": [
    "cut",
    "to cut",
@@ -1119,7 +1119,7 @@
   "answer": 1,
   "clue": "in order to + 동사원형 (~하기 위해)",
   "explanation": "in order to는 목적을 나타내는 고정 표현이에요.",
-  "ko": "비용을 줄이기 위해 그 회사는 배송 업무를 외주로 돌렸다.",
+  "ko": "운영비를 줄이기 위해 그 회사는 작년에 배송 업무를 외주로 돌리기로 했다.",
   "meanings": {
    "cut": "원형",
    "to cut": "to부정사",
@@ -1133,7 +1133,7 @@
   "module": "grammar",
   "type": "verbal",
   "level": "adv",
-  "stem": "The manager had the technician ____ the printer.",
+  "stem": "When the printer on the third floor stopped working, the manager had the technician ____ it.",
   "choices": [
    "repair",
    "to repair",
@@ -1143,7 +1143,7 @@
   "answer": 0,
   "clue": "사역동사 have + 사람 + 동사원형",
   "explanation": "have/make/let + 목적어(사람) + 동사원형이에요. 사물이면 have the printer repaired처럼 p.p.예요.",
-  "ko": "매니저는 기술자에게 프린터를 고치게 했다.",
+  "ko": "3층 프린터가 작동을 멈추자 매니저는 기술자에게 그것을 고치게 했다.",
   "meanings": {
    "repair": "원형",
    "to repair": "to부정사",
@@ -1157,7 +1157,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "basic",
-  "stem": "Please read the ____ instructions carefully.",
+  "stem": "Please read the ____ instructions carefully before you begin.",
   "choices": [
    "attach",
    "attached",
@@ -1167,7 +1167,7 @@
   "answer": 1,
   "clue": "지시 사항은 '첨부된' 것 → 과거분사",
   "explanation": "명사가 동작을 받는 관계면 과거분사(-ed)로 꾸며요.",
-  "ko": "첨부된 설명서를 꼼꼼히 읽어 주세요.",
+  "ko": "시작하기 전에 첨부된 설명서를 꼼꼼히 읽어 주세요.",
   "meanings": {
    "attach": "동사",
    "attached": "첨부된",
@@ -1205,7 +1205,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "basic",
-  "stem": "We received many ____ customer reviews.",
+  "stem": "We received many ____ customer reviews after the event.",
   "choices": [
    "satisfy",
    "satisfying",
@@ -1215,7 +1215,7 @@
   "answer": 2,
   "clue": "고객이 '만족한' → 과거분사",
   "explanation": "사람이 감정을 느끼는 쪽이면 -ed예요. satisfied customer(만족한 고객)는 빈출 표현이에요.",
-  "ko": "우리는 만족한 고객의 후기를 많이 받았다.",
+  "ko": "행사 후 우리는 만족한 고객의 후기를 많이 받았다.",
   "meanings": {
    "satisfy": "동사",
    "satisfying": "만족스러운",
@@ -1229,7 +1229,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "basic",
-  "stem": "The ____ price includes tax.",
+  "stem": "The ____ price on our website already includes tax.",
   "choices": [
    "list",
    "listed",
@@ -1239,7 +1239,7 @@
   "answer": 1,
   "clue": "가격은 '표시된' 것 → 과거분사",
   "explanation": "listed price(표시 가격)처럼 동작을 받는 명사는 과거분사로 꾸며요.",
-  "ko": "표시 가격에는 세금이 포함되어 있다.",
+  "ko": "웹사이트의 표시 가격에는 이미 세금이 포함되어 있다.",
   "meanings": {
    "list": "목록/나열하다",
    "listed": "표시된",
@@ -1253,22 +1253,22 @@
   "module": "grammar",
   "type": "participle",
   "level": "mid",
-  "stem": "Applications ____ after May 1 will not be considered.",
+  "stem": "Applications for the design contest ____ after May 1 will not be considered.",
   "choices": [
    "submit",
    "submitting",
    "submitted",
-   "to submitting"
+   "submits"
   ],
   "answer": 2,
   "clue": "지원서는 '제출되는' 대상 → 과거분사 후치 수식",
   "explanation": "Applications (which are) submitted ~ 에서 관계사+be가 생략된 형태예요.",
-  "ko": "5월 1일 이후 제출된 지원서는 검토하지 않는다.",
+  "ko": "5월 1일 이후 제출된 디자인 공모전 지원서는 검토하지 않는다.",
   "meanings": {
    "submit": "동사",
    "submitting": "제출하는",
    "submitted": "제출된",
-   "to submitting": "틀린 형태"
+   "submits": "동사(3인칭)"
   }
  },
  {
@@ -1277,7 +1277,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "mid",
-  "stem": "Employees ____ to attend the seminar should register online.",
+  "stem": "Employees ____ to attend the leadership seminar should register online by Friday.",
   "choices": [
    "wish",
    "wishing",
@@ -1287,7 +1287,7 @@
   "answer": 1,
   "clue": "직원이 '원하는' 능동 → 현재분사",
   "explanation": "Employees (who are) wishing ~. 사람이 원하는 주체라 -ing예요.",
-  "ko": "세미나 참석을 원하는 직원은 온라인으로 등록해야 한다.",
+  "ko": "리더십 세미나 참석을 원하는 직원은 금요일까지 온라인으로 등록해야 한다.",
   "meanings": {
    "wish": "동사",
    "wishing": "원하는",
@@ -1301,7 +1301,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "mid",
-  "stem": "The results of the study were quite ____.",
+  "stem": "After two years of research, the results of the study were quite ____.",
   "choices": [
    "disappoint",
    "disappointing",
@@ -1311,7 +1311,7 @@
   "answer": 1,
   "clue": "결과가 실망을 '주는' → -ing",
   "explanation": "사물(results)이 감정을 일으키니 -ing예요.",
-  "ko": "연구 결과는 꽤 실망스러웠다.",
+  "ko": "2년간 연구했지만 연구 결과는 꽤 실망스러웠다.",
   "meanings": {
    "disappoint": "동사",
    "disappointing": "실망스러운",
@@ -1349,7 +1349,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "adv",
-  "stem": "____ the report, Ms. Gomez sent it to her supervisor.",
+  "stem": "____ the quarterly sales report, Ms. Gomez sent it to her supervisor for final approval.",
   "choices": [
    "Complete",
    "Completed",
@@ -1359,7 +1359,7 @@
   "answer": 2,
   "clue": "먼저 끝낸 동작 + 능동 → Having p.p.",
   "explanation": "보고서를 '끝낸' 것이 보낸 것보다 먼저이고 능동이라 완료 분사구문 Having completed예요.",
-  "ko": "보고서를 끝낸 뒤 고메즈 씨는 그것을 상사에게 보냈다.",
+  "ko": "분기 영업 보고서를 끝낸 뒤 고메즈 씨는 최종 승인을 위해 그것을 상사에게 보냈다.",
   "meanings": {
    "Complete": "원형",
    "Completed": "완성된(수동)",
@@ -1373,7 +1373,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "adv",
-  "stem": "When ____ about the delay, the spokesperson declined to comment.",
+  "stem": "When ____ about the delay in the product launch, the company spokesperson declined to comment.",
   "choices": [
    "asking",
    "asked",
@@ -1383,7 +1383,7 @@
   "answer": 1,
   "clue": "접속사 + 분사: 대변인이 '질문받은' → asked",
   "explanation": "When (he was) asked ~. 대변인이 질문을 받는 쪽이라 과거분사예요.",
-  "ko": "지연에 대해 질문을 받았을 때 대변인은 언급을 거부했다.",
+  "ko": "제품 출시 지연에 대해 질문을 받았을 때 회사 대변인은 언급을 거부했다.",
   "meanings": {
    "asking": "묻는",
    "asked": "질문받은",
@@ -1397,22 +1397,22 @@
   "module": "grammar",
   "type": "participle",
   "level": "adv",
-  "stem": "The number of tourists visiting the region has risen, ____ local businesses.",
+  "stem": "The number of tourists visiting the coastal region has risen sharply this year, ____ local businesses.",
   "choices": [
    "benefit",
    "benefiting",
    "benefited",
-   "to benefited"
+   "benefits"
   ],
   "answer": 1,
   "clue": "결과 분사구문: ~해서 (그 결과) …에 도움이 되다 → -ing",
   "explanation": "앞 절의 결과로 '지역 업체에 도움이 되는' 능동이고 뒤에 목적어가 있어 -ing예요.",
-  "ko": "그 지역 방문객 수가 늘어 지역 업체들이 혜택을 보고 있다.",
+  "ko": "올해 해안 지역 방문객 수가 크게 늘어 지역 업체들이 혜택을 보고 있다.",
   "meanings": {
    "benefit": "원형/혜택",
    "benefiting": "혜택을 주는",
    "benefited": "혜택을 받은",
-   "to benefited": "틀린 형태"
+   "benefits": "동사(3인칭)/혜택들"
   }
  },
  {
@@ -1421,7 +1421,7 @@
   "module": "grammar",
   "type": "participle",
   "level": "adv",
-  "stem": "All participants must complete the form ____ to the registration packet.",
+  "stem": "All participants in the workshop must complete the form ____ to the registration packet before Friday.",
   "choices": [
    "attach",
    "attaching",
@@ -1431,7 +1431,7 @@
   "answer": 2,
   "clue": "the form (which is) attached to ~",
   "explanation": "서식은 '첨부된' 대상이라 과거분사가 뒤에서 꾸며요.",
-  "ko": "모든 참가자는 등록 꾸러미에 첨부된 서식을 작성해야 한다.",
+  "ko": "워크숍 참가자는 모두 금요일 전에 등록 꾸러미에 첨부된 서식을 작성해야 한다.",
   "meanings": {
    "attach": "동사",
    "attaching": "첨부하는",
@@ -1445,7 +1445,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "basic",
-  "stem": "The woman ____ called you is my manager.",
+  "stem": "The woman ____ called you this morning is my manager.",
   "choices": [
    "who",
    "which",
@@ -1455,7 +1455,7 @@
   "answer": 0,
   "clue": "사람 선행사 + 동사(called) → who (주격)",
   "explanation": "사람이 선행사이고 뒤에 주어가 빠져 있으니 주격 who예요.",
-  "ko": "당신에게 전화한 여성은 제 매니저예요.",
+  "ko": "오늘 아침 당신에게 전화한 여성은 제 매니저예요.",
   "meanings": {
    "who": "주격(사람)",
    "which": "사물",
@@ -1469,7 +1469,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "basic",
-  "stem": "This is the report ____ I wrote yesterday.",
+  "stem": "This is the report ____ I wrote for the meeting yesterday.",
   "choices": [
    "who",
    "which",
@@ -1479,7 +1479,7 @@
   "answer": 1,
   "clue": "사물 선행사 + 목적어 빠짐 → which",
   "explanation": "report는 사물이고 wrote의 목적어가 빠져 있으니 which(또는 that)예요.",
-  "ko": "이것이 제가 어제 쓴 보고서예요.",
+  "ko": "이것이 제가 어제 회의를 위해 쓴 보고서예요.",
   "meanings": {
    "who": "사람",
    "which": "사물",
@@ -1493,7 +1493,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "basic",
-  "stem": "We need someone ____ can speak Chinese.",
+  "stem": "We need someone ____ can speak Chinese with our clients.",
   "choices": [
    "who",
    "which",
@@ -1503,7 +1503,7 @@
   "answer": 0,
   "clue": "사람(someone) + 주어 빠짐 → who",
   "explanation": "someone은 사람이고 뒤에 주어가 없으니 who예요.",
-  "ko": "중국어를 할 수 있는 사람이 필요하다.",
+  "ko": "고객과 중국어로 이야기할 수 있는 사람이 필요하다.",
   "meanings": {
    "who": "주격(사람)",
    "which": "사물",
@@ -1517,7 +1517,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "basic",
-  "stem": "This is the office ____ Mr. Kim works.",
+  "stem": "This is the office ____ Mr. Kim works on weekdays.",
   "choices": [
    "which",
    "where",
@@ -1527,7 +1527,7 @@
   "answer": 1,
   "clue": "장소 선행사 + 완전한 문장 → where",
   "explanation": "Mr. Kim works는 빠진 성분이 없는 완전한 문장이라 관계부사 where예요.",
-  "ko": "여기가 김 씨가 일하는 사무실이다.",
+  "ko": "여기가 김 씨가 평일에 일하는 사무실이다.",
   "meanings": {
    "which": "관계대명사(불완전 문장)",
    "where": "관계부사(장소)",
@@ -1541,7 +1541,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "mid",
-  "stem": "The client ____ order was delayed received a refund.",
+  "stem": "The client ____ order was delayed for a week received a full refund.",
   "choices": [
    "who",
    "whose",
@@ -1551,7 +1551,7 @@
   "answer": 1,
   "clue": "선행사의 ~ (client's order) → whose",
   "explanation": "뒤에 명사(order)가 바로 오고 '고객의 주문'이라는 뜻이라 소유격 whose예요.",
-  "ko": "주문이 지연된 고객은 환불을 받았다.",
+  "ko": "주문이 일주일 지연된 고객은 전액 환불을 받았다.",
   "meanings": {
    "who": "주격",
    "whose": "소유격",
@@ -1565,7 +1565,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "mid",
-  "stem": "____ the customers want most is faster delivery.",
+  "stem": "____ the customers want most, according to the survey, is faster delivery.",
   "choices": [
    "What",
    "That",
@@ -1575,7 +1575,7 @@
   "answer": 0,
   "clue": "선행사 없음 + 불완전 문장 → What",
   "explanation": "앞에 선행사가 없고 want의 목적어가 빠져 있으니 what(~하는 것)이에요.",
-  "ko": "고객이 가장 원하는 것은 더 빠른 배송이다.",
+  "ko": "설문에 따르면 고객이 가장 원하는 것은 더 빠른 배송이다.",
   "meanings": {
    "What": "~하는 것",
    "That": "선행사 필요",
@@ -1589,7 +1589,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "mid",
-  "stem": "Ms. Ito, ____ joined the company last year, was promoted.",
+  "stem": "Ms. Ito, ____ joined the company last year, was promoted to assistant manager.",
   "choices": [
    "that",
    "who",
@@ -1599,7 +1599,7 @@
   "answer": 1,
   "clue": "콤마(,) 뒤 관계사 → that 불가",
   "explanation": "계속적 용법(콤마 뒤)에는 that을 못 써요. 사람 + 주격이라 who예요.",
-  "ko": "작년에 입사한 이토 씨는 승진했다.",
+  "ko": "작년에 입사한 이토 씨는 대리로 승진했다.",
   "meanings": {
    "that": "콤마 뒤 불가",
    "who": "주격(사람)",
@@ -1613,7 +1613,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "mid",
-  "stem": "The hotel ____ we stayed at was near the station.",
+  "stem": "The hotel ____ we stayed at during the conference was near the station.",
   "choices": [
    "where",
    "which",
@@ -1623,7 +1623,7 @@
   "answer": 1,
   "clue": "전치사 at이 뒤에 남음 → which",
   "explanation": "stayed at의 목적어가 빠져 있어 관계대명사 which예요. where를 쓰면 at을 빼야 해요.",
-  "ko": "우리가 묵은 호텔은 역 근처였다.",
+  "ko": "학회 기간에 우리가 묵은 호텔은 역 근처였다.",
   "meanings": {
    "where": "관계부사(전치사 X)",
    "which": "관계대명사",
@@ -1637,7 +1637,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "adv",
-  "stem": "The committee, most of ____ are experts, approved the plan.",
+  "stem": "The review committee, most of ____ are experts in urban planning, approved the plan for the new park.",
   "choices": [
    "who",
    "whom",
@@ -1647,7 +1647,7 @@
   "answer": 1,
   "clue": "전치사(of) + 사람 → whom",
   "explanation": "most of 뒤 목적격 자리이고 사람이라 whom이에요.",
-  "ko": "대부분이 전문가인 위원회가 그 계획을 승인했다.",
+  "ko": "대부분이 도시 계획 전문가인 검토 위원회가 새 공원 계획을 승인했다.",
   "meanings": {
    "who": "주격",
    "whom": "목적격(사람)",
@@ -1661,7 +1661,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "adv",
-  "stem": "The day ____ the new office opens has not been decided.",
+  "stem": "The day ____ the new branch office in Daejeon officially opens has not been decided yet.",
   "choices": [
    "which",
    "when",
@@ -1671,7 +1671,7 @@
   "answer": 1,
   "clue": "시간 선행사 + 완전한 문장 → when",
   "explanation": "the new office opens는 완전한 문장이고 선행사가 시간(day)이라 when이에요.",
-  "ko": "새 사무실을 여는 날은 아직 정해지지 않았다.",
+  "ko": "대전 새 지점이 공식적으로 문을 여는 날은 아직 정해지지 않았다.",
   "meanings": {
    "which": "불완전 문장",
    "when": "관계부사(시간)",
@@ -1685,7 +1685,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "adv",
-  "stem": "Please contact the department ____ handles customer complaints.",
+  "stem": "If you have a problem with your order, please contact the department ____ handles customer complaints.",
   "choices": [
    "what",
    "that",
@@ -1695,7 +1695,7 @@
   "answer": 1,
   "clue": "사물 선행사 + 주어 빠짐 → that/which",
   "explanation": "handles의 주어가 빠져 있어 주격 관계대명사 that이에요.",
-  "ko": "고객 불만을 처리하는 부서에 연락하세요.",
+  "ko": "주문에 문제가 있으면 고객 불만을 처리하는 부서에 연락하세요.",
   "meanings": {
    "what": "선행사 포함",
    "that": "주격 관계대명사",
@@ -1709,7 +1709,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "adv",
-  "stem": "____ wishes to attend the dinner should sign up by Friday.",
+  "stem": "____ wishes to attend the retirement dinner for Mr. Han should sign up at the front desk by Friday.",
   "choices": [
    "Whoever",
    "Whatever",
@@ -1719,7 +1719,7 @@
   "answer": 0,
   "clue": "선행사 없이 주어 자리, 사람 → Whoever",
   "explanation": "Whoever(~하는 사람은 누구든)는 스스로 명사절 주어가 돼요.",
-  "ko": "만찬에 참석하고 싶은 사람은 누구든 금요일까지 신청해야 한다.",
+  "ko": "한 씨 퇴임 만찬에 참석하고 싶은 사람은 누구든 금요일까지 안내 데스크에서 신청해야 한다.",
   "meanings": {
    "Whoever": "~하는 누구든",
    "Whatever": "~하는 무엇이든",
@@ -1757,7 +1757,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "basic",
-  "stem": "The store was closed ____ the holiday.",
+  "stem": "The store on Main Street was closed ____ the holiday.",
   "choices": [
    "because",
    "because of",
@@ -1767,7 +1767,7 @@
   "answer": 1,
   "clue": "뒤에 명사(the holiday) → 전치사",
   "explanation": "명사구가 오면 전치사 because of예요.",
-  "ko": "휴일 때문에 가게가 문을 닫았다.",
+  "ko": "메인 스트리트의 가게는 휴일 때문에 문을 닫았다.",
   "meanings": {
    "because": "접속사",
    "because of": "전치사",
@@ -1829,7 +1829,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "mid",
-  "stem": "____ the high cost, the project was approved.",
+  "stem": "____ the high cost of building materials this year, the construction project was approved.",
   "choices": [
    "Although",
    "Despite",
@@ -1839,7 +1839,7 @@
   "answer": 1,
   "clue": "뒤에 명사(the high cost) → despite",
   "explanation": "명사가 오면 전치사 despite(~에도 불구하고)예요.",
-  "ko": "높은 비용에도 불구하고 그 프로젝트는 승인되었다.",
+  "ko": "올해 높은 건축 자재비에도 불구하고 건설 프로젝트는 승인되었다.",
   "meanings": {
    "Although": "접속사",
    "Despite": "전치사",
@@ -1853,7 +1853,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "mid",
-  "stem": "You will not receive a refund ____ you have the receipt.",
+  "stem": "According to store policy, you will not receive a refund ____ you have the receipt.",
   "choices": [
    "unless",
    "if",
@@ -1863,7 +1863,7 @@
   "answer": 0,
   "clue": "~하지 않으면 → unless",
   "explanation": "영수증이 '없으면' 환불을 못 받는다는 뜻이라 unless(= if not)예요.",
-  "ko": "영수증이 없으면 환불을 받을 수 없다.",
+  "ko": "가게 정책상 영수증이 없으면 환불을 받을 수 없다.",
   "meanings": {
    "unless": "~하지 않으면",
    "if": "~하면",
@@ -1877,7 +1877,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "mid",
-  "stem": "Both the manager ____ the staff agreed to the plan.",
+  "stem": "Both the manager ____ the staff agreed to the plan for the new office.",
   "choices": [
    "and",
    "or",
@@ -1887,7 +1887,7 @@
   "answer": 0,
   "clue": "both A and B (짝 접속사)",
   "explanation": "both는 and와 짝을 이뤄요. either-or, neither-nor, not only-but also도 같이 외워요.",
-  "ko": "매니저와 직원 모두 그 계획에 동의했다.",
+  "ko": "매니저와 직원 모두 새 사무실 계획에 동의했다.",
   "meanings": {
    "and": "both와 짝",
    "or": "either와 짝",
@@ -1901,7 +1901,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "mid",
-  "stem": "The flight was delayed; ____, we missed our connection.",
+  "stem": "Our flight from Chicago was delayed; ____, we missed our connection to Boston.",
   "choices": [
    "as a result",
    "because",
@@ -1911,7 +1911,7 @@
   "answer": 0,
   "clue": "세미콜론 뒤 연결 부사 → as a result",
   "explanation": "두 문장을 의미로 잇는 연결 부사 자리예요. because·although는 접속사, despite는 전치사라 못 와요.",
-  "ko": "항공편이 지연되었고 그 결과 우리는 연결편을 놓쳤다.",
+  "ko": "시카고발 항공편이 지연되었고, 그 결과 보스턴행 연결편을 놓쳤다.",
   "meanings": {
    "as a result": "그 결과(연결 부사)",
    "because": "접속사",
@@ -1925,7 +1925,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "adv",
-  "stem": "____ the contract is signed, work can begin immediately.",
+  "stem": "____ the contract with the new supplier is signed, work on the project can begin immediately.",
   "choices": [
    "Once",
    "During",
@@ -1935,7 +1935,7 @@
   "answer": 0,
   "clue": "뒤에 주어+동사 → 접속사 Once",
   "explanation": "once(일단 ~하면)는 접속사예요. during, upon, following은 전치사라 명사가 와요.",
-  "ko": "계약서에 서명하면 바로 작업을 시작할 수 있다.",
+  "ko": "새 공급업체와 계약서에 서명하면 프로젝트 작업을 바로 시작할 수 있다.",
   "meanings": {
    "Once": "접속사(일단 ~하면)",
    "During": "전치사",
@@ -1949,7 +1949,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "adv",
-  "stem": "Bring an umbrella ____ it rains this afternoon.",
+  "stem": "According to the weather forecast, you should bring an umbrella ____ it rains this afternoon.",
   "choices": [
    "in case",
    "in case of",
@@ -1959,7 +1959,7 @@
   "answer": 0,
   "clue": "~할 경우에 대비해 + 절 → in case",
   "explanation": "뒤에 절(it rains)이 오면 in case, 명사가 오면 in case of예요.",
-  "ko": "오후에 비가 올 경우를 대비해 우산을 가져가세요.",
+  "ko": "일기 예보로 보아 오후에 비가 올 경우를 대비해 우산을 가져가는 게 좋다.",
   "meanings": {
    "in case": "~할 경우에 대비해(+절)",
    "in case of": "~의 경우(+명사)",
@@ -1973,7 +1973,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "adv",
-  "stem": "____ sales have increased, profits have remained flat.",
+  "stem": "____ sales of our main product have increased this year, profits have remained flat due to higher costs.",
   "choices": [
    "Whereas",
    "Because",
@@ -1983,7 +1983,7 @@
   "answer": 0,
   "clue": "앞뒤가 대조 → Whereas",
   "explanation": "매출은 늘었는데 이익은 그대로라는 대조라서 whereas(반면에)예요.",
-  "ko": "매출은 늘어난 반면 이익은 제자리였다.",
+  "ko": "올해 주력 제품 매출은 늘어난 반면 비용 상승으로 이익은 제자리였다.",
   "meanings": {
    "Whereas": "반면에",
    "Because": "~때문에",
@@ -1997,7 +1997,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "adv",
-  "stem": "The seminar will be rescheduled ____ enough people register.",
+  "stem": "The financial planning seminar scheduled for next Thursday will be rescheduled ____ enough people register.",
   "choices": [
    "unless",
    "whether",
@@ -2007,7 +2007,7 @@
   "answer": 0,
   "clue": "충분히 등록하지 '않으면' 일정 변경 → unless",
   "explanation": "뒤에 절이 오고 '~하지 않으면'이라는 조건이라 unless예요.",
-  "ko": "충분한 인원이 등록하지 않으면 세미나 일정이 바뀔 것이다.",
+  "ko": "다음 주 목요일로 예정된 재무 설계 세미나는 충분한 인원이 등록하지 않으면 일정이 바뀔 것이다.",
   "meanings": {
    "unless": "~하지 않으면",
    "whether": "~인지",
@@ -2021,7 +2021,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "basic",
-  "stem": "Ms. Han finished the project by ____.",
+  "stem": "Ms. Han finished the entire project by ____ in two weeks.",
   "choices": [
    "she",
    "her",
@@ -2031,7 +2031,7 @@
   "answer": 3,
   "clue": "by oneself (혼자서)",
   "explanation": "by herself는 '혼자서'라는 뜻의 재귀대명사 표현이에요.",
-  "ko": "한 씨는 혼자서 프로젝트를 끝냈다.",
+  "ko": "한 씨는 2주 만에 혼자서 프로젝트 전체를 끝냈다.",
   "meanings": {
    "she": "주격",
    "her": "목적격/소유격",
@@ -2045,7 +2045,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "basic",
-  "stem": "Please send ____ the files by noon.",
+  "stem": "Please send ____ the sales files by noon tomorrow.",
   "choices": [
    "I",
    "me",
@@ -2055,7 +2055,7 @@
   "answer": 1,
   "clue": "동사(send) 뒤 사람 목적어 → 목적격",
   "explanation": "send 사람 사물 구조에서 사람 자리는 목적격 me예요.",
-  "ko": "정오까지 파일을 저에게 보내 주세요.",
+  "ko": "내일 정오까지 영업 파일을 저에게 보내 주세요.",
   "meanings": {
    "I": "주격",
    "me": "목적격",
@@ -2069,7 +2069,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "basic",
-  "stem": "The company changed ____ logo last year.",
+  "stem": "The company changed ____ logo and website last year.",
   "choices": [
    "it",
    "its",
@@ -2079,7 +2079,7 @@
   "answer": 1,
   "clue": "명사(logo) 앞 → 소유격 its",
   "explanation": "명사 앞에는 소유격이 와요. it's는 it is의 줄임말이에요.",
-  "ko": "그 회사는 작년에 로고를 바꿨다.",
+  "ko": "그 회사는 작년에 로고와 웹사이트를 바꿨다.",
   "meanings": {
    "it": "주격/목적격",
    "its": "소유격",
@@ -2117,7 +2117,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "mid",
-  "stem": "The interns introduced ____ to the team.",
+  "stem": "On their first day, the interns introduced ____ to the rest of the team.",
   "choices": [
    "them",
    "their",
@@ -2127,7 +2127,7 @@
   "answer": 2,
   "clue": "주어 = 목적어 → 재귀대명사",
   "explanation": "소개한 사람(interns)과 소개된 사람이 같으니 themselves예요.",
-  "ko": "인턴들은 팀에 자기소개를 했다.",
+  "ko": "첫날 인턴들은 나머지 팀원들에게 자기소개를 했다.",
   "meanings": {
    "them": "목적격",
    "their": "소유격",
@@ -2141,7 +2141,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "mid",
-  "stem": "Our prices are lower than ____ of our competitors.",
+  "stem": "Our prices for office furniture are lower than ____ of our competitors.",
   "choices": [
    "that",
    "those",
@@ -2151,7 +2151,7 @@
   "answer": 1,
   "clue": "앞의 복수명사(prices) 반복 → those",
   "explanation": "비교에서 앞의 명사를 다시 받을 때 단수면 that, 복수면 those예요.",
-  "ko": "우리 가격은 경쟁사의 가격보다 낮다.",
+  "ko": "우리 사무용 가구 가격은 경쟁사의 가격보다 낮다.",
   "meanings": {
    "that": "단수 대신",
    "those": "복수 대신",
@@ -2165,7 +2165,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "mid",
-  "stem": "Of the two candidates, one has more experience than the ____.",
+  "stem": "Of the two candidates for the position, one has more experience than the ____.",
   "choices": [
    "other",
    "another",
@@ -2175,7 +2175,7 @@
   "answer": 0,
   "clue": "둘 중 하나는 one, 나머지 하나는 the other",
   "explanation": "두 개 중 나머지 하나는 the other예요. 빈칸 앞에 the가 있어요.",
-  "ko": "두 후보 중 한 명이 나머지 한 명보다 경험이 많다.",
+  "ko": "그 직책의 두 후보 중 한 명이 나머지 한 명보다 경험이 많다.",
   "meanings": {
    "other": "(the other) 나머지 하나",
    "another": "또 다른 하나",
@@ -2189,7 +2189,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "mid",
-  "stem": "Employees should keep ____ passwords confidential.",
+  "stem": "For security reasons, all employees should always keep ____ computer passwords confidential.",
   "choices": [
    "they",
    "their",
@@ -2199,7 +2199,7 @@
   "answer": 1,
   "clue": "명사(passwords) 앞 → 소유격",
   "explanation": "명사 앞에는 소유격 their가 와요.",
-  "ko": "직원들은 자기 비밀번호를 기밀로 유지해야 한다.",
+  "ko": "보안상의 이유로 모든 직원은 자기 컴퓨터 비밀번호를 기밀로 유지해야 한다.",
   "meanings": {
    "they": "주격",
    "their": "소유격",
@@ -2213,7 +2213,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "adv",
-  "stem": "Those ____ wish to participate should contact Ms. Diaz.",
+  "stem": "Those ____ wish to participate in the volunteer program should contact Ms. Diaz in Human Resources.",
   "choices": [
    "who",
    "which",
@@ -2223,7 +2223,7 @@
   "answer": 0,
   "clue": "Those who ~ (~하는 사람들)",
   "explanation": "those who는 '~하는 사람들'이라는 고정 표현이에요.",
-  "ko": "참여하고 싶은 사람들은 디아스 씨에게 연락해야 한다.",
+  "ko": "봉사 프로그램에 참여하고 싶은 사람들은 인사부 디아스 씨에게 연락해야 한다.",
   "meanings": {
    "who": "주격(사람)",
    "which": "사물",
@@ -2237,7 +2237,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "adv",
-  "stem": "The CEO ____ will attend the opening ceremony.",
+  "stem": "To show the importance of the new factory, the CEO ____ will attend the opening ceremony next week.",
   "choices": [
    "him",
    "his",
@@ -2247,7 +2247,7 @@
   "answer": 2,
   "clue": "강조 재귀대명사 (직접)",
   "explanation": "문장이 이미 완전하고 'CEO가 직접'이라는 강조라 himself예요.",
-  "ko": "CEO가 직접 개막식에 참석할 것이다.",
+  "ko": "새 공장의 중요성을 보여 주기 위해 CEO가 직접 다음 주 개막식에 참석할 것이다.",
   "meanings": {
    "him": "목적격",
    "his": "소유격",
@@ -2261,7 +2261,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "adv",
-  "stem": "Some participants preferred the morning session, while ____ chose the evening one.",
+  "stem": "Some participants in the training program preferred the morning session, while ____ chose the evening one.",
   "choices": [
    "other",
    "another",
@@ -2271,7 +2271,7 @@
   "answer": 2,
   "clue": "막연한 일부 Some ~, 다른 일부 others",
   "explanation": "정해지지 않은 '다른 사람들'은 others예요.",
-  "ko": "일부 참가자는 오전 세션을 선호했고, 다른 이들은 저녁 세션을 골랐다.",
+  "ko": "교육 프로그램 참가자 일부는 오전 세션을 선호했고 다른 이들은 저녁 세션을 골랐다.",
   "meanings": {
    "other": "(명사 필요)",
    "another": "또 하나(단수)",
@@ -2285,7 +2285,7 @@
   "module": "grammar",
   "type": "pronoun",
   "level": "adv",
-  "stem": "Ms. Novak asked that the reports be sent directly to ____.",
+  "stem": "Before leaving for her business trip, Ms. Novak asked that all weekly reports be sent directly to ____.",
   "choices": [
    "she",
    "her",
@@ -2295,7 +2295,7 @@
   "answer": 1,
   "clue": "전치사(to) 뒤 → 목적격",
   "explanation": "주어(Ms. Novak)는 that절 밖에 있어서 재귀대명사가 아니라 목적격 her예요.",
-  "ko": "노박 씨는 보고서를 자신에게 직접 보내 달라고 요청했다.",
+  "ko": "출장을 떠나기 전 노박 씨는 모든 주간 보고서를 자신에게 직접 보내 달라고 요청했다.",
   "meanings": {
    "she": "주격",
    "her": "목적격",
@@ -2309,22 +2309,22 @@
   "module": "grammar",
   "type": "compare",
   "level": "basic",
-  "stem": "This laptop is ____ than the old one.",
+  "stem": "The new laptop is much ____ than the old one.",
   "choices": [
    "light",
    "lighter",
    "lightest",
-   "more light"
+   "lightly"
   ],
   "answer": 1,
   "clue": "than → 비교급",
   "explanation": "than이 있으면 비교급(-er / more)이에요.",
-  "ko": "이 노트북은 예전 것보다 가볍다.",
+  "ko": "새 노트북은 예전 것보다 훨씬 가볍다.",
   "meanings": {
    "light": "원급",
    "lighter": "비교급",
    "lightest": "최상급",
-   "more light": "틀린 형태"
+   "lightly": "가볍게(부사)"
   }
  },
  {
@@ -2333,22 +2333,22 @@
   "module": "grammar",
   "type": "compare",
   "level": "basic",
-  "stem": "It is the ____ hotel in the city.",
+  "stem": "The Grand Plaza is the ____ hotel in the city.",
   "choices": [
    "large",
    "larger",
    "largest",
-   "most large"
+   "largely"
   ],
   "answer": 2,
   "clue": "the + ____ + in 장소 → 최상급",
   "explanation": "the와 범위(in the city)가 있으면 최상급이에요.",
-  "ko": "그곳은 그 도시에서 가장 큰 호텔이다.",
+  "ko": "그랜드 플라자는 그 도시에서 가장 큰 호텔이다.",
   "meanings": {
    "large": "원급",
    "larger": "비교급",
    "largest": "최상급",
-   "most large": "틀린 형태"
+   "largely": "주로(부사)"
   }
  },
  {
@@ -2362,7 +2362,7 @@
    "fast",
    "faster",
    "fastest",
-   "more fast"
+   "speed"
   ],
   "answer": 0,
   "clue": "as ____ as → 원급",
@@ -2372,7 +2372,7 @@
    "fast": "원급",
    "faster": "비교급",
    "fastest": "최상급",
-   "more fast": "틀린 형태"
+   "speed": "속도(명사)"
   }
  },
  {
@@ -2381,7 +2381,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "basic",
-  "stem": "This plan is ____ expensive than that one.",
+  "stem": "The second plan is ____ expensive than the first one.",
   "choices": [
    "more",
    "most",
@@ -2391,7 +2391,7 @@
   "answer": 0,
   "clue": "긴 형용사의 비교급 → more + 원급",
   "explanation": "expensive처럼 긴 형용사는 more로 비교급을 만들어요.",
-  "ko": "이 계획이 저 계획보다 더 비싸다.",
+  "ko": "두 번째 계획이 첫 번째 것보다 더 비싸다.",
   "meanings": {
    "more": "비교급",
    "most": "최상급",
@@ -2405,7 +2405,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "mid",
-  "stem": "Sales this year were ____ higher than last year.",
+  "stem": "Thanks to the new product line, sales this year were ____ higher than last year.",
   "choices": [
    "very",
    "much",
@@ -2415,7 +2415,7 @@
   "answer": 1,
   "clue": "비교급 강조 → much/far/even/still",
   "explanation": "비교급 앞에는 very가 아니라 much, far, even, still이 와요.",
-  "ko": "올해 매출은 작년보다 훨씬 높았다.",
+  "ko": "새 제품군 덕분에 올해 매출은 작년보다 훨씬 높았다.",
   "meanings": {
    "very": "원급 강조",
    "much": "비교급 강조",
@@ -2429,7 +2429,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "mid",
-  "stem": "Ms. Kim is the ____ qualified of all the applicants.",
+  "stem": "According to the hiring committee, Ms. Kim is the ____ qualified of all the applicants.",
   "choices": [
    "more",
    "most",
@@ -2439,7 +2439,7 @@
   "answer": 1,
   "clue": "the + ____ + of all → 최상급",
   "explanation": "of all the applicants라는 범위가 있어서 최상급 most예요.",
-  "ko": "김 씨가 모든 지원자 중 가장 자격을 잘 갖췄다.",
+  "ko": "채용 위원회에 따르면 김 씨가 모든 지원자 중 가장 자격을 잘 갖췄다.",
   "meanings": {
    "more": "비교급",
    "most": "최상급",
@@ -2453,7 +2453,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "mid",
-  "stem": "The ____ you order, the bigger the discount.",
+  "stem": "At our online store, the ____ you order, the bigger the discount you receive.",
   "choices": [
    "much",
    "more",
@@ -2463,7 +2463,7 @@
   "answer": 1,
   "clue": "the 비교급, the 비교급 (~할수록 더 …하다)",
   "explanation": "the more ~, the bigger …는 짝 구조예요.",
-  "ko": "많이 주문할수록 할인이 커진다.",
+  "ko": "저희 온라인 스토어에서는 많이 주문할수록 받는 할인이 커진다.",
   "meanings": {
    "much": "원급",
    "more": "비교급",
@@ -2477,7 +2477,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "mid",
-  "stem": "This is one of the ____ popular products in our store.",
+  "stem": "This blender is one of the ____ popular products in our kitchen department.",
   "choices": [
    "more",
    "most",
@@ -2487,7 +2487,7 @@
   "answer": 1,
   "clue": "one of the + 최상급 + 복수명사",
   "explanation": "one of the most + 복수명사는 고정 구조예요.",
-  "ko": "이것은 우리 가게에서 가장 인기 있는 제품 중 하나다.",
+  "ko": "이 믹서기는 우리 주방용품 매장에서 가장 인기 있는 제품 중 하나다.",
   "meanings": {
    "more": "비교급",
    "most": "최상급",
@@ -2501,22 +2501,22 @@
   "module": "grammar",
   "type": "compare",
   "level": "adv",
-  "stem": "Productivity has risen ____ than expected.",
+  "stem": "Since the new assembly line was installed in March, productivity has risen ____ than expected.",
   "choices": [
    "fast",
    "faster",
    "fastest",
-   "most fast"
+   "quickly"
   ],
   "answer": 1,
   "clue": "than → 비교급 (부사)",
   "explanation": "has risen을 꾸미는 부사의 비교급 faster예요.",
-  "ko": "생산성이 예상보다 빠르게 올랐다.",
+  "ko": "3월에 새 조립 라인이 설치된 이후 생산성이 예상보다 빠르게 올랐다.",
   "meanings": {
    "fast": "원급",
    "faster": "비교급",
    "fastest": "최상급",
-   "most fast": "틀린 형태"
+   "quickly": "빠르게(원급 부사)"
   }
  },
  {
@@ -2525,7 +2525,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "adv",
-  "stem": "The new system is twice as ____ as the previous one.",
+  "stem": "According to the engineers who tested it, the new cooling system is twice as ____ as the previous one.",
   "choices": [
    "efficient",
    "more efficient",
@@ -2535,7 +2535,7 @@
   "answer": 0,
   "clue": "배수 + as 원급 as",
   "explanation": "twice as ~ as는 '두 배만큼 ~한'이에요. as 사이엔 원급이고, be 뒤라 형용사예요.",
-  "ko": "새 시스템은 이전 것보다 두 배 효율적이다.",
+  "ko": "시험한 엔지니어들에 따르면 새 냉각 시스템은 이전 것보다 두 배 효율적이다.",
   "meanings": {
    "efficient": "원급 형용사",
    "more efficient": "비교급",
@@ -2549,7 +2549,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "adv",
-  "stem": "No other supplier offers ____ prices than ours.",
+  "stem": "After comparing quotes from several companies, we found that no other supplier offers ____ prices than ours.",
   "choices": [
    "low",
    "lower",
@@ -2559,7 +2559,7 @@
   "answer": 1,
   "clue": "No other ~ 비교급 than (최상급 의미)",
   "explanation": "부정 주어 + 비교급 than은 '어떤 것도 ~보다 더 …하지 않다'예요.",
-  "ko": "어떤 공급업체도 우리보다 낮은 가격을 제시하지 않는다.",
+  "ko": "여러 회사의 견적을 비교해 보니 어떤 공급업체도 우리보다 낮은 가격을 제시하지 않았다.",
   "meanings": {
    "low": "원급",
    "lower": "비교급",
@@ -2573,7 +2573,7 @@
   "module": "grammar",
   "type": "compare",
   "level": "adv",
-  "stem": "Of the three proposals, Ms. Lin's was the ____ detailed.",
+  "stem": "Of the three proposals submitted to the committee last week, Ms. Lin's was the ____ detailed.",
   "choices": [
    "more",
    "most",
@@ -2583,7 +2583,7 @@
   "answer": 1,
   "clue": "셋 이상 중 → 최상급",
   "explanation": "Of the three(셋 중)이라 최상급 most예요. 둘 중이면 the more를 써요.",
-  "ko": "세 제안 중 린 씨의 것이 가장 상세했다.",
+  "ko": "지난주 위원회에 제출된 세 제안 중 린 씨의 것이 가장 상세했다.",
   "meanings": {
    "more": "비교급",
    "most": "최상급",
@@ -2597,7 +2597,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "basic",
-  "stem": "If you ____ any questions, please call us.",
+  "stem": "If you ____ any questions about your order, please call us.",
   "choices": [
    "have",
    "had",
@@ -2607,7 +2607,7 @@
   "answer": 0,
   "clue": "일반 조건문 → if + 현재",
   "explanation": "실제로 일어날 수 있는 조건은 if 뒤에 현재 시제를 써요.",
-  "ko": "질문이 있으시면 전화 주세요.",
+  "ko": "주문에 대해 질문이 있으시면 전화 주세요.",
   "meanings": {
    "have": "현재",
    "had": "과거",
@@ -2645,9 +2645,9 @@
   "module": "grammar",
   "type": "cond",
   "level": "basic",
-  "stem": "If it rains, the game ____ canceled.",
+  "stem": "If it rains on Saturday, the soccer game ____ canceled.",
   "choices": [
-   "is",
+   "has been",
    "will be",
    "would be",
    "was"
@@ -2655,12 +2655,12 @@
   "answer": 1,
   "clue": "if + 현재 → 주절 미래",
   "explanation": "일반 조건문의 주절은 will + 동사원형이에요.",
-  "ko": "비가 오면 경기는 취소될 것이다.",
+  "ko": "토요일에 비가 오면 축구 경기는 취소될 것이다.",
   "meanings": {
-   "is": "현재",
    "will be": "미래",
    "would be": "가정",
-   "was": "과거"
+   "was": "과거",
+   "has been": "현재완료"
   }
  },
  {
@@ -2693,7 +2693,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "mid",
-  "stem": "If we had left earlier, we ____ the train.",
+  "stem": "If we had left the hotel earlier, we ____ the train to Busan.",
   "choices": [
    "will catch",
    "would catch",
@@ -2703,7 +2703,7 @@
   "answer": 2,
   "clue": "If + had p.p. → would have p.p. (가정법 과거완료)",
   "explanation": "과거 사실의 반대(일찍 안 떠남)는 would have + p.p.예요.",
-  "ko": "더 일찍 떠났다면 기차를 탔을 텐데.",
+  "ko": "호텔에서 더 일찍 나왔다면 부산행 기차를 탔을 텐데.",
   "meanings": {
    "will catch": "미래",
    "would catch": "가정법 과거",
@@ -2717,7 +2717,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "mid",
-  "stem": "It is essential that every employee ____ the training.",
+  "stem": "It is essential that every employee ____ the safety training by the end of the month.",
   "choices": [
    "complete",
    "completes",
@@ -2727,7 +2727,7 @@
   "answer": 0,
   "clue": "essential/important that + 동사원형",
   "explanation": "essential, necessary, important 뒤 that절에서는 동사원형(should 생략)을 써요.",
-  "ko": "모든 직원이 교육을 이수하는 것이 필수다.",
+  "ko": "모든 직원이 월말까지 안전 교육을 이수하는 것이 필수다.",
   "meanings": {
    "complete": "동사원형",
    "completes": "3인칭 현재",
@@ -2741,7 +2741,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "mid",
-  "stem": "The manager requested that the report ____ by Monday.",
+  "stem": "The finance manager requested that the monthly expense report ____ by Monday morning.",
   "choices": [
    "submit",
    "be submitted",
@@ -2751,7 +2751,7 @@
   "answer": 1,
   "clue": "request that + (should) 동사원형, 보고서는 수동",
   "explanation": "요구·제안 동사 뒤 that절은 동사원형이고, 보고서는 '제출되는' 대상이라 be submitted예요.",
-  "ko": "매니저는 보고서를 월요일까지 제출하라고 요청했다.",
+  "ko": "재무 관리자는 월간 경비 보고서를 월요일 오전까지 제출하라고 요청했다.",
   "meanings": {
    "submit": "능동 원형",
    "be submitted": "수동 원형",
@@ -2765,7 +2765,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "mid",
-  "stem": "____ you need further information, please visit our website.",
+  "stem": "____ you need further information about our services, please visit our website.",
   "choices": [
    "Should",
    "Would",
@@ -2775,7 +2775,7 @@
   "answer": 0,
   "clue": "If you should need → Should you need (도치)",
   "explanation": "if를 빼고 Should를 앞으로 보내는 도치예요. 문의 안내 빈출 표현이에요.",
-  "ko": "추가 정보가 필요하시면 저희 웹사이트를 방문하세요.",
+  "ko": "저희 서비스에 관한 추가 정보가 필요하시면 웹사이트를 방문하세요.",
   "meanings": {
    "Should": "혹시 ~하면(도치)",
    "Would": "~할 것인가",
@@ -2789,7 +2789,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "adv",
-  "stem": "____ the weather been better, the event would have been a success.",
+  "stem": "____ the weather been better on Saturday, the outdoor product launch would have been a success.",
   "choices": [
    "If",
    "Had",
@@ -2799,7 +2799,7 @@
   "answer": 1,
   "clue": "If the weather had been → Had the weather been",
   "explanation": "가정법 과거완료의 if를 생략하면 Had가 앞으로 와요.",
-  "ko": "날씨가 더 좋았다면 그 행사는 성공했을 것이다.",
+  "ko": "토요일 날씨가 더 좋았다면 야외 제품 출시 행사는 성공했을 것이다.",
   "meanings": {
    "If": "(If면 had가 필요)",
    "Had": "과거완료 도치",
@@ -2813,7 +2813,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "adv",
-  "stem": "____ I in your position, I would accept the offer.",
+  "stem": "____ I in your position as head of the team, I would accept the offer from the Tokyo office.",
   "choices": [
    "Were",
    "Was",
@@ -2823,7 +2823,7 @@
   "answer": 0,
   "clue": "If I were → Were I (도치)",
   "explanation": "가정법 과거에서 be동사는 were를 쓰고, if를 빼면 Were가 앞으로 와요.",
-  "ko": "내가 당신 입장이라면 그 제안을 받아들일 것이다.",
+  "ko": "내가 당신처럼 팀장 입장이라면 도쿄 사무소의 제안을 받아들일 것이다.",
   "meanings": {
    "Were": "가정법 과거 도치",
    "Was": "(가정법에선 were)",
@@ -2837,7 +2837,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "adv",
-  "stem": "The consultant recommended that the company ____ its marketing strategy.",
+  "stem": "After analyzing last year's results, the consultant recommended that the company ____ its marketing strategy.",
   "choices": [
    "revise",
    "revises",
@@ -2847,7 +2847,7 @@
   "answer": 0,
   "clue": "recommend that + 동사원형",
   "explanation": "recommend, suggest, insist 뒤 that절은 (should) 동사원형이에요.",
-  "ko": "컨설턴트는 회사가 마케팅 전략을 수정해야 한다고 권했다.",
+  "ko": "작년 실적을 분석한 뒤 컨설턴트는 회사가 마케팅 전략을 수정해야 한다고 권했다.",
   "meanings": {
    "revise": "동사원형",
    "revises": "3인칭 현재",
@@ -2861,22 +2861,22 @@
   "module": "grammar",
   "type": "cond",
   "level": "adv",
-  "stem": "Only after the audit was completed ____ the results.",
+  "stem": "Only after the external audit was completed last month ____ the results to the shareholders.",
   "choices": [
    "the board announced",
    "did the board announce",
    "the board did announce",
-   "announced the board"
+   "the board was announced"
   ],
   "answer": 1,
   "clue": "Only after ~ 문두 → 도치 (did + 주어 + 동사원형)",
   "explanation": "Only + 부사구가 문장 앞에 오면 주어와 동사가 뒤바뀌어요.",
-  "ko": "감사가 끝난 뒤에야 이사회가 결과를 발표했다.",
+  "ko": "지난달 외부 감사가 끝난 뒤에야 이사회가 주주들에게 결과를 발표했다.",
   "meanings": {
    "the board announced": "평서문 어순",
    "did the board announce": "도치",
    "the board did announce": "강조(도치 아님)",
-   "announced the board": "틀린 도치"
+   "the board was announced": "수동태(뜻이 맞지 않음)"
   }
  },
  {
@@ -2885,7 +2885,7 @@
   "module": "grammar",
   "type": "tense",
   "level": "basic",
-  "stem": "Mr. Ford ____ the report yesterday.",
+  "stem": "Mr. Ford ____ the monthly sales report yesterday afternoon.",
   "choices": [
    "finishes",
    "finished",
@@ -2895,7 +2895,7 @@
   "answer": 1,
   "clue": "yesterday → 과거",
   "explanation": "과거 시점 yesterday가 있으면 과거 시제예요.",
-  "ko": "포드 씨는 어제 보고서를 끝냈다.",
+  "ko": "포드 씨는 어제 오후 월간 영업 보고서를 끝냈다.",
   "meanings": {
    "finishes": "현재",
    "finished": "과거",
@@ -2935,7 +2935,7 @@
   "module": "grammar",
   "type": "voice",
   "level": "mid",
-  "stem": "The new branch ____ next spring.",
+  "stem": "According to the company newsletter, the new branch ____ by the mayor next spring.",
   "choices": [
    "will open",
    "will be opened",
@@ -2943,9 +2943,9 @@
    "has opened"
   ],
   "answer": 1,
-  "clue": "지점은 '개설되는' 대상 + 목적어 없음 → 미래 수동",
-  "explanation": "지점이 스스로 여는 게 아니라 '개설되는' 것이고 next spring이라 will be opened예요.",
-  "ko": "새 지점은 내년 봄에 문을 열 것이다.",
+  "clue": "by + 행위자(the mayor) → 수동태 + 미래",
+  "explanation": "by the mayor(시장에 의해)가 있어서 지점이 '개장되는' 수동이고, next spring이라 will be opened예요.",
+  "ko": "사보에 따르면 새 지점은 내년 봄 시장이 참석한 가운데 개장될 것이다.",
   "meanings": {
    "will open": "능동 미래",
    "will be opened": "수동 미래",
@@ -2960,7 +2960,7 @@
   "module": "grammar",
   "type": "conj",
   "level": "mid",
-  "stem": "____ the heavy traffic, Ms. Lim arrived on time.",
+  "stem": "____ the heavy traffic on the highway, Ms. Lim arrived at the meeting on time.",
   "choices": [
    "Although",
    "Despite",
@@ -2970,7 +2970,7 @@
   "answer": 1,
   "clue": "뒤에 명사(the heavy traffic) → 전치사",
   "explanation": "명사가 오니 전치사 despite예요. although, because, unless는 접속사라 절이 와야 해요.",
-  "ko": "교통 체증에도 불구하고 임 씨는 제시간에 도착했다.",
+  "ko": "고속도로 교통 체증에도 불구하고 임 씨는 회의에 제시간에 도착했다.",
   "meanings": {
    "Although": "접속사",
    "Despite": "전치사",
@@ -2985,7 +2985,7 @@
   "module": "grammar",
   "type": "relative",
   "level": "adv",
-  "stem": "The supplier ____ products we ordered has closed its business.",
+  "stem": "We were informed this morning that the supplier ____ products we ordered last month has closed its business.",
   "choices": [
    "who",
    "whose",
@@ -2995,7 +2995,7 @@
   "answer": 1,
   "clue": "뒤에 명사(products) + '공급업체의 제품' → whose",
   "explanation": "선행사의 소유 관계라 whose예요.",
-  "ko": "우리가 주문한 제품의 공급업체가 폐업했다.",
+  "ko": "오늘 아침 우리가 지난달 주문한 제품의 공급업체가 폐업했다는 통보를 받았다.",
   "meanings": {
    "who": "주격",
    "whose": "소유격",
@@ -3010,7 +3010,7 @@
   "module": "grammar",
   "type": "cond",
   "level": "adv",
-  "stem": "Had the order been placed earlier, it ____ by now.",
+  "stem": "Had the order been placed a few days earlier, it ____ at our office by now.",
   "choices": [
    "arrives",
    "will arrive",
@@ -3020,7 +3020,7 @@
   "answer": 2,
   "clue": "Had + 주어 + p.p. (if 생략 도치) → would have p.p.",
   "explanation": "가정법 과거완료 도치예요. 주절은 would have + p.p.예요.",
-  "ko": "주문을 더 일찍 했다면 지금쯤 도착했을 것이다.",
+  "ko": "주문을 며칠만 더 일찍 했다면 지금쯤 사무실에 도착했을 것이다.",
   "meanings": {
    "arrives": "현재",
    "will arrive": "미래",
@@ -3028,5 +3028,221 @@
    "had arrived": "과거완료"
   },
   "test": true
+ },
+ {
+  "id": "v-x13",
+  "part": 5,
+  "type": "conj",
+  "level": "mid",
+  "stem": "____ the heavy rain in the morning, the outdoor music festival in the park started on time.",
+  "choices": [
+   "Despite",
+   "Although",
+   "Because of",
+   "Even though"
+  ],
+  "answer": 0,
+  "clue": "명사구 + 반대 내용 → 전치사 Despite",
+  "explanation": "the heavy rain은 명사구라 전치사가 필요하고, 비가 왔는데 제시간에 시작했으니 '~에도 불구하고'예요.",
+  "ko": "오전 폭우에도 불구하고 공원의 야외 음악 축제는 제시간에 시작했다.",
+  "meanings": {
+   "Despite": "~에도 불구하고(전치사)",
+   "Although": "비록 ~지만(접속사, 절)",
+   "Because of": "~때문에",
+   "Even though": "비록 ~일지라도(접속사, 절)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x15",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "Last quarter, sales of our home appliances rose sharply in Asia, ____ they fell slightly in Europe.",
+  "choices": [
+   "whereas",
+   "despite",
+   "notwithstanding",
+   "otherwise"
+  ],
+  "answer": 0,
+  "clue": "두 절을 대조 → 접속사 whereas",
+  "explanation": "뒤에 절(they fell)이 오고 앞 내용과 대조되니 접속사 whereas예요.",
+  "ko": "지난 분기 우리 가전제품 판매는 아시아에서 급증한 반면 유럽에서는 약간 줄었다.",
+  "meanings": {
+   "whereas": "~인 반면(접속사)",
+   "despite": "~에도 불구하고(전치사)",
+   "notwithstanding": "~에도 불구하고(전치사)",
+   "otherwise": "그렇지 않으면(부사)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x16",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "Staff members may leave the office early on Friday ____ all their assigned work is finished.",
+  "choices": [
+   "provided",
+   "unless",
+   "despite",
+   "whereas"
+  ],
+  "answer": 0,
+  "clue": "'~라면(조건)' → provided (that)",
+  "explanation": "일이 끝났다면 일찍 가도 된다는 조건이에요. unless는 '~하지 않으면'.",
+  "ko": "배정된 업무를 모두 끝냈다면 직원들은 금요일에 일찍 퇴근해도 된다.",
+  "meanings": {
+   "provided": "~라면(조건)",
+   "unless": "~하지 않으면",
+   "despite": "~에도 불구하고",
+   "whereas": "~인 반면"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x17",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "The new marketing plan succeeded in attracting younger customers, ____ more slowly than the team had expected.",
+  "choices": [
+   "albeit",
+   "despite",
+   "whereas",
+   "unless"
+  ],
+  "answer": 0,
+  "clue": "뒤에 절 없이 부사구 → albeit",
+  "explanation": "albeit(비록 ~이지만)는 뒤에 주어·동사 없이 형용사나 부사구가 바로 와요.",
+  "ko": "새 마케팅 계획은 팀의 예상보다 느리긴 했지만 젊은 고객을 끄는 데 성공했다.",
+  "meanings": {
+   "albeit": "비록 ~이지만",
+   "despite": "~에도 불구하고(명사 앞)",
+   "whereas": "~인 반면(절 앞)",
+   "unless": "~하지 않으면(절 앞)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x18",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "____ the significant budget cuts announced in March, the research team completed the project on schedule.",
+  "choices": [
+   "Notwithstanding",
+   "Whereas",
+   "Albeit",
+   "Provided"
+  ],
+  "answer": 0,
+  "clue": "명사구 + 반대 내용 → 전치사 Notwithstanding",
+  "explanation": "the budget cuts는 명사구라 전치사가 필요해요. notwithstanding = despite.",
+  "ko": "3월에 발표된 대규모 예산 삭감에도 불구하고 연구팀은 프로젝트를 일정대로 끝냈다.",
+  "meanings": {
+   "Notwithstanding": "~에도 불구하고(전치사)",
+   "Whereas": "~인 반면(접속사)",
+   "Albeit": "비록 ~이지만",
+   "Provided": "~라면(접속사)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-c48",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "The distribution contract will be renewed for another two years ____ both parties agree to the new terms.",
+  "choices": [
+   "provided that",
+   "in case of",
+   "notwithstanding",
+   "so that"
+  ],
+  "answer": 0,
+  "clue": "____ + 주어+동사, 조건 → provided that",
+  "explanation": "provided that(~라면)은 조건 접속사예요. in case of는 뒤에 명사가 와요.",
+  "ko": "양측이 새 조건에 동의하면 유통 계약은 2년 더 갱신될 것이다.",
+  "meanings": {
+   "provided that": "~라면",
+   "in case of": "~의 경우(+명사)",
+   "so that": "~하도록",
+   "notwithstanding": "~에도 불구하고(+명사)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x30",
+  "part": 5,
+  "type": "conj",
+  "level": "mid",
+  "stem": "____ the two-day delay at the port, the shipment arrived in good condition.",
+  "choices": [
+   "Despite",
+   "Although",
+   "Even",
+   "However"
+  ],
+  "answer": 0,
+  "clue": "____ + 명사(the delay) → Despite",
+  "explanation": "despite 뒤엔 명사, although 뒤엔 주어+동사가 와요.",
+  "ko": "항구에서 이틀 지연되었는데도 화물은 좋은 상태로 도착했다.",
+  "meanings": {
+   "Despite": "~에도 불구하고(+명사)",
+   "Although": "비록 ~지만(+절)",
+   "Even": "심지어",
+   "However": "그러나(부사)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x31",
+  "part": 5,
+  "type": "conj",
+  "level": "mid",
+  "stem": "The main office on the first floor will be closed ____ the renovation.",
+  "choices": [
+   "during",
+   "while",
+   "for",
+   "when"
+  ],
+  "answer": 0,
+  "clue": "____ + 명사(the renovation) → during",
+  "explanation": "during + 명사, while + 주어+동사예요.",
+  "ko": "1층 본사 사무실은 보수 공사 기간 동안 문을 닫는다.",
+  "meanings": {
+   "during": "~동안(+명사)",
+   "while": "~하는 동안(+절)",
+   "for": "~동안(+기간)",
+   "when": "~할 때(+절)"
+  },
+  "module": "grammar"
+ },
+ {
+  "id": "v-x48",
+  "part": 5,
+  "type": "conj",
+  "level": "adv",
+  "stem": "Parking near the convention center is very limited during the trade show; ____, we recommend using public transportation.",
+  "choices": [
+   "therefore",
+   "however",
+   "although",
+   "despite"
+  ],
+  "answer": 0,
+  "clue": "앞 내용의 결과 → therefore",
+  "explanation": "주차 공간이 부족하다는 이유의 결과이므로 '그러므로'예요. however는 반대, although/despite는 접속사·전치사라 이 자리에 못 와요.",
+  "ko": "무역 박람회 기간에는 컨벤션 센터 근처 주차 공간이 매우 한정되어 있으니 대중교통 이용을 권합니다.",
+  "meanings": {
+   "therefore": "그러므로",
+   "however": "그러나",
+   "although": "비록 ~지만(접속사)",
+   "despite": "~에도 불구하고(전치사)"
+  },
+  "module": "grammar"
  }
 ]

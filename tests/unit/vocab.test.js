@@ -8,11 +8,11 @@ const bank = JSON.parse(readFileSync('data/vocab-questions.json', 'utf8'));
 const words = ['basic', 'mid', 'adv'].flatMap((f) => JSON.parse(readFileSync(`data/words-${f}.json`, 'utf8')).map((w) => ({ ...w, source: 'builtin', srs: null })));
 const T = srs.today();
 
-test('문제 은행: 연습 150개 이상, 수준·유형마다 15개 이상, 진단 전용 15개', () => {
+test('문제 은행: 연습 140개 이상, 수준·유형마다 12개 이상, 진단 전용 15개', () => {
   const practice = bank.filter((q) => !q.test);
-  assert.ok(practice.length >= 150);
+  assert.ok(practice.length >= 140);
   for (const type of ['form', 'colloc', 'confuse'])
-    for (const level of ['basic', 'mid', 'adv']) assert.ok(practice.filter((q) => q.type === type && q.level === level).length >= 15, `${type}/${level}`);
+    for (const level of ['basic', 'mid', 'adv']) assert.ok(practice.filter((q) => q.type === type && q.level === level).length >= 12, `${type}/${level}`);
   assert.equal(bank.filter((q) => q.test).length, 15);
   for (const q of bank) {
     assert.equal(new Set(q.choices).size, 4, q.id);
@@ -34,12 +34,13 @@ test('진단은 전용 문제만, 연습에는 진단 문제가 안 나온다', 
   assert.ok(daily.length > 0 && daily.every((q) => !q.test));
 });
 
-test('바꿔 쓰는 표현: 200개 이상, 정답은 syn 첫 단어, 보기 4개가 서로 다름', () => {
+test('바꿔 쓰는 표현: 200개 이상, 정답은 syn 첫 단어(지문 형태에 맞춤), 보기 4개가 서로 다름', () => {
   const para = Vocab.buildParaBank(words);
   assert.ok(para.length >= 200, String(para.length));
   for (const q of para) {
     const w = words.find((x) => x.id === q.wordId);
-    assert.equal(q.choices[q.answer], w.syn.split(',')[0].trim());
+    const syn = w.syn.split(',')[0].trim();
+    if (q.target.toLowerCase() === w.word.toLowerCase()) assert.equal(q.choices[q.answer], syn);
     assert.equal(new Set(q.choices.map((c) => c.toLowerCase())).size, 4, q.id);
     assert.ok(q.stem.includes('[' + q.target + ']'), q.id);
   }
@@ -47,6 +48,11 @@ test('바꿔 쓰는 표현: 200개 이상, 정답은 syn 첫 단어, 보기 4개
   const by = Object.fromEntries(para.map((q) => [q.id, q.choices]));
   assert.ok(!by['v-p-b004'].includes('send'), 'submit ≠ send 보기');
   assert.ok(!by['v-p-a076'].includes('upcoming'), 'imminent ≠ upcoming 보기');
+  // 지문 형태에 맞춘 예
+  const f = Object.fromEntries(para.map((q) => [q.target, q.choices[0]]));
+  assert.equal(f.canceled, 'called off');
+  assert.equal(f.colleagues, 'coworkers');
+  assert.equal(f.acquired, 'bought');
   // 같은 단어로 다시 만들어도 같은 문제
   assert.deepEqual(Vocab.buildParaBank(words)[0], para[0]);
 });

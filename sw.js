@@ -1,5 +1,5 @@
 // 앱 파일을 바꾸면 이 버전을 올려야 휴대폰에서 새 버전으로 바뀐다.
-const CACHE = 'toeic-trainer-v13';
+const CACHE = 'toeic-trainer-v14';
 
 const ASSETS = [
   './',

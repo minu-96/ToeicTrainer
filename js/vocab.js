@@ -91,6 +91,54 @@ function tooClose(a, b) {
   const B = simKey(b);
   return A === B || SIMILAR.some((g) => g.includes(A) && g.includes(B));
 }
+// 지문 단어 형태(-ed, -s, -ing)에 맞춰 보기도 같은 형태로 바꿈 (실제 Part 7 동의어 문제처럼)
+const IRREG = { buy: ['bought', 'bought'], send: ['sent', 'sent'], leave: ['left', 'left'], hold: ['held', 'held'], go: ['went', 'gone'], pay: ['paid', 'paid'], rise: ['rose', 'risen'], cut: ['cut', 'cut'], set: ['set', 'set'], put: ['put', 'put'], take: ['took', 'taken'], begin: ['began', 'begun'], get: ['got', 'gotten'], speed: ['sped', 'sped'], make: ['made', 'made'], find: ['found', 'found'] };
+const DOUBLE = new Set(['drop', 'stop', 'plan', 'ship', 'fit', 'admit', 'regret']);
+const PARA_SKIP = new Set(['b101', 'm010', 'm028']); // 동사 형태인데 바꿔 쓰는 말이 명사라 형태를 맞출 수 없는 단어
+function vEd(x, pp) {
+  if (IRREG[x]) return IRREG[x][pp ? 1 : 0];
+  if (/e$/.test(x)) return x + 'd';
+  if (/[^aeiou]y$/.test(x)) return x.slice(0, -1) + 'ied';
+  if (DOUBLE.has(x)) return x + x.slice(-1) + 'ed';
+  return x + 'ed';
+}
+function vS(x) {
+  if (x === 'have') return 'has';
+  if (/(s|sh|ch|x|z|o)$/.test(x)) return x + 'es';
+  if (/[^aeiou]y$/.test(x)) return x.slice(0, -1) + 'ies';
+  return x + 's';
+}
+function vIng(x) {
+  if (DOUBLE.has(x)) return x + x.slice(-1) + 'ing';
+  if (/[^e]e$/.test(x)) return x.slice(0, -1) + 'ing';
+  return x + 'ing';
+}
+// 지문 단어의 형태 알아내기: base | ed | edpp | s | ing (모르면 null)
+function paraForm(w, surface, example, start) {
+  const t = surface.toLowerCase();
+  const base = w.word.toLowerCase();
+  if (t === base) return 'base';
+  const before = example.slice(0, start).trim().split(/\s+/).pop()?.toLowerCase() || '';
+  if (t.endsWith('ing')) return 'ing';
+  if (t.endsWith('ed')) return ['is', 'are', 'was', 'were', 'be', 'been', 'being', 'has', 'have', 'had'].includes(before) ? 'edpp' : 'ed';
+  if (t.endsWith('s')) return 's';
+  return null;
+}
+// 두 낱말 이상: 둘째 낱말이 이런 말이면 동사구(첫 낱말 변화), 아니면 명사구(마지막 낱말 변화)
+const VERB2 = new Set(['up', 'out', 'off', 'in', 'on', 'back', 'for', 'to', 'together', 'down', 'over', 'away', 'about', 'sharply', 'closely', 'formally', 'terms', 'payment', 'part']);
+function inflect(phrase, form, isNoun) {
+  if (form === 'base') return phrase;
+  const parts = phrase.split(' ');
+  if (parts.length > 1) isNoun = !VERB2.has(parts[1]);
+  if (form === 's' && isNoun) {
+    const i = phrase.includes(' of ') ? 0 : parts.length - 1;
+    if (!/[^s]s$/.test(parts[i])) parts[i] = vS(parts[i]); // 이미 복수형(comments, funds)이면 그대로
+    return parts.join(' ');
+  }
+  const f = form === 'ing' ? vIng : form === 's' ? vS : (x) => vEd(x, form === 'edpp');
+  parts[0] = f(parts[0]);
+  return parts.join(' ');
+}
 const firstSyn = (w) => (w.syn || '').split(',')[0].trim();
 const synOk = (x) => x && x.split(' ').length <= 3;
 
@@ -98,7 +146,14 @@ export function buildParaBank(words) {
   const pool = words.filter((w) => w.source === 'builtin' && synOk(firstSyn(w)) && findWordInSentence(w.word, w.example));
   const out = [];
   for (const w of pool) {
-    const ans = firstSyn(w);
+    if (PARA_SKIP.has(w.id)) continue;
+    const span0 = findWordInSentence(w.word, w.example);
+    const form = paraForm(w, w.example.slice(span0.start, span0.end), w.example, span0.start);
+    if (!form) continue;
+    // 명사 복수는 마지막 낱말, 동사(명·동 포함)는 첫 낱말을 바꿈
+    const nounOnly = (x) => /^명/.test(x.pos || '') && !/동/.test(x.pos || '');
+    const isNoun = nounOnly(w);
+    const ans = inflect(firstSyn(w), form, isNoun);
     const own = new Set([w.word.toLowerCase(), ...(w.syn || '').split(',').map((x) => x.trim().toLowerCase())]);
     // 같은 품사·가까운 수준의 다른 단어 syn을 오답 보기로 (단어마다 고정)
     const cands = pool
@@ -114,9 +169,11 @@ export function buildParaBank(words) {
     if (picked.length < 3) continue;
     const span = findWordInSentence(w.word, w.example);
     const surface = w.example.slice(span.start, span.end);
-    const choices = [ans, ...picked.map(firstSyn)];
+    const dis = picked.map((o) => inflect(firstSyn(o), form, nounOnly(o)));
+    if (new Set([ans, ...dis].map((x) => x.toLowerCase())).size < 4) continue;
+    const choices = [ans, ...dis];
     const meanings = { [ans]: w.meaning };
-    for (const o of picked) meanings[firstSyn(o)] = o.meaning + ` (= ${o.word})`;
+    picked.forEach((o, i) => (meanings[dis[i]] = o.meaning + ` (= ${o.word})`));
     out.push({
       id: 'v-p-' + w.id,
       part: 7,
@@ -127,7 +184,7 @@ export function buildParaBank(words) {
       stem: w.example.slice(0, span.start) + '[' + surface + ']' + w.example.slice(span.end),
       choices,
       answer: 0,
-      clue: `${w.word} ≈ ${ans} (${w.meaning})`,
+      clue: `${w.word} ≈ ${firstSyn(w)} (${w.meaning})${form !== 'base' ? ` · 지문 형태에 맞춰 ${ans}` : ''}`,
       explanation: `Part 7에서는 지문의 ${w.word}가 문제나 보기에서 ${ans}처럼 다른 말로 바뀌어 나와요. 뜻이 같은 짝으로 함께 외워 두세요.`,
       ko: w.exampleKo || '',
       meanings,
