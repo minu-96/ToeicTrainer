@@ -60,12 +60,13 @@ const PITCH = { W: 1.15, M: 0.85, M2: 0.72, N: 1 };
 export function speakLines(lines, { rate = 1, mix = true, gap = 450, onLine } = {}) {
   let stopped = false;
   let timer = null;
+  let spoke = false; // 실제로 소리가 시작된 적이 있는지 (음성 실패 감지)
   const voices = pickVoices(mix);
   const done = new Promise((resolve) => {
     let i = 0;
     const next = () => {
       clearTimeout(timer);
-      if (stopped || i >= lines.length) return resolve(!stopped);
+      if (stopped || i >= lines.length) return resolve({ completed: !stopped, spoke });
       const line = lines[i++];
       onLine?.(i - 1);
       const words = line.text.split(/\s+/).length;
@@ -85,6 +86,7 @@ export function speakLines(lines, { rate = 1, mix = true, gap = 450, onLine } = 
         if (v) u.voice = v;
         u.pitch = v && voices[line.who] ? 1 : PITCH[line.who] || 1;
         u.rate = rate;
+        u.onstart = () => (spoke = true);
         u.onend = go;
         u.onerror = go;
         speechSynthesis.speak(u);

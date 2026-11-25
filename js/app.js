@@ -8,6 +8,7 @@ import * as Stats from './stats.js';
 import * as Charts from './charts.js';
 import * as Engine from './engine.js';
 import * as LC from './listening.js';
+import * as Plan from './plan.js';
 
 let state = store.emptyState(); // init()에서 저장된 기록을 불러옴
 let view = 'home';
@@ -102,11 +103,23 @@ function reviewedToday(t = srs.today()) {
   return new Set(state.attempts.filter((a) => a.kind === 'word' && a.phase === 'review' && a.date === t).map((a) => a.targetId)).size;
 }
 
+// ---------- 하루 학습 시간에 맞춘 분량 (계산은 plan.js) ----------
+const { COST, MINUTE_OPTIONS } = Plan;
+function goals(t = srs.today()) {
+  const s = state.settings;
+  const base = { newWords: Number(s.dailyNewWords) || 0, lc: LC.DAILY_P2, vocab: Number(s.dailyQuestions) || 10, grammar: Number(s.dailyQuestions) || 10 };
+  if (!Number(s.dailyMinutes)) return base;
+  const rt = reviewedToday(t);
+  const plan = srs.reviewPlan(state.words, s, state.newIntroduced, t, rt);
+  return Plan.quotas({ minutes: Number(s.dailyMinutes), totalReviews: rt + plan.reviews.length, group: levelGroup(s.level), maxNew: base.newWords, base });
+}
+
 function dailyPlan(t = srs.today()) {
   const rt = reviewedToday(t);
-  const ids = srs.buildQueue(state.words, state.settings, state.newIntroduced, t, rt);
+  const eff = { ...state.settings, dailyNewWords: goals(t).newWords };
+  const ids = srs.buildQueue(state.words, eff, state.newIntroduced, t, rt);
   const words = ids.map(wordById).filter(Boolean);
-  const plan = srs.reviewPlan(state.words, state.settings, state.newIntroduced, t, rt);
+  const plan = srs.reviewPlan(state.words, eff, state.newIntroduced, t, rt);
   return { reviews: words.filter((w) => w.srs), fresh: words.filter((w) => !w.srs), plan };
 }
 
@@ -252,7 +265,7 @@ function renderHome() {
   const ddayText = dday === null ? '' : dday > 0 ? `D-${dday}` : dday === 0 ? 'D-DAY' : `D+${-dday}`;
   const learnedToday = state.newIntroduced.date === t ? state.newIntroduced.count : 0;
   const answeredToday = state.attempts.filter((a) => a.date === t).length;
-  const goal = Number(state.settings.dailyNewWords) || 0;
+  const goal = goals(t).newWords;
 
   const segs = srs.STAGES.map((label, i) => [label, counts[i], 'seg' + i]);
 
@@ -486,7 +499,7 @@ function renderStats() {
     ['학습일', cur.studyDays, '일', fmtDelta(cur.studyDays, prev.studyDays, '일')],
     ['답한 문제·단어', answers(cur), '개', fmtDelta(answers(cur), answers(prev), '개')],
     ['새로 배운 단어', cur.learned, '개', fmtDelta(cur.learned, prev.learned, '개')],
-    ['어휘 정답률', pct(cur.qAcc) ?? '—', cur.qAcc !== null ? '%' : '', fmtDelta(pct(cur.qAcc), pct(prev.qAcc), '%p')],
+    ['문제 정답률', pct(cur.qAcc) ?? '—', cur.qAcc !== null ? '%' : '', fmtDelta(pct(cur.qAcc), pct(prev.qAcc), '%p')],
     ['단어 정답률', pct(cur.wordAcc) ?? '—', cur.wordAcc !== null ? '%' : '', fmtDelta(pct(cur.wordAcc), pct(prev.wordAcc), '%p')],
   ];
 
@@ -494,12 +507,12 @@ function renderStats() {
   const volPts = data.map((p) => ({
     label: p.label,
     values: { w: p.wordAnswers, q: p.questionAnswers },
-    tip: `<b>${p.label}</b><br>단어 ${p.wordAnswers} · 어휘 문제 ${p.questionAnswers}<br>학습 ${Math.round(p.timeMs / 60000)}분`,
+    tip: `<b>${p.label}</b><br>단어 ${p.wordAnswers} · 문제 ${p.questionAnswers}<br>학습 ${Math.round(p.timeMs / 60000)}분`,
   }));
   const accPts = data.map((p) => ({
     label: p.label,
     values: { w: pct(p.wordAcc), q: pct(p.qAcc) },
-    tip: `<b>${p.label}</b><br>단어 ${pct(p.wordAcc) ?? '—'}% · 어휘 문제 ${pct(p.qAcc) ?? '—'}%`,
+    tip: `<b>${p.label}</b><br>단어 ${pct(p.wordAcc) ?? '—'}% · 문제 ${pct(p.qAcc) ?? '—'}%`,
   }));
   const masPts = data.map((p) => ({ label: p.label, values: { m: p.mastered }, tip: `<b>${p.label}</b><br>익숙함 이상 ${p.mastered ?? '—'}개` }));
   const hasScore = data.some((p) => p.score !== null);
@@ -522,18 +535,31 @@ function renderStats() {
       ${hasScore ? Charts.line({ points: scorePts, series: [{ key: 's', name: '예상 점수', cls: 'c1' }], ...scoreAxis(data, target), fmt: (v) => Math.round(v), ref: { value: target, label: `목표 ${target}` }, aria: '기간별 예상 점수' }) : `<p class="hint">기록이 쌓이면 그래프가 그려져요.</p>`}
     </section>
 
+    <section class="card">
+      <h2>영역별 정답률 <small>${M.curLabel}</small></h2>
+      <ul class="area-acc">${Stats.AREAS.map(([k, l]) => {
+        const a = cur.areas[k];
+        const pa = prev.areas[k];
+        const v = pct(a.acc);
+        return `<li><span>${l}</span><div class="pbar"><i style="width:${v ?? 0}%"></i></div><b>${v === null ? '—' : v + '%'} <small>${a.n ? a.n + '개' : ''}</small></b></li>`;
+      }).join('')}</ul>
+      <p class="hint">정답률이 가장 낮은 영역을 오늘 할 일에서 먼저 해 보세요.</p>
+    </section>
+
     ${partsCard()}
 
     <button class="card link" data-go="scores"><b>성적 기록 →</b><small>교재 모의고사 ${(state.mocks || []).filter((m) => m.source === 'book').length}회 · 공식 시험 ${(state.mocks || []).filter((m) => m.source === 'official').length}회 · 넣을수록 예상 점수가 정확해져요</small></button>
 
+    <details class="more-charts">
+      <summary>그래프 더 보기 <small>학습량 · 정답률 · 단어 · 달력 · 기록</small></summary>
     <section class="card">
       <h2>학습량 <small>답한 수</small></h2>
-      ${Charts.bars({ points: volPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '어휘 문제', cls: 'c2' }], fmt: (v) => Math.round(v), aria: '기간별 학습량' })}
+      ${Charts.bars({ points: volPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '문제', cls: 'c2' }], fmt: (v) => Math.round(v), aria: '기간별 학습량' })}
     </section>
 
     <section class="card">
       <h2>정답률</h2>
-      ${Charts.line({ points: accPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '어휘 문제', cls: 'c2' }], yMin: 0, yMax: 100, fmt: (v) => Math.round(v) + '%', aria: '기간별 정답률' })}
+      ${Charts.line({ points: accPts, series: [{ key: 'w', name: '단어', cls: 'c1' }, { key: 'q', name: '문제', cls: 'c2' }], yMin: 0, yMax: 100, fmt: (v) => Math.round(v) + '%', aria: '기간별 정답률' })}
     </section>
 
     <section class="card">
@@ -556,6 +582,7 @@ function renderStats() {
         <li><span>익숙함 이상 단어</span><b>${Stats.masteredCount(state.words)}개</b></li>
       </ul>
     </section>
+    </details>
 
     <p class="hint center">예상 점수는 문항 난이도·정답·풀이 시간으로 기술별 실력을 추정한 뒤, 실제 토익 파트별 문항 수와 시간(RC 75분)에 맞춰 계산한 추정치예요.<br>공식 환산표가 없어서 근사 환산을 쓰고, 성적 기록으로 보정해요.</p>
   `;
@@ -898,7 +925,10 @@ function renderSummary() {
 // ---------- 오늘 할 일 (단어 → 어휘 → 문법) ----------
 function todayTasks(t = srs.today()) {
   const { reviews, fresh } = dailyPlan(t);
-  const goal = Number(state.settings.dailyQuestions) || 10;
+  const G = goals(t);
+  const goal = G.vocab;
+  const ggoal = G.grammar;
+  const lgoal = G.lc;
   const vDone = questionsToday(t, 'vocab');
   const gDone = questionsToday(t, 'grammar');
   const gFresh = !state.attempts.some((a) => a.module === 'grammar');
@@ -906,9 +936,9 @@ function todayTasks(t = srs.today()) {
   const lcDone = LC.todayCount(state, t);
   return [
     { key: 'words', name: '단어', done: !wordTodo, min: wordTodo ? estimateMinutes(reviews.length, fresh.length) : 0, sub: wordTodo ? `복습 ${reviews.length} · 새 단어 ${fresh.length}` : '완료', attr: 'data-start="daily"', label: '단어 학습 시작' },
-    { key: 'listening', name: '듣기', done: lcDone >= LC.DAILY_P2, min: lcDone >= LC.DAILY_P2 ? 0 : Math.max(1, Math.round(((LC.DAILY_P2 - lcDone) * 25) / 60)), sub: `Part 2 응답 ${Math.min(lcDone, LC.DAILY_P2)}/${LC.DAILY_P2}`, attr: 'data-lc="lc2"', label: '듣기 시작', hidden: !lcP2.length },
+    { key: 'listening', name: '듣기', done: lcDone >= lgoal, min: lcDone >= lgoal ? 0 : Math.max(1, Math.round(((lgoal - lcDone) * COST.lc) / 60)), sub: `Part 2 응답 ${Math.min(lcDone, lgoal)}/${lgoal}`, attr: 'data-lc="lc2"', label: '듣기 시작', hidden: !lcP2.length },
     { key: 'vocab', name: '어휘 문제', done: vDone >= goal, min: vDone >= goal ? 0 : Math.max(1, Math.round(((goal - vDone) * 30) / 60)), sub: `${Math.min(vDone, goal)}/${goal}`, attr: 'data-vq="daily"', label: '어휘 문제 풀기' },
-    { key: 'grammar', name: '문법 문제', done: gDone >= goal, min: gDone >= goal ? 0 : Math.max(1, Math.round(((goal - gDone) * 30) / 60)) + (gFresh ? 2 : 0), sub: gFresh && !gDone ? '처음이면 기초 3장부터' : `${Math.min(gDone, goal)}/${goal}`, attr: gFresh ? 'data-concept="basic-structure"' : 'data-vq="gdaily"', label: gFresh ? '문법 기초부터 시작' : '문법 문제 풀기' },
+    { key: 'grammar', name: '문법 문제', done: gDone >= ggoal, min: gDone >= ggoal ? 0 : Math.max(1, Math.round(((ggoal - gDone) * 30) / 60)) + (gFresh ? 2 : 0), sub: gFresh && !gDone ? '처음이면 기초 3장부터' : `${Math.min(gDone, ggoal)}/${ggoal}`, attr: gFresh ? 'data-concept="basic-structure"' : 'data-vq="gdaily"', label: gFresh ? '문법 기초부터 시작' : '문법 문제 풀기' },
   ].filter((x) => !x.hidden);
 }
 
@@ -1191,6 +1221,13 @@ function renderSettings() {
   $view.innerHTML = `
     <section class="card">
       <h2>학습</h2>
+      <label class="field">하루 학습 시간
+        <select id="dailyMinutes">
+          ${MINUTE_OPTIONS.map(([v, l]) => `<option value="${v}" ${Number(s.dailyMinutes) === v ? 'selected' : ''}>${l}</option>`).join('')}
+          <option value="" ${!s.dailyMinutes ? 'selected' : ''}>직접 정하기 (아래 숫자대로)</option>
+        </select>
+      </label>
+      ${s.dailyMinutes ? `<p class="hint">복습 시간을 먼저 빼고 남은 시간을 새 단어 · 듣기 · 어휘 · 문법에 나눠요. 오늘: 새 단어 ${goals().newWords} · 듣기 ${goals().lc} · 어휘 ${goals().vocab} · 문법 ${goals().grammar}</p>` : ''}
       <div class="field-grid">
       <label class="field">목표 점수
         <input type="number" id="targetScore" min="10" max="990" step="5" value="${esc(s.targetScore)}" inputmode="numeric">
@@ -1198,7 +1235,7 @@ function renderSettings() {
       <label class="field">시험 날짜
         <input type="date" id="examDate" value="${esc(s.examDate)}">
       </label>
-      <label class="field">하루 새 단어
+      <label class="field">하루 새 단어${s.dailyMinutes ? ' <small class="quiet">최대</small>' : ''}
         <input type="number" id="dailyNewWords" min="0" max="200" value="${esc(s.dailyNewWords)}" inputmode="numeric">
       </label>
       <label class="field">하루 복습 상한
@@ -1272,7 +1309,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 v4 · 단어 · 어휘 · 문법 · 장문 빈칸 · 듣기</p>
+    <p class="version">토익 트레이너 v4.1 · 단어 · 어휘 · 문법 · 장문 빈칸 · 듣기</p>
   `;
 
   const num = (id, min, max) => {
@@ -1332,6 +1369,11 @@ function renderSettings() {
   }
 
   $view.querySelector('#export').addEventListener('click', exportBackup);
+  $view.querySelector('#dailyMinutes')?.addEventListener('change', (e) => {
+    state.settings.dailyMinutes = e.target.value ? Number(e.target.value) : null;
+    persist();
+    renderSettings();
+  });
   $view.querySelector('#lcAccentMix')?.addEventListener('change', (e) => {
     state.settings.lcAccentMix = e.target.checked;
     persist();
@@ -1436,7 +1478,7 @@ function questionsToday(t = srs.today(), area = 'vocab') {
 
 function vocabTodayCard() {
   if (!bank.length) return '';
-  const goal = Number(state.settings.dailyQuestions) || 10;
+  const goal = goals().vocab;
   const done = questionsToday();
   const due = Vocab.dueList(state, bank.filter((q) => Vocab.areaOf(q) === 'vocab'), srs.today()).length;
   const pct = Math.min(1, done / goal);
@@ -1480,6 +1522,7 @@ function lcCard() {
   if (!lcP2.length) return '';
   const t = srs.today();
   const done = LC.todayCount(state, t);
+  const goal = goals(t).lc;
   const p3 = LC.setProgress(state, lcSets, 3);
   const p4 = LC.setProgress(state, lcSets, 4);
   const st = {};
@@ -1488,10 +1531,10 @@ function lcCard() {
     st[k] = l.length ? Math.round((l.filter((a) => a.correct).length / l.length) * 100) + '%' : '-';
   }
   return `<section class="card vcard">
-      <div class="vcard-top"><h2>오늘의 듣기 <small>Part 2 응답</small></h2><span class="count">${Math.min(done, LC.DAILY_P2)}/${LC.DAILY_P2}</span></div>
-      <div class="progress"><i style="width:${Math.min(1, done / LC.DAILY_P2) * 100}%"></i></div>
+      <div class="vcard-top"><h2>오늘의 듣기 <small>Part 2 응답</small></h2><span class="count">${Math.min(done, goal)}/${goal}</span></div>
+      <div class="progress"><i style="width:${Math.min(1, done / goal) * 100}%"></i></div>
       <p class="hint">질문을 듣고 응답 A·B·C 중 고르기. 비슷한 발음·같은 단어 반복 함정을 알려 줘요.</p>
-      <button class="btn ${done >= LC.DAILY_P2 ? 'ghost' : 'primary'} wide" data-lc="lc2">${done >= LC.DAILY_P2 ? '10문제 더 듣기' : '듣기 시작 · 약 4분'}</button>
+      <button class="btn ${done >= goal ? 'ghost' : 'primary'} wide" data-lc="lc2">${done >= goal ? '10문제 더 듣기' : `듣기 시작 · 약 ${Math.max(1, Math.round(((goal - done) * COST.lc) / 60))}분`}</button>
     </section>
     <section class="card">
       <h2>세트 듣기 <small>문제를 먼저 읽고 듣기</small></h2>
@@ -1508,7 +1551,7 @@ function lcCard() {
 function grammarTodayCard() {
   const gbank = bank.filter((q) => Vocab.areaOf(q) === 'grammar');
   if (!gbank.length) return '';
-  const goal = Number(state.settings.dailyQuestions) || 10;
+  const goal = goals().grammar;
   const done = questionsToday(srs.today(), 'grammar');
   const due = Vocab.dueList(state, gbank, srs.today()).length;
   const pct = Math.min(1, done / goal);
@@ -1593,9 +1636,18 @@ function startLC(mode) {
   const t = srs.today();
   lcStop();
   if (mode === 'lc2') {
-    const items = LC.buildPart2(state, lcP2, state.settings, t);
+    const left = goals(t).lc - LC.todayCount(state, t);
+    const items = LC.buildPart2(state, lcP2, state.settings, t, left >= 5 ? left : LC.DAILY_P2);
     if (!items.length) return toast('들을 문제가 없어요');
     lcs = { mode, items, i: 0, results: [], origin: view === 'lc' ? 'quiz' : view };
+  } else if (mode === 'lcwrong') {
+    const items = Vocab.wrongQuestions(state, lcP2).filter((x) => !x.resolved).map((x) => x.q).slice(0, 10);
+    if (!items.length) return toast('틀린 Part 2 문제가 없어요');
+    lcs = { mode: 'lc2', items, i: 0, results: [], origin: view === 'lc' ? 'notes' : view };
+  } else if (mode.startsWith('set:')) {
+    const set = lcSets.find((x) => x.id === mode.slice(4));
+    if (!set) return;
+    lcs = { mode: set.part === 3 ? 'lc3' : 'lc4', set, phase: 'preview', picks: {}, replays: 0, results: [], origin: view };
   } else if (mode === 'lc3' || mode === 'lc4') {
     const set = LC.buildSet(state, lcSets, mode === 'lc3' ? 3 : 4, state.settings, t);
     if (!set) return toast('들을 세트가 없어요');
@@ -1645,10 +1697,11 @@ function lcPlay() {
   lcs.playing = true;
   lcRenderStatus();
   const me = (lcAudio = tts.speakLines(lcLines(), { rate: Number(state.settings.lcRate) || 1, mix: state.settings.lcAccentMix !== false }));
-  me.done.then(() => {
+  me.done.then((r) => {
     if (lcAudio !== me || !lcs) return;
     lcs.playing = false;
     lcs.heardAt = performance.now();
+    if (r?.completed && !r.spoke) lcs.noVoice = true; // 끝까지 갔는데 소리가 한 번도 안 남
     lcRenderStatus();
   });
 }
@@ -1658,6 +1711,21 @@ function lcRenderStatus() {
   if (!b || !lcs) return;
   b.classList.toggle('playing', !!lcs.playing);
   b.innerHTML = lcs.playing ? '<span class="eq"><i></i><i></i><i></i></span> 재생 중' : lcs.plays ? `▶ 다시 듣기` : '▶ 듣기';
+  // 음성이 안 나온 것 같으면 안내 (설정·무음 모드·대본 보기)
+  let n = $view.querySelector('.novoice');
+  if (lcs.noVoice && !lcs.playing && !lcs.scripted && !lcs.answered && lcs.phase !== 'review') {
+    if (!n) {
+      n = document.createElement('div');
+      n.className = 'novoice';
+      n.innerHTML = `<b>소리가 안 들리나요?</b><small>무음 모드(벨 스위치)와 음량을 확인하고 다시 들어 보세요. 그래도 안 되면 대본을 보고 풀 수 있어요. 대본으로 푼 문제는 점수에 들어가지 않아요.</small><button class="btn ghost small" data-novoice-script>대본 보고 풀기</button>`;
+      b.insertAdjacentElement('afterend', n);
+      n.querySelector('[data-novoice-script]').addEventListener('click', () => {
+        lcs.scripted = true;
+        lcStop();
+        renderLC();
+      });
+    }
+  } else n?.remove();
 }
 
 function renderLC() {
@@ -1677,7 +1745,7 @@ function lcTop(progress, label) {
 
 function bindLcQuit() {
   $view.querySelector('#quit').addEventListener('click', () => {
-    const back = ['home', 'quiz'].includes(lcs?.origin) ? lcs.origin : 'quiz';
+    const back = ['home', 'quiz', 'notes'].includes(lcs?.origin) ? lcs.origin : 'quiz';
     lcStop();
     lcs = null;
     document.body.classList.remove('has-bar');
@@ -1859,7 +1927,7 @@ function renderLCSet() {
   });
   $view.querySelector('#lc-again')?.addEventListener('click', () => startLC(lcs.mode));
   $view.querySelector('#lc-done')?.addEventListener('click', () => {
-    const back = ['home', 'quiz'].includes(lcs.origin) ? lcs.origin : 'quiz';
+    const back = ['home', 'quiz', 'notes'].includes(lcs.origin) ? lcs.origin : 'quiz';
     lcs = null;
     go(back);
   });
@@ -1936,7 +2004,7 @@ function renderLCSummary() {
       ${nextTaskButton(t, 'listening')}
       <p class="hint">${todayLeftText(t)}</p>
       <button class="btn ghost wide" data-lc="lc2">10문제 더 듣기</button>
-      <button class="btn ghost wide home-btn" data-go="${origin === 'home' ? 'home' : 'quiz'}">${origin === 'home' ? '홈으로' : '문제 홈으로'}</button>
+      <button class="btn ghost wide home-btn" data-go="${['home', 'notes'].includes(origin) ? origin : 'quiz'}">${origin === 'home' ? '홈으로' : origin === 'notes' ? '오답노트로' : '문제 홈으로'}</button>
     </section>
     ${
       wrong.length
@@ -2020,9 +2088,9 @@ function startVQ(mode, type, opts = {}) {
   const t = srs.today();
   let items;
   if (mode === 'type' && Vocab.GRAMMAR_TYPES[type] && !opts.skipConcept && !(state.settings.conceptsSeen || []).includes(type) && concepts.some((c) => c.id === type)) return openConcept(type, 'start');
-  if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10);
+  if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Math.max(5, goals(t).vocab - questionsToday(t, 'vocab')) || goals(t).vocab);
   else if (mode === 'p6') items = Vocab.buildP6(state, p6sets, bank, state.settings, t, 1);
-  else if (mode === 'gdaily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10, 'grammar');
+  else if (mode === 'gdaily') items = Vocab.buildDaily(state, bank, state.settings, t, Math.max(5, goals(t).grammar - questionsToday(t, 'grammar')), 'grammar');
   else if (mode === 'type') items = Vocab.buildType(state, bank, type, state.settings, t);
   else if (mode === 'wrong') items = Vocab.buildWrong(state, bank);
   else if (mode === 'speed') items = Vocab.buildSpeed(state, bank, state.settings, t);
@@ -2479,7 +2547,7 @@ function renderTestResult() {
       startLevel: lv.start,
       levelChangedAt: Date.now(),
       clozeHint: lv.hint,
-      ...(fromWelcome ? { targetScore: lv.target, onboarded: true } : {}),
+      ...(fromWelcome ? { targetScore: lv.target, onboarded: true, dailyMinutes: 25 } : {}),
     });
     persist();
     toast('학습 설정을 맞췄어요');
@@ -2523,7 +2591,9 @@ function renderWelcome() {
         sel
           ? `<label class="field">목표 점수
               <input type="number" id="w-target" min="10" max="990" step="5" value="${esc(ui.target ?? sel.target)}" inputmode="numeric">
-            </label>`
+            </label>
+            <p class="field-label">하루에 공부할 시간</p>
+            <div class="seg minutes-seg">${MINUTE_OPTIONS.map(([v]) => `<button class="${(ui.minutes ?? 25) === v ? 'on' : ''}" data-min="${v}">${v}분</button>`).join('')}</div>`
           : ''
       }
       <button class="btn primary big" id="begin" ${sel ? '' : 'disabled'}>시작하기</button>
@@ -2538,6 +2608,12 @@ function renderWelcome() {
     }),
   );
   $view.querySelector('#w-target')?.addEventListener('input', (e) => (ui.target = e.target.value));
+  $view.querySelectorAll('[data-min]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.minutes = Number(b.dataset.min);
+      renderWelcome();
+    }),
+  );
   $view.querySelector('#begin').addEventListener('click', () => {
     if (!sel) return;
     const target = Math.min(990, Math.max(10, Math.round(Number(ui.target ?? sel.target)) || sel.target));
@@ -2547,6 +2623,7 @@ function renderWelcome() {
       startLevel: sel.start,
       clozeHint: sel.hint,
       targetScore: target,
+      dailyMinutes: ui.minutes ?? 25,
       onboarded: true,
     });
     persist();
@@ -2681,6 +2758,9 @@ function renderNotes() {
   const words = state.words
     .filter((w) => w.srs && w.srs.box < 3 && ((w.lapses || 0) > 0 || recentWrong.has(w.id)))
     .sort((a, b) => (b.lapses || 0) - (a.lapses || 0) || a.srs.box - b.srs.box);
+  const lcAll = [...lcP2, ...lcSets.flatMap((x) => x.questions)];
+  const lcList = Vocab.wrongQuestions(state, lcAll);
+  const lcOpen = lcList.filter((x) => !x.resolved);
   const reasons = Vocab.reasonStats(state, t);
   const totalR = Object.values(reasons).reduce((a, b) => a + b, 0);
   const topReason = Object.entries(reasons).filter(([k]) => k !== 'none').sort((a, b) => b[1] - a[1])[0];
@@ -2700,11 +2780,11 @@ function renderNotes() {
 
   $view.innerHTML = `
     <section class="hero">
-      <p class="hero-title">${open.length ? `해결 안 된 오답 ${open.length + words.length}개` : '해결 안 된 오답이 없어요'}</p>
+      <p class="hero-title">${open.length + lcOpen.length + words.length ? `해결 안 된 오답 ${open.length + lcOpen.length + words.length}개` : '해결 안 된 오답이 없어요'}</p>
       <div class="today-grid">
-        <div><strong>${open.length}</strong><span>어휘 문제</span></div>
+        <div><strong>${open.length}</strong><span>문제</span></div>
+        <div><strong>${lcOpen.length}</strong><span>듣기</span></div>
         <div><strong>${words.length}</strong><span>단어</span></div>
-        <div><strong>${done.length}</strong><span>해결함</span></div>
       </div>
       <button class="btn primary big" data-vq="wrong" ${open.length ? '' : 'disabled'}>오답만 다시 풀기${open.length ? ` (${Math.min(10, open.length)}문제)` : ''}</button>
       ${words.length ? `<button class="btn ghost wide home-btn" data-start="practice">자주 틀린 단어 연습</button>` : ''}
@@ -2725,13 +2805,28 @@ function renderNotes() {
         : ''
     }
 
-    <div class="seg" role="tablist">
-      <button class="${tab === 'questions' ? 'on' : ''}" data-ntab="questions">어휘 문제 ${open.length}</button>
+    <div class="seg notes-seg" role="tablist">
+      <button class="${tab === 'questions' ? 'on' : ''}" data-ntab="questions">문제 ${open.length}</button>
+      <button class="${tab === 'lc' ? 'on' : ''}" data-ntab="lc">듣기 ${lcOpen.length}</button>
       <button class="${tab === 'words' ? 'on' : ''}" data-ntab="words">단어 ${words.length}</button>
-      <button class="${tab === 'done' ? 'on' : ''}" data-ntab="done">해결함 ${done.length}</button>
+      <button class="${tab === 'done' ? 'on' : ''}" data-ntab="done">해결 ${done.length + lcList.length - lcOpen.length}</button>
     </div>
     ${
-      tab === 'words'
+      tab === 'lc'
+        ? lcOpen.length
+          ? `${lcOpen.some((x) => x.q.type === 'lc2') ? `<button class="btn primary wide" data-lc="lcwrong">틀린 Part 2 다시 듣기 (${Math.min(10, lcOpen.filter((x) => x.q.type === 'lc2').length)}문제)</button>` : ''}
+             <ul class="note-list lc-notes">${lcOpen
+               .map((x) => {
+                 const q = x.q;
+                 const set = q.set ? lcSets.find((z) => z.id === q.set) : null;
+                 return `<li><div class="row"><div class="main"><p class="stem">${esc(q.type === 'lc2' ? q.q : q.stem)}</p>
+                   <small>${LC.TYPE_NAMES[q.type]}${set ? ` · ${esc(set.title)}` : ''} · 정답: ${esc(q.choices[q.answer])} · ${x.wrong}번 틀림</small>
+                   ${set ? `<button class="link-btn small" data-lc="set:${esc(set.id)}">이 세트 다시 듣기</button>` : ''}</div></div></li>`;
+               })
+               .join('')}</ul>
+             <p class="hint">두 번 연속 맞히면 '해결'로 옮겨져요.</p>`
+          : '<section class="card soon"><p>틀린 듣기 문제가 없어요.</p></section>'
+        : tab === 'words'
         ? words.length
           ? `<ul class="word-list">${words
               .map((w) => `<li><div class="row"><div class="main"><b>${esc(w.word)}</b><span>${esc(w.meaning)}</span></div><span class="status"><i class="seg${w.srs.box}"></i>${Session.isHard(w) ? '어려운 단어 · ' : ''}${srs.stageName(w.srs.box)}${w.lapses ? ` · ${w.lapses}번 떨어짐` : ''}</span></div></li>`)
@@ -2739,7 +2834,7 @@ function renderNotes() {
           : '<section class="card soon"><p>자주 틀린 단어가 없어요.</p></section>'
         : (tab === 'done' ? done : open).length
           ? `<ul class="note-list">${(tab === 'done' ? done : open).map(qItem).join('')}</ul>`
-          : `<section class="card soon"><p>${tab === 'done' ? '아직 해결한 오답이 없어요.' : '틀린 어휘 문제가 없어요.'}</p></section>`
+          : `<section class="card soon"><p>${tab === 'done' ? '아직 해결한 오답이 없어요.' : '틀린 문제가 없어요.'}</p></section>`
     }
     <p class="hint center">교재 오답 기록은 v6에서 추가돼요.</p>`;
 

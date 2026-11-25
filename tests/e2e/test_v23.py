@@ -45,7 +45,7 @@ async def main():
         await pg.click("[data-tab=notes]")
         await pg.wait_for_selector(".note-list")
         notes = await pg.inner_text("#view")
-        c("어휘 문제 3" in notes, "오답노트: 미해결 문제 3개")
+        c("문제 3" in notes, "오답노트: 미해결 문제 3개")
         c("뜻을 몰라서" in notes, "오답노트: 틀린 이유 통계")
         await pg.click("[data-ntab=words]")
         c("2번 떨어짐" in await pg.inner_text("#view"), "오답노트: 자주 틀린 단어")
@@ -58,7 +58,7 @@ async def main():
         await pg.click("[data-report-send]")
         st = await pg.evaluate(GET)
         c(len(st.get("reports", [])) == 1, "신고 저장")
-        c("어휘 문제 2" in await pg.inner_text("#view"), "신고한 문제는 오답에서 빠짐")
+        c("문제 2" in await pg.inner_text("#view"), "신고한 문제는 오답에서 빠짐")
 
         # 오답만 다시 풀기: 두 번 연속 맞히면 해결
         for rnd in range(2):
@@ -86,7 +86,7 @@ async def main():
         await pg.click("[data-go=notes]")
         await pg.click("[data-ntab=done]")
         view = await pg.inner_text("#view")
-        c("해결함 2" in view, "두 번 연속 정답 → 해결함 2")
+        c("해결 2" in view, "두 번 연속 정답 → 해결함 2")
 
         # 밀린 복습 더 하기 버튼 (상한을 낮춰 확인)
         st = await pg.evaluate(GET)
