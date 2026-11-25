@@ -1,0 +1,1470 @@
+{
+ "sets": [
+  {
+   "id": "s01",
+   "level": "basic",
+   "kind": "이메일",
+   "title": "Order confirmation",
+   "passage": "Dear Ms. Patel,\nThank you for your order of office chairs. We are pleased to {1} that your order has been processed. The chairs will be shipped {2} three business days. {3}. If you have any questions, please contact our customer service team. {4}, you can track your order on our website.\nSincerely,\nBest Office Supply",
+   "ko": "파텔 씨께, 사무용 의자를 주문해 주셔서 감사합니다. 주문이 처리되었음을 알려 드리게 되어 기쁩니다. 의자는 영업일 기준 3일 이내에 발송됩니다. 배송이 시작되면 추적 번호를 이메일로 보내 드리겠습니다. 궁금한 점이 있으면 고객 서비스팀에 연락해 주세요. 또한 웹사이트에서 주문을 추적할 수 있습니다.",
+   "questions": [
+    "p6-s01-1",
+    "p6-s01-2",
+    "p6-s01-3",
+    "p6-s01-4"
+   ]
+  },
+  {
+   "id": "s02",
+   "level": "basic",
+   "kind": "공지",
+   "title": "Elevator maintenance",
+   "passage": "Attention, all tenants:\nThe elevators in Building A will be {1} for maintenance on Saturday, May 10, from 8 A.M. to 2 P.M. During this time, please use the stairs on the east side of the building. {2}. We apologize for any {3} this may cause. If you need assistance moving heavy items, please {4} the management office in advance.",
+   "ko": "모든 입주자분들께: A동 엘리베이터는 5월 10일 토요일 오전 8시부터 오후 2시까지 점검으로 운행이 중단됩니다. 이 시간에는 건물 동쪽 계단을 이용해 주세요. 점검은 오후 2시까지 끝날 예정입니다. 불편을 드려 죄송합니다. 무거운 물건을 옮기는 데 도움이 필요하면 관리사무소에 미리 연락해 주세요.",
+   "questions": [
+    "p6-s02-1",
+    "p6-s02-2",
+    "p6-s02-3",
+    "p6-s02-4"
+   ]
+  },
+  {
+   "id": "s03",
+   "level": "basic",
+   "kind": "광고",
+   "title": "Grand opening",
+   "passage": "Come celebrate the grand opening of Green Leaf Café on Main Street! To thank our new customers, we are offering a free cup of coffee with any {1} on June 1. Our menu {2} fresh sandwiches, salads, and homemade desserts. {3}. We are open every day from 7 A.M. to 9 P.M. {4} you visit, be sure to ask about our loyalty card.",
+   "ko": "메인 스트리트 그린 리프 카페 개업을 함께 축하해 주세요! 새 고객님께 감사드리기 위해 6월 1일에는 무엇이든 구매하시면 커피 한 잔을 무료로 드립니다. 메뉴에는 신선한 샌드위치, 샐러드, 직접 만든 디저트가 있습니다. 모든 재료는 지역 농장에서 공급받습니다. 매일 오전 7시부터 오후 9시까지 영업합니다. 방문하시면 꼭 적립 카드에 대해 물어보세요.",
+   "questions": [
+    "p6-s03-1",
+    "p6-s03-2",
+    "p6-s03-3",
+    "p6-s03-4"
+   ]
+  },
+  {
+   "id": "s04",
+   "level": "basic",
+   "kind": "메모",
+   "title": "Office supplies",
+   "passage": "To: All staff\nFrom: Daniel Ortiz, Office Manager\nStarting next week, office supplies will be ordered only once a month. {1}, please send your requests to me by the 25th of each month. Requests received after this date will be {2} in the following month's order. {3}. This change will help us {4} costs and reduce waste.",
+   "ko": "수신: 전 직원 / 발신: 사무실 관리자 대니얼 오티즈. 다음 주부터 사무용품은 한 달에 한 번만 주문합니다. 따라서 요청 사항은 매달 25일까지 저에게 보내 주세요. 이 날짜 이후에 받은 요청은 다음 달 주문에 포함됩니다. 급한 물품은 예외로 처리할 수 있습니다. 이 변경은 비용을 줄이고 낭비를 줄이는 데 도움이 될 것입니다.",
+   "questions": [
+    "p6-s04-1",
+    "p6-s04-2",
+    "p6-s04-3",
+    "p6-s04-4"
+   ]
+  },
+  {
+   "id": "s05",
+   "level": "mid",
+   "kind": "이메일",
+   "title": "Interview schedule",
+   "passage": "Dear Mr. Novak,\nThank you for your interest in the marketing coordinator position. We were impressed by your {1} and would like to invite you for an interview. The interview will take place on Thursday at 10 A.M. at our main office. {2}. Please bring a copy of your portfolio and two forms of identification. If this time is not {3} for you, please let us know as soon as possible so that we can {4} the schedule.\nBest regards,\nHannah Cho, Human Resources",
+   "ko": "노박 씨께, 마케팅 코디네이터 직책에 관심을 가져 주셔서 감사합니다. 지원서가 인상 깊어 면접에 초대하고자 합니다. 면접은 목요일 오전 10시 본사에서 진행됩니다. 면접은 약 45분 걸릴 예정입니다. 포트폴리오 사본과 신분증 두 가지를 가져오세요. 이 시간이 편하지 않으면 일정을 조정할 수 있도록 가능한 한 빨리 알려 주세요.",
+   "questions": [
+    "p6-s05-1",
+    "p6-s05-2",
+    "p6-s05-3",
+    "p6-s05-4"
+   ]
+  },
+  {
+   "id": "s06",
+   "level": "mid",
+   "kind": "공지",
+   "title": "Policy update",
+   "passage": "To all employees:\nEffective March 1, the company will {1} a new travel reimbursement policy. Under the new policy, all travel expenses must be submitted within 30 days of the trip. Receipts {2} for every expense over $25. {3}, meals will be reimbursed up to $60 per day. {4}. Please review the full policy on the company intranet.",
+   "ko": "전 직원께: 3월 1일부터 회사는 새 출장비 정산 정책을 시행합니다. 새 정책에 따라 모든 출장비는 출장 후 30일 이내에 제출해야 합니다. 25달러가 넘는 모든 경비에는 영수증이 필요합니다. 또한 식비는 하루 60달러까지 정산됩니다. 이 한도를 넘는 금액은 개인 부담입니다. 전체 정책은 사내 인트라넷에서 확인하세요.",
+   "questions": [
+    "p6-s06-1",
+    "p6-s06-2",
+    "p6-s06-3",
+    "p6-s06-4"
+   ]
+  },
+  {
+   "id": "s07",
+   "level": "mid",
+   "kind": "기사",
+   "title": "Local business news",
+   "passage": "Riverside Bakery, a family-owned business that has served the town for 40 years, announced yesterday that it will open a second location. The new store will be located downtown, {1} the public library. Owner Maria Lopez said the decision was made {2} growing demand from customers who live in the area. {3}. The downtown store is scheduled to open in September and will {4} about 15 new jobs.",
+   "ko": "40년간 마을에서 영업해 온 가족 운영 업체 리버사이드 베이커리가 어제 두 번째 매장을 연다고 발표했다. 새 매장은 시내 공공 도서관 옆에 들어선다. 업주 마리아 로페스는 그 지역 주민 고객의 수요가 늘어서 결정했다고 말했다. 그녀는 새 매장에서도 같은 조리법을 쓸 것이라고 덧붙였다. 시내 매장은 9월에 문을 열 예정이며 새 일자리 약 15개를 만들 것이다.",
+   "questions": [
+    "p6-s07-1",
+    "p6-s07-2",
+    "p6-s07-3",
+    "p6-s07-4"
+   ]
+  },
+  {
+   "id": "s08",
+   "level": "mid",
+   "kind": "편지",
+   "title": "Customer complaint response",
+   "passage": "Dear Mr. Haddad,\nThank you for contacting us about the damaged lamp you received. We sincerely apologize for this problem. {1}. A replacement lamp has already been sent to you by express mail, and it should {2} within two days. You do not need to return the damaged item. {3}, we have added a $20 credit to your account. We value your business and hope you will continue to {4} our products.\nSincerely,\nCustomer Care Team",
+   "ko": "하다드 씨께, 받으신 램프가 파손된 건으로 연락해 주셔서 감사합니다. 문제가 생겨 진심으로 사과드립니다. 저희는 이 일을 매우 심각하게 받아들이고 있습니다. 교체 램프를 이미 빠른우편으로 보냈으며 이틀 안에 도착할 것입니다. 파손된 제품은 반송하지 않으셔도 됩니다. 아울러 고객님 계정에 20달러 적립금을 넣어 드렸습니다. 고객님을 소중히 여기며 앞으로도 저희 제품을 계속 이용해 주시길 바랍니다.",
+   "questions": [
+    "p6-s08-1",
+    "p6-s08-2",
+    "p6-s08-3",
+    "p6-s08-4"
+   ]
+  },
+  {
+   "id": "s09",
+   "level": "adv",
+   "kind": "이메일",
+   "title": "Contract renewal",
+   "passage": "Dear Mr. Fischer,\nOur records indicate that your service contract with Apex Facilities is {1} to expire on April 30. To avoid any interruption in service, we recommend that you {2} the contract before that date. {3}. Renewing customers are also eligible for a 10 percent discount on their first quarterly payment. {4} you have any questions regarding the terms, please contact your account manager directly.\nSincerely,\nApex Facilities",
+   "ko": "피셔 씨께, 기록에 따르면 귀하의 에이펙스 퍼실리티즈 서비스 계약은 4월 30일에 만료될 예정입니다. 서비스 중단을 피하시려면 그 전에 계약을 갱신하시길 권합니다. 갱신 조건은 기존 계약과 동일합니다. 갱신 고객은 첫 분기 요금 10% 할인도 받으실 수 있습니다. 조건에 관해 궁금한 점이 있으시면 담당 매니저에게 직접 연락해 주세요.",
+   "questions": [
+    "p6-s09-1",
+    "p6-s09-2",
+    "p6-s09-3",
+    "p6-s09-4"
+   ]
+  },
+  {
+   "id": "s10",
+   "level": "adv",
+   "kind": "공지",
+   "title": "System migration",
+   "passage": "Notice to all staff:\nThe IT department will migrate the company's e-mail system to a new platform this weekend. While the migration is in progress, e-mail access will be {1} unavailable. All messages sent during this period will be delivered once the system is restored. {2}. Employees are advised to save any important attachments to their computers {3} Friday evening. {4} the migration is complete, you will receive instructions on how to log in to the new system.",
+   "ko": "전 직원 공지: IT 부서는 이번 주말 회사 이메일 시스템을 새 플랫폼으로 옮깁니다. 이전 작업 중에는 이메일을 일시적으로 쓸 수 없습니다. 이 기간에 보낸 메일은 시스템이 복구되면 전달됩니다. 기존 메일과 폴더는 자동으로 옮겨집니다. 직원들은 금요일 저녁까지 중요한 첨부 파일을 컴퓨터에 저장해 두시기 바랍니다. 이전이 끝나면 새 시스템 로그인 방법을 안내받게 됩니다.",
+   "questions": [
+    "p6-s10-1",
+    "p6-s10-2",
+    "p6-s10-3",
+    "p6-s10-4"
+   ]
+  },
+  {
+   "id": "s11",
+   "level": "adv",
+   "kind": "기사",
+   "title": "Industry report",
+   "passage": "Electric bicycle sales rose sharply last year, according to a report released by the National Cycling Association. The report found that sales increased by 35 percent, {1} the result of lower prices and expanded bike lanes in major cities. {2}. Analysts expect this trend to continue, although some caution that supply shortages could {3} growth. Manufacturers are now investing heavily in battery technology to make their products {4} affordable.",
+   "ko": "전국자전거협회가 발표한 보고서에 따르면 작년 전기자전거 판매가 급증했다. 보고서는 판매가 35% 늘었으며, 이는 주로 가격 하락과 대도시 자전거 도로 확대 때문이라고 밝혔다. 특히 통근자들 사이에서 수요가 크게 늘었다. 분석가들은 이 추세가 계속될 것으로 보지만 일부는 공급 부족이 성장을 늦출 수 있다고 경고한다. 제조사들은 제품을 더 저렴하게 만들기 위해 배터리 기술에 대규모로 투자하고 있다.",
+   "questions": [
+    "p6-s11-1",
+    "p6-s11-2",
+    "p6-s11-3",
+    "p6-s11-4"
+   ]
+  },
+  {
+   "id": "s12",
+   "level": "adv",
+   "kind": "메모",
+   "title": "Project delay",
+   "passage": "To: Design Team\nFrom: Laura Kim, Project Director\nAs some of you are aware, the launch of the Meridian app has been {1} by two weeks. The delay is due to unexpected compatibility issues with older devices. {2}. In the meantime, I would ask that each team member {3} the updated timeline, which is attached to this memo. {4} the new schedule is tight, I am confident that we can meet it if we work together.",
+   "ko": "수신: 디자인팀 / 발신: 프로젝트 디렉터 로라 김. 일부는 알고 있겠지만 메리디언 앱 출시가 2주 연기되었습니다. 지연은 구형 기기와의 예상치 못한 호환성 문제 때문입니다. 개발팀이 이미 해결 작업을 하고 있습니다. 그동안 팀원 각자 이 메모에 첨부된 수정 일정을 검토해 주시기 바랍니다. 새 일정이 빠듯하긴 하지만 함께 노력하면 맞출 수 있다고 확신합니다.",
+   "questions": [
+    "p6-s12-1",
+    "p6-s12-2",
+    "p6-s12-3",
+    "p6-s12-4"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "p6-s01-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "basic",
+   "set": "s01",
+   "n": 1,
+   "stem": "We are pleased to ____ that your order has been processed.",
+   "choices": [
+    "confirm",
+    "contain",
+    "consume",
+    "consult"
+   ],
+   "answer": 0,
+   "clue": "pleased to ____ that ~ (~임을 알려 드리다)",
+   "explanation": "주문이 처리되었다는 사실을 '확인해 드리다'라는 뜻이라 confirm이에요.",
+   "ko": "",
+   "meanings": {
+    "confirm": "확인하다",
+    "contain": "포함하다",
+    "consume": "소비하다",
+    "consult": "상담하다"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s01-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "basic",
+   "set": "s01",
+   "n": 2,
+   "stem": "The chairs will be shipped ____ three business days.",
+   "choices": [
+    "within",
+    "during",
+    "since",
+    "until"
+   ],
+   "answer": 0,
+   "clue": "____ + 기간(three business days) 이내에",
+   "explanation": "'3일 이내에'는 within + 기간이에요. since는 시점, during은 명사(사건) 앞에 써요.",
+   "ko": "",
+   "meanings": {
+    "within": "~이내에",
+    "during": "~동안(사건)",
+    "since": "~이래로",
+    "until": "~까지(계속)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s01-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "basic",
+   "set": "s01",
+   "n": 3,
+   "stem": "The chairs will be shipped within three business days. ____. If you have any questions, please contact our customer service team.",
+   "choices": [
+    "We will e-mail you a tracking number once the items are shipped",
+    "Our store is closed on national holidays",
+    "The chairs are available in five colors",
+    "Thank you for applying for the position"
+   ],
+   "answer": 0,
+   "clue": "앞: 발송 일정 / 뒤: 문의·추적 안내",
+   "explanation": "앞뒤가 배송 이야기라 '발송되면 추적 번호를 보낸다'가 자연스러워요. 뒤 문장의 track your order와도 이어져요.",
+   "ko": "",
+   "meanings": {
+    "We will e-mail you a tracking number once the items are shipped": "발송되면 추적 번호를 이메일로 보냄",
+    "Our store is closed on national holidays": "공휴일 휴무",
+    "The chairs are available in five colors": "의자 색상 5가지",
+    "Thank you for applying for the position": "지원해 주셔서 감사"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s01-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "basic",
+   "set": "s01",
+   "n": 4,
+   "stem": "____, you can track your order on our website.",
+   "choices": [
+    "In addition",
+    "However",
+    "Instead",
+    "Otherwise"
+   ],
+   "answer": 0,
+   "clue": "문의 방법 + 추적 방법 (정보 추가)",
+   "explanation": "앞 문장(문의 안내)에 정보를 하나 더하는 흐름이라 In addition(또한)이에요.",
+   "ko": "",
+   "meanings": {
+    "In addition": "또한",
+    "However": "그러나",
+    "Instead": "대신에",
+    "Otherwise": "그렇지 않으면"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s02-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "basic",
+   "set": "s02",
+   "n": 1,
+   "stem": "The elevators in Building A will be ____ for maintenance on Saturday, May 10, from 8 A.M.",
+   "choices": [
+    "closed",
+    "closing",
+    "close",
+    "closes"
+   ],
+   "answer": 0,
+   "clue": "will be ____ (수동) → 과거분사",
+   "explanation": "엘리베이터가 '닫히는' 대상이라 will be closed예요.",
+   "ko": "",
+   "meanings": {
+    "closed": "닫힌(과거분사)",
+    "closing": "닫는",
+    "close": "원형",
+    "closes": "3인칭 현재"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s02-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "basic",
+   "set": "s02",
+   "n": 2,
+   "stem": "During this time, please use the stairs on the east side of the building. ____. We apologize for any inconvenience this may cause.",
+   "choices": [
+    "The work is expected to be completed by 2 P.M.",
+    "Parking spaces are assigned on a first-come basis",
+    "Rent payments are due on the first of each month",
+    "The building opened in 1998"
+   ],
+   "answer": 0,
+   "clue": "앞: 계단 이용 안내 / 뒤: 불편 사과",
+   "explanation": "점검 공지 흐름이라 '오후 2시까지 끝날 예정'이 자연스러워요. 나머지는 주제와 관계없어요.",
+   "ko": "",
+   "meanings": {
+    "The work is expected to be completed by 2 P.M.": "작업은 오후 2시까지 끝날 예정",
+    "Parking spaces are assigned on a first-come basis": "주차는 선착순",
+    "Rent payments are due on the first of each month": "월세는 매달 1일",
+    "The building opened in 1998": "건물은 1998년 개장"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s02-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "basic",
+   "set": "s02",
+   "n": 3,
+   "stem": "We apologize for any ____ this may cause.",
+   "choices": [
+    "inconvenience",
+    "inconvenient",
+    "convenience",
+    "convenient"
+   ],
+   "answer": 0,
+   "clue": "any + ____ (명사), 사과하는 대상",
+   "explanation": "apologize for any inconvenience(불편을 드려 죄송합니다)는 공지 단골 표현이에요.",
+   "ko": "",
+   "meanings": {
+    "inconvenience": "불편(명사)",
+    "inconvenient": "불편한(형용사)",
+    "convenience": "편리(명사)",
+    "convenient": "편리한"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s02-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "basic",
+   "set": "s02",
+   "n": 4,
+   "stem": "If you need assistance moving heavy items, please ____ the management office in advance.",
+   "choices": [
+    "contact",
+    "attend",
+    "register",
+    "deliver"
+   ],
+   "answer": 0,
+   "clue": "____ the management office (사무실에 연락하다)",
+   "explanation": "도움을 받으려면 관리사무소에 '연락하다'가 자연스러워요.",
+   "ko": "",
+   "meanings": {
+    "contact": "연락하다",
+    "attend": "참석하다",
+    "register": "등록하다",
+    "deliver": "배달하다"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s03-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "basic",
+   "set": "s03",
+   "n": 1,
+   "stem": "To thank our new customers, we are offering a free cup of coffee with any ____ on June 1.",
+   "choices": [
+    "purchase",
+    "purpose",
+    "position",
+    "permission"
+   ],
+   "answer": 0,
+   "clue": "with any ____ (구매 시)",
+   "explanation": "무료 커피를 '구매 시' 주는 것이라 purchase예요.",
+   "ko": "",
+   "meanings": {
+    "purchase": "구매",
+    "purpose": "목적",
+    "position": "위치, 직책",
+    "permission": "허가"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s03-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "basic",
+   "set": "s03",
+   "n": 2,
+   "stem": "Our menu ____ fresh sandwiches, salads, and homemade desserts.",
+   "choices": [
+    "includes",
+    "include",
+    "including",
+    "to include"
+   ],
+   "answer": 0,
+   "clue": "주어 Our menu(단수) + 동사 자리",
+   "explanation": "문장에 동사가 없어서 동사가 필요하고, 주어가 단수라 includes예요.",
+   "ko": "",
+   "meanings": {
+    "includes": "3인칭 단수 동사",
+    "include": "복수/원형",
+    "including": "~을 포함하여(전치사)",
+    "to include": "to부정사"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s03-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "basic",
+   "set": "s03",
+   "n": 3,
+   "stem": "Our menu includes fresh sandwiches, salads, and homemade desserts. ____. We are open every day from 7 A.M.",
+   "choices": [
+    "All of our ingredients come from local farms",
+    "Please submit your résumé by June 10",
+    "The parking lot will be repaved next week",
+    "Our office has moved to a new location"
+   ],
+   "answer": 0,
+   "clue": "앞: 메뉴 소개 / 뒤: 영업시간",
+   "explanation": "메뉴 이야기 바로 뒤라 재료 이야기가 자연스러워요.",
+   "ko": "",
+   "meanings": {
+    "All of our ingredients come from local farms": "재료는 모두 지역 농장산",
+    "Please submit your résumé by June 10": "6월 10일까지 이력서 제출",
+    "The parking lot will be repaved next week": "주차장 재포장",
+    "Our office has moved to a new location": "사무실 이전"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s03-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "basic",
+   "set": "s03",
+   "n": 4,
+   "stem": "____ you visit, be sure to ask about our loyalty card.",
+   "choices": [
+    "When",
+    "Despite",
+    "Because of",
+    "During"
+   ],
+   "answer": 0,
+   "clue": "____ + 주어 + 동사 (you visit) → 접속사",
+   "explanation": "뒤에 절이 오니 접속사 When이에요. 나머지는 전치사예요.",
+   "ko": "",
+   "meanings": {
+    "When": "~할 때(접속사)",
+    "Despite": "~에도 불구하고(전치사)",
+    "Because of": "~때문에(전치사)",
+    "During": "~동안(전치사)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s04-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "basic",
+   "set": "s04",
+   "n": 1,
+   "stem": "____, please send your requests to me by the 25th of each month.",
+   "choices": [
+    "Therefore",
+    "However",
+    "Otherwise",
+    "Similarly"
+   ],
+   "answer": 0,
+   "clue": "앞(월 1회 주문)의 결과 → 25일까지 요청",
+   "explanation": "앞 내용 때문에 마감일을 지키라는 흐름이라 Therefore(따라서)예요.",
+   "ko": "",
+   "meanings": {
+    "Therefore": "따라서",
+    "However": "그러나",
+    "Otherwise": "그렇지 않으면",
+    "Similarly": "마찬가지로"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s04-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "basic",
+   "set": "s04",
+   "n": 2,
+   "stem": "Requests received after this date will be ____ in the following month's order.",
+   "choices": [
+    "included",
+    "including",
+    "include",
+    "inclusion"
+   ],
+   "answer": 0,
+   "clue": "will be ____ (수동)",
+   "explanation": "요청이 '포함되는' 대상이라 will be included예요.",
+   "ko": "",
+   "meanings": {
+    "included": "포함된(과거분사)",
+    "including": "포함하여",
+    "include": "원형",
+    "inclusion": "명사"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s04-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "basic",
+   "set": "s04",
+   "n": 3,
+   "stem": "Requests received after this date will be included in the following month's order. ____. This change will help us control costs and reduce waste.",
+   "choices": [
+    "Urgent items may be handled as exceptions",
+    "The cafeteria menu changes every Monday",
+    "Our new printer arrived yesterday",
+    "Please remember to lock the doors at night"
+   ],
+   "answer": 0,
+   "clue": "앞: 마감 후 요청 처리 / 뒤: 변경 이유",
+   "explanation": "주문 규칙 설명 중이라 '급한 물품은 예외'가 자연스러워요.",
+   "ko": "",
+   "meanings": {
+    "Urgent items may be handled as exceptions": "급한 물품은 예외 처리 가능",
+    "The cafeteria menu changes every Monday": "구내식당 메뉴 매주 월요일 변경",
+    "Our new printer arrived yesterday": "새 프린터 어제 도착",
+    "Please remember to lock the doors at night": "밤에 문 잠그기"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s04-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "basic",
+   "set": "s04",
+   "n": 4,
+   "stem": "This change will help us ____ costs and reduce waste.",
+   "choices": [
+    "control",
+    "collect",
+    "conduct",
+    "contain"
+   ],
+   "answer": 0,
+   "clue": "help us ____ costs (비용을 관리하다)",
+   "explanation": "비용을 '관리·억제하다'는 control costs예요.",
+   "ko": "",
+   "meanings": {
+    "control": "관리하다, 억제하다",
+    "collect": "모으다",
+    "conduct": "수행하다",
+    "contain": "포함하다"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s05-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "mid",
+   "set": "s05",
+   "n": 1,
+   "stem": "We were impressed by your ____ and would like to invite you for an interview.",
+   "choices": [
+    "application",
+    "appliance",
+    "appearance",
+    "appointment"
+   ],
+   "answer": 0,
+   "clue": "impressed by your ____ (지원서)",
+   "explanation": "채용 이메일에서 인상 깊었던 것은 '지원서'예요.",
+   "ko": "",
+   "meanings": {
+    "application": "지원(서)",
+    "appliance": "가전제품",
+    "appearance": "외모, 출현",
+    "appointment": "약속, 임명"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s05-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "mid",
+   "set": "s05",
+   "n": 2,
+   "stem": "at our main office. ____. Please bring a copy of your portfolio and two forms of identification.",
+   "choices": [
+    "It is expected to last about 45 minutes",
+    "Our company was founded over 50 years ago",
+    "The position has already been filled",
+    "Lunch will be served in the cafeteria"
+   ],
+   "answer": 0,
+   "clue": "앞: 면접 일시·장소 / 뒤: 준비물",
+   "explanation": "면접 안내 흐름이라 소요 시간이 자연스러워요. 'already been filled'는 초대와 모순이에요.",
+   "ko": "",
+   "meanings": {
+    "It is expected to last about 45 minutes": "약 45분 소요 예정",
+    "Our company was founded over 50 years ago": "회사 설립 50년",
+    "The position has already been filled": "이미 채용 완료(모순)",
+    "Lunch will be served in the cafeteria": "구내식당 점심 제공"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s05-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "mid",
+   "set": "s05",
+   "n": 3,
+   "stem": "If this time is not ____ for you, please let us know as soon as possible so that we can adjust the schedule.",
+   "choices": [
+    "convenient",
+    "comfortable",
+    "considerable",
+    "consistent"
+   ],
+   "answer": 0,
+   "clue": "time is not ____ for you (시간이 편하다)",
+   "explanation": "시간이 '편하다'는 convenient예요. comfortable은 몸·마음이 편한 거예요.",
+   "ko": "",
+   "meanings": {
+    "convenient": "(시간·장소가) 편리한",
+    "comfortable": "편안한",
+    "considerable": "상당한",
+    "consistent": "일관된"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s05-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "mid",
+   "set": "s05",
+   "n": 4,
+   "stem": "If this time is not convenient for you, please let us know as soon as possible so that we can ____ the schedule.",
+   "choices": [
+    "adjust",
+    "adjusting",
+    "adjusted",
+    "adjustment"
+   ],
+   "answer": 0,
+   "clue": "so that we can ____ (조동사 뒤 원형)",
+   "explanation": "can 뒤에는 동사원형이에요.",
+   "ko": "",
+   "meanings": {
+    "adjust": "조정하다(원형)",
+    "adjusting": "-ing형",
+    "adjusted": "과거",
+    "adjustment": "명사"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s06-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "mid",
+   "set": "s06",
+   "n": 1,
+   "stem": "Effective March 1, the company will ____ a new travel reimbursement policy.",
+   "choices": [
+    "implement",
+    "imply",
+    "impose",
+    "import"
+   ],
+   "answer": 0,
+   "clue": "____ a new policy (정책을 시행하다)",
+   "explanation": "정책을 '시행하다'는 implement예요.",
+   "ko": "",
+   "meanings": {
+    "implement": "시행하다",
+    "imply": "암시하다",
+    "impose": "부과하다",
+    "import": "수입하다"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s06-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "mid",
+   "set": "s06",
+   "n": 2,
+   "stem": "Receipts ____ for every expense over $25.",
+   "choices": [
+    "are required",
+    "require",
+    "requiring",
+    "have required"
+   ],
+   "answer": 0,
+   "clue": "영수증은 '요구되는' 대상, 뒤에 목적어 없음 → 수동",
+   "explanation": "Receipts가 요구되는 쪽이라 are required예요.",
+   "ko": "",
+   "meanings": {
+    "are required": "요구된다(수동)",
+    "require": "요구하다(능동)",
+    "requiring": "-ing형",
+    "have required": "능동 완료"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s06-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "mid",
+   "set": "s06",
+   "n": 3,
+   "stem": "____, meals will be reimbursed up to $60 per day.",
+   "choices": [
+    "In addition",
+    "As a result",
+    "For example",
+    "Nevertheless"
+   ],
+   "answer": 0,
+   "clue": "규정을 하나 더 추가",
+   "explanation": "새 규정 목록에 하나를 더하는 흐름이라 In addition이에요.",
+   "ko": "",
+   "meanings": {
+    "In addition": "또한",
+    "As a result": "그 결과",
+    "For example": "예를 들어",
+    "Nevertheless": "그럼에도 불구하고"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s06-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "mid",
+   "set": "s06",
+   "n": 4,
+   "stem": "In addition, meals will be reimbursed up to $60 per day. ____. Please review the full policy on the company intranet.",
+   "choices": [
+    "Any amount above this limit will not be covered",
+    "Employees may now work from home on Fridays",
+    "The new cafeteria will open next month",
+    "Our sales increased by 10 percent last year"
+   ],
+   "answer": 0,
+   "clue": "앞: 식비 한도 60달러 / 뒤: 전체 정책 확인",
+   "explanation": "한도 바로 뒤라 '초과분은 지원 안 됨'이 이어져요.",
+   "ko": "",
+   "meanings": {
+    "Any amount above this limit will not be covered": "한도 초과분 미지원",
+    "Employees may now work from home on Fridays": "금요일 재택근무",
+    "The new cafeteria will open next month": "새 구내식당 개장",
+    "Our sales increased by 10 percent last year": "작년 매출 10% 증가"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s07-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "mid",
+   "set": "s07",
+   "n": 1,
+   "stem": "The new store will be located downtown, ____ the public library.",
+   "choices": [
+    "next to",
+    "next",
+    "nearly",
+    "nearby"
+   ],
+   "answer": 0,
+   "clue": "____ + 명사(the public library) → 전치사",
+   "explanation": "명사 앞 위치 표현은 전치사 next to예요. nearby는 부사·형용사라 바로 명사를 받지 않아요.",
+   "ko": "",
+   "meanings": {
+    "next to": "~옆에(전치사)",
+    "next": "다음의",
+    "nearly": "거의",
+    "nearby": "근처에(부사)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s07-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "mid",
+   "set": "s07",
+   "n": 2,
+   "stem": "Owner Maria Lopez said the decision was made ____ growing demand from customers who live in the area.",
+   "choices": [
+    "because of",
+    "because",
+    "although",
+    "so that"
+   ],
+   "answer": 0,
+   "clue": "____ + 명사(growing demand) → 전치사",
+   "explanation": "뒤가 명사구라 because of예요.",
+   "ko": "",
+   "meanings": {
+    "because of": "~때문에(전치사)",
+    "because": "~때문에(접속사)",
+    "although": "비록 ~지만",
+    "so that": "~하도록"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s07-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "mid",
+   "set": "s07",
+   "n": 3,
+   "stem": "Owner Maria Lopez said the decision was made because of growing demand from customers who live in the area. ____. The downtown store is scheduled to open in September and will create about 15 new jobs.",
+   "choices": [
+    "She added that the new store will use the same recipes",
+    "The library will be closed for renovations",
+    "Bread prices have fallen across the country",
+    "The bakery was sold to a large chain last year"
+   ],
+   "answer": 0,
+   "clue": "앞: 업주 발언 / 뒤: 개장 일정",
+   "explanation": "업주 인터뷰를 이어 가는 She added가 자연스러워요. 'sold to a large chain'은 가족 운영과 모순이에요.",
+   "ko": "",
+   "meanings": {
+    "She added that the new store will use the same recipes": "새 매장도 같은 조리법",
+    "The library will be closed for renovations": "도서관 보수 휴관",
+    "Bread prices have fallen across the country": "전국 빵값 하락",
+    "The bakery was sold to a large chain last year": "작년 대기업에 매각(모순)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s07-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "mid",
+   "set": "s07",
+   "n": 4,
+   "stem": "The downtown store is scheduled to open in September and will ____ about 15 new jobs.",
+   "choices": [
+    "create",
+    "grow",
+    "build up",
+    "raise"
+   ],
+   "answer": 0,
+   "clue": "____ jobs (일자리를 만들다)",
+   "explanation": "일자리를 '창출하다'는 create jobs예요.",
+   "ko": "",
+   "meanings": {
+    "create": "만들다, 창출하다",
+    "grow": "자라다",
+    "build up": "쌓아 올리다",
+    "raise": "올리다"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s08-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "mid",
+   "set": "s08",
+   "n": 1,
+   "stem": "We sincerely apologize for this problem. ____. A replacement lamp has already been sent to you by express mail, and it should arrive within two days.",
+   "choices": [
+    "We take this matter very seriously",
+    "Our lamps are made from recycled materials",
+    "The store will be closed for the holidays",
+    "Please pay the remaining balance by Friday"
+   ],
+   "answer": 0,
+   "clue": "앞: 사과 / 뒤: 교체품 발송",
+   "explanation": "사과 뒤에 '심각하게 받아들인다'로 이어지는 흐름이에요.",
+   "ko": "",
+   "meanings": {
+    "We take this matter very seriously": "이 일을 심각하게 받아들임",
+    "Our lamps are made from recycled materials": "재활용 소재 램프",
+    "The store will be closed for the holidays": "연휴 휴무",
+    "Please pay the remaining balance by Friday": "잔금 금요일까지 납부"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s08-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "mid",
+   "set": "s08",
+   "n": 2,
+   "stem": "A replacement lamp has already been sent to you by express mail, and it should ____ within two days.",
+   "choices": [
+    "arrive",
+    "arrives",
+    "arriving",
+    "arrived"
+   ],
+   "answer": 0,
+   "clue": "should + 동사원형",
+   "explanation": "조동사 should 뒤에는 동사원형이에요.",
+   "ko": "",
+   "meanings": {
+    "arrive": "원형",
+    "arrives": "3인칭 현재",
+    "arriving": "-ing형",
+    "arrived": "과거"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s08-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "mid",
+   "set": "s08",
+   "n": 3,
+   "stem": "____, we have added a $20 credit to your account.",
+   "choices": [
+    "In addition",
+    "Instead",
+    "On the other hand",
+    "For instance"
+   ],
+   "answer": 0,
+   "clue": "보상(교체) + 보상(적립금) 추가",
+   "explanation": "교체품에 더해 적립금도 준다는 '추가'라서 In addition이에요.",
+   "ko": "",
+   "meanings": {
+    "In addition": "아울러, 또한",
+    "Instead": "대신에",
+    "On the other hand": "반면에",
+    "For instance": "예를 들어"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s08-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "mid",
+   "set": "s08",
+   "n": 4,
+   "stem": "We value your business and hope you will continue to ____ our products.",
+   "choices": [
+    "choose",
+    "chose",
+    "choice",
+    "choosy"
+   ],
+   "answer": 0,
+   "clue": "continue to ____ (to부정사 → 원형)",
+   "explanation": "continue to 뒤에는 동사원형이 오고 '선택하다'라는 뜻이 맞아요.",
+   "ko": "",
+   "meanings": {
+    "choose": "선택하다(원형)",
+    "chose": "과거",
+    "choice": "선택(명사)",
+    "choosy": "까다로운"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s09-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "adv",
+   "set": "s09",
+   "n": 1,
+   "stem": "Our records indicate that your service contract with Apex Facilities is ____ to expire on April 30.",
+   "choices": [
+    "scheduled",
+    "planned",
+    "designed",
+    "prepared"
+   ],
+   "answer": 0,
+   "clue": "be ____ to + 동사 (~할 예정이다)",
+   "explanation": "be scheduled to(~할 예정이다)는 일정 표현이에요.",
+   "ko": "",
+   "meanings": {
+    "scheduled": "예정된",
+    "planned": "계획된",
+    "designed": "고안된",
+    "prepared": "준비된"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s09-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "adv",
+   "set": "s09",
+   "n": 2,
+   "stem": "To avoid any interruption in service, we recommend that you ____ the contract before that date.",
+   "choices": [
+    "renew",
+    "renews",
+    "renewed",
+    "will renew"
+   ],
+   "answer": 0,
+   "clue": "recommend that + (should) 동사원형",
+   "explanation": "recommend that절에서는 동사원형을 써요.",
+   "ko": "",
+   "meanings": {
+    "renew": "원형",
+    "renews": "3인칭 현재",
+    "renewed": "과거",
+    "will renew": "미래"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s09-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "adv",
+   "set": "s09",
+   "n": 3,
+   "stem": "To avoid any interruption in service, we recommend that you renew the contract before that date. ____. Renewing customers are also eligible for a 10 percent discount on their first quarterly payment.",
+   "choices": [
+    "The terms of the renewal will remain the same as your current agreement",
+    "We are currently hiring maintenance technicians",
+    "Your account has been closed as requested",
+    "Our headquarters will relocate next year"
+   ],
+   "answer": 0,
+   "clue": "앞: 갱신 권유 / 뒤: 갱신 고객 할인",
+   "explanation": "갱신 조건 이야기라 '조건은 동일'이 자연스러워요. 'account has been closed'는 갱신 권유와 모순이에요.",
+   "ko": "",
+   "meanings": {
+    "The terms of the renewal will remain the same as your current agreement": "갱신 조건은 기존과 동일",
+    "We are currently hiring maintenance technicians": "정비 기사 채용 중",
+    "Your account has been closed as requested": "요청대로 계정 해지(모순)",
+    "Our headquarters will relocate next year": "본사 이전"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s09-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "adv",
+   "set": "s09",
+   "n": 4,
+   "stem": "____ you have any questions regarding the terms, please contact your account manager directly.",
+   "choices": [
+    "Should",
+    "Unless",
+    "Whether",
+    "Had"
+   ],
+   "answer": 0,
+   "clue": "if 생략 도치: Should you have ~",
+   "explanation": "If you should have questions의 도치형 Should you have예요.",
+   "ko": "",
+   "meanings": {
+    "Should": "혹시 ~하면(도치)",
+    "Unless": "~하지 않으면",
+    "Whether": "~인지",
+    "Had": "과거완료 도치"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s10-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "adv",
+   "set": "s10",
+   "n": 1,
+   "stem": "While the migration is in progress, e-mail access will be ____ unavailable.",
+   "choices": [
+    "temporarily",
+    "permanently",
+    "previously",
+    "frequently"
+   ],
+   "answer": 0,
+   "clue": "작업 중에만 → ____ unavailable",
+   "explanation": "주말 작업 동안만 쓸 수 없으니 '일시적으로'예요. permanently는 영구히라 맞지 않아요.",
+   "ko": "",
+   "meanings": {
+    "temporarily": "일시적으로",
+    "permanently": "영구적으로",
+    "previously": "이전에",
+    "frequently": "자주"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s10-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "adv",
+   "set": "s10",
+   "n": 2,
+   "stem": "All messages sent during this period will be delivered once the system is restored. ____. Employees are advised to save any important attachments to their computers by Friday evening.",
+   "choices": [
+    "Existing messages and folders will be transferred automatically",
+    "The company picnic has been postponed until June",
+    "New employees must complete safety training",
+    "Printer paper is stored in the supply room"
+   ],
+   "answer": 0,
+   "clue": "앞: 작업 중 메일은 나중에 전달 / 뒤: 첨부 파일 저장 권고",
+   "explanation": "이메일 이전 안내 흐름이라 기존 메일 이전 이야기가 이어져요.",
+   "ko": "",
+   "meanings": {
+    "Existing messages and folders will be transferred automatically": "기존 메일·폴더 자동 이전",
+    "The company picnic has been postponed until June": "회사 야유회 연기",
+    "New employees must complete safety training": "신입 안전 교육",
+    "Printer paper is stored in the supply room": "프린터 용지 보관 장소"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s10-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "adv",
+   "set": "s10",
+   "n": 3,
+   "stem": "Employees are advised to save any important attachments to their computers ____ Friday evening.",
+   "choices": [
+    "by",
+    "until",
+    "since",
+    "within"
+   ],
+   "answer": 0,
+   "clue": "save(완료 동작) + 기한 → by",
+   "explanation": "저장을 '금요일 저녁까지 끝내라'는 완료 기한이라 by예요.",
+   "ko": "",
+   "meanings": {
+    "by": "~까지(완료)",
+    "until": "~까지(계속)",
+    "since": "~이래로",
+    "within": "~이내에(+기간)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s10-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "adv",
+   "set": "s10",
+   "n": 4,
+   "stem": "____ the migration is complete, you will receive instructions on how to log in to the new system.",
+   "choices": [
+    "Once",
+    "Despite",
+    "Upon",
+    "Following"
+   ],
+   "answer": 0,
+   "clue": "____ + 주어 + 동사 → 접속사",
+   "explanation": "뒤에 절(the migration is complete)이 오니 접속사 Once예요. Upon, Following, Despite는 전치사예요.",
+   "ko": "",
+   "meanings": {
+    "Once": "일단 ~하면(접속사)",
+    "Despite": "전치사",
+    "Upon": "~하자마자(전치사)",
+    "Following": "~후에(전치사)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s11-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "adv",
+   "set": "s11",
+   "n": 1,
+   "stem": "The report found that sales increased by 35 percent, ____ the result of lower prices and expanded bike lanes in major cities.",
+   "choices": [
+    "largely",
+    "hardly",
+    "newly",
+    "closely"
+   ],
+   "answer": 0,
+   "clue": "____ the result of (주로 ~의 결과)",
+   "explanation": "원인을 설명하면서 '주로'라는 뜻의 largely가 자연스러워요.",
+   "ko": "",
+   "meanings": {
+    "largely": "주로",
+    "hardly": "거의 ~않다",
+    "newly": "새로",
+    "closely": "면밀히"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s11-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "adv",
+   "set": "s11",
+   "n": 2,
+   "stem": "The report found that sales increased by 35 percent, largely the result of lower prices and expanded bike lanes in major cities. ____. Analysts expect this trend to continue, although some caution that supply shortages could slow growth.",
+   "choices": [
+    "Demand was especially strong among commuters",
+    "Traditional bicycles are no longer manufactured",
+    "The association was founded in 1975",
+    "Gasoline prices remained unchanged"
+   ],
+   "answer": 0,
+   "clue": "앞: 판매 증가 원인 / 뒤: 추세 전망",
+   "explanation": "판매 증가를 구체화하는 문장이 이어져요. 'no longer manufactured'는 근거 없는 과장이에요.",
+   "ko": "",
+   "meanings": {
+    "Demand was especially strong among commuters": "특히 통근자 수요가 강함",
+    "Traditional bicycles are no longer manufactured": "일반 자전거 생산 중단(근거 없음)",
+    "The association was founded in 1975": "협회 설립 연도",
+    "Gasoline prices remained unchanged": "휘발유 가격 그대로"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s11-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "adv",
+   "set": "s11",
+   "n": 3,
+   "stem": "Analysts expect this trend to continue, although some caution that supply shortages could ____ growth.",
+   "choices": [
+    "slow",
+    "slowly",
+    "slower",
+    "slowness"
+   ],
+   "answer": 0,
+   "clue": "could + ____ + 목적어(growth) → 동사원형",
+   "explanation": "조동사 could 뒤 동사원형이고 '성장을 늦추다'라는 뜻이에요.",
+   "ko": "",
+   "meanings": {
+    "slow": "늦추다(동사)",
+    "slowly": "천천히(부사)",
+    "slower": "더 느린",
+    "slowness": "느림(명사)"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s11-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "adv",
+   "set": "s11",
+   "n": 4,
+   "stem": "Manufacturers are now investing heavily in battery technology to make their products ____ affordable.",
+   "choices": [
+    "more",
+    "most",
+    "much",
+    "very"
+   ],
+   "answer": 0,
+   "clue": "make + 목적어 + ____ affordable (비교: 더 저렴하게)",
+   "explanation": "지금보다 '더' 저렴하게라는 비교라 more예요.",
+   "ko": "",
+   "meanings": {
+    "more": "더(비교급)",
+    "most": "가장",
+    "much": "비교급 강조(단독 불가)",
+    "very": "매우"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s12-1",
+   "part": 6,
+   "module": "part6",
+   "type": "p6vocab",
+   "level": "adv",
+   "set": "s12",
+   "n": 1,
+   "stem": "As some of you are aware, the launch of the Meridian app has been ____ by two weeks.",
+   "choices": [
+    "postponed",
+    "proceeded",
+    "preceded",
+    "promoted"
+   ],
+   "answer": 0,
+   "clue": "launch has been ____ by two weeks (연기되다)",
+   "explanation": "출시가 2주 '연기되었다'는 postponed예요. preceded(앞서다)와 헷갈리지 마세요.",
+   "ko": "",
+   "meanings": {
+    "postponed": "연기된",
+    "proceeded": "진행된",
+    "preceded": "앞선",
+    "promoted": "승진된, 홍보된"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s12-2",
+   "part": 6,
+   "module": "part6",
+   "type": "p6sent",
+   "level": "adv",
+   "set": "s12",
+   "n": 2,
+   "stem": "The delay is due to unexpected compatibility issues with older devices. ____. In the meantime, I would ask that each team member review the updated timeline, which is attached to this memo.",
+   "choices": [
+    "The development team is already working on a solution",
+    "The app has received excellent reviews from users",
+    "Our design team will be expanded next year",
+    "The office will be closed on Monday"
+   ],
+   "answer": 0,
+   "clue": "앞: 지연 원인 / 뒤: 그동안 일정 검토",
+   "explanation": "문제 원인 뒤에 '이미 해결 중'이 자연스러워요. 'excellent reviews'는 아직 출시 전이라 모순이에요.",
+   "ko": "",
+   "meanings": {
+    "The development team is already working on a solution": "개발팀이 이미 해결 중",
+    "The app has received excellent reviews from users": "사용자 호평(출시 전이라 모순)",
+    "Our design team will be expanded next year": "내년 디자인팀 확대",
+    "The office will be closed on Monday": "월요일 휴무"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s12-3",
+   "part": 6,
+   "module": "part6",
+   "type": "p6grammar",
+   "level": "adv",
+   "set": "s12",
+   "n": 3,
+   "stem": "In the meantime, I would ask that each team member ____ the updated timeline, which is attached to this memo.",
+   "choices": [
+    "review",
+    "reviews",
+    "reviewed",
+    "reviewing"
+   ],
+   "answer": 0,
+   "clue": "ask that + 주어 + (should) 동사원형",
+   "explanation": "요청 동사 ask 뒤 that절은 동사원형이에요.",
+   "ko": "",
+   "meanings": {
+    "review": "원형",
+    "reviews": "3인칭 현재",
+    "reviewed": "과거",
+    "reviewing": "-ing형"
+   },
+   "targetMs": 30000
+  },
+  {
+   "id": "p6-s12-4",
+   "part": 6,
+   "module": "part6",
+   "type": "p6conn",
+   "level": "adv",
+   "set": "s12",
+   "n": 4,
+   "stem": "____ the new schedule is tight, I am confident that we can meet it if we work together.",
+   "choices": [
+    "Although",
+    "Because",
+    "Unless",
+    "Since"
+   ],
+   "answer": 0,
+   "clue": "빠듯하다 ↔ 맞출 수 있다 (양보)",
+   "explanation": "'빠듯하지만 맞출 수 있다'는 양보라 Although예요.",
+   "ko": "",
+   "meanings": {
+    "Although": "비록 ~지만",
+    "Because": "~때문에",
+    "Unless": "~하지 않으면",
+    "Since": "~이래로, ~때문에"
+   },
+   "targetMs": 30000
+  }
+ ]
+}

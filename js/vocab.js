@@ -21,9 +21,17 @@ export const GRAMMAR_TYPES = {
   compare: { name: '비교', desc: '비교급 강조, the 비교급, 최상급' },
   cond: { name: '가정법·도치', desc: 'would have p.p., Should you ~' },
 };
-export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES };
-export const areaOf = (q) => (q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
-const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : TYPES);
+// 장문 빈칸 (Part 6) 문항 유형
+export const PART6_TYPES = {
+  p6vocab: { name: '어휘', desc: '문맥에 맞는 단어' },
+  p6grammar: { name: '문법', desc: '시제·태·품사 자리' },
+  p6conn: { name: '연결어', desc: 'However · Therefore · In addition' },
+  p6sent: { name: '문장 넣기', desc: '앞뒤 흐름에 맞는 문장 고르기' },
+};
+export const P6_TARGET_MS = 30000;
+export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES, ...PART6_TYPES };
+export const areaOf = (q) => (q.module === 'part6' || PART6_TYPES[q.type] ? 'part6' : q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
+const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : area === 'part6' ? PART6_TYPES : TYPES);
 
 export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
 export const LEVEL_UP = { window: 20, min: 20 }; // 최근 20문제로 수준 판단
@@ -228,6 +236,21 @@ export function buildSpeed(state, allBank, settings, t, n = SPEED.n) {
   return [...fresh, ...old].slice(0, n);
 }
 
+// 장문 빈칸: 지문 단위로. 다시 풀 문제가 있는 지문 → 안 푼 지문(내 수준부터) → 오래전에 푼 지문
+export function buildP6(state, sets, allBank, settings, t, nSets = 1) {
+  const bank = usable(state, allBank);
+  const qsOf = (set) => set.questions.map((id) => bank.find((q) => q.id === id)).filter(Boolean);
+  const rank = levelRank(settings);
+  const pool = sets.map((set) => ({ set, qs: qsOf(set) })).filter((x) => x.qs.length);
+  const due = pool.filter((x) => x.qs.some((q) => state.qprog[q.id]?.srs?.due <= t));
+  const fresh = shuffle(pool.filter((x) => !due.includes(x) && x.qs.every((q) => !state.qprog[q.id]))).sort((a, b) => rank(a.set) - rank(b.set));
+  const old = pool
+    .filter((x) => !due.includes(x) && !fresh.includes(x))
+    .sort((a, b) => (lastOf(state, a.qs) || '').localeCompare(lastOf(state, b.qs) || ''));
+  return [...due, ...fresh, ...old].slice(0, nSets).flatMap((x) => x.qs);
+}
+const lastOf = (state, qs) => qs.map((q) => state.qprog[q.id]?.last || '').sort().pop();
+
 // 수준 진단: 수준마다 5문제씩, 유형을 섞어서
 export function buildTest(allBank) {
   const only = allBank.filter((q) => q.test);
@@ -287,14 +310,14 @@ export function record(state, q, ok, timeMs, t, mode, extra = {}) {
     part: q.part || 5,
     module: areaOf(q),
     type: q.type,
-    targetMs: TARGET_MS,
+    targetMs: q.targetMs || TARGET_MS,
     mode,
     targetId: q.id,
     level: q.level,
     correct: ok,
     timeMs,
     timedOut: !!extra.timedOut,
-    slow: timeMs > TARGET_MS,
+    slow: timeMs > (q.targetMs || TARGET_MS),
   };
   state.attempts.push(attempt);
   if (!state.studyDays.includes(t)) state.studyDays.push(t);
@@ -303,7 +326,7 @@ export function record(state, q, ok, timeMs, t, mode, extra = {}) {
 
 // 틀린 문제의 정답 단어를 단어장에 추가 (한 단어짜리만, 이미 있으면 건너뜀)
 export function addAnswerWord(state, q) {
-  if (q.type === 'para' || areaOf(q) === 'grammar') return null;
+  if (q.type === 'para' || areaOf(q) !== 'vocab') return null;
   const raw = q.choices[q.answer];
   if (!/^[A-Za-z-]+$/.test(raw)) return null;
   const word = raw.toLowerCase();

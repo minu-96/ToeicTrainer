@@ -15,6 +15,7 @@ let advanceTimer = null;
 let filter = null; // 아는 단어 거르기 진행 상태
 let bank = []; // 문제 은행 (어휘 + 바꿔 쓰는 표현 + 문법)
 let concepts = []; // 문법 개념 카드
+let p6sets = []; // 장문 빈칸 지문
 let vqs = null; // 어휘 문제 풀이 진행 상태
 let vqTimer = null;
 const ui = { search: '', filter: 'all', openId: null, addOpen: false, statMode: 'week' };
@@ -148,7 +149,7 @@ function render() {
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : '어휘 문제', concept: '문법 개념' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : vqs?.mode === 'p6' || vqs?.items?.[vqs.i]?.part === 6 ? '장문 빈칸' : '어휘 문제', concept: '문법 개념' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -1219,7 +1220,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘 + 문법) v3.1</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘 + 문법 + 장문 빈칸) v3.2</p>
   `;
 
   const num = (id, min, max) => {
@@ -1398,6 +1399,24 @@ function speedBest() {
   return best ? `${best.correct}/${best.n} · ${Math.round(best.ms / 1000)}초` : '';
 }
 
+function p6Card() {
+  if (!p6sets.length) return '';
+  const qs = bank.filter((q) => q.part === 6);
+  const doneSets = p6sets.filter((set) => set.questions.every((id) => state.qprog[id])).length;
+  const st = Vocab.typeStats(state, 'part6');
+  const rated = Object.entries(Vocab.PART6_TYPES).map(([k, v]) => {
+    const r = st[k];
+    return `<li><span>${v.name}</span><b class="rate ${r.rate === null ? '' : r.rate < 0.6 ? 'low' : r.rate < 0.8 ? 'mid' : 'high'}">${r.rate === null ? '-' : Math.round(r.rate * 100) + '%'}</b></li>`;
+  });
+  return `<section class="card">
+      <h2>장문 빈칸 <small>Part 6 · 지문 ${doneSets}/${p6sets.length}</small></h2>
+      <p class="hint">이메일·공지·기사 지문 하나에 빈칸 4개. 어휘·문법·연결어·문장 넣기가 섞여 나와요. 문제당 목표 30초.</p>
+      <ul class="p6-rates">${rated.join('')}</ul>
+      <button class="btn primary wide" data-vq="p6">지문 1개 풀기 · 4문제 약 2분</button>
+      <p class="hint">${qs.length}문제 · 틀린 빈칸이 있는 지문은 다음 날 다시 나와요.</p>
+    </section>`;
+}
+
 function grammarTodayCard() {
   const gbank = bank.filter((q) => Vocab.areaOf(q) === 'grammar');
   if (!gbank.length) return '';
@@ -1521,11 +1540,12 @@ function renderQuizHome() {
       </ul>
       <p class="hint">처음 푸는 유형은 개념 카드를 먼저 보여 줘요.</p>
     </section>
+    ${p6Card()}
     <button class="card link" data-vq="speed"><b>스피드 모드 →</b><small>${Vocab.SPEED.n}문제를 ${Vocab.SPEED.ms / 60000}분 안에. 해설 없이 바로 넘어가며 Part 5 시간 감각을 익혀요${speedBest() ? ` · 최고 기록 ${speedBest()}` : ''}</small></button>
     <button class="card link" data-vq="test"><b>3분 수준 진단 →</b><small>어휘 9문제 · 문법 6문제로 지금 수준을 확인하고 학습 설정을 맞춰요</small></button>
     <section class="card soon-list">
       <h2>준비 중</h2>
-      <ul><li>장문 빈칸 · Part 6 <span>v3.1</span></li><li>듣기 · Part 1~4 <span>4단계</span></li><li>독해 · Part 7 <span>5단계</span></li></ul>
+      <ul><li>듣기 · Part 1~4 <span>4단계</span></li><li>독해 · Part 7 <span>5단계</span></li></ul>
     </section>`;
   bindVqButtons();
   bindConceptButtons();
@@ -1537,6 +1557,7 @@ function startVQ(mode, type, opts = {}) {
   let items;
   if (mode === 'type' && Vocab.GRAMMAR_TYPES[type] && !opts.skipConcept && !(state.settings.conceptsSeen || []).includes(type) && concepts.some((c) => c.id === type)) return openConcept(type, 'start');
   if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10);
+  else if (mode === 'p6') items = Vocab.buildP6(state, p6sets, bank, state.settings, t, 1);
   else if (mode === 'gdaily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10, 'grammar');
   else if (mode === 'type') items = Vocab.buildType(state, bank, type, state.settings, t);
   else if (mode === 'wrong') items = Vocab.buildWrong(state, bank);
@@ -1570,6 +1591,7 @@ function renderVQ() {
   const isTest = vqs.mode === 'test';
   const isSpeed = vqs.mode === 'speed';
   const isPara = q.type === 'para';
+  const isP6 = q.part === 6;
   const [before, after] = isPara ? q.stem.split('[' + q.target + ']') : q.stem.split('____');
   const answerText = q.choices[q.answer];
 
@@ -1595,10 +1617,12 @@ function renderVQ() {
       ${
         isSpeed
           ? `<span class="timer speed" id="vq-timer">${speedLeft()}</span>`
-          : `<span class="timer ${a && a.timeMs > Vocab.TARGET_MS ? 'over' : ''}" id="vq-timer">${a ? Math.round(a.timeMs / 1000) : 0}초</span>`
+          : `<span class="timer ${a && a.timeMs > (q.targetMs || Vocab.TARGET_MS) ? 'over' : ''}" id="vq-timer">${a ? Math.round(a.timeMs / 1000) : 0}초</span>`
       }
       ${
-        isPara
+        isP6
+          ? p6Passage(q, a)
+          : isPara
           ? `<p class="q-label">밑줄 친 단어와 뜻이 가장 가까운 것을 고르세요</p>
              <p class="cloze left">${esc(before)}<u class="para-word">${esc(q.target)}</u>${a ? ` <mark>≈ ${esc(answerText)}</mark>` : ''}${esc(after)}</p>`
           : `<p class="q-label">빈칸에 알맞은 것을 고르세요</p>
@@ -1645,9 +1669,28 @@ function renderVQ() {
     vqTimer = setInterval(() => {
       const sec = Math.floor((performance.now() - vqs.shownAt) / 1000);
       el.textContent = sec + '초';
-      el.classList.toggle('over', sec * 1000 > Vocab.TARGET_MS);
+      el.classList.toggle('over', sec * 1000 > (q.targetMs || Vocab.TARGET_MS));
     }, 1000);
   }
+}
+
+// 장문 빈칸: 지문 전체를 보여 주고 지금 빈칸만 강조. 이번에 이미 푼 빈칸은 정답으로 채움
+function p6Passage(q, a) {
+  const set = p6sets.find((x) => x.id === q.set);
+  if (!set) return '';
+  const solved = new Set((vqs?.results || []).map((x) => x.q.id));
+  const html = esc(set.passage)
+    .replace(/\{(\d)\}/g, (_, d) => {
+      const n = Number(d);
+      const qq = bank.find((x) => x.id === `p6-${set.id}-${n}`);
+      if (!qq) return `(${n})`;
+      if (n === q.n) return a ? `<mark class="p6-cur">${esc(qq.choices[qq.answer])}</mark>` : `<span class="p6-blank cur">(${n})</span>`;
+      if (solved.has(qq.id)) return `<span class="p6-done">${esc(qq.choices[qq.answer])}</span>`;
+      return `<span class="p6-blank">(${n})</span>`;
+    })
+    .replace(/\n/g, '<br>');
+  return `<p class="q-label">${esc(set.kind)} · 빈칸 (${q.n})에 ${q.type === 'p6sent' ? '들어갈 문장을' : '알맞은 것을'} 고르세요</p>
+    <div class="p6-passage">${html}</div>`;
 }
 
 function speedLeft() {
@@ -1753,7 +1796,7 @@ function explainBlock(q, v, a) {
   return `
     <section class="explain ${a.ok ? 'ok' : 'ng'}">
       <p class="explain-head">${a.ok ? '정답!' : a.choice < 0 ? '정답을 확인하세요' : '아쉬워요'}
-        <small>${sec}초${a.timeMs > Vocab.TARGET_MS ? ' · 목표 20초보다 오래 걸렸어요' : ''}</small></p>
+        <small>${sec}초${a.timeMs > (q.targetMs || Vocab.TARGET_MS) ? ` · 목표 ${Math.round((q.targetMs || Vocab.TARGET_MS) / 1000)}초보다 오래 걸렸어요` : ''}</small></p>
       <p class="clue"><b>단서</b>${esc(q.clue)}</p>
       ${Vocab.GRAMMAR_TYPES[q.type] && concepts.some((c) => c.id === q.type) ? `<button class="link-btn small concept-link" data-concept="${q.type}">${Vocab.GRAMMAR_TYPES[q.type].name} 개념 다시 보기</button>` : ''}
       <p class="exp">${esc(q.explanation)}</p>
@@ -1814,7 +1857,7 @@ function renderVQSummary() {
   const r = vqs.results;
   const correct = r.filter((x) => x.ok).length;
   const avg = r.length ? Math.round(r.reduce((s, x) => s + x.timeMs, 0) / r.length / 1000) : 0;
-  const slow = r.filter((x) => x.timeMs > Vocab.TARGET_MS).length;
+  const slow = r.filter((x) => x.timeMs > (x.q.targetMs || Vocab.TARGET_MS)).length;
   const byType = Object.keys(Vocab.ALL_TYPES)
     .map((k) => [k, r.filter((x) => x.q.type === k)])
     .filter(([, l]) => l.length);
@@ -1823,6 +1866,7 @@ function renderVQSummary() {
   const type = vqs.type;
   const added = vqs.added.length;
   const speed = mode === 'speed' ? speedResult(vqs, correct, r.length) : null;
+  const doneSets = [...new Set(r.filter((x) => x.q.part === 6).map((x) => x.q.set))].map((id) => p6sets.find((x) => x.id === id)).filter(Boolean);
   vqs = null;
   const lv = mode === 'test' ? null : applyLevelCheck();
 
@@ -1846,7 +1890,7 @@ function renderVQSummary() {
           .join('')}
       </ul>
       ${added ? `<p class="hint">틀린 문제의 정답 단어 ${added}개를 단어장에 추가했어요.</p>` : ''}
-      <button class="btn ${(mode === 'daily' || mode === 'gdaily') && nextTask(srs.today(), mode === 'daily' ? 'vocab' : 'grammar') ? 'ghost wide' : 'primary big'}" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' || mode === 'gdaily' ? '10문제 더 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : mode === 'speed' ? '한 번 더 도전' : '이 유형 더 풀기'}</button>
+      <button class="btn ${(mode === 'daily' || mode === 'gdaily') && nextTask(srs.today(), mode === 'daily' ? 'vocab' : 'grammar') ? 'ghost wide' : 'primary big'}" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' || mode === 'gdaily' ? '10문제 더 풀기' : mode === 'p6' ? '다음 지문 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : mode === 'speed' ? '한 번 더 도전' : '이 유형 더 풀기'}</button>
       <button class="btn ghost wide home-btn" data-go="${mode === 'wrong' ? 'notes' : 'quiz'}">${mode === 'wrong' ? '오답노트로' : '문제 홈으로'}</button>
     </section>
     ${
@@ -1854,6 +1898,10 @@ function renderVQSummary() {
         ? `<section class="card"><h2>틀린 문제</h2><ul class="wrong-list">
             ${wrong.map((x) => `<li><p>${esc(x.q.stem.replace('____', '[' + x.q.choices[x.q.answer] + ']'))}</p><small>${esc(x.q.clue)}</small></li>`).join('')}
           </ul><p class="hint">틀린 문제는 내일 오늘의 어휘 문제에 다시 나와요.</p></section>`
+        : ''
+    }${
+      doneSets.length
+        ? `<section class="card"><h2>지문 해석</h2>${doneSets.map((set) => `<p class="p6-title"><b>${esc(set.title)}</b> <small>${esc(set.kind)} · ${srs.LEVEL_NAMES[set.level]}</small></p><p class="p6-ko">${esc(set.ko)}</p>`).join('')}</section>`
         : ''
     }`;
   bindVqButtons();
@@ -2261,6 +2309,12 @@ async function loadBuiltin() {
     const [gres, cres] = await Promise.all([fetch('./data/grammar-questions.json'), fetch('./data/grammar-concepts.json')]);
     if (gres.ok) bank = bank.concat(await gres.json());
     if (cres.ok) concepts = await cres.json();
+    const p6res = await fetch('./data/part6.json');
+    if (p6res.ok) {
+      const p6 = await p6res.json();
+      p6sets = p6.sets;
+      bank = bank.concat(p6.questions);
+    }
   } catch (e) {
     console.warn('내장 단어를 불러오지 못했어요', e);
   }

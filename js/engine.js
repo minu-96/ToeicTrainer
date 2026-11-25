@@ -35,6 +35,10 @@ const VOCAB_SKILLS = {
   colloc: { vocab: 1 }, // 어울리는 단어
   confuse: { vocab: 0.5, grammar: 0.5 }, // 헷갈리는 단어
   para: { vocab: 0.5, reading: 0.5 }, // 바꿔 쓰는 표현 (Part 7 패러프레이즈)
+  p6vocab: { vocab: 1 }, // 장문 빈칸 어휘
+  p6grammar: { grammar: 1 }, // 장문 빈칸 문법
+  p6conn: { grammar: 0.5, reading: 0.5 }, // 연결어 (문맥)
+  p6sent: { reading: 1 }, // 문장 넣기
 };
 // 문법 문제는 문법 영역 하나로 반영
 const GRAMMAR_TYPE_SET = new Set(['tense', 'agree', 'voice', 'verbal', 'participle', 'relative', 'conj', 'pronoun', 'compare', 'cond']);
