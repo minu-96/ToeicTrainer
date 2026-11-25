@@ -619,3 +619,14 @@ input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--primary)
 .note-list .stem { margin: 0 0 4px; font-size: 15px; }
 .note-list small { color: var(--muted); font-size: 12px; }
 .note-list .detail { padding: 0 16px 14px; }
+
+/* ---------- v2.4: 바꿔 쓰는 표현 · 스피드 모드 · 수준 조정 ---------- */
+.para-word { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 700; }
+.timer.speed { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--primary); }
+.timer.speed.over { color: var(--warn); }
+.level-notice { margin: 14px 0 4px; padding: 12px 14px; border-radius: 12px; text-align: left; display: grid; gap: 4px; background: color-mix(in srgb, var(--primary) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--line)); }
+.level-notice.down { background: color-mix(in srgb, var(--warn) 8%, var(--surface)); border-color: color-mix(in srgb, var(--warn) 35%, var(--line)); }
+.level-notice small { color: var(--muted); font-size: 13px; line-height: 1.45; }
+.level-notice .link-btn { justify-self: start; margin: 2px 0 0; }
+.level-notice .btn-row { margin-top: 6px; justify-content: flex-end; }
+.level-notice .btn-row .btn { flex: 0 0 auto; }

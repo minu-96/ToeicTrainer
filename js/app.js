@@ -147,7 +147,7 @@ function render() {
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : '어휘 문제' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : '어휘 문제' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -1162,7 +1162,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.3</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.4</p>
   `;
 
   const num = (id, min, max) => {
@@ -1186,6 +1186,7 @@ function renderSettings() {
 
   $view.querySelector('#startLevel').addEventListener('change', (e) => {
     state.settings.startLevel = e.target.value;
+    state.settings.levelChangedAt = Date.now();
     persist();
     toast('저장했어요');
   });
@@ -1329,10 +1330,15 @@ function vocabTodayCard() {
       </div>
       <div class="progress"><i style="width:${pct * 100}%"></i></div>
       <p class="hint">${
-        done >= goal ? '오늘 목표를 채웠어요. 더 풀고 싶으면 이어서 풀 수 있어요.' : due ? `틀렸던 문제 ${due}개가 다시 나와요.` : '품사 자리 · 어울리는 단어 · 헷갈리는 단어를 섞어서 내요.'
+        done >= goal ? '오늘 목표를 채웠어요. 더 풀고 싶으면 이어서 풀 수 있어요.' : due ? `틀렸던 문제 ${due}개가 다시 나와요.` : '품사 자리 · 어울리는 단어 · 헷갈리는 단어 · 바꿔 쓰는 표현을 섞어서 내요.'
       }</p>
       <button class="btn ${done >= goal ? 'ghost' : 'primary'} wide" data-vq="daily">${done >= goal ? `${goal}문제 더 풀기` : `풀기 · 약 ${Math.max(1, Math.round(((goal - done) * 30) / 60))}분`}</button>
     </section>`;
+}
+
+function speedBest() {
+  const best = state.settings.speedBest;
+  return best ? `${best.correct}/${best.n} · ${Math.round(best.ms / 1000)}초` : '';
 }
 
 function bindVqButtons(root = $view) {
@@ -1345,7 +1351,7 @@ function renderQuizHome() {
   $view.innerHTML = `
     ${vocabTodayCard()}
     <section class="card">
-      <h2>유형별 연습 <small>푼 문제 ${answered}/${bank.length}</small></h2>
+      <h2>유형별 연습 <small>푼 문제 ${answered}/${bank.filter((q) => !q.test).length}</small></h2>
       <ul class="type-list">
         ${Object.entries(Vocab.TYPES)
           .map(([k, v]) => {
@@ -1362,6 +1368,7 @@ function renderQuizHome() {
       </ul>
       <p class="hint">정답률이 낮은 유형은 오늘의 어휘 문제에 더 자주 나와요.</p>
     </section>
+    <button class="card link" data-vq="speed"><b>스피드 모드 →</b><small>${Vocab.SPEED.n}문제를 ${Vocab.SPEED.ms / 60000}분 안에. 해설 없이 바로 넘어가며 Part 5 시간 감각을 익혀요${speedBest() ? ` · 최고 기록 ${speedBest()}` : ''}</small></button>
     <button class="card link" data-vq="test"><b>3분 수준 진단 →</b><small>기초·중급·고급 문제 15개로 지금 수준을 확인하고 학습 설정을 맞춰요</small></button>
     <section class="card soon-list">
       <h2>준비 중</h2>
@@ -1377,9 +1384,14 @@ function startVQ(mode, type, opts = {}) {
   if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10);
   else if (mode === 'type') items = Vocab.buildType(state, bank, type, state.settings, t);
   else if (mode === 'wrong') items = Vocab.buildWrong(state, bank);
+  else if (mode === 'speed') items = Vocab.buildSpeed(state, bank, state.settings, t);
   else items = Vocab.buildTest(bank);
   if (!items.length) return toast('풀 문제가 없어요');
   vqs = { mode, type, items, i: 0, results: [], added: [], fromWelcome: !!opts.fromWelcome, origin: view === 'vq' ? 'quiz' : view };
+  if (mode === 'speed') {
+    vqs.startedAt = performance.now();
+    vqs.deadline = vqs.startedAt + Vocab.SPEED.ms;
+  }
   vqPrepare();
   go('vq');
 }
@@ -1400,7 +1412,9 @@ function renderVQ() {
   const v = vqs.view;
   const a = vqs.answered;
   const isTest = vqs.mode === 'test';
-  const [before, after] = q.stem.split('____');
+  const isSpeed = vqs.mode === 'speed';
+  const isPara = q.type === 'para';
+  const [before, after] = isPara ? q.stem.split('[' + q.target + ']') : q.stem.split('____');
   const answerText = q.choices[q.answer];
 
   const options = v.choices
@@ -1422,13 +1436,22 @@ function renderVQ() {
         <span class="tag">${Vocab.TYPES[q.type].name}</span>
         <span class="tag">${srs.LEVEL_NAMES[q.level]}</span>
       </div>
-      <span class="timer ${a && a.timeMs > Vocab.TARGET_MS ? 'over' : ''}" id="vq-timer">${a ? Math.round(a.timeMs / 1000) : 0}초</span>
-      <p class="q-label">빈칸에 알맞은 것을 고르세요</p>
-      <p class="cloze left">${esc(before)}${a ? `<mark>${esc(answerText)}</mark>` : '<span class="blank">&nbsp;</span>'}${esc(after)}</p>
+      ${
+        isSpeed
+          ? `<span class="timer speed" id="vq-timer">${speedLeft()}</span>`
+          : `<span class="timer ${a && a.timeMs > Vocab.TARGET_MS ? 'over' : ''}" id="vq-timer">${a ? Math.round(a.timeMs / 1000) : 0}초</span>`
+      }
+      ${
+        isPara
+          ? `<p class="q-label">밑줄 친 단어와 뜻이 가장 가까운 것을 고르세요</p>
+             <p class="cloze left">${esc(before)}<u class="para-word">${esc(q.target)}</u>${a ? ` <mark>≈ ${esc(answerText)}</mark>` : ''}${esc(after)}</p>`
+          : `<p class="q-label">빈칸에 알맞은 것을 고르세요</p>
+             <p class="cloze left">${esc(before)}${a ? `<mark>${esc(answerText)}</mark>` : '<span class="blank">&nbsp;</span>'}${esc(after)}</p>`
+      }
     </article>
     <div class="answer-area">
       <div class="options">${options}</div>
-      ${!a ? `<button class="link-btn" data-act="dontknow">모르겠어요</button>` : isTest ? '' : explainBlock(q, v, a)}
+      ${!a ? `<button class="link-btn" data-act="dontknow">모르겠어요</button>` : isTest || isSpeed ? '' : explainBlock(q, v, a)}
     </div>`;
 
   $view.querySelector('#quit').addEventListener('click', () => {
@@ -1451,7 +1474,15 @@ function renderVQ() {
     }),
   );
 
-  if (!a) {
+  if (isSpeed) {
+    const el = $view.querySelector('#vq-timer');
+    vqTimer = setInterval(() => {
+      if (!vqs || vqs.mode !== 'speed') return clearInterval(vqTimer);
+      el.textContent = speedLeft();
+      el.classList.toggle('over', vqs.deadline - performance.now() < 30000);
+      if (performance.now() >= vqs.deadline) speedTimeUp();
+    }, 250);
+  } else if (!a) {
     const el = $view.querySelector('#vq-timer');
     vqTimer = setInterval(() => {
       const sec = Math.floor((performance.now() - vqs.shownAt) / 1000);
@@ -1459,6 +1490,27 @@ function renderVQ() {
       el.classList.toggle('over', sec * 1000 > Vocab.TARGET_MS);
     }, 1000);
   }
+}
+
+function speedLeft() {
+  const ms = Math.max(0, vqs.deadline - performance.now());
+  const sec = Math.ceil(ms / 1000);
+  return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`;
+}
+
+// 테스트에서 마감 시각을 당길 때 쓰는 훅 (화면에는 영향 없음)
+window.__forceSpeedEnd = () => {
+  if (vqs?.mode === 'speed') vqs.deadline = performance.now();
+};
+
+// 시간이 끝나면 남은 문제는 못 푼 문제로 남기고 결과로
+function speedTimeUp() {
+  clearInterval(vqTimer);
+  if (!vqs) return;
+  vqs.timedOut = vqs.items.length - vqs.results.length;
+  vqs.items = vqs.items.slice(0, vqs.results.length);
+  vqs.i = vqs.items.length;
+  renderVQ();
 }
 
 // ---------- '이 문제 이상해요' 신고 ----------
@@ -1585,12 +1637,12 @@ function vqChoose(idx) {
   vqs.results.push({ q, ok, timeMs });
   persist();
   renderVQ();
-  if (vqs.mode === 'test') setTimeout(vqNext, 600);
+  if (vqs.mode === 'test' || vqs.mode === 'speed') setTimeout(vqNext, vqs.mode === 'speed' ? 350 : 600);
   else $view.querySelector('.explain')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function vqNext() {
-  if (!vqs || !vqs.answered) return;
+  if (!vqs || !vqs.answered || vqs.i >= vqs.items.length) return;
   vqs.i++;
   vqPrepare();
   renderVQ();
@@ -1609,16 +1661,20 @@ function renderVQSummary() {
   const mode = vqs.mode;
   const type = vqs.type;
   const added = vqs.added.length;
+  const speed = mode === 'speed' ? speedResult(vqs, correct, r.length) : null;
   vqs = null;
+  const lv = mode === 'test' ? null : applyLevelCheck();
 
   $view.innerHTML = `
     <section class="hero done">
-      <p class="hero-title">${correct === r.length ? '전부 맞혔어요!' : '풀이 완료!'}</p>
+      <p class="hero-title">${speed ? (speed.left ? `시간 종료 · ${speed.left}문제 못 풀었어요` : speed.record ? '최고 기록이에요!' : '스피드 모드 완료!') : correct === r.length ? '전부 맞혔어요!' : '풀이 완료!'}</p>
       <div class="today-grid">
-        <div><strong>${correct}/${r.length}</strong><span>정답</span></div>
-        <div><strong>${avg}초</strong><span>평균 시간</span></div>
-        <div><strong>${slow}</strong><span>20초 넘은 문제</span></div>
+        <div><strong>${correct}/${speed ? speed.n : r.length}</strong><span>정답</span></div>
+        <div><strong>${speed ? speed.sec + '초' : avg + '초'}</strong><span>${speed ? '걸린 시간' : '평균 시간'}</span></div>
+        <div><strong>${speed ? avg + '초' : slow}</strong><span>${speed ? '문제당 평균' : '20초 넘은 문제'}</span></div>
       </div>
+      ${speed ? `<p class="hint">실전 Part 5는 문제당 20초 안팎이에요. ${avg <= 20 ? '시간 안에 풀고 있어요.' : '단서부터 찾고 바로 고르는 연습을 해 보세요.'}${speed.prev ? ` 최고 기록: ${speed.prev}` : ''}</p>` : ''}
+      ${lv ? levelNotice(lv) : ''}
       <ul class="moves">
         ${byType
           .map(([k, l]) => {
@@ -1628,7 +1684,7 @@ function renderVQSummary() {
           .join('')}
       </ul>
       ${added ? `<p class="hint">틀린 문제의 정답 단어 ${added}개를 단어장에 추가했어요.</p>` : ''}
-      <button class="btn primary big" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' ? '10문제 더 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : '이 유형 더 풀기'}</button>
+      <button class="btn primary big" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' ? '10문제 더 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : mode === 'speed' ? '한 번 더 도전' : '이 유형 더 풀기'}</button>
       <button class="btn ghost wide home-btn" data-go="${mode === 'wrong' ? 'notes' : 'quiz'}">${mode === 'wrong' ? '오답노트로' : '문제 홈으로'}</button>
     </section>
     ${
@@ -1640,6 +1696,60 @@ function renderVQSummary() {
     }`;
   bindVqButtons();
   bindGoButtons();
+  bindLevelNotice(lv);
+}
+
+function speedResult(v, correct, answered) {
+  const n = v.items.length + (v.timedOut || 0);
+  const ms = Math.min(Vocab.SPEED.ms, Math.round(performance.now() - v.startedAt));
+  const prevBest = state.settings.speedBest;
+  const better = !prevBest || correct > prevBest.correct || (correct === prevBest.correct && ms < prevBest.ms);
+  const record = better && answered === n;
+  if (record) {
+    state.settings.speedBest = { correct, n, ms, date: srs.today() };
+    persist();
+  }
+  return { n, left: v.timedOut || 0, sec: Math.round(ms / 1000), record, prev: !record && prevBest ? `${prevBest.correct}/${prevBest.n} · ${Math.round(prevBest.ms / 1000)}초` : '' };
+}
+
+// 수준 자동 조정: 올리기는 바로 적용(되돌리기 가능), 내리기는 제안만
+function applyLevelCheck() {
+  const lv = Vocab.levelCheck(state, state.settings);
+  if (!lv) return null;
+  if (lv.dir === 'up') {
+    state.settings.prevStartLevel = lv.from;
+    state.settings.startLevel = lv.to;
+    state.settings.levelChangedAt = Date.now();
+    persist();
+  }
+  return lv;
+}
+
+function levelNotice(lv) {
+  const pct = Math.round(lv.rate * 100);
+  return lv.dir === 'up'
+    ? `<div class="level-notice up"><b>${srs.LEVEL_NAMES[lv.to]} 수준으로 올렸어요</b><small>${srs.LEVEL_NAMES[lv.from]} 문제 최근 ${lv.n}개 정답률 ${pct}%. 이제 ${srs.LEVEL_NAMES[lv.to]} 문제와 단어부터 나와요.</small><button class="link-btn small" id="level-undo">되돌리기</button></div>`
+    : `<div class="level-notice down"><b>${srs.LEVEL_NAMES[lv.to]} 수준으로 내릴까요?</b><small>${srs.LEVEL_NAMES[lv.from]} 문제 최근 ${lv.n}개 정답률 ${pct}%예요. 기초를 다지면 점수가 더 빨리 올라요.</small><div class="btn-row"><button class="btn ghost small" id="level-keep">그대로</button><button class="btn primary small" id="level-down">내리기</button></div></div>`;
+}
+
+function bindLevelNotice(lv) {
+  if (!lv) return;
+  const box = $view.querySelector('.level-notice');
+  const done = (msg) => {
+    state.settings.levelChangedAt = Date.now();
+    persist();
+    box.remove();
+    if (msg) toast(msg);
+  };
+  $view.querySelector('#level-undo')?.addEventListener('click', () => {
+    state.settings.startLevel = lv.from;
+    done('원래 수준으로 되돌렸어요');
+  });
+  $view.querySelector('#level-keep')?.addEventListener('click', () => done(''));
+  $view.querySelector('#level-down')?.addEventListener('click', () => {
+    state.settings.startLevel = lv.to;
+    done(`${srs.LEVEL_NAMES[lv.to]} 수준으로 내렸어요`);
+  });
 }
 
 function renderTestResult() {
@@ -1660,12 +1770,13 @@ function renderTestResult() {
       <button class="btn primary big" id="apply">${fromWelcome ? '이 수준으로 시작하기' : '이 수준으로 설정 바꾸기'}</button>
       <button class="btn ghost wide home-btn" id="skip">${fromWelcome ? '직접 고를게요' : '그대로 둘게요'}</button>
     </section>
-    <p class="hint center">진단 15문제는 정답률 계산에만 쓰이고, 틀린 문제는 나중에 다시 나와요.</p>`;
+    <p class="hint center">진단은 연습에 나오지 않는 전용 15문제로 봐요. 다시 봐도 같은 기준으로 비교할 수 있어요.</p>`;
   $view.querySelector('#apply').addEventListener('click', () => {
     Object.assign(state.settings, {
       level: lv.id,
       dailyNewWords: lv.daily,
       startLevel: lv.start,
+      levelChangedAt: Date.now(),
       clozeHint: lv.hint,
       ...(fromWelcome ? { targetScore: lv.target, onboarded: true } : {}),
     });
@@ -1976,6 +2087,7 @@ async function loadBuiltin() {
     if (changed) persist();
     const qres = await fetch('./data/vocab-questions.json');
     if (qres.ok) bank = await qres.json();
+    bank = bank.concat(Vocab.buildParaBank(state.words));
   } catch (e) {
     console.warn('내장 단어를 불러오지 못했어요', e);
   }
