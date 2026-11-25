@@ -13,8 +13,8 @@ async def main():
         await seed(pg, lambda st: None)
 
         home = await pg.inner_text("#view")
-        c("오늘 할 일" in home and "어휘 문제" in home and "문법 문제" in home, "홈: 오늘 할 일 3줄")
-        c(await pg.locator(".todo-list li").count() == 3, "할 일 3개")
+        c("오늘 할 일" in home and "어휘 문제" in home and "문법 문제" in home, "홈: 오늘 할 일")
+        c(await pg.locator(".todo-list li").count() == 4, "할 일 4개 (단어·듣기·어휘·문법)")
         c("단어 학습 시작" in await pg.inner_text(".hero.today .btn.primary"), "첫 할 일은 단어")
         c("독해은" not in home, "조사 오류 없음")
 
@@ -24,10 +24,10 @@ async def main():
         await seed(pg, done_words)
         c(await pg.locator(".todo-list li.done").count() == 1, "단어 완료 체크")
         btn = await pg.inner_text(".hero.today .btn.primary")
-        c("어휘 문제" in btn, "다음 할 일: 어휘 문제")
+        c("듣기" in btn, "다음 할 일: 듣기")
 
         # 어휘 10문제: 오답이면 이유 고르기로 바로 다음
-        await pg.click(".hero.today .btn.primary")
+        await pg.click(".todo-list [data-vq=daily]")
         reasons = 0
         for i in range(10):
             await pg.wait_for_selector("[data-choice]:not([disabled])")
@@ -44,7 +44,7 @@ async def main():
         tagged = [a for a in st["attempts"] if a.get("reasonTag") == "meaning"]
         c(len(tagged) == 5, f"이유 고르면 기록 + 다음 문제 ({len(tagged)}/5)")
         nxt = await pg.inner_text(".hero.done")
-        c("다음: 문법 기초부터 시작" in nxt, "결과 화면: 다음 할 일 버튼")
+        c("다음: 문법 기초부터 시작" in nxt, "결과 화면: 다음 할 일 버튼 (어휘 다음은 문법)")
         c("오늘 남은 것" in nxt, "결과 화면: 남은 할 일 안내")
         await pg.click("button:has-text('다음: 문법 기초부터 시작')")
         await pg.wait_for_selector(".concept")

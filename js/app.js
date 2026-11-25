@@ -7,6 +7,7 @@ import * as Vocab from './vocab.js';
 import * as Stats from './stats.js';
 import * as Charts from './charts.js';
 import * as Engine from './engine.js';
+import * as LC from './listening.js';
 
 let state = store.emptyState(); // init()에서 저장된 기록을 불러옴
 let view = 'home';
@@ -16,6 +17,10 @@ let filter = null; // 아는 단어 거르기 진행 상태
 let bank = []; // 문제 은행 (어휘 + 바꿔 쓰는 표현 + 문법)
 let concepts = []; // 문법 개념 카드
 let p6sets = []; // 장문 빈칸 지문
+let lcP2 = []; // 듣기 Part 2
+let lcSets = []; // 듣기 Part 3·4
+let lcs = null; // 듣기 진행 상태
+let lcAudio = null; // 지금 재생 중인 음성
 let vqs = null; // 어휘 문제 풀이 진행 상태
 let vqTimer = null;
 const ui = { search: '', filter: 'all', openId: null, addOpen: false, statMode: 'week' };
@@ -84,7 +89,8 @@ function say(text, quiet = false) {
 
 function go(next) {
   clearTimeout(advanceTimer);
-  if (next !== 'vq') document.body.classList.remove('has-bar');
+  if (next !== 'vq' && next !== 'lc') document.body.classList.remove('has-bar');
+  if (next !== 'lc') lcStop();
   view = next;
   render();
   window.scrollTo(0, 0);
@@ -146,11 +152,11 @@ function startSession(kind) {
 function render() {
   document.querySelectorAll('.tabbar button').forEach((b) => {
     const tab = b.dataset.tab;
-    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && ((view === 'vq' && vqs?.mode !== 'wrong') || view === 'concept')) || (tab === 'notes' && view === 'vq' && vqs?.mode === 'wrong') || (tab === 'stats' && view === 'scores'));
+    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && ((view === 'vq' && vqs?.mode !== 'wrong') || view === 'concept' || view === 'lc')) || (tab === 'notes' && view === 'vq' && vqs?.mode === 'wrong') || (tab === 'stats' && view === 'scores'));
   });
-  document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
+  document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq', 'lc'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : vqs?.mode === 'p6' || vqs?.items?.[vqs.i]?.part === 6 ? '장문 빈칸' : '어휘 문제', concept: '문법 개념' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : vqs?.mode === 'p6' || vqs?.items?.[vqs.i]?.part === 6 ? '장문 빈칸' : '어휘 문제', concept: '문법 개념', lc: '듣기' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -165,6 +171,7 @@ function render() {
   else if (view === 'vq') renderVQ();
   else if (view === 'notes') renderNotes();
   else if (view === 'concept') renderConcept();
+  else if (view === 'lc') renderLC();
   else renderSoon(view);
 }
 
@@ -896,11 +903,13 @@ function todayTasks(t = srs.today()) {
   const gDone = questionsToday(t, 'grammar');
   const gFresh = !state.attempts.some((a) => a.module === 'grammar');
   const wordTodo = reviews.length + fresh.length;
+  const lcDone = LC.todayCount(state, t);
   return [
     { key: 'words', name: '단어', done: !wordTodo, min: wordTodo ? estimateMinutes(reviews.length, fresh.length) : 0, sub: wordTodo ? `복습 ${reviews.length} · 새 단어 ${fresh.length}` : '완료', attr: 'data-start="daily"', label: '단어 학습 시작' },
+    { key: 'listening', name: '듣기', done: lcDone >= LC.DAILY_P2, min: lcDone >= LC.DAILY_P2 ? 0 : Math.max(1, Math.round(((LC.DAILY_P2 - lcDone) * 25) / 60)), sub: `Part 2 응답 ${Math.min(lcDone, LC.DAILY_P2)}/${LC.DAILY_P2}`, attr: 'data-lc="lc2"', label: '듣기 시작', hidden: !lcP2.length },
     { key: 'vocab', name: '어휘 문제', done: vDone >= goal, min: vDone >= goal ? 0 : Math.max(1, Math.round(((goal - vDone) * 30) / 60)), sub: `${Math.min(vDone, goal)}/${goal}`, attr: 'data-vq="daily"', label: '어휘 문제 풀기' },
     { key: 'grammar', name: '문법 문제', done: gDone >= goal, min: gDone >= goal ? 0 : Math.max(1, Math.round(((goal - gDone) * 30) / 60)) + (gFresh ? 2 : 0), sub: gFresh && !gDone ? '처음이면 기초 3장부터' : `${Math.min(gDone, goal)}/${goal}`, attr: gFresh ? 'data-concept="basic-structure"' : 'data-vq="gdaily"', label: gFresh ? '문법 기초부터 시작' : '문법 문제 풀기' },
-  ];
+  ].filter((x) => !x.hidden);
 }
 
 function nextTask(t, after) {
@@ -1231,8 +1240,19 @@ function renderSettings() {
             <label class="field">속도 <span id="rateLabel">${Number(s.speechRate).toFixed(1)}x</span>
               <input type="range" id="speechRate" min="0.5" max="1.3" step="0.1" value="${esc(s.speechRate)}">
             </label>
-            <button class="btn ghost small" id="testVoice">들어보기</button>`
-          : '<p class="hint">이 브라우저는 음성 읽기를 지원하지 않아요.</p>'
+            <button class="btn ghost small" id="testVoice">들어보기</button>
+            <h3 class="sub-h">듣기 문제</h3>
+            <label class="switch"><span>억양 섞기 <small class="quiet">미국·영국·호주 음성 (기기에 있을 때)</small></span><input type="checkbox" id="lcAccentMix" ${s.lcAccentMix !== false ? 'checked' : ''}></label>
+            <label class="field">듣기 속도
+              <select id="lcRate">${[
+                [0.85, '느리게'],
+                [1, '보통 (실전에 가까움)'],
+                [1.1, '빠르게'],
+              ]
+                .map(([v, l]) => `<option value="${v}" ${Number(s.lcRate ?? 1) === v ? 'selected' : ''}>${l}</option>`)
+                .join('')}</select>
+            </label>`
+          : '<p class="hint">이 브라우저는 음성 읽기를 지원하지 않아요. 듣기 문제는 대본을 보고 풀 수 있지만 점수에는 들어가지 않아요.</p>'
       }
     </section>
 
@@ -1252,7 +1272,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 v3.4 · 단어 · 어휘 · 문법 · 장문 빈칸</p>
+    <p class="version">토익 트레이너 v4 · 단어 · 어휘 · 문법 · 장문 빈칸 · 듣기</p>
   `;
 
   const num = (id, min, max) => {
@@ -1312,6 +1332,14 @@ function renderSettings() {
   }
 
   $view.querySelector('#export').addEventListener('click', exportBackup);
+  $view.querySelector('#lcAccentMix')?.addEventListener('change', (e) => {
+    state.settings.lcAccentMix = e.target.checked;
+    persist();
+  });
+  $view.querySelector('#lcRate')?.addEventListener('change', (e) => {
+    state.settings.lcRate = Number(e.target.value);
+    persist();
+  });
   bindReportBox($view, renderSettings);
   $view.querySelector('#copy-reports')?.addEventListener('click', async () => {
     const text = JSON.stringify(state.reports, null, 1);
@@ -1448,6 +1476,35 @@ function p6Card() {
     </section>`;
 }
 
+function lcCard() {
+  if (!lcP2.length) return '';
+  const t = srs.today();
+  const done = LC.todayCount(state, t);
+  const p3 = LC.setProgress(state, lcSets, 3);
+  const p4 = LC.setProgress(state, lcSets, 4);
+  const st = {};
+  for (const k of ['lc2', 'lc3', 'lc4']) {
+    const l = state.attempts.filter((a) => a.type === k && !a.scripted);
+    st[k] = l.length ? Math.round((l.filter((a) => a.correct).length / l.length) * 100) + '%' : '-';
+  }
+  return `<section class="card vcard">
+      <div class="vcard-top"><h2>오늘의 듣기 <small>Part 2 응답</small></h2><span class="count">${Math.min(done, LC.DAILY_P2)}/${LC.DAILY_P2}</span></div>
+      <div class="progress"><i style="width:${Math.min(1, done / LC.DAILY_P2) * 100}%"></i></div>
+      <p class="hint">질문을 듣고 응답 A·B·C 중 고르기. 비슷한 발음·같은 단어 반복 함정을 알려 줘요.</p>
+      <button class="btn ${done >= LC.DAILY_P2 ? 'ghost' : 'primary'} wide" data-lc="lc2">${done >= LC.DAILY_P2 ? '10문제 더 듣기' : '듣기 시작 · 약 4분'}</button>
+    </section>
+    <section class="card">
+      <h2>세트 듣기 <small>문제를 먼저 읽고 듣기</small></h2>
+      <div class="type-grid">
+        <button class="type-tile" data-lc="lc3"><b>Part 3 대화</b><span class="rate">세트 ${p3.done}/${p3.total} · 정답 ${st.lc3}</span></button>
+        <button class="type-tile" data-lc="lc4"><b>Part 4 담화</b><span class="rate">세트 ${p4.done}/${p4.total} · 정답 ${st.lc4}</span></button>
+        <button class="type-tile" data-lc="dict"><b>받아쓰기</b><span class="rate">5문장</span></button>
+        <div class="type-tile muted-tile"><b>Part 2 정답률</b><span class="rate">${st.lc2}</span></div>
+      </div>
+      <p class="hint">브라우저 음성이라 실제 시험보다 쉬워요. 점수에는 낮은 무게로 반영하고, 교재 음원 모의고사 점수를 넣으면 LC가 더 정확해져요. Part 1(사진 묘사)은 교재로 연습하세요.</p>
+    </section>`;
+}
+
 function grammarTodayCard() {
   const gbank = bank.filter((q) => Vocab.areaOf(q) === 'grammar');
   if (!gbank.length) return '';
@@ -1523,6 +1580,375 @@ function renderConcept() {
 
 function bindVqButtons(root = $view) {
   root.querySelectorAll('[data-vq]').forEach((b) => b.addEventListener('click', () => startVQ(b.dataset.vq, b.dataset.type, { skipConcept: view === 'concept' })));
+  root.querySelectorAll('[data-lc]').forEach((b) => b.addEventListener('click', () => startLC(b.dataset.lc)));
+}
+
+// ---------- 듣기 ----------
+function lcStop() {
+  lcAudio?.stop();
+  lcAudio = null;
+}
+
+function startLC(mode) {
+  const t = srs.today();
+  lcStop();
+  if (mode === 'lc2') {
+    const items = LC.buildPart2(state, lcP2, state.settings, t);
+    if (!items.length) return toast('들을 문제가 없어요');
+    lcs = { mode, items, i: 0, results: [], origin: view === 'lc' ? 'quiz' : view };
+  } else if (mode === 'lc3' || mode === 'lc4') {
+    const set = LC.buildSet(state, lcSets, mode === 'lc3' ? 3 : 4, state.settings, t);
+    if (!set) return toast('들을 세트가 없어요');
+    lcs = { mode, set, phase: 'preview', picks: {}, replays: 0, results: [], origin: view === 'lc' ? 'quiz' : view };
+  } else if (mode === 'dict') {
+    lcs = { mode, items: LC.buildDict(lcP2, state.settings), i: 0, scores: [], origin: view === 'lc' ? 'quiz' : view };
+  }
+  lcPrepare();
+  go('lc');
+  if (lcs.mode === 'lc2' || lcs.mode === 'dict') lcPlay(); // 버튼을 누른 흐름 안에서 바로 재생 (iOS)
+}
+
+function lcPrepare() {
+  if (!lcs) return;
+  lcs.answered = null;
+  lcs.plays = 0;
+  lcs.scripted = false;
+  lcs.shownAt = performance.now();
+  if (lcs.mode === 'lc2') lcs.order = shuffleIdx(3);
+}
+
+function shuffleIdx(n) {
+  const a = [...Array(n).keys()];
+  for (let i = n - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// 지금 화면의 음성 만들기
+function lcLines() {
+  if (lcs.mode === 'lc2') {
+    const q = lcs.items[lcs.i];
+    const asker = q.id.charCodeAt(q.id.length - 1) % 2 ? 'W' : 'M';
+    const other = asker === 'W' ? 'M' : 'W';
+    return [{ who: asker, text: q.q }, ...lcs.order.map((k, idx) => ({ who: other, text: `${'ABC'[idx]}. ${q.choices[k]}` }))];
+  }
+  if (lcs.mode === 'dict') return [{ who: 'N', text: lcs.items[lcs.i].q }];
+  return lcs.set.lines.map((l) => ({ who: l.who, text: l.text }));
+}
+
+function lcPlay() {
+  if (!lcs) return;
+  lcStop();
+  lcs.plays++;
+  lcs.playing = true;
+  lcRenderStatus();
+  const me = (lcAudio = tts.speakLines(lcLines(), { rate: Number(state.settings.lcRate) || 1, mix: state.settings.lcAccentMix !== false }));
+  me.done.then(() => {
+    if (lcAudio !== me || !lcs) return;
+    lcs.playing = false;
+    lcs.heardAt = performance.now();
+    lcRenderStatus();
+  });
+}
+
+function lcRenderStatus() {
+  const b = $view.querySelector('#lc-play');
+  if (!b || !lcs) return;
+  b.classList.toggle('playing', !!lcs.playing);
+  b.innerHTML = lcs.playing ? '<span class="eq"><i></i><i></i><i></i></span> 재생 중' : lcs.plays ? `▶ 다시 듣기` : '▶ 듣기';
+}
+
+function renderLC() {
+  if (!lcs) return go('quiz');
+  if (lcs.mode === 'lc2') return renderLC2();
+  if (lcs.mode === 'dict') return renderDict();
+  return renderLCSet();
+}
+
+function lcTop(progress, label) {
+  return `<div class="study-top">
+      <button class="icon-btn" id="quit" aria-label="그만하기">${ICON.close}</button>
+      <div class="progress"><i style="width:${progress * 100}%"></i></div>
+      <span class="count">${label}</span>
+    </div>`;
+}
+
+function bindLcQuit() {
+  $view.querySelector('#quit').addEventListener('click', () => {
+    const back = ['home', 'quiz'].includes(lcs?.origin) ? lcs.origin : 'quiz';
+    lcStop();
+    lcs = null;
+    document.body.classList.remove('has-bar');
+    go(back);
+  });
+  $view.querySelector('#lc-play')?.addEventListener('click', lcPlay);
+}
+
+// Part 2: 질문 + 응답 A·B·C를 듣고 고르기
+function renderLC2() {
+  if (lcs.i >= lcs.items.length) return renderLCSummary();
+  const q = lcs.items[lcs.i];
+  const a = lcs.answered;
+  const show = a || lcs.scripted;
+  $view.innerHTML = `
+    ${lcTop(lcs.i / lcs.items.length, `${lcs.i + 1}/${lcs.items.length}`)}
+    <article class="qcard lc ${a ? (a.ok ? 'is-ok' : 'is-wrong') : ''}">
+      <div class="flash-tags"><span class="tag">Part 2 응답</span><span class="tag">${srs.LEVEL_NAMES[q.level]}</span></div>
+      <p class="q-label">질문을 듣고 가장 알맞은 응답을 고르세요</p>
+      <button class="btn ghost lc-play" id="lc-play"></button>
+      ${show ? `<p class="lc-q">${esc(q.q)}</p>` : '<p class="lc-q muted">질문과 응답은 음성으로만 나와요</p>'}
+    </article>
+    <div class="options lc-options">
+      ${lcs.order
+        .map((k, idx) => {
+          const cls = a ? (k === q.answer ? 'correct' : idx === a.idx ? 'wrong' : 'dim') : '';
+          return `<button class="option ${cls}" data-lchoice="${idx}" ${a ? 'disabled' : ''}><span class="num">${'ABC'[idx]}</span><span class="lc-opt">${show ? esc(q.choices[k]) : ''}${a && k !== q.answer && q.traps[k] ? ` <em class="trap">${esc(q.traps[k])}</em>` : ''}</span></button>`;
+        })
+        .join('')}
+    </div>
+    ${
+      a
+        ? `<section class="explain ${a.ok ? 'ok' : 'ng'}">
+            <p class="explain-head">${a.ok ? '정답!' : '아쉬워요'}${lcs.scripted ? ' <small>대본을 보고 풀어서 점수에는 안 들어가요</small>' : ''}</p>
+            <p class="exp">${esc(q.explanation)}</p>
+            <details class="more" ${a.ok ? '' : 'open'}><summary>해석</summary><p class="ko">Q. ${esc(q.qko)}<br>A. ${esc(q.ako)}</p></details>
+            ${reportBox('question', q.id)}
+          </section>
+          <div class="vq-bar">${
+            a.ok
+              ? `<button class="btn primary big" id="lc-next">${lcs.i + 1 >= lcs.items.length ? '결과 보기' : '다음 문제'}</button>`
+              : `<p class="bar-label">왜 틀렸나요? <small>고르면 바로 다음으로</small></p>
+                 <div class="bar-reasons">${LC.REASONS.map(([k, l]) => `<button class="chip-btn" data-lreason="${k}">${l}</button>`).join('')}</div>
+                 <button class="link-btn small" id="lc-next">이유 없이 넘기기</button>`
+          }</div>`
+        : `<button class="link-btn" id="lc-script">${lcs.scripted ? '' : '음성이 안 나오면 대본 보기'}</button>`
+    }`;
+  document.body.classList.toggle('has-bar', !!a);
+  lcRenderStatus();
+  bindLcQuit();
+  bindReportBox($view, renderLC2);
+  $view.querySelector('#lc-script')?.addEventListener('click', () => {
+    lcs.scripted = true;
+    renderLC2();
+  });
+  $view.querySelectorAll('[data-lchoice]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (lcs.answered) return;
+      const idx = Number(b.dataset.lchoice);
+      const ok = lcs.order[idx] === q.answer;
+      const timeMs = Math.round(performance.now() - (lcs.heardAt || lcs.shownAt));
+      const attempt = Vocab.record(state, { ...q, targetMs: LC.LC_TARGET_MS }, ok, timeMs, srs.today(), 'lc2', { scripted: lcs.scripted });
+      attempt.replays = Math.max(0, lcs.plays - 1);
+      lcs.attempt = attempt;
+      lcs.answered = { idx, ok };
+      lcs.results.push({ q, ok });
+      lcStop();
+      persist();
+      renderLC2();
+    }),
+  );
+  const next = () => {
+    lcs.i++;
+    lcPrepare();
+    const more = lcs.i < lcs.items.length;
+    renderLC2();
+    window.scrollTo(0, 0);
+    if (more) lcPlay();
+  };
+  $view.querySelector('#lc-next')?.addEventListener('click', next);
+  $view.querySelectorAll('[data-lreason]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (lcs.attempt) lcs.attempt.lcReason = b.dataset.lreason;
+      persist();
+      next();
+    }),
+  );
+}
+
+// Part 3·4: 문제 먼저 읽기 → 듣기(들으면서 고르기) → 채점·대본
+function renderLCSet() {
+  const set = lcs.set;
+  const phase = lcs.phase;
+  const label = set.part === 3 ? 'Part 3 대화' : 'Part 4 담화';
+  const qs = set.questions;
+  const review = phase === 'review';
+  $view.innerHTML = `
+    ${lcTop(review ? 1 : phase === 'listen' ? 0.5 : 0.1, label)}
+    <article class="qcard lc">
+      <div class="flash-tags"><span class="tag">${label}</span><span class="tag">${srs.LEVEL_NAMES[set.level]}</span></div>
+      ${
+        phase === 'preview'
+          ? `<p class="q-label">듣기 전에 문제와 보기를 먼저 읽어 두세요</p>
+             <p class="hint">실제 시험에서도 음성이 나오기 전에 문제를 미리 읽는 게 핵심이에요. 핵심어(누가·왜·언제·무엇을)에 집중하세요.</p>`
+          : review
+          ? `<p class="q-label">채점 결과 · ${lcs.results.filter((x) => x.ok).length}/${qs.length}</p>`
+          : `<p class="q-label">들으면서 답을 고르세요</p><button class="btn ghost lc-play" id="lc-play"></button>`
+      }
+    </article>
+    <ol class="lc-qs">
+      ${qs
+        .map((q) => {
+          const pick = lcs.picks[q.n];
+          const res = review ? lcs.results.find((x) => x.q.id === q.id) : null;
+          return `<li class="${res ? (res.ok ? 'ok' : 'ng') : ''}">
+            <p class="lc-qtext">${q.n}. ${esc(q.stem)}</p>
+            <div class="lc-choices">${q.choices
+              .map((c, i) => {
+                const cls = review ? (i === q.answer ? 'correct' : i === pick ? 'wrong' : 'dim') : pick === i ? 'picked' : '';
+                return `<button class="option small ${cls}" data-lq="${q.n}" data-c="${i}" ${review ? 'disabled' : ''}><span class="num">${'ABCD'[i]}</span>${esc(c)}</button>`;
+              })
+              .join('')}</div>
+            ${res ? `<p class="exp">${esc(q.explanation)}</p>` : ''}
+          </li>`;
+        })
+        .join('')}
+    </ol>
+    ${
+      review
+        ? `<section class="card">
+            <h2>대본</h2>
+            <div class="script">${set.lines.map((l) => `<p><b>${{ W: '여', M: '남', M2: '남2', N: '' }[l.who]}</b>${esc(l.text)}</p>`).join('')}</div>
+            <details class="more"><summary>해석</summary><p class="ko">${esc(set.ko)}</p></details>
+          </section>
+          <div class="vq-bar"><button class="btn primary big" id="lc-again">${label} 한 세트 더</button><button class="link-btn small" id="lc-done">그만하기</button></div>`
+        : phase === 'preview'
+        ? `<div class="vq-bar"><button class="btn primary big" id="lc-start">다 읽었어요, 듣기 시작</button></div>`
+        : phase === 'listen'
+        ? `<div class="vq-bar"><button class="btn primary big" id="lc-grade" ${Object.keys(lcs.picks).length < qs.length ? 'disabled' : ''}>채점하기</button><button class="link-btn small" id="lc-script">음성이 안 나오면 대본 보고 풀기</button></div>`
+        : ''
+    }
+    ${lcs.scripted && !review ? `<section class="card"><h2>대본</h2><div class="script">${set.lines.map((l) => `<p><b>${{ W: '여', M: '남', M2: '남2', N: '' }[l.who]}</b>${esc(l.text)}</p>`).join('')}</div></section>` : ''}`;
+  document.body.classList.add('has-bar');
+  lcRenderStatus();
+  bindLcQuit();
+  $view.querySelector('#lc-start')?.addEventListener('click', () => {
+    lcs.phase = 'listen';
+    renderLCSet();
+    lcPlay();
+  });
+  $view.querySelectorAll('[data-lq]').forEach((b) =>
+    b.addEventListener('click', () => {
+      lcs.picks[b.dataset.lq] = Number(b.dataset.c);
+      // 재생 중에도 화면을 다시 그리지 않고 표시만 바꿈 (음성 끊김 방지)
+      $view.querySelectorAll(`[data-lq="${b.dataset.lq}"]`).forEach((x) => x.classList.toggle('picked', x === b));
+      const g = $view.querySelector('#lc-grade');
+      if (g) g.disabled = Object.keys(lcs.picks).length < qs.length;
+    }),
+  );
+  $view.querySelector('#lc-script')?.addEventListener('click', () => {
+    lcs.scripted = true;
+    lcStop();
+    renderLCSet();
+  });
+  $view.querySelector('#lc-grade')?.addEventListener('click', () => {
+    lcStop();
+    const t = srs.today();
+    const timeMs = Math.round(performance.now() - (lcs.heardAt || lcs.shownAt));
+    for (const q of qs) {
+      const ok = lcs.picks[q.n] === q.answer;
+      const at = Vocab.record(state, { ...q, targetMs: LC.LC_TARGET_MS }, ok, timeMs, t, q.type, { scripted: lcs.scripted });
+      at.replays = Math.max(0, lcs.plays - 1);
+      lcs.results.push({ q, ok });
+    }
+    persist();
+    lcs.phase = 'review';
+    renderLCSet();
+    window.scrollTo(0, 0);
+  });
+  $view.querySelector('#lc-again')?.addEventListener('click', () => startLC(lcs.mode));
+  $view.querySelector('#lc-done')?.addEventListener('click', () => {
+    const back = ['home', 'quiz'].includes(lcs.origin) ? lcs.origin : 'quiz';
+    lcs = null;
+    go(back);
+  });
+}
+
+// 받아쓰기: 한 문장 듣고 쓰기 → 낱말별 채점
+function renderDict() {
+  if (lcs.i >= lcs.items.length) {
+    const avg = Math.round((lcs.scores.reduce((a, b) => a + b, 0) / (lcs.scores.length || 1)) * 100);
+    $view.innerHTML = `<section class="hero done">
+        <p class="hero-title">받아쓰기 끝!</p>
+        <div class="today-grid two"><div><strong>${lcs.scores.length}</strong><span>문장</span></div><div><strong>${avg}%</strong><span>맞힌 낱말</span></div></div>
+        <button class="btn primary big" data-lc="dict">5문장 더</button>
+        <button class="btn ghost wide home-btn" data-go="quiz">문제 홈으로</button>
+      </section>`;
+    lcs = null;
+    bindVqButtons();
+    bindGoButtons();
+    return;
+  }
+  const q = lcs.items[lcs.i];
+  const res = lcs.answered;
+  $view.innerHTML = `
+    ${lcTop(lcs.i / lcs.items.length, `${lcs.i + 1}/${lcs.items.length}`)}
+    <article class="qcard lc">
+      <div class="flash-tags"><span class="tag">받아쓰기</span><span class="tag">${srs.LEVEL_NAMES[q.level]}</span></div>
+      <p class="q-label">들리는 대로 영어 문장을 쓰세요</p>
+      <button class="btn ghost lc-play" id="lc-play"></button>
+      ${
+        res
+          ? `<p class="dict-res">${res.marks.map((m) => `<span class="${m.ok ? 'ok' : 'ng'}">${esc(m.w)}</span>`).join(' ')}</p>
+             <p class="hint">빨간 낱말을 놓쳤어요 · ${Math.round(res.score * 100)}%</p>
+             <p class="ko">${esc(q.qko)}</p>`
+          : `<textarea id="dict-input" rows="3" placeholder="예: Where is the nearest bank?" autocapitalize="off" autocomplete="off" spellcheck="false"></textarea>`
+      }
+    </article>
+    <div class="vq-bar">${
+      res ? `<button class="btn primary big" id="dict-next">${lcs.i + 1 >= lcs.items.length ? '결과 보기' : '다음 문장'}</button>` : `<button class="btn primary big" id="dict-check">확인</button>`
+    }</div>`;
+  document.body.classList.add('has-bar');
+  lcRenderStatus();
+  bindLcQuit();
+  $view.querySelector('#dict-check')?.addEventListener('click', () => {
+    const typed = $view.querySelector('#dict-input').value;
+    lcs.answered = LC.dictCompare(q.q, typed);
+    lcs.scores.push(lcs.answered.score);
+    lcStop();
+    if (!state.studyDays.includes(srs.today())) state.studyDays.push(srs.today());
+    persist();
+    renderDict();
+  });
+  $view.querySelector('#dict-next')?.addEventListener('click', () => {
+    lcs.i++;
+    lcPrepare();
+    const more = lcs.i < lcs.items.length;
+    renderDict();
+    if (more) lcPlay();
+  });
+}
+
+function renderLCSummary() {
+  const r = lcs.results;
+  const counted = r.length;
+  const correct = r.filter((x) => x.ok).length;
+  const wrong = r.filter((x) => !x.ok);
+  const origin = lcs.origin;
+  lcs = null;
+  document.body.classList.remove('has-bar');
+  const t = srs.today();
+  $view.innerHTML = `
+    <section class="hero done">
+      <p class="hero-title">듣기 완료!</p>
+      <div class="today-grid two"><div><strong>${correct}/${counted}</strong><span>정답</span></div><div><strong>${LC.todayCount(state, t)}</strong><span>오늘 들은 문제</span></div></div>
+      ${nextTaskButton(t, 'listening')}
+      <p class="hint">${todayLeftText(t)}</p>
+      <button class="btn ghost wide" data-lc="lc2">10문제 더 듣기</button>
+      <button class="btn ghost wide home-btn" data-go="${origin === 'home' ? 'home' : 'quiz'}">${origin === 'home' ? '홈으로' : '문제 홈으로'}</button>
+    </section>
+    ${
+      wrong.length
+        ? `<section class="card"><h2>틀린 문제</h2><ul class="wrong-list">${wrong
+            .map((x) => `<li><p class="stem">${esc(x.q.q)}</p><small>정답: ${esc(x.q.choices[x.q.answer])}</small></li>`)
+            .join('')}</ul><p class="hint">틀린 문제는 내일 다시 나와요.</p></section>`
+        : ''
+    }`;
+  bindVqButtons();
+  bindGoButtons();
+  bindStartButtons();
+  bindConceptButtons();
 }
 
 function typeGrid(types, stats, area) {
@@ -1545,6 +1971,7 @@ function renderQuizHome() {
     ['vocab', '어휘'],
     ['grammar', '문법'],
     ['part6', '장문 빈칸'],
+    ['lc', '듣기'],
   ];
   let body = '';
   if (tab === 'vocab') {
@@ -1565,8 +1992,10 @@ function renderQuizHome() {
           .map(([k, v]) => `<button class="mini-chip" data-concept="${k}">${v.name}</button>`)
           .join('')}</div>
       </section>`;
-  } else {
+  } else if (tab === 'part6') {
     body = p6Card();
+  } else {
+    body = lcCard();
   }
   $view.innerHTML = `
     <div class="seg quiz-seg" role="tablist">${seg.map(([k, l]) => `<button class="${tab === k ? 'on' : ''}" data-qtab="${k}">${l}</button>`).join('')}</div>
@@ -1575,7 +2004,7 @@ function renderQuizHome() {
       <button class="tool" data-vq="speed"><b>스피드 모드</b><small>${Vocab.SPEED.n}문제 · ${Vocab.SPEED.ms / 60000}분${speedBest() ? ` · 최고 ${speedBest()}` : ''}</small></button>
       <button class="tool" data-vq="test"><b>3분 수준 진단</b><small>어휘 9 · 문법 6</small></button>
     </div>
-    <p class="hint center">듣기(Part 1~4)는 다음 버전, 독해(Part 7)는 그다음에 추가돼요.</p>`;
+    <p class="hint center">독해(Part 7)는 다음 버전에 추가돼요.</p>`;
   $view.querySelectorAll('[data-qtab]').forEach((b) =>
     b.addEventListener('click', () => {
       ui.quizTab = b.dataset.qtab;
@@ -2363,6 +2792,12 @@ async function loadBuiltin() {
     const [gres, cres] = await Promise.all([fetch('./data/grammar-questions.json'), fetch('./data/grammar-concepts.json')]);
     if (gres.ok) bank = bank.concat(await gres.json());
     if (cres.ok) concepts = await cres.json();
+    const lres = await fetch('./data/listening.json');
+    if (lres.ok) {
+      const l = await lres.json();
+      lcP2 = l.part2;
+      lcSets = l.sets;
+    }
     const p6res = await fetch('./data/part6.json');
     if (p6res.ok) {
       const p6 = await p6res.json();

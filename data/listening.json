@@ -1,0 +1,1470 @@
+{
+ "part2": [
+  {
+   "id": "l2-b01",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "where",
+   "level": "basic",
+   "q": "Where is the nearest bank?",
+   "stem": "Where is the nearest bank?",
+   "choices": [
+    "It's across the street.",
+    "I'll bank on it.",
+    "Yes, it's near."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "Where(어디) 질문에는 장소로 답해요. Where 의문문에 Yes/No로 답할 수 없어요.",
+   "qko": "가장 가까운 은행이 어디예요?",
+   "ako": "길 건너편에 있어요."
+  },
+  {
+   "id": "l2-b02",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "when",
+   "level": "basic",
+   "q": "When does the meeting start?",
+   "stem": "When does the meeting start?",
+   "choices": [
+    "In the conference room.",
+    "At ten o'clock.",
+    "It was a good meeting."
+   ],
+   "answer": 1,
+   "traps": {
+    "0": "질문과 안 맞는 답",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "When(언제) 질문이라 시간으로 답해요. 장소 답(A)은 Where 질문용이에요.",
+   "qko": "회의는 언제 시작해요?",
+   "ako": "10시에요."
+  },
+  {
+   "id": "l2-b03",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "who",
+   "level": "basic",
+   "q": "Who is in charge of the project?",
+   "stem": "Who is in charge of the project?",
+   "choices": [
+    "Ms. Lee is.",
+    "It's free of charge.",
+    "Next Monday."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "비슷한 발음",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "Who(누구) 질문이라 사람으로 답해요. charge가 반복된 B는 뜻이 다른 함정이에요.",
+   "qko": "그 프로젝트는 누가 담당해요?",
+   "ako": "이 씨가 맡고 있어요."
+  },
+  {
+   "id": "l2-b04",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "yesno",
+   "level": "basic",
+   "q": "Did you send the package?",
+   "stem": "Did you send the package?",
+   "choices": [
+    "Yes, this morning.",
+    "A large package.",
+    "At the post office."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "관련 단어 연상"
+   },
+   "explanation": "Did you ~? 질문에 Yes와 시점으로 답했어요. post office는 package에서 연상되는 함정이에요.",
+   "qko": "소포 보냈어요?",
+   "ako": "네, 오늘 아침에요."
+  },
+  {
+   "id": "l2-b05",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "how",
+   "level": "basic",
+   "q": "How do you get to work?",
+   "stem": "How do you get to work?",
+   "choices": [
+    "I usually take the bus.",
+    "Yes, I work here.",
+    "At nine thirty."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "How(어떻게) 질문에 교통수단으로 답했어요.",
+   "qko": "출근은 어떻게 해요?",
+   "ako": "보통 버스를 타요."
+  },
+  {
+   "id": "l2-b06",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "choice",
+   "level": "basic",
+   "q": "Would you like coffee or tea?",
+   "stem": "Would you like coffee or tea?",
+   "choices": [
+    "Tea, please.",
+    "Yes, I would.",
+    "It's on the table."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "질문과 안 맞는 답",
+    "2": "관련 단어 연상"
+   },
+   "explanation": "A or B 선택 의문문에는 둘 중 하나를 골라 답해요. Yes/No는 어색해요.",
+   "qko": "커피 드릴까요, 차 드릴까요?",
+   "ako": "차로 주세요."
+  },
+  {
+   "id": "l2-b07",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "what",
+   "level": "basic",
+   "q": "What time does the store close?",
+   "stem": "What time does the store close?",
+   "choices": [
+    "At eight p.m.",
+    "Close to the station.",
+    "Clothing and shoes."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "비슷한 발음"
+   },
+   "explanation": "What time(몇 시) 질문이라 시간으로 답해요. close(가까운)와 clothes(옷) 소리 함정이 있어요.",
+   "qko": "가게는 몇 시에 닫아요?",
+   "ako": "저녁 8시에요."
+  },
+  {
+   "id": "l2-b08",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "request",
+   "level": "basic",
+   "q": "Could you help me with this box?",
+   "stem": "Could you help me with this box?",
+   "choices": [
+    "Sure, where should I put it?",
+    "It's a small box.",
+    "Yes, she helped."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "부탁(Could you ~?)에는 수락이나 거절로 답해요. 수락하며 되묻는 A가 자연스러워요.",
+   "qko": "이 상자 좀 도와줄 수 있어요?",
+   "ako": "물론이죠, 어디에 둘까요?"
+  },
+  {
+   "id": "l2-b09",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "why",
+   "level": "basic",
+   "q": "Why was the flight delayed?",
+   "stem": "Why was the flight delayed?",
+   "choices": [
+    "Because of the snow.",
+    "At gate twelve.",
+    "I'd like a window seat."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "관련 단어 연상"
+   },
+   "explanation": "Why(왜) 질문에 이유(Because of)로 답했어요. gate·window seat은 flight에서 연상되는 함정이에요.",
+   "qko": "비행기가 왜 지연됐어요?",
+   "ako": "눈 때문에요."
+  },
+  {
+   "id": "l2-b10",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "statement",
+   "level": "basic",
+   "q": "I can't find my keys.",
+   "stem": "I can't find my keys.",
+   "choices": [
+    "Did you check your bag?",
+    "The key to success.",
+    "I found it interesting."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "비슷한 발음"
+   },
+   "explanation": "평서문에는 상황에 맞는 반응(되묻기, 제안)으로 답해요.",
+   "qko": "열쇠를 못 찾겠어요.",
+   "ako": "가방은 확인해 봤어요?"
+  },
+  {
+   "id": "l2-m01",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "where",
+   "level": "mid",
+   "q": "Where should I leave these documents?",
+   "stem": "Where should I leave these documents?",
+   "choices": [
+    "On my desk, please.",
+    "They're very important.",
+    "I'm leaving at five."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "Where 질문에 장소(On my desk)로 답했어요. leave가 '떠나다'로 쓰인 C는 같은 단어 함정이에요.",
+   "qko": "이 서류들 어디에 두면 돼요?",
+   "ako": "제 책상 위에 두세요."
+  },
+  {
+   "id": "l2-m02",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "negative",
+   "level": "mid",
+   "q": "Haven't you finished the report yet?",
+   "stem": "Haven't you finished the report yet?",
+   "choices": [
+    "I'll be done in an hour.",
+    "The weather report.",
+    "He reported it to the police."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "부정 의문문은 긍정 의문문처럼 생각해요(보고서 끝냈어요?). '한 시간이면 끝나요'로 아직 안 끝났다는 걸 돌려 답했어요. report가 다른 뜻으로 반복된 B·C는 함정이에요.",
+   "qko": "보고서 아직 안 끝냈어요?",
+   "ako": "한 시간이면 끝나요."
+  },
+  {
+   "id": "l2-m03",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "who",
+   "level": "mid",
+   "q": "Who's going to lead the training session?",
+   "stem": "Who's going to lead the training session?",
+   "choices": [
+    "A new consultant from Seoul.",
+    "It lasts two hours.",
+    "The train leaves soon."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "비슷한 발음"
+   },
+   "explanation": "Who 질문에 사람(새 컨설턴트)으로 답했어요. training과 train은 소리 함정이에요.",
+   "qko": "교육은 누가 진행해요?",
+   "ako": "서울에서 온 새 컨설턴트요."
+  },
+  {
+   "id": "l2-m04",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "suggest",
+   "level": "mid",
+   "q": "Why don't we take a break?",
+   "stem": "Why don't we take a break?",
+   "choices": [
+    "That's a good idea.",
+    "Because it's broken.",
+    "I'll take it."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "질문과 안 맞는 답",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "Why don't we ~?는 이유를 묻는 게 아니라 제안이에요. 동의하는 A가 정답이에요.",
+   "qko": "잠깐 쉬는 게 어때요?",
+   "ako": "좋은 생각이에요."
+  },
+  {
+   "id": "l2-m05",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "when",
+   "level": "mid",
+   "q": "When will the new printer arrive?",
+   "stem": "When will the new printer arrive?",
+   "choices": [
+    "It should be here by Friday.",
+    "In the supply room.",
+    "Print two copies."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "비슷한 발음"
+   },
+   "explanation": "When 질문에 시점(by Friday)으로 답했어요.",
+   "qko": "새 프린터는 언제 와요?",
+   "ako": "금요일까지는 올 거예요."
+  },
+  {
+   "id": "l2-m06",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "choice",
+   "level": "mid",
+   "q": "Should we meet in the morning or the afternoon?",
+   "stem": "Should we meet in the morning or the afternoon?",
+   "choices": [
+    "Either works for me.",
+    "Yes, we should.",
+    "It was a long meeting."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "질문과 안 맞는 답",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "선택 의문문에 '아무 때나 괜찮다(Either)'로 답하는 것도 정답 패턴이에요.",
+   "qko": "오전에 만날까요, 오후에 만날까요?",
+   "ako": "저는 둘 다 괜찮아요."
+  },
+  {
+   "id": "l2-m07",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "how",
+   "level": "mid",
+   "q": "How many people signed up for the workshop?",
+   "stem": "How many people signed up for the workshop?",
+   "choices": [
+    "About thirty so far.",
+    "Sign here, please.",
+    "It's in the workshop."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "How many(몇 명) 질문에 수(About thirty)로 답했어요.",
+   "qko": "워크숍에 몇 명이 신청했어요?",
+   "ako": "지금까지 서른 명쯤이요."
+  },
+  {
+   "id": "l2-m08",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "tag",
+   "level": "mid",
+   "q": "The parking lot is closed today, isn't it?",
+   "stem": "The parking lot is closed today, isn't it?",
+   "choices": [
+    "Yes, it's being repaved.",
+    "I parked near the gate.",
+    "A lot of people."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "비슷한 발음"
+   },
+   "explanation": "부가 의문문(isn't it?)은 사실 확인이에요. Yes와 이유로 답했어요. lot(주차장)과 a lot of는 소리 함정이에요.",
+   "qko": "오늘 주차장 닫았죠?",
+   "ako": "네, 재포장 중이에요."
+  },
+  {
+   "id": "l2-m09",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "indirect",
+   "level": "mid",
+   "q": "Which supplier offers the lowest price?",
+   "stem": "Which supplier offers the lowest price?",
+   "choices": [
+    "I'll check the quotes and let you know.",
+    "Prices went up last year.",
+    "Yes, it's the lowest."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "'확인해 보고 알려 줄게요'는 Part 2 최빈출 간접 응답이에요. 모를 때도 정답이 될 수 있어요.",
+   "qko": "어느 공급업체가 가장 싼 가격을 제시해요?",
+   "ako": "견적을 확인하고 알려 드릴게요."
+  },
+  {
+   "id": "l2-m10",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "statement",
+   "level": "mid",
+   "q": "The copier on the third floor is out of order again.",
+   "stem": "The copier on the third floor is out of order again.",
+   "choices": [
+    "I'll call the repair service.",
+    "Three copies, please.",
+    "In alphabetical order."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "비슷한 발음",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "고장 소식에 '수리 업체에 연락할게요'로 반응했어요. order가 '순서'로 쓰인 C는 함정이에요.",
+   "qko": "3층 복사기가 또 고장 났어요.",
+   "ako": "수리 업체에 전화할게요."
+  },
+  {
+   "id": "l2-a01",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "indirect",
+   "level": "adv",
+   "q": "When is the budget proposal due?",
+   "stem": "When is the budget proposal due?",
+   "choices": [
+    "Didn't Mr. Kang send an e-mail about that?",
+    "It's due to the rain.",
+    "The proposal was approved."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "되묻기로 답하는 간접 응답이에요. '강 씨가 이메일 보내지 않았어요?' = 거기에 마감일이 있다는 뜻이에요. due to(~때문에)는 같은 단어 함정이에요.",
+   "qko": "예산안 마감이 언제예요?",
+   "ako": "강 씨가 그거 관련해서 이메일 보내지 않았어요?"
+  },
+  {
+   "id": "l2-a02",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "indirect",
+   "level": "adv",
+   "q": "Who's going to replace Ms. Ortiz while she's on leave?",
+   "stem": "Who's going to replace Ms. Ortiz while she's on leave?",
+   "choices": [
+    "That hasn't been decided yet.",
+    "She's leaving at noon.",
+    "Place it over there."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "비슷한 발음"
+   },
+   "explanation": "'아직 결정되지 않았다'는 Who/When 질문에 자주 나오는 간접 응답이에요. replace와 place는 소리 함정이에요.",
+   "qko": "오티즈 씨 휴가 동안 누가 대신해요?",
+   "ako": "아직 정해지지 않았어요."
+  },
+  {
+   "id": "l2-a03",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "negative",
+   "level": "adv",
+   "q": "Isn't the conference being held in Busan this year?",
+   "stem": "Isn't the conference being held in Busan this year?",
+   "choices": [
+    "No, it moved to Daegu.",
+    "I can't hold it.",
+    "A conference call."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "부정 의문문은 긍정으로 바꿔 생각해요(부산에서 열려요?). 아니라고 하고 대구로 옮겼다고 답했어요.",
+   "qko": "올해 학회 부산에서 열리지 않아요?",
+   "ako": "아니요, 대구로 옮겼어요."
+  },
+  {
+   "id": "l2-a04",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "suggest",
+   "level": "adv",
+   "q": "Would you mind reviewing my presentation slides?",
+   "stem": "Would you mind reviewing my presentation slides?",
+   "choices": [
+    "Not at all, send them over.",
+    "Yes, I'd mind the store.",
+    "They slid off the table."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "비슷한 발음"
+   },
+   "explanation": "Would you mind ~?에는 Not at all(전혀요=해 줄게요)이 수락이에요. Yes는 '싫다'는 뜻이 돼요.",
+   "qko": "제 발표 자료 좀 검토해 줄래요?",
+   "ako": "물론이죠, 보내 주세요."
+  },
+  {
+   "id": "l2-a05",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "why",
+   "level": "adv",
+   "q": "Why hasn't the shipment been sent out yet?",
+   "stem": "Why hasn't the shipment been sent out yet?",
+   "choices": [
+    "We're still waiting for the labels.",
+    "By express mail.",
+    "Yes, it was shipped."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "관련 단어 연상",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "Why 질문에 Because 없이 이유를 말하는 답이에요. 라벨을 기다리는 중이라 못 보냈다는 뜻이에요.",
+   "qko": "왜 아직 배송이 안 나갔어요?",
+   "ako": "아직 라벨을 기다리고 있어요."
+  },
+  {
+   "id": "l2-a06",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "choice",
+   "level": "adv",
+   "q": "Do you want the report printed or sent electronically?",
+   "stem": "Do you want the report printed or sent electronically?",
+   "choices": [
+    "An e-mail is fine.",
+    "Yes, I printed it.",
+    "The printer is new."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "질문과 안 맞는 답",
+    "2": "관련 단어 연상"
+   },
+   "explanation": "선택 의문문에 '이메일이면 돼요'로 둘 중 하나(전자 파일)를 다른 말로 골랐어요. 바꿔 말하기 정답이에요.",
+   "qko": "보고서 출력해 드릴까요, 파일로 보내 드릴까요?",
+   "ako": "이메일이면 돼요."
+  },
+  {
+   "id": "l2-a07",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "statement",
+   "level": "adv",
+   "q": "We've received more applications than we expected.",
+   "stem": "We've received more applications than we expected.",
+   "choices": [
+    "Then we'll need extra interviewers.",
+    "I applied last week.",
+    "More than ten minutes."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "평서문에 대한 자연스러운 결과 반응이에요. 지원자가 많으면 면접관이 더 필요하다는 흐름이에요.",
+   "qko": "예상보다 지원서가 많이 들어왔어요.",
+   "ako": "그럼 면접관이 더 필요하겠네요."
+  },
+  {
+   "id": "l2-a08",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "how",
+   "level": "adv",
+   "q": "How did the client react to our offer?",
+   "stem": "How did the client react to our offer?",
+   "choices": [
+    "She wants a few days to think it over.",
+    "With a reaction paper.",
+    "Yes, I offered."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "비슷한 발음",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "How 질문에 반응(며칠 생각해 보겠다)으로 답했어요.",
+   "qko": "고객이 우리 제안에 어떻게 반응했어요?",
+   "ako": "며칠 생각해 보겠대요."
+  },
+  {
+   "id": "l2-a09",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "where",
+   "level": "adv",
+   "q": "Where can I find the updated employee handbook?",
+   "stem": "Where can I find the updated employee handbook?",
+   "choices": [
+    "It's been posted on the intranet.",
+    "Hand it to me.",
+    "Yes, it was updated."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "비슷한 발음",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "Where 질문에 '인트라넷에 올라왔다'로 장소를 답했어요. handbook과 hand는 소리 함정이에요.",
+   "qko": "새 직원 안내서는 어디서 볼 수 있어요?",
+   "ako": "인트라넷에 올라와 있어요."
+  },
+  {
+   "id": "l2-a10",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "request",
+   "level": "adv",
+   "q": "Can you cover my shift on Saturday?",
+   "stem": "Can you cover my shift on Saturday?",
+   "choices": [
+    "Sorry, I have plans that day.",
+    "The cover was torn.",
+    "I shifted the desk."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "같은 단어 반복"
+   },
+   "explanation": "부탁에 거절(Sorry, 선약이 있어요)도 정답이 될 수 있어요. cover와 shift가 다른 뜻으로 반복된 함정이에요.",
+   "qko": "토요일 제 근무 좀 대신해 줄 수 있어요?",
+   "ako": "미안해요, 그날 약속이 있어요."
+  }
+ ],
+ "sets": [
+  {
+   "id": "l3-c01",
+   "part": 3,
+   "level": "basic",
+   "title": "Ordering supplies",
+   "lines": [
+    {
+     "who": "W",
+     "text": "Hi, Tom. We're almost out of printer paper. Could you order some more today?"
+    },
+    {
+     "who": "M",
+     "text": "Sure. How many boxes do we need? Last time I ordered five."
+    },
+    {
+     "who": "W",
+     "text": "Let's get ten this time. We have a big presentation next week, and we'll be printing a lot."
+    },
+    {
+     "who": "M",
+     "text": "OK. I'll place the order this afternoon. It should arrive by Thursday."
+    }
+   ],
+   "ko": "여: 톰, 프린터 용지가 거의 떨어졌어요. 오늘 좀 더 주문해 줄래요? / 남: 물론이죠. 몇 상자 필요해요? 지난번엔 다섯 상자 주문했어요. / 여: 이번엔 열 상자로 해요. 다음 주에 큰 발표가 있어서 많이 출력할 거예요. / 남: 알겠어요. 오늘 오후에 주문할게요. 목요일까지는 올 거예요.",
+   "questions": [
+    {
+     "id": "l3-c01-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c01",
+     "n": 1,
+     "stem": "What does the woman ask the man to do?",
+     "choices": [
+      "Fix a printer",
+      "Order some paper",
+      "Prepare a presentation",
+      "Call a supplier"
+     ],
+     "answer": 1,
+     "explanation": "여자가 첫 말에서 Could you order some more(용지를 더 주문해 줄래요)라고 했어요. printer paper를 '용지'로 바꿔 말한 B가 정답이에요."
+    },
+    {
+     "id": "l3-c01-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c01",
+     "n": 2,
+     "stem": "How many boxes will the man order?",
+     "choices": [
+      "Three",
+      "Five",
+      "Ten",
+      "Fifteen"
+     ],
+     "answer": 2,
+     "explanation": "Let's get ten this time. 다섯(five)은 지난번 주문 수라 함정이에요."
+    },
+    {
+     "id": "l3-c01-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c01",
+     "n": 3,
+     "stem": "When will the order probably arrive?",
+     "choices": [
+      "This afternoon",
+      "Tomorrow",
+      "By Thursday",
+      "Next week"
+     ],
+     "answer": 2,
+     "explanation": "마지막 말 It should arrive by Thursday. next week는 발표 시점이라 함정이에요."
+    }
+   ]
+  },
+  {
+   "id": "l3-c02",
+   "part": 3,
+   "level": "basic",
+   "title": "Restaurant reservation",
+   "lines": [
+    {
+     "who": "M",
+     "text": "Good evening, Lucia's Restaurant. How can I help you?"
+    },
+    {
+     "who": "W",
+     "text": "Hi, I'd like to book a table for four people on Saturday at seven."
+    },
+    {
+     "who": "M",
+     "text": "I'm sorry, we're fully booked at seven. Would eight o'clock work for you?"
+    },
+    {
+     "who": "W",
+     "text": "Yes, that's fine. And could we have a table by the window?"
+    },
+    {
+     "who": "M",
+     "text": "Of course. May I have your name, please?"
+    }
+   ],
+   "ko": "남: 안녕하세요, 루시아 레스토랑입니다. / 여: 토요일 7시에 네 명 예약하고 싶어요. / 남: 죄송하지만 7시는 예약이 다 찼어요. 8시는 괜찮으세요? / 여: 네, 좋아요. 창가 자리로 해 주실 수 있어요? / 남: 물론이죠. 성함이 어떻게 되세요?",
+   "questions": [
+    {
+     "id": "l3-c02-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c02",
+     "n": 1,
+     "stem": "Why is the woman calling?",
+     "choices": [
+      "To cancel an order",
+      "To make a reservation",
+      "To ask for directions",
+      "To complain about a meal"
+     ],
+     "answer": 1,
+     "explanation": "I'd like to book a table = 예약하고 싶다. book을 reservation으로 바꿔 말했어요."
+    },
+    {
+     "id": "l3-c02-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c02",
+     "n": 2,
+     "stem": "What problem does the man mention?",
+     "choices": [
+      "The restaurant is closed on Saturday.",
+      "A table is not available at seven.",
+      "The window seats are broken.",
+      "The menu has changed."
+     ],
+     "answer": 1,
+     "explanation": "we're fully booked at seven = 7시는 자리가 없다."
+    },
+    {
+     "id": "l3-c02-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "basic",
+     "set": "l3-c02",
+     "n": 3,
+     "stem": "What does the man ask for?",
+     "choices": [
+      "A phone number",
+      "A credit card",
+      "The woman's name",
+      "The number of guests"
+     ],
+     "answer": 2,
+     "explanation": "마지막 말 May I have your name? 인원(four)은 이미 말했어요."
+    }
+   ]
+  },
+  {
+   "id": "l3-c03",
+   "part": 3,
+   "level": "mid",
+   "title": "Changing a training date",
+   "lines": [
+    {
+     "who": "M",
+     "text": "Rachel, I just got an e-mail from the IT department. The software training scheduled for Monday has been moved."
+    },
+    {
+     "who": "W",
+     "text": "Really? To when? I've already told my whole team about Monday."
+    },
+    {
+     "who": "M",
+     "text": "It's now on Wednesday morning because the trainer has a conflict. The room has changed, too. We'll be in Room 305 instead of the main hall."
+    },
+    {
+     "who": "W",
+     "text": "OK. I'll send my team an update right away so nobody goes to the wrong place."
+    }
+   ],
+   "ko": "남: 레이철, 방금 IT 부서에서 이메일이 왔는데 월요일 소프트웨어 교육이 옮겨졌대요. / 여: 정말요? 언제로요? 팀 전체에 월요일이라고 이미 말했는데요. / 남: 강사 일정이 겹쳐서 수요일 오전으로 바뀌었어요. 장소도 바뀌어서 대강당 대신 305호예요. / 여: 알겠어요. 아무도 엉뚱한 곳에 가지 않게 팀에 바로 알릴게요.",
+   "questions": [
+    {
+     "id": "l3-c03-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c03",
+     "n": 1,
+     "stem": "What are the speakers mainly discussing?",
+     "choices": [
+      "A new computer system",
+      "A schedule change",
+      "A job interview",
+      "A team dinner"
+     ],
+     "answer": 1,
+     "explanation": "교육 일정이 월요일에서 수요일로 바뀐 이야기예요. has been moved = 일정 변경."
+    },
+    {
+     "id": "l3-c03-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c03",
+     "n": 2,
+     "stem": "Why was the training moved?",
+     "choices": [
+      "The room was too small.",
+      "The software was not ready.",
+      "The trainer is unavailable.",
+      "Many people were absent."
+     ],
+     "answer": 2,
+     "explanation": "the trainer has a conflict(강사 일정이 겹친다) = 강사가 시간이 안 된다(unavailable). 바꿔 말하기예요."
+    },
+    {
+     "id": "l3-c03-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c03",
+     "n": 3,
+     "stem": "What will the woman most likely do next?",
+     "choices": [
+      "Contact her team members",
+      "Go to Room 305",
+      "Call the IT department",
+      "Cancel the training"
+     ],
+     "answer": 0,
+     "explanation": "I'll send my team an update = 팀원들에게 알리겠다."
+    }
+   ]
+  },
+  {
+   "id": "l3-c04",
+   "part": 3,
+   "level": "mid",
+   "title": "Office move (3 speakers)",
+   "lines": [
+    {
+     "who": "W",
+     "text": "Kevin, Mark, thanks for meeting. As you know, our department is moving to the fifth floor next month."
+    },
+    {
+     "who": "M",
+     "text": "Do we know the exact date yet? I need to plan around a client visit on the twelfth."
+    },
+    {
+     "who": "W",
+     "text": "The move is set for the fifteenth, so your visit won't be affected."
+    },
+    {
+     "who": "M2",
+     "text": "What about our files? Will a moving company pack them for us?"
+    },
+    {
+     "who": "W",
+     "text": "Yes, but please label your boxes by the tenth so the movers know where everything goes."
+    }
+   ],
+   "ko": "여: 케빈, 마크, 모여 줘서 고마워요. 알다시피 다음 달 우리 부서가 5층으로 이사해요. / 남1: 정확한 날짜 나왔어요? 12일에 고객 방문이 있어서요. / 여: 이사는 15일로 정해져서 방문에는 영향이 없어요. / 남2: 우리 서류는요? 이사 업체가 싸 주나요? / 여: 네, 하지만 업체가 위치를 알 수 있게 10일까지 상자에 이름표를 붙여 주세요.",
+   "questions": [
+    {
+     "id": "l3-c04-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c04",
+     "n": 1,
+     "stem": "What is the conversation mainly about?",
+     "choices": [
+      "Hiring movers",
+      "An office relocation",
+      "A client complaint",
+      "A new project"
+     ],
+     "answer": 1,
+     "explanation": "moving to the fifth floor = 사무실 이전(relocation)."
+    },
+    {
+     "id": "l3-c04-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c04",
+     "n": 2,
+     "stem": "When will the move take place?",
+     "choices": [
+      "On the tenth",
+      "On the twelfth",
+      "On the fifteenth",
+      "At the end of the month"
+     ],
+     "answer": 2,
+     "explanation": "The move is set for the fifteenth. 10일은 이름표 마감, 12일은 고객 방문이라 함정이에요."
+    },
+    {
+     "id": "l3-c04-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c04",
+     "n": 3,
+     "stem": "What are the men asked to do?",
+     "choices": [
+      "Pack their own files",
+      "Label their boxes",
+      "Meet a client",
+      "Choose a new office"
+     ],
+     "answer": 1,
+     "explanation": "please label your boxes by the tenth. 짐은 업체가 싸 준다고 했으니 A는 틀려요."
+    }
+   ]
+  },
+  {
+   "id": "l3-c05",
+   "part": 3,
+   "level": "adv",
+   "title": "Budget discussion",
+   "lines": [
+    {
+     "who": "M",
+     "text": "Have you looked at the quote from the catering company for the anniversary event?"
+    },
+    {
+     "who": "W",
+     "text": "I have, and it's about twenty percent higher than what we budgeted. I'm not sure the finance team will approve it."
+    },
+    {
+     "who": "M",
+     "text": "What if we reduced the number of hot dishes and added more salads? That usually brings the price down."
+    },
+    {
+     "who": "W",
+     "text": "That could work. I'll ask them to send a revised quote, and then we can present both options to finance on Friday."
+    }
+   ],
+   "ko": "남: 창립 기념 행사 출장 뷔페 업체 견적 봤어요? / 여: 봤는데 예산보다 20% 정도 높아요. 재무팀이 승인할지 모르겠어요. / 남: 따뜻한 요리를 줄이고 샐러드를 늘리면 어때요? 보통 그러면 가격이 내려가요. / 여: 그거 괜찮겠네요. 수정 견적을 보내 달라고 하고, 금요일에 재무팀에 두 안을 다 보여 줘요.",
+   "questions": [
+    {
+     "id": "l3-c05-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c05",
+     "n": 1,
+     "stem": "What problem does the woman mention?",
+     "choices": [
+      "A caterer canceled an order.",
+      "A price is higher than planned.",
+      "An event date has changed.",
+      "A finance report is missing."
+     ],
+     "answer": 1,
+     "explanation": "twenty percent higher than what we budgeted = 계획(예산)보다 비싸다."
+    },
+    {
+     "id": "l3-c05-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c05",
+     "n": 2,
+     "stem": "What does the man suggest?",
+     "choices": [
+      "Finding a new caterer",
+      "Changing the menu",
+      "Postponing the event",
+      "Asking for a bigger budget"
+     ],
+     "answer": 1,
+     "explanation": "요리를 줄이고 샐러드를 늘리자 = 메뉴를 바꾸자(changing the menu)."
+    },
+    {
+     "id": "l3-c05-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c05",
+     "n": 3,
+     "stem": "What will the speakers do on Friday?",
+     "choices": [
+      "Hold the anniversary event",
+      "Meet the catering company",
+      "Show options to the finance team",
+      "Sign a contract"
+     ],
+     "answer": 2,
+     "explanation": "present both options to finance on Friday."
+    }
+   ]
+  },
+  {
+   "id": "l3-c06",
+   "part": 3,
+   "level": "adv",
+   "title": "Customer service call",
+   "lines": [
+    {
+     "who": "W",
+     "text": "Thank you for calling Brightline Internet. This is Amy speaking."
+    },
+    {
+     "who": "M",
+     "text": "Hi, my internet connection has been dropping every few hours since Tuesday. I work from home, so it's a real problem."
+    },
+    {
+     "who": "W",
+     "text": "I'm sorry to hear that. I can see there was some maintenance in your area this week. Let me reset your connection from here. Could you restart your router in about two minutes?"
+    },
+    {
+     "who": "M",
+     "text": "Sure. And if that doesn't fix it?"
+    },
+    {
+     "who": "W",
+     "text": "Then I'll schedule a technician visit. There's no charge, since the problem is on our side."
+    }
+   ],
+   "ko": "여: 브라이트라인 인터넷입니다. 에이미예요. / 남: 화요일부터 몇 시간마다 인터넷이 끊겨요. 재택근무라 정말 문제예요. / 여: 죄송합니다. 이번 주 고객님 지역에 점검이 있었네요. 여기서 연결을 재설정할게요. 2분쯤 뒤에 공유기를 다시 켜 주시겠어요? / 남: 네. 그래도 안 되면요? / 여: 그럼 기사 방문을 잡아 드릴게요. 저희 쪽 문제라 비용은 없어요.",
+   "questions": [
+    {
+     "id": "l3-c06-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c06",
+     "n": 1,
+     "stem": "Why is the man calling?",
+     "choices": [
+      "To change his address",
+      "To report a service problem",
+      "To cancel his contract",
+      "To order a new router"
+     ],
+     "answer": 1,
+     "explanation": "인터넷이 계속 끊긴다고 문제를 알리러 전화했어요."
+    },
+    {
+     "id": "l3-c06-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c06",
+     "n": 2,
+     "stem": "What does the woman ask the man to do?",
+     "choices": [
+      "Restart a device",
+      "Visit a store",
+      "Pay a bill",
+      "Call back on Tuesday"
+     ],
+     "answer": 0,
+     "explanation": "restart your router = 기기를 다시 켜라. router를 device로 바꿔 말했어요."
+    },
+    {
+     "id": "l3-c06-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c06",
+     "n": 3,
+     "stem": "What does the woman say about the technician visit?",
+     "choices": [
+      "It will happen on Tuesday.",
+      "It will be free.",
+      "It requires a deposit.",
+      "It is fully booked."
+     ],
+     "answer": 1,
+     "explanation": "There's no charge = 무료(free)."
+    }
+   ]
+  },
+  {
+   "id": "l4-t01",
+   "part": 4,
+   "level": "basic",
+   "title": "Store announcement",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Attention, shoppers. Today only, all winter coats are fifty percent off on the second floor. In addition, customers who spend more than one hundred dollars will receive a free scarf. The store will close at nine tonight. Thank you for shopping at Parkview Department Store."
+    }
+   ],
+   "ko": "쇼핑객 여러분, 오늘 하루만 2층 겨울 코트 전 품목 50% 할인합니다. 또한 100달러 넘게 구매하시면 목도리를 무료로 드립니다. 오늘 매장은 밤 9시에 문을 닫습니다. 파크뷰 백화점을 이용해 주셔서 감사합니다.",
+   "questions": [
+    {
+     "id": "l4-t01-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "basic",
+     "set": "l4-t01",
+     "n": 1,
+     "stem": "Where is the announcement being made?",
+     "choices": [
+      "At an airport",
+      "At a department store",
+      "At a restaurant",
+      "At a train station"
+     ],
+     "answer": 1,
+     "explanation": "shoppers, Parkview Department Store로 장소를 알 수 있어요."
+    },
+    {
+     "id": "l4-t01-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "basic",
+     "set": "l4-t01",
+     "n": 2,
+     "stem": "What is on sale?",
+     "choices": [
+      "Shoes",
+      "Scarves",
+      "Winter coats",
+      "Bags"
+     ],
+     "answer": 2,
+     "explanation": "all winter coats are fifty percent off. 목도리는 사은품이라 함정이에요."
+    },
+    {
+     "id": "l4-t01-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "basic",
+     "set": "l4-t01",
+     "n": 3,
+     "stem": "How can customers get a free gift?",
+     "choices": [
+      "By spending over one hundred dollars",
+      "By visiting the second floor",
+      "By signing up for a card",
+      "By shopping before nine"
+     ],
+     "answer": 0,
+     "explanation": "customers who spend more than one hundred dollars will receive a free scarf."
+    }
+   ]
+  },
+  {
+   "id": "l4-t02",
+   "part": 4,
+   "level": "mid",
+   "title": "Voicemail message",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Hi, this is Daniel from Greenway Dental Clinic calling for Ms. Harper. I'm calling to remind you of your appointment tomorrow at three p.m. with Dr. Patel. Please arrive fifteen minutes early to fill out some forms, since this is your first visit. If you need to reschedule, call us at 555-0142 before noon today. Thank you."
+    }
+   ],
+   "ko": "안녕하세요, 그린웨이 치과의 대니얼입니다. 하퍼 씨께 전화드렸어요. 내일 오후 3시 파텔 선생님 진료 예약을 알려 드리려고요. 첫 방문이시라 서류 작성을 위해 15분 일찍 와 주세요. 일정을 바꾸시려면 오늘 정오 전까지 555-0142로 전화 주세요. 감사합니다.",
+   "questions": [
+    {
+     "id": "l4-t02-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t02",
+     "n": 1,
+     "stem": "What is the purpose of the call?",
+     "choices": [
+      "To confirm a payment",
+      "To remind someone of an appointment",
+      "To introduce a new doctor",
+      "To change a clinic's hours"
+     ],
+     "answer": 1,
+     "explanation": "I'm calling to remind you of your appointment."
+    },
+    {
+     "id": "l4-t02-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t02",
+     "n": 2,
+     "stem": "Why should the listener arrive early?",
+     "choices": [
+      "To meet the doctor",
+      "To complete paperwork",
+      "To find parking",
+      "To pay a fee"
+     ],
+     "answer": 1,
+     "explanation": "to fill out some forms = 서류 작성(complete paperwork). 바꿔 말하기예요."
+    },
+    {
+     "id": "l4-t02-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t02",
+     "n": 3,
+     "stem": "What should the listener do to reschedule?",
+     "choices": [
+      "Send an e-mail",
+      "Visit the clinic",
+      "Call before noon",
+      "Reply to a text message"
+     ],
+     "answer": 2,
+     "explanation": "call us ... before noon today."
+    }
+   ]
+  },
+  {
+   "id": "l4-t03",
+   "part": 4,
+   "level": "mid",
+   "title": "Tour guide",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Welcome to the Riverside History Museum. My name is Grace, and I'll be your guide today. Our tour will last about an hour and will cover three galleries. Please note that photography is allowed, but flash is not, as it can damage the older paintings. At the end of the tour, you're welcome to visit our gift shop, where museum members get a ten percent discount."
+    }
+   ],
+   "ko": "리버사이드 역사박물관에 오신 것을 환영합니다. 오늘 가이드를 맡은 그레이스입니다. 투어는 약 한 시간 동안 세 개 전시관을 돌아봅니다. 사진 촬영은 되지만 플래시는 오래된 그림을 손상시킬 수 있어 안 됩니다. 투어가 끝나면 기념품점에 들르셔도 좋고, 박물관 회원은 10% 할인을 받습니다.",
+   "questions": [
+    {
+     "id": "l4-t03-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t03",
+     "n": 1,
+     "stem": "Who most likely is the speaker?",
+     "choices": [
+      "A museum guide",
+      "A store clerk",
+      "A painter",
+      "A security guard"
+     ],
+     "answer": 0,
+     "explanation": "I'll be your guide today."
+    },
+    {
+     "id": "l4-t03-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t03",
+     "n": 2,
+     "stem": "What are listeners asked not to do?",
+     "choices": [
+      "Touch the paintings",
+      "Use a camera flash",
+      "Eat in the galleries",
+      "Leave the tour early"
+     ],
+     "answer": 1,
+     "explanation": "photography is allowed, but flash is not."
+    },
+    {
+     "id": "l4-t03-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t03",
+     "n": 3,
+     "stem": "What is mentioned about the gift shop?",
+     "choices": [
+      "It closes early today.",
+      "It sells paintings.",
+      "Members receive a discount.",
+      "It is on the third floor."
+     ],
+     "answer": 2,
+     "explanation": "museum members get a ten percent discount."
+    }
+   ]
+  },
+  {
+   "id": "l4-t04",
+   "part": 4,
+   "level": "adv",
+   "title": "Business news",
+   "lines": [
+    {
+     "who": "N",
+     "text": "In business news, local electronics maker Novatek announced today that it will open a new factory in Ulsan next spring. The company says the facility will create around three hundred jobs and allow it to double its production of batteries. Novatek's CEO noted that strong demand from overseas customers was the main reason for the expansion. Construction is expected to begin in March, pending final approval from city officials."
+    }
+   ],
+   "ko": "경제 소식입니다. 지역 전자 업체 노바텍이 내년 봄 울산에 새 공장을 연다고 오늘 발표했습니다. 회사는 이 시설로 약 300개의 일자리가 생기고 배터리 생산량을 두 배로 늘릴 수 있다고 밝혔습니다. 노바텍 CEO는 해외 고객의 높은 수요가 확장의 주된 이유라고 말했습니다. 시 당국의 최종 승인을 거쳐 3월에 공사가 시작될 예정입니다.",
+   "questions": [
+    {
+     "id": "l4-t04-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t04",
+     "n": 1,
+     "stem": "What is the news report mainly about?",
+     "choices": [
+      "A company merger",
+      "A factory opening",
+      "A new product launch",
+      "A change in leadership"
+     ],
+     "answer": 1,
+     "explanation": "will open a new factory = 공장 개설."
+    },
+    {
+     "id": "l4-t04-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t04",
+     "n": 2,
+     "stem": "According to the speaker, why is the company expanding?",
+     "choices": [
+      "To lower its costs",
+      "To enter a new market",
+      "Because of high demand from abroad",
+      "Because of new government rules"
+     ],
+     "answer": 2,
+     "explanation": "strong demand from overseas customers = 해외(abroad) 수요. 바꿔 말하기예요."
+    },
+    {
+     "id": "l4-t04-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t04",
+     "n": 3,
+     "stem": "What is needed before construction can begin?",
+     "choices": [
+      "Approval from city officials",
+      "More funding",
+      "A new CEO",
+      "Additional workers"
+     ],
+     "answer": 0,
+     "explanation": "pending final approval from city officials = 시 당국 승인이 있어야 한다."
+    }
+   ]
+  }
+ ]
+}

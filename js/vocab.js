@@ -30,7 +30,7 @@ export const PART6_TYPES = {
 };
 export const P6_TARGET_MS = 30000;
 export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES, ...PART6_TYPES };
-export const areaOf = (q) => (q.module === 'part6' || PART6_TYPES[q.type] ? 'part6' : q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
+export const areaOf = (q) => (q.module === 'listening' ? 'listening' : q.module === 'part6' || PART6_TYPES[q.type] ? 'part6' : q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
 const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : area === 'part6' ? PART6_TYPES : TYPES);
 
 export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
@@ -366,6 +366,7 @@ export function record(state, q, ok, timeMs, t, mode, extra = {}) {
     kind: 'question',
     part: q.part || 5,
     module: areaOf(q),
+    ...(extra.scripted ? { scripted: true } : {}),
     type: q.type,
     targetMs: q.targetMs || TARGET_MS,
     mode,
@@ -452,7 +453,7 @@ export function reasonStats(state, t, days = 30) {
   const since = srs.addDays(t, -days);
   const counts = { meaning: 0, grammar: 0, time: 0, mistake: 0, none: 0 };
   for (const a of state.attempts) {
-    if (a.kind !== 'question' || a.correct || a.mode === 'test' || a.date < since) continue;
+    if (a.kind !== 'question' || a.correct || a.mode === 'test' || a.date < since || a.module === 'listening') continue;
     counts[a.reasonTag && counts[a.reasonTag] !== undefined ? a.reasonTag : 'none']++;
   }
   return counts;
