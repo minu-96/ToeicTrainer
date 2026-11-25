@@ -1,0 +1,257 @@
+[
+ {
+  "id": "basic-structure",
+  "basic": true,
+  "title": "문장의 뼈대",
+  "summary": "영어 문장은 '주어 + 동사'가 기본이고, 동사 하나에 주어 하나예요.",
+  "points": [
+   "주어(누가) → 동사(한다) → 목적어·보어(무엇을/어떤) 순서",
+   "한 문장(절)에 동사는 하나. 동사가 또 필요하면 접속사·관계사로 이어요",
+   "빈칸 앞뒤에 동사가 이미 있으면 빈칸은 동사가 아닐 가능성이 커요"
+  ],
+  "examples": [
+   {
+    "en": "The manager / approved / the plan.",
+    "ko": "매니저가 / 승인했다 / 계획을."
+   },
+   {
+    "en": "The plan / is / ready.",
+    "ko": "계획이 / 이다 / 준비된 (보어)."
+   }
+  ],
+  "clue": "빈칸 문제를 보면 먼저 문장에 동사가 있는지부터 확인"
+ },
+ {
+  "id": "basic-pos",
+  "basic": true,
+  "title": "품사와 자리",
+  "summary": "Part 5의 3분의 1은 '이 자리에 무슨 품사가 오나'예요.",
+  "points": [
+   "관사·소유격 뒤, 전치사 뒤 → 명사",
+   "명사 앞, be동사 뒤 → 형용사",
+   "동사·형용사·문장 전체를 꾸밈 → 부사 (-ly)",
+   "조동사·to 뒤 → 동사원형"
+  ],
+  "examples": [
+   {
+    "en": "a careful review / review carefully",
+    "ko": "꼼꼼한 검토(형용사+명사) / 꼼꼼히 검토하다(동사+부사)"
+   }
+  ],
+  "clue": "보기 4개가 같은 단어의 모양만 다르면 → 품사 자리 문제"
+ },
+ {
+  "id": "basic-verb",
+  "basic": true,
+  "title": "동사의 세 가지 결정",
+  "summary": "동사 빈칸은 수(단수·복수) → 태(능동·수동) → 시제 순서로 고르면 빨라요.",
+  "points": [
+   "수: 주어가 단수면 -s, 복수면 원형",
+   "태: 뒤에 목적어가 있으면 능동, 없으면 수동(be + p.p.) 의심",
+   "시제: yesterday·since·next week 같은 시간 단서를 찾기"
+  ],
+  "examples": [
+   {
+    "en": "The reports were submitted yesterday.",
+    "ko": "보고서들은(복수) 제출되었다(수동) 어제(과거)."
+   }
+  ],
+  "clue": "보기가 전부 같은 동사의 여러 형태면 수 → 태 → 시제로 지워 나가기"
+ },
+ {
+  "id": "tense",
+  "type": "tense",
+  "title": "시제",
+  "summary": "시간 단서를 찾으면 시제가 정해져요.",
+  "points": [
+   "과거: yesterday, last ~, ago, in 2020",
+   "현재완료(have p.p.): since, for + 기간, over the past ~, already, recently",
+   "미래: tomorrow, next ~, soon / 미래완료: by + 미래 시점",
+   "if·when·as soon as 절 안에서는 미래 대신 현재"
+  ],
+  "examples": [
+   {
+    "en": "Sales have increased since 2020.",
+    "ko": "2020년 이후로 매출이 늘어 왔다."
+   },
+   {
+    "en": "When he arrives, I will call you.",
+    "ko": "그가 도착하면(현재) 전화할게(미래)."
+   }
+  ],
+  "clue": "문장 끝·앞의 시간 표현부터 동그라미"
+ },
+ {
+  "id": "agree",
+  "type": "agree",
+  "title": "수일치",
+  "summary": "동사는 진짜 주어의 수에 맞춰요. 중간 수식어는 지우고 보세요.",
+  "points": [
+   "The price of the items is ~ (of 이하는 수식어)",
+   "each·every·everyone → 단수 / The number of → 단수 / A number of → 복수",
+   "either A or B, neither A nor B, not only A but also B → B에 맞춤",
+   "관계절 동사는 선행사에 맞춤"
+  ],
+  "examples": [
+   {
+    "en": "The list of winners has been posted.",
+    "ko": "수상자 명단이 게시되었다 (주어는 list)."
+   }
+  ],
+  "clue": "주어 뒤 전치사구·관계절을 괄호로 묶기"
+ },
+ {
+  "id": "voice",
+  "type": "voice",
+  "title": "능동태·수동태",
+  "summary": "주어가 '하는' 쪽이면 능동, '당하는' 쪽이면 수동(be + p.p.)이에요.",
+  "points": [
+   "동사 뒤에 목적어가 있으면 능동, 없으면 수동일 가능성이 커요",
+   "진행 수동 be being p.p. / 완료 수동 have been p.p. / 조동사 수동 will be p.p.",
+   "be required to, be expected to, be asked to처럼 수동으로 굳은 표현",
+   "give·send·offer 수동은 be given + 목적어처럼 목적어가 남아요"
+  ],
+  "examples": [
+   {
+    "en": "The room is cleaned every day.",
+    "ko": "방은 매일 청소된다."
+   }
+  ],
+  "clue": "빈칸 뒤에 명사(목적어)가 있나 없나"
+ },
+ {
+  "id": "verbal",
+  "type": "verbal",
+  "title": "동명사·to부정사",
+  "summary": "동사마다 뒤에 오는 형태가 정해져 있어요. 자주 나오는 것만 외우면 돼요.",
+  "points": [
+   "to부정사: decide, plan, want, hope, agree, expect, need",
+   "동명사: avoid, enjoy, finish, consider, suggest, recommend, mind",
+   "전치사 뒤는 항상 동명사: look forward to -ing, be committed to -ing",
+   "allow·encourage·require + 목적어 + to부정사 / have·make·let + 목적어 + 동사원형"
+  ],
+  "examples": [
+   {
+    "en": "We look forward to meeting you.",
+    "ko": "만나 뵙기를 기대합니다 (to는 전치사)."
+   }
+  ],
+  "clue": "빈칸 바로 앞 동사·전치사를 확인"
+ },
+ {
+  "id": "participle",
+  "type": "participle",
+  "title": "분사 (-ing / -ed)",
+  "summary": "꾸밈받는 명사가 '하는' 쪽이면 -ing, '당하는' 쪽이면 -ed예요.",
+  "points": [
+   "attached file (첨부된 파일), rising costs (오르는 비용)",
+   "감정: 사물이 감정을 일으키면 -ing(exciting), 사람이 느끼면 -ed(excited)",
+   "명사 뒤에서도 꾸며요: applications submitted after May 1",
+   "분사구문: 문장 앞 Built in 1950, ~ / Having finished ~ (먼저 끝낸 일)"
+  ],
+  "examples": [
+   {
+    "en": "Employees wishing to attend should register.",
+    "ko": "참석을 원하는 직원은 등록해야 한다."
+   }
+  ],
+  "clue": "명사와 분사 사이에 '~하는/~된' 중 어느 쪽이 자연스러운지"
+ },
+ {
+  "id": "relative",
+  "type": "relative",
+  "title": "관계사",
+  "summary": "선행사(사람·사물·장소·시간)와 뒤 문장이 완전한지 보면 골라져요.",
+  "points": [
+   "사람 who(주격) / whom(목적격), 사물 which, 둘 다 that",
+   "뒤에 명사가 바로 오면 소유격 whose",
+   "선행사 없이 '~하는 것' → what",
+   "뒤 문장이 완전하면 관계부사: where(장소), when(시간)",
+   "콤마 뒤에는 that 불가"
+  ],
+  "examples": [
+   {
+    "en": "The client whose order was late got a refund.",
+    "ko": "주문이 늦은 고객은 환불을 받았다."
+   }
+  ],
+  "clue": "빈칸 뒤에 주어나 목적어가 빠졌는지 확인"
+ },
+ {
+  "id": "conj",
+  "type": "conj",
+  "title": "전치사 vs 접속사",
+  "summary": "뒤에 명사가 오면 전치사, 주어 + 동사가 오면 접속사예요.",
+  "points": [
+   "이유: because(절) / because of, due to(명사)",
+   "양보: although, even though(절) / despite, in spite of(명사)",
+   "시간: while, when, once(절) / during, upon(명사)",
+   "조건: unless(~하지 않으면), in case(~할 경우에 대비해)",
+   "however, therefore는 부사라 두 문장을 직접 잇지 못함"
+  ],
+  "examples": [
+   {
+    "en": "Despite the rain, ~ / Although it rained, ~",
+    "ko": "비에도 불구하고 / 비가 왔지만"
+   }
+  ],
+  "clue": "빈칸 뒤를 끊어 읽기: 동사가 있나?"
+ },
+ {
+  "id": "pronoun",
+  "type": "pronoun",
+  "title": "대명사",
+  "summary": "자리(주어·목적어·명사 앞)와 가리키는 대상의 수를 맞춰요.",
+  "points": [
+   "명사 앞 → 소유격(its, their), 단독 '~의 것' → 소유대명사(yours)",
+   "주어와 목적어가 같은 사람 → 재귀대명사(themselves), by oneself = 혼자서",
+   "비교에서 앞 명사 반복: 단수 that, 복수 those",
+   "둘 중 나머지 하나 the other / 막연한 다른 것들 others / 하나 더 another"
+  ],
+  "examples": [
+   {
+    "en": "Our prices are lower than those of our rivals.",
+    "ko": "우리 가격은 경쟁사의 가격보다 낮다."
+   }
+  ],
+  "clue": "빈칸 뒤가 명사인지, 문장이 이미 완전한지"
+ },
+ {
+  "id": "compare",
+  "type": "compare",
+  "title": "비교",
+  "summary": "than이면 비교급, the + 범위면 최상급, as ~ as면 원급이에요.",
+  "points": [
+   "비교급 강조: much, far, even, still (very는 불가)",
+   "the 비교급, the 비교급: ~할수록 더 …하다",
+   "one of the + 최상급 + 복수명사",
+   "셋 이상 중 최상급, 둘 중엔 the 비교급"
+  ],
+  "examples": [
+   {
+    "en": "The more you order, the bigger the discount.",
+    "ko": "많이 주문할수록 할인이 커진다."
+   }
+  ],
+  "clue": "than, as, the, of all 같은 짝 단어 찾기"
+ },
+ {
+  "id": "cond",
+  "type": "cond",
+  "title": "가정법·도치",
+  "summary": "현실 조건은 if + 현재, 현실과 반대면 시제를 한 칸 과거로 내려요.",
+  "points": [
+   "가정법 과거: If + 과거, would + 동사원형 (지금 반대)",
+   "가정법 과거완료: If + had p.p., would have p.p. (과거 반대)",
+   "if 생략 도치: Should you need ~ / Had I known ~ / Were I you ~",
+   "요구·제안·필수 that절: request, suggest, essential that + 동사원형"
+  ],
+  "examples": [
+   {
+    "en": "Should you have any questions, please call us.",
+    "ko": "질문이 있으시면 전화 주세요."
+   }
+  ],
+  "clue": "주절의 would / would have, 문장 앞 Should·Had·Were"
+ }
+]
