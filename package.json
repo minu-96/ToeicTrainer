@@ -1,0 +1,11 @@
+{
+  "name": "toeic-trainer",
+  "private": true,
+  "type": "module",
+  "description": "개인용 토익 학습 PWA",
+  "scripts": {
+    "test": "node --test tests/unit/*.test.js",
+    "serve": "python3 -m http.server 8765",
+    "e2e": "python3 tests/e2e/run_all.py"
+  }
+}

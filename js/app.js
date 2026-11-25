@@ -25,7 +25,6 @@ const $view = document.getElementById('view');
 const $title = document.getElementById('title');
 
 const SOON = {
-  notes: { title: '오답노트', desc: '앱에서 틀린 문제와 교재 오답을 기록하는 곳이에요. 6단계에서 만들어요.' },
 };
 
 // 시작 화면 점수대: 못하는 사람 / 적당한 사람 / 잘하는 사람
@@ -38,7 +37,7 @@ const LEVELS = [
 const LEVEL_ALIAS = { 200: 'low', 400: 'low', 600: 'mid', 800: 'high' };
 const levelGroup = (id) => LEVEL_ALIAS[id] || id;
 
-const SESSION_TITLE = { daily: '오늘 학습', extra: '새 단어 추가 학습', practice: '약한 단어 연습' };
+const SESSION_TITLE = { more: '밀린 복습', daily: '오늘 학습', extra: '새 단어 추가 학습', practice: '약한 단어 연습' };
 
 // ---------- 공통 ----------
 function esc(s) {
@@ -89,10 +88,24 @@ function go(next) {
 }
 
 // ---------- 학습 대상 계산 ----------
+// 오늘 이미 복습한 단어 수 (하루 복습 상한 계산용)
+function reviewedToday(t = srs.today()) {
+  return new Set(state.attempts.filter((a) => a.kind === 'word' && a.phase === 'review' && a.date === t).map((a) => a.targetId)).size;
+}
+
 function dailyPlan(t = srs.today()) {
-  const ids = srs.buildQueue(state.words, state.settings, state.newIntroduced, t);
+  const rt = reviewedToday(t);
+  const ids = srs.buildQueue(state.words, state.settings, state.newIntroduced, t, rt);
   const words = ids.map(wordById).filter(Boolean);
-  return { reviews: words.filter((w) => w.srs), fresh: words.filter((w) => !w.srs) };
+  const plan = srs.reviewPlan(state.words, state.settings, state.newIntroduced, t, rt);
+  return { reviews: words.filter((w) => w.srs), fresh: words.filter((w) => !w.srs), plan };
+}
+
+// 상한 때문에 오늘 학습에서 빠진 밀린 복습
+function moreReviews(t = srs.today()) {
+  const { reviews, plan } = dailyPlan(t);
+  const inPlan = new Set(reviews.map((w) => w.id));
+  return plan.due.filter((w) => !inPlan.has(w.id)).slice(0, 30);
 }
 
 function extraFresh() {
@@ -117,6 +130,7 @@ function startSession(kind) {
   let parts;
   if (kind === 'daily') parts = dailyPlan(t);
   else if (kind === 'extra') parts = { fresh: extraFresh() };
+  else if (kind === 'more') parts = { reviews: moreReviews(t) };
   else parts = { practice: weakWords(t) };
 
   const s = Session.create(kind, parts);
@@ -129,11 +143,11 @@ function startSession(kind) {
 function render() {
   document.querySelectorAll('.tabbar button').forEach((b) => {
     const tab = b.dataset.tab;
-    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && view === 'vq') || (tab === 'stats' && view === 'scores'));
+    b.classList.toggle('active', tab === view || (tab === 'words' && view === 'study') || (tab === 'quiz' && view === 'vq' && vqs?.mode !== 'wrong') || (tab === 'notes' && view === 'vq' && vqs?.mode === 'wrong') || (tab === 'stats' && view === 'scores'));
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', vq: vqs?.mode === 'test' ? '수준 진단' : '어휘 문제' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : '어휘 문제' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -146,6 +160,7 @@ function render() {
   else if (view === 'stats') renderStats();
   else if (view === 'scores') renderScores();
   else if (view === 'vq') renderVQ();
+  else if (view === 'notes') renderNotes();
   else renderSoon(view);
 }
 
@@ -158,7 +173,13 @@ function boxCounts() {
 function extraButtons() {
   const unseen = state.words.filter((w) => !w.srs).length;
   const weak = weakWords().length;
+  const more = moreReviews().length;
   return `
+    ${
+      more
+        ? `<button class="btn ghost wide more-btn" data-start="more"><b>밀린 복습 더 하기 (${more}개)</b><small>오늘 복습 상한(${state.settings.dailyReviewMax ?? 60}개)을 넘은 복습이에요</small></button>`
+        : ''
+    }
     <div class="extra-row">
       <button class="btn ghost" data-start="extra" ${unseen ? '' : 'disabled'}>
         <b>새 단어 ${Math.min(EXTRA_NEW, unseen)}개 더</b><small>${unseen ? `남은 새 단어 ${unseen}개` : '새 단어를 다 봤어요'}</small>
@@ -181,10 +202,11 @@ function bindStartButtons(root = $view) {
 
 function renderHome() {
   const t = srs.today();
-  const { reviews, fresh } = dailyPlan(t);
+  const { reviews, fresh, plan } = dailyPlan(t);
   const todo = reviews.length + fresh.length;
   const streak = srs.streak(state.studyDays, t);
   const counts = boxCounts();
+  const cutNote = plan.newCut > 0 ? `<p class="hint warn-text">복습이 ${plan.backlog}개 밀려 있어서 오늘은 새 단어를 ${plan.newRoom}개로 줄였어요. 복습을 끝내면 다시 늘어나요.</p>` : '';
   const total = state.words.length || 1;
   const exam = state.settings.examDate;
   const dday = exam ? srs.diffDays(t, exam) : null;
@@ -207,11 +229,13 @@ function renderHome() {
       ${
         todo
           ? `<button class="btn primary big" data-start="daily">학습 시작 · 약 ${estimateMinutes(reviews.length, fresh.length)}분</button>
-             ${learnedToday ? `<p class="hint">오늘 새 단어 ${learnedToday}/${goal}개 외웠어요</p>` : ''}`
+             ${learnedToday ? `<p class="hint">오늘 새 단어 ${learnedToday}/${goal}개 외웠어요</p>` : ''}${cutNote}`
           : `<p class="hint left">더 하고 싶다면 추가로 할 수 있어요.</p>${extraButtons()}`
       }
     </section>
 
+    ${measureCard()}
+    ${backupCard(t)}
     ${vocabTodayCard()}
 
     <section class="card">
@@ -236,7 +260,7 @@ function renderHome() {
   bindStartButtons();
   bindGoButtons();
   bindVqButtons();
-  $view.querySelector('[data-score-start]')?.addEventListener('click', (e) => startVQ(e.currentTarget.dataset.scoreStart));
+  $view.querySelector('#backup-now')?.addEventListener('click', exportBackup);
 }
 
 // ---------- 예상 점수 ----------
@@ -282,6 +306,27 @@ function scoreCard(ddayText) {
       ${!hasData ? `<p class="score-why">문제를 풀거나 교재 모의고사 점수를 넣으면 실력에 맞게 바뀌어요</p>` : ''}
       <p class="score-foot">${est.total >= target ? `목표 ${target}점을 넘었어요!` : `목표 ${target}점까지 <b>${target - est.total}점</b>`}<span>성장 기록 보기 →</span></p>
     </button>`;
+}
+
+// 아직 측정 안 된 영역이 있으면 홈에서 눈에 띄게 알림
+function measureCard() {
+  const est = Engine.estimate(state, null, { range: false });
+  const readW = est.skills.reading.weight;
+  const missing = [];
+  if (!est.lc.measured) missing.push('LC');
+  if (readW < 10) missing.push('Part 7 독해');
+  if (!missing.length) return '';
+  return `<button class="card link notice" data-go="scores"><b>${missing.join('·')}은 아직 측정 전이에요</b><small>그래서 예상 점수의 이 부분은 시작 수준으로 추정한 값이에요. 교재 모의고사 점수를 넣으면 정확해져요 →</small></button>`;
+}
+
+// 마지막 백업이 7일 넘었으면 알림
+function backupCard(t) {
+  if (!state.attempts.length) return '';
+  const last = state.settings.lastBackup;
+  const first = state.studyDays.length ? [...state.studyDays].sort()[0] : t;
+  const days = last ? srs.diffDays(last, t) : srs.diffDays(first, t);
+  if (days < 7) return '';
+  return `<button class="card link notice" id="backup-now"><b>${last ? `마지막 백업이 ${days}일 전이에요` : '아직 백업한 적이 없어요'}</b><small>기록은 이 휴대폰에만 있어요. 기기를 바꾸거나 Safari 기록을 지우면 사라져요. 눌러서 백업 파일 저장 →</small></button>`;
 }
 
 // ---------- 성적 기록 (공식 시험 · 교재 모의고사) ----------
@@ -974,6 +1019,7 @@ function renderWordList() {
                 <div class="detail-actions">
                   <button class="btn ghost small" data-act="speak">발음 듣기</button>
                   ${w.srs ? `<button class="btn ghost small" data-act="reset">처음부터 다시</button>` : ''}
+                  ${w.source === 'builtin' ? reportBox('word', w.id) : ''}
                   ${w.source !== 'builtin' ? `<button class="btn ghost small danger-text" data-act="delete">삭제</button>` : ''}
                 </div>
               </div>`
@@ -982,6 +1028,7 @@ function renderWordList() {
       </li>`;
     })
     .join('');
+  bindReportBox($list, renderWordList);
 }
 
 function onWordListClick(e) {
@@ -1056,6 +1103,9 @@ function renderSettings() {
       <label class="field">오늘의 어휘 문제 수
         <input type="number" id="dailyQuestions" min="1" max="50" value="${esc(s.dailyQuestions)}" inputmode="numeric">
       </label>
+      <label class="field">하루 복습 상한 <small class="quiet">밀린 복습이 많으면 새 단어가 자동으로 줄어요</small>
+        <input type="number" id="dailyReviewMax" min="10" max="500" value="${esc(s.dailyReviewMax ?? 60)}" inputmode="numeric">
+      </label>
       <label class="field">하루 새 단어 수
         <input type="number" id="dailyNewWords" min="0" max="200" value="${esc(s.dailyNewWords)}" inputmode="numeric">
       </label>
@@ -1105,12 +1155,14 @@ function renderSettings() {
       </div>
     </section>
 
+    ${reportsCard()}
+
     <section class="card">
       <h2>초기화</h2>
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.2</p>
+    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘) v2.3</p>
   `;
 
   const num = (id, min, max) => {
@@ -1128,6 +1180,7 @@ function renderSettings() {
   num('targetScore', 10, 990);
   num('dailyNewWords', 0, 200);
   num('dailyQuestions', 1, 50);
+  num('dailyReviewMax', 10, 500);
   $view.querySelector('#retest').addEventListener('click', () => startVQ('test'));
   bindGoButtons();
 
@@ -1168,6 +1221,16 @@ function renderSettings() {
   }
 
   $view.querySelector('#export').addEventListener('click', exportBackup);
+  bindReportBox($view, renderSettings);
+  $view.querySelector('#copy-reports')?.addEventListener('click', async () => {
+    const text = JSON.stringify(state.reports, null, 1);
+    try {
+      await navigator.clipboard.writeText(text);
+      toast('신고 목록을 복사했어요');
+    } catch {
+      toast('복사하지 못했어요');
+    }
+  });
   $view.querySelector('#import').addEventListener('change', importBackup);
   $view.querySelector('#reset').addEventListener('click', async () => {
     if (!confirm('모든 학습 기록과 직접 추가한 단어가 지워져요. 계속할까요?')) return;
@@ -1181,6 +1244,29 @@ function renderSettings() {
   });
 }
 
+function markBackup() {
+  state.settings.lastBackup = srs.today();
+  persist();
+  if (view === 'home') renderHome();
+}
+
+function reportsCard() {
+  const rs = state.reports || [];
+  if (!rs.length) return '';
+  const label = (r) => {
+    if (r.kind === 'word') return wordById(r.targetId)?.word || r.targetId;
+    const q = bank.find((x) => x.id === r.targetId);
+    return q ? q.stem : r.targetId;
+  };
+  return `<section class="card">
+    <h2>신고한 문제·단어 <small>${rs.length}개 · 점수와 출제에서 빠짐</small></h2>
+    <ul class="score-list">${rs
+      .map((r) => `<li><div><b>${esc(label(r))}</b><small>${r.date} · ${esc((REPORT_REASONS.find(([k]) => k === r.reason) || [, '기타'])[1])}${r.memo ? ' · ' + esc(r.memo) : ''}</small></div><button class="link-btn small" data-unreport="${esc(r.targetId)}">취소</button></li>`)
+      .join('')}</ul>
+    <button class="btn ghost small" id="copy-reports" style="margin-top:10px">신고 목록 복사</button>
+  </section>`;
+}
+
 async function exportBackup() {
   const name = `toeic-trainer-backup-${srs.today()}.json`;
   const file = new File([store.exportJSON(state)], name, { type: 'application/json' });
@@ -1188,6 +1274,7 @@ async function exportBackup() {
   if (navigator.canShare?.({ files: [file] })) {
     try {
       await navigator.share({ files: [file], title: name });
+      markBackup();
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
@@ -1201,6 +1288,7 @@ async function exportBackup() {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+  markBackup();
   toast('백업 파일을 저장했어요');
 }
 
@@ -1288,6 +1376,7 @@ function startVQ(mode, type, opts = {}) {
   let items;
   if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Number(state.settings.dailyQuestions) || 10);
   else if (mode === 'type') items = Vocab.buildType(state, bank, type, state.settings, t);
+  else if (mode === 'wrong') items = Vocab.buildWrong(state, bank);
   else items = Vocab.buildTest(bank);
   if (!items.length) return toast('풀 문제가 없어요');
   vqs = { mode, type, items, i: 0, results: [], added: [], fromWelcome: !!opts.fromWelcome, origin: view === 'vq' ? 'quiz' : view };
@@ -1352,6 +1441,7 @@ function renderVQ() {
   $view.querySelectorAll('[data-choice]').forEach((b) => b.addEventListener('click', () => vqChoose(Number(b.dataset.choice))));
   $view.querySelector('[data-act=dontknow]')?.addEventListener('click', () => vqChoose(-1));
   $view.querySelector('#vq-next')?.addEventListener('click', vqNext);
+  bindReportBox();
   $view.querySelectorAll('[data-reason]').forEach((b) =>
     b.addEventListener('click', () => {
       vqs.reason = vqs.reason === b.dataset.reason ? null : b.dataset.reason;
@@ -1369,6 +1459,83 @@ function renderVQ() {
       el.classList.toggle('over', sec * 1000 > Vocab.TARGET_MS);
     }, 1000);
   }
+}
+
+// ---------- '이 문제 이상해요' 신고 ----------
+const REPORT_REASONS = [
+  ['answer', '정답이 틀린 것 같아요'],
+  ['explain', '해설이 이상해요'],
+  ['choices', '보기에 문제가 있어요'],
+  ['meaning', '뜻이 틀렸어요'],
+  ['etc', '기타'],
+];
+let reportOpen = null;
+
+function isReported(id) {
+  return (state.reports || []).some((r) => r.targetId === id);
+}
+
+function reportBox(kind, id) {
+  if (isReported(id)) return `<p class="reported">신고한 문제예요. 점수 계산과 출제에서 빠져요. <button class="link-btn small inline" data-unreport="${esc(id)}">신고 취소</button></p>`;
+  if (reportOpen !== id) return `<button class="link-btn small report-btn" data-report-open="${esc(kind)}|${esc(id)}">이 ${kind === 'word' ? '단어' : '문제'} 이상해요</button>`;
+  const reasons = REPORT_REASONS.filter(([k]) => (kind === 'word' ? ['meaning', 'etc'].includes(k) : k !== 'meaning'));
+  return `
+    <div class="report-box" data-kind="${esc(kind)}" data-id="${esc(id)}">
+      <p class="reason-label">무엇이 이상한가요?</p>
+      <div class="reasons">${reasons.map(([k, l], i) => `<button class="chip ${i === 0 ? 'on' : ''}" data-rr="${k}">${l}</button>`).join('')}</div>
+      <input class="report-memo" placeholder="메모 (선택)">
+      <div class="btn-row"><button class="btn ghost small" data-report-cancel>취소</button><button class="btn primary small" data-report-send>신고하기</button></div>
+    </div>`;
+}
+
+function bindReportBox(root = $view, rerender = () => render()) {
+  root.querySelectorAll('[data-report-open]').forEach((b) =>
+    b.addEventListener('click', (e) => {
+      e.stopPropagation();
+      reportOpen = b.dataset.reportOpen.split('|')[1];
+      rerender();
+    }),
+  );
+  root.querySelectorAll('.report-box').forEach((box) => {
+    box.querySelectorAll('[data-rr]').forEach((c) =>
+      c.addEventListener('click', (e) => {
+        e.stopPropagation();
+        box.querySelectorAll('[data-rr]').forEach((x) => x.classList.toggle('on', x === c));
+      }),
+    );
+    box.querySelector('[data-report-cancel]').addEventListener('click', (e) => {
+      e.stopPropagation();
+      reportOpen = null;
+      rerender();
+    });
+    box.querySelector('[data-report-send]').addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.reports = [
+        ...(state.reports || []),
+        {
+          id: uid(),
+          kind: box.dataset.kind,
+          targetId: box.dataset.id,
+          reason: box.querySelector('[data-rr].on')?.dataset.rr || 'etc',
+          memo: box.querySelector('.report-memo').value.trim(),
+          date: srs.today(),
+        },
+      ];
+      reportOpen = null;
+      persist();
+      toast('신고했어요. 점수 계산과 출제에서 빠져요');
+      rerender();
+    });
+  });
+  root.querySelectorAll('[data-unreport]').forEach((b) =>
+    b.addEventListener('click', (e) => {
+      e.stopPropagation();
+      state.reports = state.reports.filter((r) => r.targetId !== b.dataset.unreport);
+      persist();
+      toast('신고를 취소했어요');
+      rerender();
+    }),
+  );
 }
 
 function explainBlock(q, v, a) {
@@ -1392,6 +1559,7 @@ function explainBlock(q, v, a) {
           : ''
       }
       ${a.addedWord ? `<p class="added">'${esc(a.addedWord)}'를 단어장에 추가했어요. 단어 학습에 먼저 나와요.</p>` : ''}
+      ${reportBox('question', q.id)}
     </section>
     <button class="btn primary big" id="vq-next">${vqs.i + 1 >= vqs.items.length ? '결과 보기' : '다음 문제'}</button>`;
 }
@@ -1460,8 +1628,8 @@ function renderVQSummary() {
           .join('')}
       </ul>
       ${added ? `<p class="hint">틀린 문제의 정답 단어 ${added}개를 단어장에 추가했어요.</p>` : ''}
-      <button class="btn primary big" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' ? '10문제 더 풀기' : '이 유형 더 풀기'}</button>
-      <button class="btn ghost wide home-btn" data-go="quiz">문제 홈으로</button>
+      <button class="btn primary big" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' ? '10문제 더 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : '이 유형 더 풀기'}</button>
+      <button class="btn ghost wide home-btn" data-go="${mode === 'wrong' ? 'notes' : 'quiz'}">${mode === 'wrong' ? '오답노트로' : '문제 홈으로'}</button>
     </section>
     ${
       wrong.length
@@ -1680,6 +1848,105 @@ function renderFilterDone() {
     </section>`;
   bindStartButtons();
   $view.querySelector('#home').addEventListener('click', () => go('home'));
+}
+
+// ---------- 오답노트 ----------
+const REASON_TIP = {
+  meaning: ['단어 뜻을 몰라서', '단어 학습량을 늘리거나 약한 단어 연습을 해 보세요'],
+  grammar: ['품사·문법이 헷갈려서', '품사 자리 유형 연습이 도움이 돼요 (문법 단계는 v3에서)'],
+  time: ['시간에 쫓겨서', '문제당 20초 안에 단서부터 찾는 연습을 해 보세요'],
+  mistake: ['실수', '보기를 끝까지 읽고 고르는 습관이 필요해요'],
+  none: ['이유 안 고름', '틀렸을 때 이유를 골라 두면 약점 분석이 정확해져요'],
+};
+
+function renderNotes() {
+  const t = srs.today();
+  const list = Vocab.wrongQuestions(state, bank);
+  const open = list.filter((x) => !x.resolved);
+  const done = list.filter((x) => x.resolved);
+  const since = srs.addDays(t, -14);
+  const recentWrong = new Set(state.attempts.filter((a) => a.kind === 'word' && !a.correct && a.date >= since).map((a) => a.targetId));
+  const words = state.words
+    .filter((w) => w.srs && w.srs.box < 3 && ((w.lapses || 0) > 0 || recentWrong.has(w.id)))
+    .sort((a, b) => (b.lapses || 0) - (a.lapses || 0) || a.srs.box - b.srs.box);
+  const reasons = Vocab.reasonStats(state, t);
+  const totalR = Object.values(reasons).reduce((a, b) => a + b, 0);
+  const topReason = Object.entries(reasons).filter(([k]) => k !== 'none').sort((a, b) => b[1] - a[1])[0];
+  const tab = ui.notesTab || 'questions';
+
+  const qItem = (x) => {
+    const q = x.q;
+    const opened = ui.noteOpen === q.id;
+    return `<li data-note="${esc(q.id)}" class="${opened ? 'open' : ''}">
+      <div class="row">
+        <div class="main"><p class="stem">${esc(q.stem.replace('____', '[' + q.choices[q.answer] + ']'))}</p>
+          <small>${Vocab.TYPES[q.type].name} · ${srs.LEVEL_NAMES[q.level]} · ${x.wrong}번 틀림${x.reason ? ' · ' + REASON_TIP[x.reason][0] : ''} · ${x.lastWrongDate.slice(5).replace('-', '/')}</small></div>
+      </div>
+      ${opened ? `<div class="detail"><p class="clue"><b>단서</b>${esc(q.clue)}</p><p class="exp">${esc(q.explanation)}</p><p class="ko">${esc(q.ko)}</p>${reportBox('question', q.id)}</div>` : ''}
+    </li>`;
+  };
+
+  $view.innerHTML = `
+    <section class="hero">
+      <p class="hero-title">${open.length ? `해결 안 된 오답 ${open.length + words.length}개` : '해결 안 된 오답이 없어요'}</p>
+      <div class="today-grid">
+        <div><strong>${open.length}</strong><span>어휘 문제</span></div>
+        <div><strong>${words.length}</strong><span>단어</span></div>
+        <div><strong>${done.length}</strong><span>해결함</span></div>
+      </div>
+      <button class="btn primary big" data-vq="wrong" ${open.length ? '' : 'disabled'}>오답만 다시 풀기${open.length ? ` (${Math.min(10, open.length)}문제)` : ''}</button>
+      ${words.length ? `<button class="btn ghost wide home-btn" data-start="practice">자주 틀린 단어 연습</button>` : ''}
+      <p class="hint">틀린 문제는 두 번 연속 맞히면 '해결'로 옮겨져요.</p>
+    </section>
+
+    ${
+      totalR
+        ? `<section class="card">
+            <h2>틀린 이유 <small>최근 30일 · ${totalR}문제</small></h2>
+            <ul class="reason-bars">${Object.entries(reasons)
+              .filter(([, n]) => n)
+              .sort((a, b) => b[1] - a[1])
+              .map(([k, n]) => `<li><span>${REASON_TIP[k][0]}</span><div class="pbar"><i style="width:${(n / totalR) * 100}%"></i></div><b>${n}</b></li>`)
+              .join('')}</ul>
+            ${topReason && topReason[1] ? `<p class="hint">가장 많은 이유는 '${REASON_TIP[topReason[0]][0]}'예요. ${REASON_TIP[topReason[0]][1]}.</p>` : ''}
+          </section>`
+        : ''
+    }
+
+    <div class="seg" role="tablist">
+      <button class="${tab === 'questions' ? 'on' : ''}" data-ntab="questions">어휘 문제 ${open.length}</button>
+      <button class="${tab === 'words' ? 'on' : ''}" data-ntab="words">단어 ${words.length}</button>
+      <button class="${tab === 'done' ? 'on' : ''}" data-ntab="done">해결함 ${done.length}</button>
+    </div>
+    ${
+      tab === 'words'
+        ? words.length
+          ? `<ul class="word-list">${words
+              .map((w) => `<li><div class="row"><div class="main"><b>${esc(w.word)}</b><span>${esc(w.meaning)}</span></div><span class="status"><i class="seg${w.srs.box}"></i>${Session.isHard(w) ? '어려운 단어 · ' : ''}${srs.stageName(w.srs.box)}${w.lapses ? ` · ${w.lapses}번 떨어짐` : ''}</span></div></li>`)
+              .join('')}</ul><p class="hint">'익숙함'까지 올라가면 오답에서 빠져요.</p>`
+          : '<section class="card soon"><p>자주 틀린 단어가 없어요.</p></section>'
+        : (tab === 'done' ? done : open).length
+          ? `<ul class="note-list">${(tab === 'done' ? done : open).map(qItem).join('')}</ul>`
+          : `<section class="card soon"><p>${tab === 'done' ? '아직 해결한 오답이 없어요.' : '틀린 어휘 문제가 없어요.'}</p></section>`
+    }
+    <p class="hint center">교재 오답 기록은 v6에서 추가돼요.</p>`;
+
+  bindVqButtons();
+  bindStartButtons();
+  $view.querySelectorAll('[data-ntab]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.notesTab = b.dataset.ntab;
+      renderNotes();
+    }),
+  );
+  $view.querySelectorAll('[data-note] .row').forEach((r) =>
+    r.addEventListener('click', () => {
+      const id = r.parentElement.dataset.note;
+      ui.noteOpen = ui.noteOpen === id ? null : id;
+      renderNotes();
+    }),
+  );
+  bindReportBox($view, renderNotes);
 }
 
 function renderSoon(key) {
