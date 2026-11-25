@@ -84,6 +84,7 @@ function say(text, quiet = false) {
 
 function go(next) {
   clearTimeout(advanceTimer);
+  if (next !== 'vq') document.body.classList.remove('has-bar');
   view = next;
   render();
   window.scrollTo(0, 0);
@@ -255,15 +256,6 @@ function renderHome() {
     ${measureCard()}
     ${backupCard(t)}
 
-    <section class="card">
-      <h2>단어 진행 상황 <small>${state.words.length}개</small></h2>
-      <div class="bar">${segs.map(([, n, c]) => (n ? `<i class="${c}" style="flex:${n / total}"></i>` : '')).join('')}</div>
-      <ol class="stage-guide">
-        <li><b class="seg0"></b>새 단어<em>${counts[0]}</em><span>아직 안 본 단어</span></li>
-        ${srs.STAGES.slice(1).map((n, i) => `<li><b class="seg${i + 1}"></b>${n}<em>${counts[i + 1]}</em><span>${srs.INTERVALS[i]}일 뒤 복습</span></li>`).join('')}
-      </ol>
-      <p class="hint">맞힐수록 한 단계씩 올라가고 복습 간격이 길어져요. 틀리면 '외우는 중'으로 돌아가요.</p>
-    </section>
 
     ${
       ['mid', 'high'].includes(levelGroup(state.settings.level)) && !state.settings.filterUsed && filterCandidates().length
@@ -334,7 +326,7 @@ function measureCard() {
   if (!est.lc.measured) missing.push('LC');
   if (readW < 10) missing.push('Part 7 독해');
   if (!missing.length) return '';
-  return `<button class="card link notice" data-go="scores"><b>아직 측정 전: ${missing.join(' · ')}</b><small>그래서 예상 점수의 이 부분은 시작 수준으로 추정한 값이에요. 교재 모의고사 점수를 넣으면 정확해져요 →</small></button>`;
+  return `<button class="card link notice" data-go="scores"><b>아직 측정 전: ${missing.join(' · ')}</b><small>이 부분은 시작 수준으로 추정 중 · 교재 모의고사 점수를 넣으면 정확해져요 →</small></button>`;
 }
 
 // 마지막 백업이 7일 넘었으면 알림
@@ -974,11 +966,35 @@ function filteredWords() {
   });
 }
 
+function wordProgressCard() {
+  const counts = boxCounts();
+  const total = state.words.length || 1;
+  const segs = srs.STAGES.map((label, i) => [label, counts[i], 'seg' + i]);
+  const open = ui.progOpen;
+  return `<section class="card prog ${open ? 'open' : ''}">
+      <button class="prog-head" id="prog-toggle">
+        <span><b>단어 ${state.words.length}개</b> <small>익숙함 이상 ${counts[3] + counts[4] + counts[5]}개</small></span>
+        <span class="prog-more">${open ? '접기' : '단계 보기'}</span>
+      </button>
+      <div class="bar">${segs.map(([, n, c]) => (n ? `<i class="${c}" style="flex:${n / total}"></i>` : '')).join('')}</div>
+      ${
+        open
+          ? `<ol class="stage-guide">
+              <li><b class="seg0"></b>새 단어<em>${counts[0]}</em><span>아직 안 본 단어</span></li>
+              ${srs.STAGES.slice(1).map((n, i) => `<li><b class="seg${i + 1}"></b>${n}<em>${counts[i + 1]}</em><span>${srs.INTERVALS[i]}일 뒤 복습</span></li>`).join('')}
+            </ol>
+            <p class="hint">맞힐수록 한 단계씩 올라가고 복습 간격이 길어져요. 틀리면 '외우는 중'으로 돌아가요.</p>`
+          : ''
+      }
+    </section>`;
+}
+
 function renderWords() {
   const { reviews, fresh } = dailyPlan();
   const todo = reviews.length + fresh.length;
 
   $view.innerHTML = `
+    ${wordProgressCard()}
     ${
       todo
         ? `<button class="btn primary big" data-start="daily">오늘 학습 시작 (${todo}개)</button>`
@@ -1033,6 +1049,10 @@ function renderWords() {
   renderWordList();
   bindStartButtons();
   bindGoButtons();
+  $view.querySelector('#prog-toggle').addEventListener('click', () => {
+    ui.progOpen = !ui.progOpen;
+    renderWords();
+  });
   $view.querySelector('#add-toggle').addEventListener('click', () => {
     ui.addOpen = !ui.addOpen;
     renderWords();
@@ -1041,10 +1061,12 @@ function renderWords() {
   $view.querySelector('#add-form')?.addEventListener('submit', addWord);
   $view.querySelector('#search').addEventListener('input', (e) => {
     ui.search = e.target.value;
+    ui.wordLimit = 40;
     renderWordList();
   });
   $view.querySelector('#filter').addEventListener('change', (e) => {
     ui.filter = e.target.value;
+    ui.wordLimit = 40;
     renderWordList();
   });
   $view.querySelector('#word-list').addEventListener('click', onWordListClick);
@@ -1058,7 +1080,10 @@ function renderWordList() {
     $list.innerHTML = `<li class="empty">해당하는 단어가 없어요</li>`;
     return;
   }
-  $list.innerHTML = list
+  // 한 번에 다 그리면 수십 화면이 되므로 40개씩
+  const limit = ui.wordLimit || 40;
+  const shown = list.slice(0, limit);
+  $list.innerHTML = shown
     .map((w) => {
       const st = statusOf(w, t);
       const open = ui.openId === w.id;
@@ -1085,7 +1110,12 @@ function renderWordList() {
         }
       </li>`;
     })
-    .join('');
+    .join('') + (list.length > limit ? `<li class="more-row"><button class="btn ghost wide" id="word-more">더 보기 (${list.length - limit}개 남음)</button></li>` : '');
+  $list.querySelector('#word-more')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    ui.wordLimit = limit + 40;
+    renderWordList();
+  });
   bindReportBox($list, renderWordList);
 }
 
@@ -1152,22 +1182,24 @@ function renderSettings() {
   $view.innerHTML = `
     <section class="card">
       <h2>학습</h2>
+      <div class="field-grid">
       <label class="field">목표 점수
         <input type="number" id="targetScore" min="10" max="990" step="5" value="${esc(s.targetScore)}" inputmode="numeric">
       </label>
       <label class="field">시험 날짜
         <input type="date" id="examDate" value="${esc(s.examDate)}">
       </label>
-      <label class="field">오늘의 어휘 문제 수
-        <input type="number" id="dailyQuestions" min="1" max="50" value="${esc(s.dailyQuestions)}" inputmode="numeric">
-      </label>
-      <label class="field">하루 복습 상한 <small class="quiet">밀린 복습이 많으면 새 단어가 자동으로 줄어요</small>
-        <input type="number" id="dailyReviewMax" min="10" max="500" value="${esc(s.dailyReviewMax ?? 60)}" inputmode="numeric">
-      </label>
-      <label class="field">하루 새 단어 수
+      <label class="field">하루 새 단어
         <input type="number" id="dailyNewWords" min="0" max="200" value="${esc(s.dailyNewWords)}" inputmode="numeric">
       </label>
-      <p class="hint">목표를 채운 뒤에도 '새 단어 ${EXTRA_NEW}개 더'로 추가 학습할 수 있어요.</p>
+      <label class="field">하루 복습 상한
+        <input type="number" id="dailyReviewMax" min="10" max="500" value="${esc(s.dailyReviewMax ?? 60)}" inputmode="numeric">
+      </label>
+      <label class="field">오늘의 문제 수 <small class="quiet">어휘·문법 각각</small>
+        <input type="number" id="dailyQuestions" min="1" max="50" value="${esc(s.dailyQuestions)}" inputmode="numeric">
+      </label>
+      </div>
+      <p class="hint">복습이 상한보다 밀리면 새 단어가 자동으로 줄어요. 목표를 채운 뒤에도 '새 단어 ${EXTRA_NEW}개 더'로 추가 학습할 수 있어요.</p>
       <label class="field">새 단어 시작 수준
         <select id="startLevel">
           <option value="basic" ${s.startLevel === 'basic' ? 'selected' : ''}>기초 단어부터</option>
@@ -1220,7 +1252,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 · 2단계 (단어 + 어휘 + 문법 + 장문 빈칸) v3.3</p>
+    <p class="version">토익 트레이너 v3.4 · 단어 · 어휘 · 문법 · 장문 빈칸</p>
   `;
 
   const num = (id, min, max) => {
@@ -1401,7 +1433,6 @@ function speedBest() {
 
 function p6Card() {
   if (!p6sets.length) return '';
-  const qs = bank.filter((q) => q.part === 6);
   const doneSets = p6sets.filter((set) => set.questions.every((id) => state.qprog[id])).length;
   const st = Vocab.typeStats(state, 'part6');
   const rated = Object.entries(Vocab.PART6_TYPES).map(([k, v]) => {
@@ -1410,10 +1441,10 @@ function p6Card() {
   });
   return `<section class="card">
       <h2>장문 빈칸 <small>Part 6 · 지문 ${doneSets}/${p6sets.length}</small></h2>
-      <p class="hint">이메일·공지·기사 지문 하나에 빈칸 4개. 어휘·문법·연결어·문장 넣기가 섞여 나와요. 문제당 목표 30초.</p>
+      <p class="hint">지문 하나에 빈칸 4개 · 어휘·문법·연결어·문장 넣기 · 문제당 30초</p>
       <ul class="p6-rates">${rated.join('')}</ul>
       <button class="btn primary wide" data-vq="p6">지문 1개 풀기 · 4문제 약 2분</button>
-      <p class="hint">${qs.length}문제 · 틀린 빈칸이 있는 지문은 다음 날 다시 나와요.</p>
+      <p class="hint">틀린 빈칸이 있는 지문은 다음 날 다시 나와요.</p>
     </section>`;
 }
 
@@ -1494,59 +1525,63 @@ function bindVqButtons(root = $view) {
   root.querySelectorAll('[data-vq]').forEach((b) => b.addEventListener('click', () => startVQ(b.dataset.vq, b.dataset.type, { skipConcept: view === 'concept' })));
 }
 
+function typeGrid(types, stats, area) {
+  return `<div class="type-grid">${Object.entries(types)
+    .map(([k, v]) => {
+      const r = stats[k];
+      const rate = r.rate === null ? null : Math.round(r.rate * 100);
+      return `<button class="type-tile" data-vq="type" data-type="${k}">
+        <b>${v.name}</b>
+        <span class="rate ${rate === null ? '' : rate < 60 ? 'low' : rate < 80 ? 'mid' : 'high'}">${rate === null ? '시작 전' : `${rate}% · ${r.n}문제`}</span>
+      </button>`;
+    })
+    .join('')}</div>`;
+}
+
+// 문제 탭: 영역(어휘·문법·장문 빈칸)을 위에서 고르고, 그 영역만 보여 줌
 function renderQuizHome() {
-  const st = Vocab.typeStats(state);
-  const gst = Vocab.typeStats(state, 'grammar');
-  const gAnswered = () => bank.filter((q) => Vocab.areaOf(q) === 'grammar' && state.qprog[q.id]).length;
-  const answered = bank.filter((q) => Vocab.areaOf(q) === 'vocab' && !q.test && state.qprog[q.id]).length;
+  const tab = ui.quizTab || 'vocab';
+  const seg = [
+    ['vocab', '어휘'],
+    ['grammar', '문법'],
+    ['part6', '장문 빈칸'],
+  ];
+  let body = '';
+  if (tab === 'vocab') {
+    body = `${vocabTodayCard()}
+      <section class="card">
+        <h2>유형별 연습</h2>
+        ${typeGrid(Vocab.TYPES, Vocab.typeStats(state), 'vocab')}
+        <p class="hint">정답률이 낮은 유형은 오늘의 문제에 더 자주 나와요.</p>
+      </section>`;
+  } else if (tab === 'grammar') {
+    body = `${grammarTodayCard()}
+      <section class="card">
+        <h2>유형별 연습</h2>
+        ${state.attempts.some((a) => a.module === 'grammar') ? `<button class="link-row" data-concept="basic-structure">문법 기초 3장 <small>문장 뼈대 · 품사 자리 · 동사 결정 순서</small></button>` : ''}
+        ${typeGrid(Vocab.GRAMMAR_TYPES, Vocab.typeStats(state, 'grammar'), 'grammar')}
+        <p class="hint">처음 푸는 유형은 개념 카드를 먼저 보여 줘요.</p>
+        <div class="concept-chips"><span>개념 카드</span>${Object.entries(Vocab.GRAMMAR_TYPES)
+          .map(([k, v]) => `<button class="mini-chip" data-concept="${k}">${v.name}</button>`)
+          .join('')}</div>
+      </section>`;
+  } else {
+    body = p6Card();
+  }
   $view.innerHTML = `
-    ${vocabTodayCard()}
-    <section class="card">
-      <h2>어휘 유형별 연습 <small>${answered}/${bank.filter((q) => Vocab.areaOf(q) === 'vocab' && !q.test).length}</small></h2>
-      <ul class="type-list">
-        ${Object.entries(Vocab.TYPES)
-          .map(([k, v]) => {
-            const r = st[k];
-            const rate = r.rate === null ? '' : Math.round(r.rate * 100);
-            return `<li>
-              <button data-vq="type" data-type="${k}">
-                <div><b>${v.name}</b><small>${v.desc}</small></div>
-                <span class="rate ${rate === '' ? '' : rate < 60 ? 'low' : rate < 80 ? 'mid' : 'high'}">${rate === '' ? '시작 전' : `${rate}%<small>${r.n}문제</small>`}</span>
-              </button>
-            </li>`;
-          })
-          .join('')}
-      </ul>
-      <p class="hint">정답률이 낮은 유형은 오늘의 어휘 문제에 더 자주 나와요.</p>
-    </section>
-    ${grammarTodayCard()}
-    <section class="card">
-      <h2>문법 유형별 연습 <small>${gAnswered()}/${bank.filter((q) => Vocab.areaOf(q) === 'grammar').length}</small></h2>
-      <button class="link-row" data-concept="basic-structure">문법 기초 3장 <small>문장 뼈대 · 품사 자리 · 동사 결정 순서</small></button>
-      <ul class="type-list">
-        ${Object.entries(Vocab.GRAMMAR_TYPES)
-          .map(([k, v]) => {
-            const r = gst[k];
-            const rate = r.rate === null ? '' : Math.round(r.rate * 100);
-            return `<li>
-              <button data-vq="type" data-type="${k}">
-                <div><b>${v.name}</b><small>${v.desc}</small></div>
-                <span class="rate ${rate === '' ? '' : rate < 60 ? 'low' : rate < 80 ? 'mid' : 'high'}">${rate === '' ? '시작 전' : `${rate}%<small>${r.n}문제</small>`}</span>
-              </button>
-              <button class="concept-btn" data-concept="${k}" aria-label="${v.name} 개념">개념</button>
-            </li>`;
-          })
-          .join('')}
-      </ul>
-      <p class="hint">처음 푸는 유형은 개념 카드를 먼저 보여 줘요.</p>
-    </section>
-    ${p6Card()}
-    <button class="card link" data-vq="speed"><b>스피드 모드 →</b><small>${Vocab.SPEED.n}문제를 ${Vocab.SPEED.ms / 60000}분 안에. 해설 없이 바로 넘어가며 Part 5 시간 감각을 익혀요${speedBest() ? ` · 최고 기록 ${speedBest()}` : ''}</small></button>
-    <button class="card link" data-vq="test"><b>3분 수준 진단 →</b><small>어휘 9문제 · 문법 6문제로 지금 수준을 확인하고 학습 설정을 맞춰요</small></button>
-    <section class="card soon-list">
-      <h2>준비 중</h2>
-      <ul><li>듣기 · Part 1~4 <span>4단계</span></li><li>독해 · Part 7 <span>5단계</span></li></ul>
-    </section>`;
+    <div class="seg quiz-seg" role="tablist">${seg.map(([k, l]) => `<button class="${tab === k ? 'on' : ''}" data-qtab="${k}">${l}</button>`).join('')}</div>
+    ${body}
+    <div class="tool-row">
+      <button class="tool" data-vq="speed"><b>스피드 모드</b><small>${Vocab.SPEED.n}문제 · ${Vocab.SPEED.ms / 60000}분${speedBest() ? ` · 최고 ${speedBest()}` : ''}</small></button>
+      <button class="tool" data-vq="test"><b>3분 수준 진단</b><small>어휘 9 · 문법 6</small></button>
+    </div>
+    <p class="hint center">듣기(Part 1~4)는 다음 버전, 독해(Part 7)는 그다음에 추가돼요.</p>`;
+  $view.querySelectorAll('[data-qtab]').forEach((b) =>
+    b.addEventListener('click', () => {
+      ui.quizTab = b.dataset.qtab;
+      renderQuizHome();
+    }),
+  );
   bindVqButtons();
   bindConceptButtons();
 }
@@ -1632,7 +1667,18 @@ function renderVQ() {
     <div class="answer-area">
       <div class="options">${options}</div>
       ${!a ? `<button class="link-btn" data-act="dontknow">모르겠어요</button>` : isTest || isSpeed ? '' : explainBlock(q, v, a)}
-    </div>`;
+    </div>
+    ${a && !isTest && !isSpeed ? vqBar(a) : ''}`;
+  document.body.classList.toggle('has-bar', !!(a && !isTest && !isSpeed));
+  // 답한 뒤에는 고른 보기와 해설이 보이도록 살짝 내림
+  if (a && !isTest && !isSpeed) {
+    const opt = $view.querySelector('.options');
+    if (opt) window.scrollTo({ top: Math.max(0, opt.getBoundingClientRect().top + window.scrollY - 140), behavior: 'smooth' });
+  }
+  // 장문 빈칸: 지문 상자 안에서 지금 빈칸이 보이게
+  const curBlank = $view.querySelector('.p6-blank.cur, mark.p6-cur');
+  const pbox = $view.querySelector('.p6-passage');
+  if (curBlank && pbox) pbox.scrollTop = Math.max(0, curBlank.offsetTop - pbox.offsetTop - pbox.clientHeight / 3);
 
   $view.querySelector('#quit').addEventListener('click', () => {
     const back = vqs.fromWelcome ? 'welcome' : ['home', 'quiz', 'settings'].includes(vqs.origin) ? vqs.origin : 'quiz';
@@ -1791,33 +1837,41 @@ function bindReportBox(root = $view, rerender = () => render()) {
   );
 }
 
+// 해설: 판정 · 단서 · 설명만 바로 보이고, 해석·보기별 뜻은 접어 둠 (틀렸을 때는 펼침)
 function explainBlock(q, v, a) {
   const sec = Math.round(a.timeMs / 1000);
+  const target = q.targetMs || Vocab.TARGET_MS;
   return `
     <section class="explain ${a.ok ? 'ok' : 'ng'}">
       <p class="explain-head">${a.ok ? '정답!' : a.choice < 0 ? '정답을 확인하세요' : '아쉬워요'}
-        <small>${sec}초${a.timeMs > (q.targetMs || Vocab.TARGET_MS) ? ` · 목표 ${Math.round((q.targetMs || Vocab.TARGET_MS) / 1000)}초보다 오래 걸렸어요` : ''}</small></p>
+        <small>${sec}초${a.timeMs > target ? ` · 목표 ${Math.round(target / 1000)}초 넘음` : ''}</small></p>
       <p class="clue"><b>단서</b>${esc(q.clue)}</p>
-      ${Vocab.GRAMMAR_TYPES[q.type] && concepts.some((c) => c.id === q.type) ? `<button class="link-btn small concept-link" data-concept="${q.type}">${Vocab.GRAMMAR_TYPES[q.type].name} 개념 다시 보기</button>` : ''}
       <p class="exp">${esc(q.explanation)}</p>
-      <p class="ko">${esc(q.ko)}</p>
-      <ul class="choice-means">
-        ${v.choices
-          .map((c, idx) => `<li class="${idx === v.answer ? 'ans' : idx === a.choice ? 'picked' : ''}"><b>${esc(c)}</b><span>${esc(q.meanings?.[c] || '')}</span></li>`)
-          .join('')}
-      </ul>
-      ${a.addedWord ? `<p class="added">'${esc(a.addedWord)}'를 단어장에 추가했어요. 단어 학습에 먼저 나와요.</p>` : ''}
+      ${Vocab.GRAMMAR_TYPES[q.type] && concepts.some((c) => c.id === q.type) ? `<button class="link-btn small concept-link" data-concept="${q.type}">${Vocab.GRAMMAR_TYPES[q.type].name} 개념 다시 보기 →</button>` : ''}
+      <details class="more" ${a.ok ? '' : 'open'}>
+        <summary>${q.ko ? '해석 · ' : ''}보기별 뜻</summary>
+        ${q.ko ? `<p class="ko">${esc(q.ko)}</p>` : ''}
+        <ul class="choice-means">
+          ${v.choices
+            .map((c, idx) => `<li class="${idx === v.answer ? 'ans' : idx === a.choice ? 'picked' : ''}"><b>${esc(c)}</b><span>${esc(q.meanings?.[c] || '')}</span></li>`)
+            .join('')}
+        </ul>
+      </details>
+      ${a.addedWord ? `<p class="added">'${esc(a.addedWord)}'를 단어장에 추가했어요.</p>` : ''}
       ${reportBox('question', q.id)}
-    </section>
-    ${
-      !a.ok
-        ? `<section class="reason-pick">
-            <p class="reason-label">왜 틀렸나요? <small>고르면 바로 ${vqs.i + 1 >= vqs.items.length ? '결과로' : '다음 문제로'} 넘어가요</small></p>
-            <div class="reason-grid">${Vocab.REASONS.map(([k, l]) => `<button class="btn ghost ${vqs.reason === k ? 'on' : ''}" data-reason="${k}">${l}</button>`).join('')}</div>
-            <button class="link-btn" id="vq-next">이유 없이 넘기기</button>
-          </section>`
-        : `<button class="btn primary big" id="vq-next">${vqs.i + 1 >= vqs.items.length ? '결과 보기' : '다음 문제'}</button>`
-    }`;
+    </section>`;
+}
+
+// 화면 아래 고정 버튼: 맞히면 '다음', 틀리면 이유 4개(고르면 바로 다음)
+function vqBar(a) {
+  const last = vqs.i + 1 >= vqs.items.length;
+  return `<div class="vq-bar">${
+    a.ok
+      ? `<button class="btn primary big" id="vq-next">${last ? '결과 보기' : '다음 문제'}</button>`
+      : `<p class="bar-label">왜 틀렸나요? <small>고르면 바로 ${last ? '결과로' : '다음으로'}</small></p>
+         <div class="bar-reasons">${Vocab.REASONS.map(([k, l]) => `<button class="chip-btn ${vqs.reason === k ? 'on' : ''}" data-reason="${k}">${l}</button>`).join('')}</div>
+         <button class="link-btn small" id="vq-next">이유 없이 넘기기</button>`
+  }</div>`;
 }
 
 function vqChoose(idx) {

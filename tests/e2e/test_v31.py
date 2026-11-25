@@ -32,7 +32,7 @@ async def main():
         for i in range(10):
             await pg.wait_for_selector("[data-choice]:not([disabled])")
             await pg.click("[data-act=dontknow]")  # 일부러 틀림
-            await pg.wait_for_selector(".reason-pick")
+            await pg.wait_for_selector(".vq-bar")
             if i < 5:
                 await pg.click("[data-reason=meaning]")
                 reasons += 1

@@ -37,9 +37,9 @@ export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
 export const LEVEL_UP = { window: 20, min: 20 }; // 최근 20문제로 수준 판단
 export const TARGET_MS = 20000; // Part 5 한 문제 목표 시간
 export const REASONS = [
-  ['meaning', '뜻을 몰라서'],
-  ['grammar', '문법이 헷갈려서'],
-  ['time', '시간이 부족해서'],
+  ['meaning', '뜻 몰라서'],
+  ['grammar', '문법 헷갈림'],
+  ['time', '시간 부족'],
   ['mistake', '실수'],
 ];
 

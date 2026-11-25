@@ -20,6 +20,7 @@ async def main():
         b, pg, errs = await open_app(p, "v32")
         await seed(pg, lambda st: None)
         await pg.click("[data-tab=quiz]")
+        await pg.click("[data-qtab=part6]")
         qv = await pg.inner_text("#view")
         c("장문 빈칸" in qv and "지문 0/12" in qv, "문제 탭: 장문 빈칸 카드")
         await pg.click("[data-vq=p6]")
@@ -32,7 +33,7 @@ async def main():
             c(f"({i + 1})" in cur, f"빈칸 ({i + 1}) 차례")
             if i == 1:
                 await pg.click("[data-act=dontknow]")
-                await pg.wait_for_selector(".reason-pick")
+                await pg.wait_for_selector(".vq-bar")
                 await pg.click("[data-reason=grammar]")
             else:
                 await pg.click(f"[data-choice='{await pg.evaluate(PICK)}']")
