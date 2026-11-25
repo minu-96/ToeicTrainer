@@ -12,7 +12,8 @@ const T = srs.today();
 
 test('문법 문제: 10개 유형 × 수준 3개, 칸마다 4개 이상, 형식 검사', () => {
   for (const type of Object.keys(Vocab.GRAMMAR_TYPES))
-    for (const level of ['basic', 'mid', 'adv']) assert.ok(gbank.filter((q) => q.type === type && q.level === level).length >= 4, `${type}/${level}`);
+    for (const level of ['basic', 'mid', 'adv']) assert.ok(gbank.filter((q) => !q.test && q.type === type && q.level === level).length >= 4, `${type}/${level}`);
+  assert.equal(gbank.filter((q) => q.test).length, 6, '진단 전용 6문제');
   for (const q of gbank) {
     assert.equal(q.module, 'grammar');
     assert.equal(new Set(q.choices).size, 4, q.id);

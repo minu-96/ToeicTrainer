@@ -20,7 +20,7 @@ async def main():
         await seed(pg, lambda st: None)
 
         home = await pg.inner_text("#view")
-        c("오늘의 문법 문제" in home, "홈: 오늘의 문법 문제 카드")
+        c("문법 문제" in home, "홈: 문법 할 일")
 
         # 기초 3장 넘기기
         await pg.click("[data-concept=basic-structure]")
@@ -58,7 +58,7 @@ async def main():
 
         # 오늘의 문법 문제 10개
         before = (await pg.evaluate(GET))
-        await pg.click("[data-tab=home]")
+        await pg.click("[data-tab=quiz]")
         await pg.click("[data-vq=gdaily]")
         c("문법 문제" in await pg.inner_text("header"), "제목 '문법 문제'")
         for _ in range(10):
@@ -70,9 +70,10 @@ async def main():
         g = [a for a in st["attempts"] if a.get("module") == "grammar" and a.get("mode") == "gdaily"]
         c(len(g) == 10 and all(a["correct"] for a in g), "문법 10문제 기록 (module=grammar)")
         c(len(st["words"]) == len(before["words"]), "문법 오답은 단어장에 안 들어감")
-        await pg.click("[data-go]")
-        home = await pg.inner_text("#view")
-        c("10/10" in home, "홈 문법 카드 10/10")
+        await pg.click("[data-tab=home]") if await pg.locator("[data-tab=home]:visible").count() else None
+        await pg.goto(pg.url.split("?")[0] + "?v3b")
+        await pg.wait_for_selector(".todo-list")
+        c(await pg.locator(".todo-list li.done").count() >= 1 and "10/10" in await pg.inner_text(".todo-list"), "홈 할 일: 문법 10/10 완료")
 
         c(not errs, "콘솔 오류 없음 " + "; ".join(errs[:3]))
         await b.close()

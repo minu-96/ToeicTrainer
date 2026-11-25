@@ -95,7 +95,7 @@ async def main():
         await pg.click("[data-go=quiz]")
         await pg.click("[data-vq=test]")
         ids = set()
-        bankq = await pg.evaluate("fetch('data/vocab-questions.json').then(r=>r.json())")
+        bankq = await pg.evaluate("Promise.all([fetch('data/vocab-questions.json'),fetch('data/grammar-questions.json')]).then(rs=>Promise.all(rs.map(r=>r.json()))).then(([a,b])=>a.concat(b))")
         test_stems = {q["stem"] for q in bankq if q.get("test")}
         ok = True
         for _ in range(15):
