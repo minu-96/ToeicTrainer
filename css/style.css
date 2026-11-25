@@ -630,3 +630,19 @@ input:focus, select:focus { outline: 2px solid color-mix(in srgb, var(--primary)
 .level-notice .link-btn { justify-self: start; margin: 2px 0 0; }
 .level-notice .btn-row { margin-top: 6px; justify-content: flex-end; }
 .level-notice .btn-row .btn { flex: 0 0 auto; }
+
+/* ---------- v3: 문법 ---------- */
+.type-list li { display: flex; align-items: stretch; }
+.type-list li > button[data-vq] { flex: 1; min-width: 0; }
+.type-list .concept-btn { width: auto; justify-content: center; }
+.concept-btn { flex: 0 0 auto; margin: 6px 0 6px 6px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--primary); font-size: 13px; font-weight: 600; }
+.link-row { display: block; width: 100%; text-align: left; margin: 0 0 8px; padding: 10px 12px; border-radius: 12px; border: 1px dashed var(--line); background: var(--bg); color: var(--text); font-weight: 600; font-size: 14px; }
+.link-row small { display: block; color: var(--muted); font-weight: 500; font-size: 12px; margin-top: 2px; }
+.concept .eyebrow { margin: 0 0 4px; font-size: 12px; color: var(--muted); font-weight: 600; }
+.concept-title { margin: 0 0 6px; font-size: 22px; }
+.concept-sum { margin: 0 0 12px; font-size: 15px; line-height: 1.55; }
+.concept-points { margin: 0 0 12px; padding-left: 18px; display: grid; gap: 6px; font-size: 14.5px; line-height: 1.5; }
+.concept-ex { margin: 0 0 8px; padding: 10px 12px; border-radius: 12px; background: var(--bg); }
+.concept .ex { margin: 0; font-weight: 600; }
+.concept .ex-ko { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.concept-link { margin: 0 0 8px; }

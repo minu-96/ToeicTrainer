@@ -8,6 +8,23 @@ export const TYPES = {
   confuse: { name: '헷갈리는 단어', desc: 'rise/raise, by/until처럼 비슷한 단어 구별' },
   para: { name: '바꿔 쓰는 표현', desc: 'Part 7처럼 같은 뜻의 다른 단어 고르기' },
 };
+// 문법 유형 (3단계)
+export const GRAMMAR_TYPES = {
+  tense: { name: '시제', desc: '과거·현재완료·미래, 시간 단서 찾기' },
+  agree: { name: '수일치', desc: '진짜 주어 찾기, each·the number of' },
+  voice: { name: '능동·수동', desc: '목적어가 있나 없나, be + p.p.' },
+  verbal: { name: '동명사·to부정사', desc: 'avoid -ing, decide to, 전치사 뒤' },
+  participle: { name: '분사', desc: '-ing(하는) vs -ed(된), 분사구문' },
+  relative: { name: '관계사', desc: 'who·which·whose·what·where' },
+  conj: { name: '전치사 vs 접속사', desc: 'despite / although, because of / because' },
+  pronoun: { name: '대명사', desc: '소유격·재귀대명사, that/those, the other' },
+  compare: { name: '비교', desc: '비교급 강조, the 비교급, 최상급' },
+  cond: { name: '가정법·도치', desc: 'would have p.p., Should you ~' },
+};
+export const ALL_TYPES = { ...TYPES, ...GRAMMAR_TYPES };
+export const areaOf = (q) => (q.module === 'grammar' || GRAMMAR_TYPES[q.type] ? 'grammar' : 'vocab');
+const typesOf = (area) => (area === 'grammar' ? GRAMMAR_TYPES : TYPES);
+
 export const SPEED = { n: 10, ms: 180000 }; // 스피드 모드: 10문제 3분
 export const LEVEL_UP = { window: 20, min: 20 }; // 최근 20문제로 수준 판단
 export const TARGET_MS = 20000; // Part 5 한 문제 목표 시간
@@ -140,9 +157,9 @@ export function dueList(state, bank, t) {
 }
 
 // 유형별 정답률 (수준 진단 제외)
-export function typeStats(state) {
+export function typeStats(state, area = 'vocab') {
   const out = {};
-  for (const k of Object.keys(TYPES)) out[k] = { n: 0, correct: 0, rate: null };
+  for (const k of Object.keys(typesOf(area))) out[k] = { n: 0, correct: 0, rate: null };
   for (const a of state.attempts) {
     if (a.kind !== 'question' || a.mode === 'test' || !out[a.type]) continue;
     out[a.type].n++;
@@ -152,21 +169,22 @@ export function typeStats(state) {
   return out;
 }
 
-function weakestType(state) {
-  const st = typeStats(state);
+function weakestType(state, area) {
+  const st = typeStats(state, area);
   const rated = Object.entries(st).filter(([, v]) => v.n >= 3);
   if (!rated.length) return null;
   return rated.sort((a, b) => a[1].rate - b[1].rate)[0][0];
 }
 
 // 오늘의 어휘 문제: 다시 풀 문제(틀렸던 문제) → 내 수준의 새 문제, 약한 유형은 더 자주
-export function buildDaily(state, allBank, settings, t, n) {
-  const bank = usable(state, allBank);
+export function buildDaily(state, allBank, settings, t, n, area = 'vocab') {
+  const bank = usable(state, allBank).filter((q) => areaOf(q) === area);
   const due = shuffle(dueList(state, bank, t)).slice(0, n);
   const rank = levelRank(settings);
   const unseen = shuffle(bank.filter((q) => !state.qprog[q.id])).sort((a, b) => rank(a) - rank(b));
-  const weak = weakestType(state);
-  const rotation = weak ? [weak, ...Object.keys(TYPES), weak] : Object.keys(TYPES);
+  const weak = weakestType(state, area);
+  const keys = Object.keys(typesOf(area));
+  const rotation = weak ? [weak, ...keys, weak] : keys;
   const picked = [];
   let guard = 0;
   while (due.length + picked.length < n && unseen.length && guard++ < 200) {
@@ -267,6 +285,7 @@ export function record(state, q, ok, timeMs, t, mode, extra = {}) {
     at: Date.now(),
     kind: 'question',
     part: q.part || 5,
+    module: areaOf(q),
     type: q.type,
     targetMs: TARGET_MS,
     mode,
@@ -284,7 +303,7 @@ export function record(state, q, ok, timeMs, t, mode, extra = {}) {
 
 // 틀린 문제의 정답 단어를 단어장에 추가 (한 단어짜리만, 이미 있으면 건너뜀)
 export function addAnswerWord(state, q) {
-  if (q.type === 'para') return null;
+  if (q.type === 'para' || areaOf(q) === 'grammar') return null;
   const raw = q.choices[q.answer];
   if (!/^[A-Za-z-]+$/.test(raw)) return null;
   const word = raw.toLowerCase();

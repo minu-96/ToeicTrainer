@@ -36,6 +36,8 @@ const VOCAB_SKILLS = {
   confuse: { vocab: 0.5, grammar: 0.5 }, // 헷갈리는 단어
   para: { vocab: 0.5, reading: 0.5 }, // 바꿔 쓰는 표현 (Part 7 패러프레이즈)
 };
+// 문법 문제는 문법 영역 하나로 반영
+const GRAMMAR_TYPE_SET = new Set(['tense', 'agree', 'voice', 'verbal', 'participle', 'relative', 'conj', 'pronoun', 'compare', 'cond']);
 const WORD_ADJ = { meaning: -0.5, cloze: 0, word: 0.3, recall: 0.5 };
 const WORD_WEIGHT = 0.3; // 같은 단어를 반복하는 학습이라 증거 무게를 낮춤
 const HALF_LIFE = 30; // 일
@@ -108,7 +110,7 @@ export function evidence(state, upto = null) {
     if (upto && a.date > upto) continue;
     if (reported.has(a.targetId)) continue;
     if (a.kind === 'question') {
-      const skills = a.skills || VOCAB_SKILLS[a.type] || { vocab: 1 };
+      const skills = a.skills || VOCAB_SKILLS[a.type] || (a.module === 'grammar' || GRAMMAR_TYPE_SET.has(a.type) ? { grammar: 1 } : { vocab: 1 });
       const target = a.targetMs || 20000;
       const s = a.correct ? (a.timeMs > 2 * target ? 0.8 : 1) : 0;
       ev.push({ skills, b: a.b ?? LEVEL_B[a.level] ?? 0, c: a.c ?? 0.25, s, w: recency(a.date), date: a.date });
