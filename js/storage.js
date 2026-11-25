@@ -17,6 +17,8 @@ export const DEFAULT_SETTINGS = {
   lastBackup: '', // 마지막으로 백업 파일을 저장한 날
   levelChangedAt: 0, // 수준을 바꾼 시각 (자동 조정은 이후 기록만 봄)
   speedBest: null, // 스피드 모드 최고 기록
+  lcAccentMix: true, // 듣기: 미국·영국·호주 음성 섞기
+  lcRate: 1, // 듣기 말하기 속도
   clozeHint: true, // 빈칸 문제에서 해석을 바로 보여줄지
   startLevel: 'basic', // 새 단어 시작 수준: basic | mid
   level: '', // 시작 화면에서 고른 현재 점수대

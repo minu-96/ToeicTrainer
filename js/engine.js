@@ -39,9 +39,15 @@ const VOCAB_SKILLS = {
   p6grammar: { grammar: 1 }, // 장문 빈칸 문법
   p6conn: { grammar: 0.5, reading: 0.5 }, // 연결어 (문맥)
   p6sent: { reading: 1 }, // 문장 넣기
+  lc2: { lc_qr: 1 }, // 듣기 Part 2
+  lc3: { lc_conv: 1 }, // 듣기 Part 3
+  lc4: { lc_talk: 1 }, // 듣기 Part 4
 };
 // 문법 문제는 문법 영역 하나로 반영
 const GRAMMAR_TYPE_SET = new Set(['tense', 'agree', 'voice', 'verbal', 'participle', 'relative', 'conj', 'pronoun', 'compare', 'cond']);
+// 브라우저 음성(TTS)은 실제 성우보다 쉬워서 듣기 증거는 무게를 낮춤 (기획서 위험 요소)
+const TTS_WEIGHT = 0.6;
+const LC_TYPES = new Set(['lc2', 'lc3', 'lc4']);
 const WORD_ADJ = { meaning: -0.5, cloze: 0, word: 0.3, recall: 0.5 };
 const WORD_WEIGHT = 0.3; // 같은 단어를 반복하는 학습이라 증거 무게를 낮춤
 const HALF_LIFE = 30; // 일
@@ -114,10 +120,12 @@ export function evidence(state, upto = null) {
     if (upto && a.date > upto) continue;
     if (reported.has(a.targetId)) continue;
     if (a.kind === 'question') {
+      if (a.scripted) continue; // 대본을 보고 푼 듣기 문제는 빼기
       const skills = a.skills || VOCAB_SKILLS[a.type] || (a.module === 'grammar' || GRAMMAR_TYPE_SET.has(a.type) ? { grammar: 1 } : { vocab: 1 });
       const target = a.targetMs || 20000;
       const s = a.correct ? (a.timeMs > 2 * target ? 0.8 : 1) : 0;
-      ev.push({ skills, b: a.b ?? LEVEL_B[a.level] ?? 0, c: a.c ?? 0.25, s, w: recency(a.date), date: a.date });
+      const lc = LC_TYPES.has(a.type);
+      ev.push({ skills, b: a.b ?? LEVEL_B[a.level] ?? 0, c: a.c ?? (a.type === 'lc2' ? 1 / 3 : 0.25), s, w: recency(a.date) * (lc ? TTS_WEIGHT : 1), date: a.date });
     } else if (a.kind === 'word') {
       const key = a.targetId + '|' + a.date; // 하루 첫 답만 인정
       if (seenWordDay.has(key)) continue;

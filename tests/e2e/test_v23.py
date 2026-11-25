@@ -103,7 +103,7 @@ async def main():
         await pg.click("[data-go=settings]")
         sv = await pg.inner_text("#view")
         c("신고한 문제" in sv, "설정: 신고 목록")
-        c(" v2." in sv or " v3" in sv, "설정: 버전 표시")
+        c(any(f" v{n}" in sv for n in range(2, 10)), "설정: 버전 표시")
         await pg.click("[data-unreport]")
         st = await pg.evaluate(GET)
         c(len(st.get("reports", [])) == 0, "신고 취소")
