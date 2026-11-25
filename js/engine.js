@@ -39,6 +39,14 @@ const VOCAB_SKILLS = {
   p6grammar: { grammar: 1 }, // 장문 빈칸 문법
   p6conn: { grammar: 0.5, reading: 0.5 }, // 연결어 (문맥)
   p6sent: { reading: 1 }, // 문장 넣기
+  p7main: { reading: 1 }, // 독해 주제·목적
+  p7detail: { reading: 1 }, // 세부 정보
+  p7not: { reading: 1 }, // NOT·TRUE
+  p7infer: { reading: 1 }, // 추론
+  p7syn: { vocab: 0.5, reading: 0.5 }, // 동의어
+  p7insert: { reading: 1 }, // 문장 위치
+  p7intent: { reading: 1 }, // 의도 파악
+  p7link: { reading: 1 }, // 연계 (두 지문)
   lc2: { lc_qr: 1 }, // 듣기 Part 2
   lc3: { lc_conv: 1 }, // 듣기 Part 3
   lc4: { lc_talk: 1 }, // 듣기 Part 4

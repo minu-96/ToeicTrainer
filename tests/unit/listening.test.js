@@ -6,10 +6,12 @@ import * as Vocab from '../../js/vocab.js';
 import * as E from '../../js/engine.js';
 import * as srs from '../../js/srs.js';
 
-const { part2, sets } = JSON.parse(readFileSync('data/listening.json', 'utf8'));
+const { part2: allP2, sets } = JSON.parse(readFileSync('data/listening.json', 'utf8'));
+const part2 = allP2.filter((q) => !q.test);
+const testP2 = allP2.filter((q) => q.test);
 const T = srs.today();
 
-test('듣기 데이터: Part 2 90문제(수준별 30), Part 3·4 각 12세트, 세트마다 3문제', () => {
+test('듣기 데이터: Part 2 90문제(수준별 30), Part 3 16세트·Part 4 15세트, 세트마다 3문제', () => {
   assert.equal(part2.length, 90);
   for (const lv of ['basic', 'mid', 'adv']) assert.equal(part2.filter((q) => q.level === lv).length, 30);
   assert.equal(new Set(part2.map((q) => q.id)).size, 90);
@@ -19,8 +21,8 @@ test('듣기 데이터: Part 2 90문제(수준별 30), Part 3·4 각 12세트, �
     assert.equal(new Set(q.choices).size, 3);
     for (const k of Object.keys(q.traps)) assert.notEqual(Number(k), q.answer, q.id + ' 정답에 함정 표시');
   }
-  assert.equal(sets.filter((s) => s.part === 3).length, 12);
-  assert.equal(sets.filter((s) => s.part === 4).length, 12);
+  assert.equal(sets.filter((s) => s.part === 3).length, 16);
+  assert.equal(sets.filter((s) => s.part === 4).length, 15);
   assert.ok(sets.filter((s) => s.lines.some((l) => l.who === 'M2')).length >= 2, '3인 대화 2세트 이상');
   for (const s of sets) {
     assert.equal(s.questions.length, 3);
@@ -67,4 +69,37 @@ test('듣기 점수: LC 영역에 반영되지만 무게는 낮고, 대본 보�
   const st2 = { attempts: [], qprog: {}, reports: [], studyDays: [], mocks: [], settings: { level: 'low' } };
   for (const q of part2) Vocab.record(st2, { ...q, targetMs: LC.LC_TARGET_MS }, true, 4000, T, 'lc2', { scripted: true });
   assert.equal(E.estimate(st2, null, { range: false }).lc.score, base.lc.score);
+});
+
+test('실전형 세트: 시각 자료 표와 화자 의도 문제', () => {
+  const g = sets.filter((s) => s.graphic);
+  assert.ok(g.length >= 4);
+  for (const s of g) {
+    assert.ok(s.graphic.head.length >= 2 && s.graphic.rows.length >= 3, s.id);
+    for (const r of s.graphic.rows) assert.equal(r.length, s.graphic.head.length, s.id);
+    const gq = s.questions.find((q) => q.stem.startsWith('Look at the graphic'));
+    assert.ok(gq, s.id + ' 시각 자료 문제');
+    // 정답 보기가 표 안에 있어야 함
+    const cells = s.graphic.rows.flat().join(' ');
+    assert.ok(cells.includes(gq.choices[gq.answer].replace(/^Room /, '')), s.id);
+  }
+  const intent = sets.flatMap((s) => s.questions).filter((q) => /says?, "|mean when|imply when/.test(q.stem));
+  assert.ok(intent.length >= 3, '화자 의도 3문제 이상');
+  assert.ok(sets.filter((s) => s.part === 3 && s.lines.length >= 7).length >= 3, '긴 대화(7줄 이상) 3세트 이상');
+  const pos = [0, 1, 2, 3].map((k) => sets.flatMap((s) => s.questions).filter((q) => q.answer === k).length);
+  assert.ok(Math.min(...pos) >= 15, '세트 문제 정답이 A~D에 골고루');
+});
+
+test('진단 듣기: 수준별 1문제, 연습에는 안 나옴', () => {
+  assert.equal(testP2.length, 3);
+  for (const lv of ['basic', 'mid', 'adv']) assert.equal(testP2.filter((q) => q.level === lv).length, 1);
+  for (const q of testP2) {
+    assert.equal(q.choices.length, 3);
+    assert.equal(Vocab.areaOf(q), 'listening');
+  }
+  const st = { attempts: [], qprog: {}, reports: [], studyDays: [] };
+  const v = Vocab.view(testP2[0]);
+  assert.equal(v.choices.length, 3);
+  assert.equal(v.choices[v.answer], testP2[0].choices[testP2[0].answer]);
+  assert.ok(LC.buildPart2(st, part2, {}, T, 100).every((q) => !q.test));
 });

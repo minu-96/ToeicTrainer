@@ -18,6 +18,7 @@ let filter = null; // 아는 단어 거르기 진행 상태
 let bank = []; // 문제 은행 (어휘 + 바꿔 쓰는 표현 + 문법)
 let concepts = []; // 문법 개념 카드
 let p6sets = []; // 장문 빈칸 지문
+let p7sets = []; // 독해 지문
 let lcP2 = []; // 듣기 Part 2
 let lcSets = []; // 듣기 Part 3·4
 let lcs = null; // 듣기 진행 상태
@@ -169,7 +170,7 @@ function render() {
   });
   document.body.classList.toggle('studying', ['study', 'filter', 'welcome', 'vq', 'lc'].includes(view));
 
-  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : vqs?.mode === 'p6' || vqs?.items?.[vqs.i]?.part === 6 ? '장문 빈칸' : '어휘 문제', concept: '문법 개념', lc: '듣기' };
+  const titles = { home: '토익 트레이너', words: '단어', settings: '설정', filter: '아는 단어 거르기', welcome: '토익 트레이너', quiz: '문제', stats: '성장 기록', scores: '성적 기록', notes: '오답노트', vq: vqs?.mode === 'test' ? '수준 진단' : vqs?.mode === 'wrong' ? '오답 다시 풀기' : vqs?.mode === 'speed' ? '스피드 모드' : vqs?.mode === 'gdaily' || Vocab.GRAMMAR_TYPES[vqs?.type] ? '문법 문제' : vqs?.mode === 'p6' || vqs?.items?.[vqs.i]?.part === 6 ? '장문 빈칸' : vqs?.mode === 'p7' || vqs?.items?.[vqs.i]?.module === 'part7' ? '독해' : '어휘 문제', concept: '문법 개념', lc: '듣기' };
   $title.textContent = view === 'study' ? SESSION_TITLE[session?.kind] || '학습' : titles[view] || SOON[view]?.title || '토익 트레이너';
 
   if (view === 'home') renderHome();
@@ -1309,7 +1310,7 @@ function renderSettings() {
       <button class="btn ghost danger-text" id="reset">모든 학습 기록 지우기</button>
     </section>
 
-    <p class="version">토익 트레이너 v4.1 · 단어 · 어휘 · 문법 · 장문 빈칸 · 듣기</p>
+    <p class="version">토익 트레이너 v5 · 단어 · 어휘 · 문법 · 장문 빈칸 · 독해 · 듣기</p>
   `;
 
   const num = (id, min, max) => {
@@ -1515,6 +1516,26 @@ function p6Card() {
       <ul class="p6-rates">${rated.join('')}</ul>
       <button class="btn primary wide" data-vq="p6">지문 1개 풀기 · 4문제 약 2분</button>
       <p class="hint">틀린 빈칸이 있는 지문은 다음 날 다시 나와요.</p>
+    </section>`;
+}
+
+function p7Card() {
+  if (!p7sets.length) return '';
+  const doneSets = p7sets.filter((set) => set.questions.every((id) => state.qprog[id])).length;
+  const st = Vocab.typeStats(state, 'part7');
+  const tiles = Object.entries(Vocab.PART7_TYPES)
+    .map(([k, v]) => {
+      const r = st[k];
+      return `<li><span>${v.name}</span><b class="rate ${r.rate === null ? '' : r.rate < 0.6 ? 'low' : r.rate < 0.8 ? 'mid' : 'high'}">${r.rate === null ? '-' : Math.round(r.rate * 100) + '%'}</b></li>`;
+    })
+    .join('');
+  const singles = p7sets.filter((x) => !x.double).length;
+  return `<section class="card">
+      <h2>독해 <small>Part 7 · 지문 ${doneSets}/${p7sets.length}</small></h2>
+      <p class="hint">단일 지문 ${singles}개 · 이중 지문 ${p7sets.length - singles}개 · 문제당 1분. 답을 고르면 근거 문장을 지문에 표시해 줘요.</p>
+      <ul class="p6-rates">${tiles}</ul>
+      <button class="btn primary wide" data-vq="p7">지문 1개 풀기 · 2~5문제</button>
+      <p class="hint">문제를 먼저 읽고, 지문에서 핵심어를 찾아가는 순서로 풀어 보세요. 틀린 문제가 있는 지문은 다음 날 다시 나와요.</p>
     </section>`;
 }
 
@@ -1835,6 +1856,13 @@ function renderLC2() {
   );
 }
 
+// 시각 자료 문제용 표
+function lcGraphic(g) {
+  return `<figure class="lc-graphic"><figcaption>${esc(g.title)}</figcaption><table><thead><tr>${g.head.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${g.rows
+    .map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`)
+    .join('')}</tbody></table></figure>`;
+}
+
 // Part 3·4: 문제 먼저 읽기 → 듣기(들으면서 고르기) → 채점·대본
 function renderLCSet() {
   const set = lcs.set;
@@ -1855,6 +1883,7 @@ function renderLCSet() {
           : `<p class="q-label">들으면서 답을 고르세요</p><button class="btn ghost lc-play" id="lc-play"></button>`
       }
     </article>
+    ${set.graphic ? lcGraphic(set.graphic) : ''}
     <ol class="lc-qs">
       ${qs
         .map((q) => {
@@ -2039,6 +2068,7 @@ function renderQuizHome() {
     ['vocab', '어휘'],
     ['grammar', '문법'],
     ['part6', '장문 빈칸'],
+    ['part7', '독해'],
     ['lc', '듣기'],
   ];
   let body = '';
@@ -2062,6 +2092,8 @@ function renderQuizHome() {
       </section>`;
   } else if (tab === 'part6') {
     body = p6Card();
+  } else if (tab === 'part7') {
+    body = p7Card();
   } else {
     body = lcCard();
   }
@@ -2070,9 +2102,8 @@ function renderQuizHome() {
     ${body}
     <div class="tool-row">
       <button class="tool" data-vq="speed"><b>스피드 모드</b><small>${Vocab.SPEED.n}문제 · ${Vocab.SPEED.ms / 60000}분${speedBest() ? ` · 최고 ${speedBest()}` : ''}</small></button>
-      <button class="tool" data-vq="test"><b>3분 수준 진단</b><small>어휘 9 · 문법 6</small></button>
-    </div>
-    <p class="hint center">독해(Part 7)는 다음 버전에 추가돼요.</p>`;
+      <button class="tool" data-vq="test"><b>3분 수준 진단</b><small>어휘 9 · 문법 6 · 듣기 3</small></button>
+    </div>`;
   $view.querySelectorAll('[data-qtab]').forEach((b) =>
     b.addEventListener('click', () => {
       ui.quizTab = b.dataset.qtab;
@@ -2090,6 +2121,7 @@ function startVQ(mode, type, opts = {}) {
   if (mode === 'type' && Vocab.GRAMMAR_TYPES[type] && !opts.skipConcept && !(state.settings.conceptsSeen || []).includes(type) && concepts.some((c) => c.id === type)) return openConcept(type, 'start');
   if (mode === 'daily') items = Vocab.buildDaily(state, bank, state.settings, t, Math.max(5, goals(t).vocab - questionsToday(t, 'vocab')) || goals(t).vocab);
   else if (mode === 'p6') items = Vocab.buildP6(state, p6sets, bank, state.settings, t, 1);
+  else if (mode === 'p7') items = Vocab.buildP7(state, p7sets, bank, state.settings, t, 1);
   else if (mode === 'gdaily') items = Vocab.buildDaily(state, bank, state.settings, t, Math.max(5, goals(t).grammar - questionsToday(t, 'grammar')), 'grammar');
   else if (mode === 'type') items = Vocab.buildType(state, bank, type, state.settings, t);
   else if (mode === 'wrong') items = Vocab.buildWrong(state, bank);
@@ -2111,6 +2143,38 @@ function vqPrepare() {
   vqs.answered = null;
   vqs.reason = null;
   vqs.shownAt = performance.now();
+  vqs.plays = 0;
+  vqStopAudio();
+  // 독해: 새 지문이면 첫 문서부터
+  if (q?.module === 'part7' && vqs.p7set !== q.set) {
+    vqs.p7set = q.set;
+    vqs.p7doc = 0;
+  }
+}
+
+let vqAudio = null;
+function vqStopAudio() {
+  vqAudio?.stop();
+  vqAudio = null;
+}
+
+// 진단 듣기: 질문 + 응답 A·B·C (보기 순서는 화면과 같게)
+function vqPlay() {
+  if (!vqs) return;
+  const q = vqs.items[vqs.i];
+  vqStopAudio();
+  vqs.plays++;
+  const lines = [{ who: 'M', text: q.q }, ...vqs.view.choices.map((c, i) => ({ who: 'W', text: `${'ABC'[i]}. ${c}` }))];
+  const btn = $view.querySelector('#vq-play');
+  if (btn) btn.innerHTML = '<span class="eq"><i></i><i></i><i></i></span> 재생 중';
+  const me = (vqAudio = tts.speakLines(lines, { rate: Number(state.settings.lcRate) || 1, mix: state.settings.lcAccentMix !== false }));
+  me.done.then(() => {
+    if (vqAudio !== me || !vqs) return;
+    vqAudio = null;
+    vqs.shownAt = performance.now(); // 다 들은 뒤부터 시간 재기
+    const b = $view.querySelector('#vq-play');
+    if (b) b.textContent = '▶ 다시 듣기';
+  });
 }
 
 function renderVQ() {
@@ -2124,6 +2188,8 @@ function renderVQ() {
   const isSpeed = vqs.mode === 'speed';
   const isPara = q.type === 'para';
   const isP6 = q.part === 6;
+  const isP7 = q.module === 'part7';
+  const isLC = q.module === 'listening';
   const [before, after] = isPara ? q.stem.split('[' + q.target + ']') : q.stem.split('____');
   const answerText = q.choices[q.answer];
 
@@ -2131,7 +2197,8 @@ function renderVQ() {
     .map((c, idx) => {
       let cls = '';
       if (a) cls = idx === v.answer ? 'correct' : idx === a.choice ? 'wrong' : 'dim';
-      return `<button class="option ${cls}" data-choice="${idx}" ${a ? 'disabled' : ''}><span class="num">${idx + 1}</span>${esc(c)}</button>`;
+      if (isLC) return `<button class="option ${cls}" data-choice="${idx}" ${a ? 'disabled' : ''}><span class="num">${'ABC'[idx]}</span>${a ? esc(c) : ''}</button>`;
+      return `<button class="option ${cls}" data-choice="${idx}" ${a ? 'disabled' : ''}><span class="num">${isP7 ? 'ABCD'[idx] : idx + 1}</span>${esc(c)}</button>`;
     })
     .join('');
 
@@ -2154,6 +2221,13 @@ function renderVQ() {
       ${
         isP6
           ? p6Passage(q, a)
+          : isP7
+          ? p7Passage(q, a)
+          : isLC
+          ? `<p class="q-label">질문을 듣고 가장 알맞은 응답을 고르세요</p>
+             <p class="hint">소리를 켜고 듣기를 누르세요. 질문과 응답 A·B·C가 음성으로만 나와요.</p>
+             <button class="btn ghost lc-play" id="vq-play">${vqs.plays ? '▶ 다시 듣기' : '▶ 듣기'}</button>
+             ${a ? `<p class="lc-q">${esc(q.q)}</p>` : ''}`
           : isPara
           ? `<p class="q-label">밑줄 친 단어와 뜻이 가장 가까운 것을 고르세요</p>
              <p class="cloze left">${esc(before)}<u class="para-word">${esc(q.target)}</u>${a ? ` <mark>≈ ${esc(answerText)}</mark>` : ''}${esc(after)}</p>`
@@ -2163,7 +2237,7 @@ function renderVQ() {
     </article>
     <div class="answer-area">
       <div class="options">${options}</div>
-      ${!a ? `<button class="link-btn" data-act="dontknow">모르겠어요</button>` : isTest || isSpeed ? '' : explainBlock(q, v, a)}
+      ${!a ? `<button class="link-btn" data-act="dontknow">${isLC && isTest ? '소리가 안 나면 건너뛰기' : '모르겠어요'}</button>` : isTest || isSpeed ? '' : explainBlock(q, v, a)}
     </div>
     ${a && !isTest && !isSpeed ? vqBar(a) : ''}`;
   document.body.classList.toggle('has-bar', !!(a && !isTest && !isSpeed));
@@ -2173,11 +2247,21 @@ function renderVQ() {
     if (opt) window.scrollTo({ top: Math.max(0, opt.getBoundingClientRect().top + window.scrollY - 140), behavior: 'smooth' });
   }
   // 장문 빈칸: 지문 상자 안에서 지금 빈칸이 보이게
-  const curBlank = $view.querySelector('.p6-blank.cur, mark.p6-cur');
-  const pbox = $view.querySelector('.p6-passage');
+  const curBlank = $view.querySelector('.p6-blank.cur, mark.p6-cur, .p7-ev, .p7-hl');
+  const pbox = $view.querySelector('.p6-passage, .p7-passage');
   if (curBlank && pbox) pbox.scrollTop = Math.max(0, curBlank.offsetTop - pbox.offsetTop - pbox.clientHeight / 3);
+  $view.querySelectorAll('[data-p7doc]').forEach((b) =>
+    b.addEventListener('click', () => {
+      vqs.p7doc = Number(b.dataset.p7doc);
+      const y = window.scrollY;
+      renderVQ();
+      window.scrollTo(0, y);
+    }),
+  );
+  $view.querySelector('#vq-play')?.addEventListener('click', vqPlay);
 
   $view.querySelector('#quit').addEventListener('click', () => {
+    vqStopAudio();
     const back = vqs.fromWelcome ? 'welcome' : ['home', 'quiz', 'settings'].includes(vqs.origin) ? vqs.origin : 'quiz';
     vqs = null;
     clearInterval(vqTimer);
@@ -2185,7 +2269,16 @@ function renderVQ() {
     toast('여기까지 저장했어요');
   });
   $view.querySelectorAll('[data-choice]').forEach((b) => b.addEventListener('click', () => vqChoose(Number(b.dataset.choice))));
-  $view.querySelector('[data-act=dontknow]')?.addEventListener('click', () => vqChoose(-1));
+  $view.querySelector('[data-act=dontknow]')?.addEventListener('click', () => {
+    // 진단 듣기에서 소리가 안 나면 그 문제는 빼고 넘어감
+    if (isLC && isTest) {
+      vqStopAudio();
+      vqs.items.splice(vqs.i, 1);
+      vqPrepare();
+      return renderVQ();
+    }
+    vqChoose(-1);
+  });
   $view.querySelector('#vq-next')?.addEventListener('click', vqNext);
   bindReportBox();
   bindConceptButtons();
@@ -2234,6 +2327,48 @@ function p6Passage(q, a) {
     .replace(/\n/g, '<br>');
   return `<p class="q-label">${esc(set.kind)} · 빈칸 (${q.n})에 ${q.type === 'p6sent' ? '들어갈 문장을' : '알맞은 것을'} 고르세요</p>
     <div class="p6-passage">${html}</div>`;
+}
+
+// 독해: 문서(이중 지문이면 탭) + 문장 단위. 답한 뒤에는 근거 문장 강조
+const P7_LINE = /^(To|From|Date|Subject|Dear|Sincerely|Best regards|Thank you,|\d{1,2}:\d{2})/;
+function p7Passage(q, a) {
+  const set = p7sets.find((x) => x.id === q.set);
+  if (!set) return '';
+  const ev = q.ev || [];
+  if (a && ev.length) {
+    const d = Number(ev[0].split('-')[0]);
+    if (vqs.p7docAuto !== q.id) {
+      vqs.p7doc = d;
+      vqs.p7docAuto = q.id;
+    }
+  }
+  const di = Math.min(vqs.p7doc || 0, set.docs.length - 1);
+  const doc = set.docs[di];
+  const insertText = q.qtype === 'insert' ? (q.stem.match(/"([^"]+)"/) || [])[1] : null;
+  const chat = /대화|채팅|일정|광고/.test(doc.kind); // 줄 단위로 읽는 문서
+  const html = doc.sents
+    .map((s, i) => {
+      const key = `${di}-${i}`;
+      const m = s.match(/^\[(\d)\]$/);
+      if (m) {
+        const n = Number(m[1]);
+        if (a && insertText && n === q.answer + 1) return ` <mark class="p7-ins">[${n}] ${esc(insertText)}</mark> `;
+        return ` <b class="p7-mark">[${n}]</b> `;
+      }
+      let t = esc(s);
+      if (q.word && ev.includes(key)) t = t.replace(new RegExp(`\\b(${q.word})\\b`, 'i'), '<u class="para-word">$1</u>');
+      const cls = a && ev.includes(key) ? 'p7-ev' : !a && q.word && ev.includes(key) ? 'p7-hl' : '';
+      const block = chat || P7_LINE.test(s);
+      return `<span class="p7-s ${cls} ${block ? 'line' : ''}" data-s="${key}">${t}</span>${block ? '' : ' '}`;
+    })
+    .join('');
+  const tabs = set.docs.length > 1 ? `<div class="p7-tabs">${set.docs.map((d, i) => `<button class="${i === di ? 'on' : ''}" data-p7doc="${i}">${i + 1}. ${esc(d.kind)}</button>`).join('')}</div>` : '';
+  const evOther = a && ev.some((e) => Number(e.split('-')[0]) !== di);
+  return `<p class="q-label">${esc(doc.kind)}${set.docs.length > 1 ? ' · 두 지문' : ''} · ${set.questions.indexOf(q.id) + 1}/${set.questions.length}번</p>
+    ${tabs}
+    <div class="p7-passage"><p class="p7-title">${esc(doc.title)}</p>${html}</div>
+    ${evOther ? `<p class="hint">다른 지문에도 근거가 있어요. 위 탭을 눌러 보세요.</p>` : ''}
+    <p class="p7-q">${esc(q.stem)}</p>`;
 }
 
 function speedLeft() {
@@ -2338,6 +2473,15 @@ function bindReportBox(root = $view, rerender = () => render()) {
 function explainBlock(q, v, a) {
   const sec = Math.round(a.timeMs / 1000);
   const target = q.targetMs || Vocab.TARGET_MS;
+  if (q.module === 'part7')
+    return `
+    <section class="explain ${a.ok ? 'ok' : 'ng'}">
+      <p class="explain-head">${a.ok ? '정답!' : a.choice < 0 ? '정답을 확인하세요' : '아쉬워요'}
+        <small>${sec}초${a.timeMs > target ? ` · 목표 ${Math.round(target / 1000)}초 넘음` : ''}</small></p>
+      <p class="clue"><b>근거</b>지문에 노란색으로 표시한 문장${q.qtype === 'link' ? ' (두 지문 모두 확인)' : ''}</p>
+      <p class="exp">${esc(q.explanation)}</p>
+      ${reportBox('question', q.id)}
+    </section>`;
   return `
     <section class="explain ${a.ok ? 'ok' : 'ng'}">
       <p class="explain-head">${a.ok ? '정답!' : a.choice < 0 ? '정답을 확인하세요' : '아쉬워요'}
@@ -2374,6 +2518,7 @@ function vqBar(a) {
 function vqChoose(idx) {
   if (!vqs || vqs.answered) return;
   clearInterval(vqTimer);
+  vqStopAudio();
   const q = vqs.items[vqs.i];
   const ok = idx === vqs.view.answer;
   const timeMs = Math.round(performance.now() - vqs.shownAt);
@@ -2398,6 +2543,7 @@ function vqChoose(idx) {
 
 function vqNext() {
   if (!vqs || !vqs.answered || vqs.i >= vqs.items.length) return;
+  vqStopAudio();
   vqs.i++;
   vqPrepare();
   renderVQ();
@@ -2441,13 +2587,13 @@ function renderVQSummary() {
           .join('')}
       </ul>
       ${added ? `<p class="hint">틀린 문제의 정답 단어 ${added}개를 단어장에 추가했어요.</p>` : ''}
-      <button class="btn ${(mode === 'daily' || mode === 'gdaily') && nextTask(srs.today(), mode === 'daily' ? 'vocab' : 'grammar') ? 'ghost wide' : 'primary big'}" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' || mode === 'gdaily' ? '10문제 더 풀기' : mode === 'p6' ? '다음 지문 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : mode === 'speed' ? '한 번 더 도전' : '이 유형 더 풀기'}</button>
+      <button class="btn ${(mode === 'daily' || mode === 'gdaily') && nextTask(srs.today(), mode === 'daily' ? 'vocab' : 'grammar') ? 'ghost wide' : 'primary big'}" data-vq="${mode}" ${type ? `data-type="${type}"` : ''}>${mode === 'daily' || mode === 'gdaily' ? '10문제 더 풀기' : mode === 'p6' || mode === 'p7' ? '다음 지문 풀기' : mode === 'wrong' ? '남은 오답 다시 풀기' : mode === 'speed' ? '한 번 더 도전' : '이 유형 더 풀기'}</button>
       <button class="btn ghost wide home-btn" data-go="${mode === 'wrong' ? 'notes' : 'quiz'}">${mode === 'wrong' ? '오답노트로' : '문제 홈으로'}</button>
     </section>
     ${
       wrong.length
         ? `<section class="card"><h2>틀린 문제</h2><ul class="wrong-list">
-            ${wrong.map((x) => `<li><p>${esc(x.q.stem.replace('____', '[' + x.q.choices[x.q.answer] + ']'))}</p><small>${esc(x.q.clue)}</small></li>`).join('')}
+            ${wrong.map((x) => `<li><p>${esc(x.q.stem.replace('____', '[' + x.q.choices[x.q.answer] + ']'))}</p><small>${esc(x.q.clue || x.q.explanation)}</small></li>`).join('')}
           </ul><p class="hint">틀린 문제는 내일 오늘의 어휘 문제에 다시 나와요.</p></section>`
         : ''
     }${
@@ -2523,7 +2669,8 @@ function renderTestResult() {
     const l = vqs.results.filter((x) => Vocab.areaOf(x.q) === area);
     return `${l.filter((x) => x.ok).length}/${l.length}`;
   };
-  const areaLine = `어휘 ${byArea('vocab')} · 문법 ${byArea('grammar')}`;
+  const hasLc = vqs.results.some((x) => Vocab.areaOf(x.q) === 'listening');
+  const areaLine = `어휘 ${byArea('vocab')} · 문법 ${byArea('grammar')}${hasLc ? ` · 듣기 ${byArea('listening')}` : ''}`;
   vqs = null;
   $view.innerHTML = `
     <section class="hero done">
@@ -2539,7 +2686,7 @@ function renderTestResult() {
       <button class="btn primary big" id="apply">${fromWelcome ? '이 수준으로 시작하기' : '이 수준으로 설정 바꾸기'}</button>
       <button class="btn ghost wide home-btn" id="skip">${fromWelcome ? '직접 고를게요' : '그대로 둘게요'}</button>
     </section>
-    <p class="hint center">진단은 연습에 나오지 않는 전용 15문제(어휘 9 · 문법 6)로 봐요. 다시 봐도 같은 기준으로 비교할 수 있어요.</p>`;
+    <p class="hint center">진단은 연습에 나오지 않는 전용 문제(어휘 9 · 문법 6 · 듣기 3)로 봐요. 다시 봐도 같은 기준으로 비교할 수 있어요.</p>`;
   $view.querySelector('#apply').addEventListener('click', () => {
     Object.assign(state.settings, {
       level: lv.id,
@@ -2890,14 +3037,22 @@ async function loadBuiltin() {
     const lres = await fetch('./data/listening.json');
     if (lres.ok) {
       const l = await lres.json();
-      lcP2 = l.part2;
+      lcP2 = l.part2.filter((q) => !q.test);
       lcSets = l.sets;
+      bank = bank.concat(l.part2.filter((q) => q.test)); // 진단 전용 듣기
+
     }
     const p6res = await fetch('./data/part6.json');
     if (p6res.ok) {
       const p6 = await p6res.json();
       p6sets = p6.sets;
       bank = bank.concat(p6.questions);
+    }
+    const p7res = await fetch('./data/part7.json');
+    if (p7res.ok) {
+      const p7 = await p7res.json();
+      p7sets = p7.sets;
+      bank = bank.concat(p7.questions);
     }
   } catch (e) {
     console.warn('내장 단어를 불러오지 못했어요', e);

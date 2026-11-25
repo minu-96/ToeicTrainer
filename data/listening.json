@@ -2069,6 +2069,78 @@
    "explanation": "아직이라는 걸 이유(잉크가 떨어짐)로 돌려 답했어요.",
    "qko": "안내 책자 아직 인쇄 안 됐어요?",
    "ako": "오늘 아침에 프린터 잉크가 떨어졌어요."
+  },
+  {
+   "id": "l2-t1",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "where",
+   "level": "basic",
+   "q": "Where is the meeting room?",
+   "stem": "Where is the meeting room?",
+   "choices": [
+    "On the second floor.",
+    "At three o'clock.",
+    "Yes, it is."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "질문과 안 맞는 답",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "Where 질문에 장소로 답했어요.",
+   "qko": "회의실이 어디예요?",
+   "ako": "2층이에요.",
+   "test": true
+  },
+  {
+   "id": "l2-t2",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "indirect",
+   "level": "mid",
+   "q": "Who will give the presentation tomorrow?",
+   "stem": "Who will give the presentation tomorrow?",
+   "choices": [
+    "The schedule hasn't been decided.",
+    "It was a good present.",
+    "Tomorrow morning."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "비슷한 발음",
+    "2": "질문과 안 맞는 답"
+   },
+   "explanation": "아직 정해지지 않았다는 간접 응답이에요.",
+   "qko": "내일 발표는 누가 해요?",
+   "ako": "일정이 아직 안 정해졌어요.",
+   "test": true
+  },
+  {
+   "id": "l2-t3",
+   "part": 2,
+   "module": "listening",
+   "type": "lc2",
+   "qtype": "negative",
+   "level": "adv",
+   "q": "Didn't you already submit the expense report?",
+   "stem": "Didn't you already submit the expense report?",
+   "choices": [
+    "I'm still waiting for one receipt.",
+    "The report was long.",
+    "Expensive items."
+   ],
+   "answer": 0,
+   "traps": {
+    "1": "같은 단어 반복",
+    "2": "비슷한 발음"
+   },
+   "explanation": "아직 안 냈다는 걸 이유(영수증 하나를 기다림)로 돌려 답했어요.",
+   "qko": "경비 보고서 이미 내지 않았어요?",
+   "ako": "영수증 하나를 아직 기다리고 있어요.",
+   "test": true
   }
  ],
  "sets": [
@@ -2143,12 +2215,12 @@
      "n": 3,
      "stem": "When will the order probably arrive?",
      "choices": [
+      "Next week",
       "This afternoon",
       "Tomorrow",
-      "By Thursday",
-      "Next week"
+      "By Thursday"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "마지막 말 It should arrive by Thursday. next week는 발표 시점이라 함정이에요."
     }
    ]
@@ -2192,12 +2264,12 @@
      "n": 1,
      "stem": "Why is the woman calling?",
      "choices": [
-      "To cancel an order",
       "To make a reservation",
       "To ask for directions",
-      "To complain about a meal"
+      "To complain about a meal",
+      "To cancel an order"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "I'd like to book a table = 예약하고 싶다. book을 reservation으로 바꿔 말했어요."
     },
     {
@@ -2273,12 +2345,12 @@
      "n": 1,
      "stem": "What are the speakers mainly discussing?",
      "choices": [
-      "A new computer system",
-      "A schedule change",
       "A job interview",
-      "A team dinner"
+      "A team dinner",
+      "A new computer system",
+      "A schedule change"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "교육 일정이 월요일에서 수요일로 바뀐 이야기예요. has been moved = 일정 변경."
     },
     {
@@ -2291,12 +2363,12 @@
      "n": 2,
      "stem": "Why was the training moved?",
      "choices": [
-      "The room was too small.",
-      "The software was not ready.",
       "The trainer is unavailable.",
-      "Many people were absent."
+      "Many people were absent.",
+      "The room was too small.",
+      "The software was not ready."
      ],
-     "answer": 2,
+     "answer": 0,
      "explanation": "the trainer has a conflict(강사 일정이 겹친다) = 강사가 시간이 안 된다(unavailable). 바꿔 말하기예요."
     },
     {
@@ -2309,12 +2381,12 @@
      "n": 3,
      "stem": "What will the woman most likely do next?",
      "choices": [
+      "Cancel the training",
       "Contact her team members",
       "Go to Room 305",
-      "Call the IT department",
-      "Cancel the training"
+      "Call the IT department"
      ],
-     "answer": 0,
+     "answer": 1,
      "explanation": "I'll send my team an update = 팀원들에게 알리겠다."
     }
    ]
@@ -2358,12 +2430,12 @@
      "n": 1,
      "stem": "What is the conversation mainly about?",
      "choices": [
+      "A new project",
       "Hiring movers",
       "An office relocation",
-      "A client complaint",
-      "A new project"
+      "A client complaint"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "moving to the fifth floor = 사무실 이전(relocation)."
     },
     {
@@ -2376,12 +2448,12 @@
      "n": 2,
      "stem": "When will the move take place?",
      "choices": [
+      "At the end of the month",
       "On the tenth",
       "On the twelfth",
-      "On the fifteenth",
-      "At the end of the month"
+      "On the fifteenth"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "The move is set for the fifteenth. 10일은 이름표 마감, 12일은 고객 방문이라 함정이에요."
     },
     {
@@ -2394,12 +2466,12 @@
      "n": 3,
      "stem": "What are the men asked to do?",
      "choices": [
-      "Pack their own files",
       "Label their boxes",
       "Meet a client",
-      "Choose a new office"
+      "Choose a new office",
+      "Pack their own files"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "please label your boxes by the tenth. 짐은 업체가 싸 준다고 했으니 A는 틀려요."
     }
    ]
@@ -2457,12 +2529,12 @@
      "n": 2,
      "stem": "What does the man suggest?",
      "choices": [
+      "Asking for a bigger budget",
       "Finding a new caterer",
       "Changing the menu",
-      "Postponing the event",
-      "Asking for a bigger budget"
+      "Postponing the event"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "요리를 줄이고 샐러드를 늘리자 = 메뉴를 바꾸자(changing the menu)."
     },
     {
@@ -2475,12 +2547,12 @@
      "n": 3,
      "stem": "What will the speakers do on Friday?",
      "choices": [
+      "Sign a contract",
       "Hold the anniversary event",
       "Meet the catering company",
-      "Show options to the finance team",
-      "Sign a contract"
+      "Show options to the finance team"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "present both options to finance on Friday."
     }
    ]
@@ -2524,12 +2596,12 @@
      "n": 1,
      "stem": "Why is the man calling?",
      "choices": [
-      "To change his address",
       "To report a service problem",
       "To cancel his contract",
-      "To order a new router"
+      "To order a new router",
+      "To change his address"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "인터넷이 계속 끊긴다고 문제를 알리러 전화했어요."
     },
     {
@@ -2542,12 +2614,12 @@
      "n": 2,
      "stem": "What does the woman ask the man to do?",
      "choices": [
+      "Call back on Tuesday",
       "Restart a device",
       "Visit a store",
-      "Pay a bill",
-      "Call back on Tuesday"
+      "Pay a bill"
      ],
-     "answer": 0,
+     "answer": 1,
      "explanation": "restart your router = 기기를 다시 켜라. router를 device로 바꿔 말했어요."
     },
     {
@@ -2560,12 +2632,12 @@
      "n": 3,
      "stem": "What does the woman say about the technician visit?",
      "choices": [
+      "It is fully booked.",
       "It will happen on Tuesday.",
       "It will be free.",
-      "It requires a deposit.",
-      "It is fully booked."
+      "It requires a deposit."
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "There's no charge = 무료(free)."
     }
    ]
@@ -2593,12 +2665,12 @@
      "n": 1,
      "stem": "Where is the announcement being made?",
      "choices": [
-      "At an airport",
-      "At a department store",
       "At a restaurant",
-      "At a train station"
+      "At a train station",
+      "At an airport",
+      "At a department store"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "shoppers, Parkview Department Store로 장소를 알 수 있어요."
     },
     {
@@ -2611,12 +2683,12 @@
      "n": 2,
      "stem": "What is on sale?",
      "choices": [
-      "Shoes",
-      "Scarves",
       "Winter coats",
-      "Bags"
+      "Bags",
+      "Shoes",
+      "Scarves"
      ],
-     "answer": 2,
+     "answer": 0,
      "explanation": "all winter coats are fifty percent off. 목도리는 사은품이라 함정이에요."
     },
     {
@@ -2629,12 +2701,12 @@
      "n": 3,
      "stem": "How can customers get a free gift?",
      "choices": [
+      "By shopping before nine",
       "By spending over one hundred dollars",
       "By visiting the second floor",
-      "By signing up for a card",
-      "By shopping before nine"
+      "By signing up for a card"
      ],
-     "answer": 0,
+     "answer": 1,
      "explanation": "customers who spend more than one hundred dollars will receive a free scarf."
     }
    ]
@@ -2662,12 +2734,12 @@
      "n": 1,
      "stem": "What is the purpose of the call?",
      "choices": [
+      "To change a clinic's hours",
       "To confirm a payment",
       "To remind someone of an appointment",
-      "To introduce a new doctor",
-      "To change a clinic's hours"
+      "To introduce a new doctor"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "I'm calling to remind you of your appointment."
     },
     {
@@ -2680,12 +2752,12 @@
      "n": 2,
      "stem": "Why should the listener arrive early?",
      "choices": [
-      "To meet the doctor",
-      "To complete paperwork",
       "To find parking",
-      "To pay a fee"
+      "To pay a fee",
+      "To meet the doctor",
+      "To complete paperwork"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "to fill out some forms = 서류 작성(complete paperwork). 바꿔 말하기예요."
     },
     {
@@ -2698,12 +2770,12 @@
      "n": 3,
      "stem": "What should the listener do to reschedule?",
      "choices": [
-      "Send an e-mail",
-      "Visit the clinic",
       "Call before noon",
-      "Reply to a text message"
+      "Reply to a text message",
+      "Send an e-mail",
+      "Visit the clinic"
      ],
-     "answer": 2,
+     "answer": 0,
      "explanation": "call us ... before noon today."
     }
    ]
@@ -2731,12 +2803,12 @@
      "n": 1,
      "stem": "Who most likely is the speaker?",
      "choices": [
+      "A security guard",
       "A museum guide",
       "A store clerk",
-      "A painter",
-      "A security guard"
+      "A painter"
      ],
-     "answer": 0,
+     "answer": 1,
      "explanation": "I'll be your guide today."
     },
     {
@@ -2749,12 +2821,12 @@
      "n": 2,
      "stem": "What are listeners asked not to do?",
      "choices": [
+      "Leave the tour early",
       "Touch the paintings",
       "Use a camera flash",
-      "Eat in the galleries",
-      "Leave the tour early"
+      "Eat in the galleries"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "photography is allowed, but flash is not."
     },
     {
@@ -2767,12 +2839,12 @@
      "n": 3,
      "stem": "What is mentioned about the gift shop?",
      "choices": [
+      "It is on the third floor.",
       "It closes early today.",
       "It sells paintings.",
-      "Members receive a discount.",
-      "It is on the third floor."
+      "Members receive a discount."
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "museum members get a ten percent discount."
     }
    ]
@@ -2800,12 +2872,12 @@
      "n": 1,
      "stem": "What is the news report mainly about?",
      "choices": [
-      "A company merger",
       "A factory opening",
       "A new product launch",
-      "A change in leadership"
+      "A change in leadership",
+      "A company merger"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "will open a new factory = 공장 개설."
     },
     {
@@ -2818,12 +2890,12 @@
      "n": 2,
      "stem": "According to the speaker, why is the company expanding?",
      "choices": [
-      "To lower its costs",
       "To enter a new market",
       "Because of high demand from abroad",
-      "Because of new government rules"
+      "Because of new government rules",
+      "To lower its costs"
      ],
-     "answer": 2,
+     "answer": 1,
      "explanation": "strong demand from overseas customers = 해외(abroad) 수요. 바꿔 말하기예요."
     },
     {
@@ -2836,12 +2908,12 @@
      "n": 3,
      "stem": "What is needed before construction can begin?",
      "choices": [
-      "Approval from city officials",
-      "More funding",
       "A new CEO",
-      "Additional workers"
+      "Additional workers",
+      "Approval from city officials",
+      "More funding"
      ],
-     "answer": 0,
+     "answer": 2,
      "explanation": "pending final approval from city officials = 시 당국 승인이 있어야 한다."
     }
    ]
@@ -2885,12 +2957,12 @@
      "n": 1,
      "stem": "What is the man looking for?",
      "choices": [
-      "His wallet",
-      "His ID card",
       "His office key",
-      "His phone"
+      "His phone",
+      "His wallet",
+      "His ID card"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "company ID card = 사원증."
     },
     {
@@ -2903,12 +2975,12 @@
      "n": 2,
      "stem": "Where does the man work?",
      "choices": [
-      "At the front desk",
       "In the accounting department",
       "Near the elevator",
-      "On the first floor"
+      "On the first floor",
+      "At the front desk"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "I work in the accounting department on the fourth floor."
     },
     {
@@ -2921,12 +2993,12 @@
      "n": 3,
      "stem": "Where was the item found?",
      "choices": [
-      "In a meeting room",
       "At the front desk",
       "Near the elevator",
-      "In his office"
+      "In his office",
+      "In a meeting room"
      ],
-     "answer": 2,
+     "answer": 1,
      "explanation": "Someone found it near the elevator. 안내 데스크는 지금 보관 중인 곳이라 함정이에요."
     }
    ]
@@ -2970,12 +3042,12 @@
      "n": 1,
      "stem": "Why is the woman calling?",
      "choices": [
+      "To book a room",
       "To order paper",
       "To report a broken printer",
-      "To ask for a new computer",
-      "To book a room"
+      "To ask for a new computer"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "The printer on the second floor isn't working."
     },
     {
@@ -2988,12 +3060,12 @@
      "n": 2,
      "stem": "What does the man think the problem is?",
      "choices": [
+      "The power is off",
       "The printer has no ink",
       "A cable is loose",
-      "Paper is stuck",
-      "The power is off"
+      "Paper is stuck"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "there's a paper jam = 종이가 걸렸다(stuck)."
     },
     {
@@ -3006,12 +3078,12 @@
      "n": 3,
      "stem": "What will the woman do in the meantime?",
      "choices": [
-      "Wait at her desk",
       "Use another printer",
       "Call a repair company",
-      "Go home early"
+      "Go home early",
+      "Wait at her desk"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "I'll use the printer on the third floor = 다른 프린터를 쓴다."
     }
    ]
@@ -3095,12 +3167,12 @@
      "n": 3,
      "stem": "What will the man receive?",
      "choices": [
-      "A printed ticket",
-      "A refund and a new e-mail",
       "A discount code",
-      "A free workshop"
+      "A free workshop",
+      "A printed ticket",
+      "A refund and a new e-mail"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "차액 환불 + 새 확인 이메일."
     }
    ]
@@ -3148,12 +3220,12 @@
      "n": 1,
      "stem": "What problem does the woman report?",
      "choices": [
-      "She received the wrong item.",
       "An order has not arrived.",
       "A chair is damaged.",
-      "She was charged twice."
+      "She was charged twice.",
+      "She received the wrong item."
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "hasn't come yet = 아직 도착하지 않았다."
     },
     {
@@ -3237,12 +3309,12 @@
      "n": 1,
      "stem": "What are the speakers discussing?",
      "choices": [
-      "Which client to work with",
-      "Whom to hire for a position",
       "How to design a portfolio",
-      "When to hold interviews"
+      "When to hold interviews",
+      "Which client to work with",
+      "Whom to hire for a position"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "디자이너 직책 후보를 고르는 이야기예요."
     },
     {
@@ -3255,12 +3327,12 @@
      "n": 2,
      "stem": "What concern is mentioned about Ms. Rivera?",
      "choices": [
-      "Her lack of experience",
       "Her salary request",
       "Her start date",
-      "Her portfolio"
+      "Her portfolio",
+      "Her lack of experience"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "she's asking for a higher salary than we budgeted."
     },
     {
@@ -3273,12 +3345,12 @@
      "n": 3,
      "stem": "What will the man who praised Ms. Rivera do tomorrow?",
      "choices": [
-      "Contact HR",
       "Interview another candidate",
       "Call Ms. Rivera",
-      "Prepare a contract"
+      "Prepare a contract",
+      "Contact HR"
      ],
-     "answer": 2,
+     "answer": 1,
      "explanation": "I'll call Ms. Rivera tomorrow. 인사팀 확인은 다른 남자(M2)가 해요."
     }
    ]
@@ -3318,12 +3390,12 @@
      "n": 1,
      "stem": "What change did the store make?",
      "choices": [
+      "It hired more staff.",
       "It lowered snack prices.",
       "It moved a section.",
-      "It extended its hours.",
-      "It hired more staff."
+      "It extended its hours."
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "moved the snack aisle to the front = 코너 위치를 옮겼다."
     },
     {
@@ -3336,12 +3408,12 @@
      "n": 2,
      "stem": "What problem does the woman mention?",
      "choices": [
-      "Sales have dropped.",
-      "A section is hard to find.",
       "Products are out of stock.",
-      "The store is too crowded."
+      "The store is too crowded.",
+      "Sales have dropped.",
+      "A section is hard to find."
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "harder to find the dairy section."
     },
     {
@@ -3354,12 +3426,12 @@
      "n": 3,
      "stem": "What will the woman do today?",
      "choices": [
-      "Put up signs",
       "Order signs",
       "Call customers",
-      "Change the prices"
+      "Change the prices",
+      "Put up signs"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "I'll order the signs today. 다는 건 주말 뒤라 A는 함정이에요."
     }
    ]
@@ -3423,12 +3495,12 @@
      "n": 3,
      "stem": "Who can board first?",
      "choices": [
-      "Business class passengers",
-      "Passengers with small children",
       "Members of a club",
-      "Passengers at Gate 12"
+      "Passengers at Gate 12",
+      "Business class passengers",
+      "Passengers with small children"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "Passengers traveling with small children may board first."
     }
    ]
@@ -3456,12 +3528,12 @@
      "n": 1,
      "stem": "Why will the office be closed on Monday?",
      "choices": [
-      "For a company event",
       "For a holiday",
       "For repairs",
-      "For a move"
+      "For a move",
+      "For a company event"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "closed on Monday for the national holiday."
     },
     {
@@ -3492,12 +3564,12 @@
      "n": 3,
      "stem": "When will normal hours resume?",
      "choices": [
+      "On Friday",
       "On Monday",
       "On Tuesday",
-      "On Wednesday",
-      "On Friday"
+      "On Wednesday"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "back to normal hours on Tuesday."
     }
    ]
@@ -3525,12 +3597,12 @@
      "n": 1,
      "stem": "What is being advertised?",
      "choices": [
-      "A sports store",
-      "A new gym location",
       "A fitness app",
-      "A running event"
+      "A running event",
+      "A sports store",
+      "A new gym location"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "FitZone is opening its newest location = 새 헬스장 지점."
     },
     {
@@ -3543,12 +3615,12 @@
      "n": 2,
      "stem": "What is special about the new branch?",
      "choices": [
-      "It has a swimming pool.",
-      "It offers free classes.",
       "It has more machines.",
-      "It is the cheapest gym."
+      "It is the cheapest gym.",
+      "It has a swimming pool.",
+      "It offers free classes."
      ],
-     "answer": 2,
+     "answer": 0,
      "explanation": "twice as many machines = 기구가 더 많다."
     },
     {
@@ -3561,12 +3633,12 @@
      "n": 3,
      "stem": "How can listeners get a free month?",
      "choices": [
+      "By paying for a year",
       "By signing up during opening week",
       "By bringing a friend",
-      "By visiting the website",
-      "By paying for a year"
+      "By visiting the website"
      ],
-     "answer": 0,
+     "answer": 1,
      "explanation": "Sign up during opening week and get your first month free."
     }
    ]
@@ -3594,12 +3666,12 @@
      "n": 1,
      "stem": "What is the main topic of the talk?",
      "choices": [
+      "Office rules",
       "A new product",
       "Survey results",
-      "A hiring plan",
-      "Office rules"
+      "A hiring plan"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "talk about the customer survey results."
     },
     {
@@ -3612,12 +3684,12 @@
      "n": 2,
      "stem": "What did customers complain about?",
      "choices": [
+      "Rude staff",
       "Product quality",
       "High prices",
-      "Slow delivery",
-      "Rude staff"
+      "Slow delivery"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "delivery times are too long = 배송이 느리다."
     },
     {
@@ -3630,12 +3702,12 @@
      "n": 3,
      "stem": "What are team leaders asked to do?",
      "choices": [
-      "Call customers",
       "Inform their staff",
       "Choose a company",
-      "Write a report"
+      "Write a report",
+      "Call customers"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "share this news with their staff by Friday."
     }
    ]
@@ -3663,12 +3735,12 @@
      "n": 1,
      "stem": "How long will the tour last?",
      "choices": [
-      "Thirty minutes",
       "One hour",
       "Ninety minutes",
-      "Two hours"
+      "Two hours",
+      "Thirty minutes"
      ],
-     "answer": 2,
+     "answer": 1,
      "explanation": "Over the next ninety minutes."
     },
     {
@@ -3681,12 +3753,12 @@
      "n": 2,
      "stem": "Where can listeners buy refreshments?",
      "choices": [
+      "Before boarding",
       "On the upper deck",
       "At the snack bar on the lower deck",
-      "At the lighthouse",
-      "Before boarding"
+      "At the lighthouse"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "Refreshments are available at the snack bar on the lower deck."
     },
     {
@@ -3699,12 +3771,12 @@
      "n": 3,
      "stem": "What will the crew do at the halfway point?",
      "choices": [
-      "Serve lunch",
-      "Take photos for passengers",
       "Give a history lecture",
-      "Sell tickets"
+      "Sell tickets",
+      "Serve lunch",
+      "Take photos for passengers"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "our crew will be happy to take one(사진) when we stop at the halfway point."
     }
    ]
@@ -3732,12 +3804,12 @@
      "n": 1,
      "stem": "Why is the speaker calling?",
      "choices": [
-      "To cancel a contract",
       "To reschedule a meeting",
       "To introduce a new analyst",
-      "To ask for payment"
+      "To ask for payment",
+      "To cancel a contract"
      ],
-     "answer": 1,
+     "answer": 0,
      "explanation": "move the meeting to Friday morning = 일정 변경."
     },
     {
@@ -3801,12 +3873,12 @@
      "n": 1,
      "stem": "When will the library close?",
      "choices": [
+      "At seven o'clock",
       "At five o'clock",
       "At five thirty",
-      "At six o'clock",
-      "At seven o'clock"
+      "At six o'clock"
      ],
-     "answer": 2,
+     "answer": 3,
      "explanation": "closing in thirty minutes, at six o'clock."
     },
     {
@@ -3819,12 +3891,12 @@
      "n": 2,
      "stem": "Why should visitors go to the front desk?",
      "choices": [
-      "To pay a fine",
-      "To sign up for an event",
       "Because the machines are not working",
-      "To get a library card"
+      "To get a library card",
+      "To pay a fine",
+      "To sign up for an event"
      ],
-     "answer": 2,
+     "answer": 0,
      "explanation": "the self-checkout machines are being repaired = 기계가 안 된다."
     },
     {
@@ -3870,12 +3942,12 @@
      "n": 1,
      "stem": "What is the topic of the workshop?",
      "choices": [
+      "Using new software",
       "Giving presentations",
       "Writing business e-mails",
-      "Managing a team",
-      "Using new software"
+      "Managing a team"
      ],
-     "answer": 1,
+     "answer": 2,
      "explanation": "workshop on writing effective business e-mails."
     },
     {
@@ -3888,12 +3960,12 @@
      "n": 2,
      "stem": "What will listeners do after the presentation?",
      "choices": [
-      "Take a test",
-      "Work with a partner",
       "Watch a video",
-      "Ask questions"
+      "Ask questions",
+      "Take a test",
+      "Work with a partner"
      ],
-     "answer": 1,
+     "answer": 3,
      "explanation": "you'll work in pairs = 짝과 함께 한다."
     },
     {
@@ -3906,13 +3978,708 @@
      "n": 3,
      "stem": "What are listeners asked to do before the workshop begins?",
      "choices": [
-      "Introduce themselves",
       "Pick up a handout",
       "Turn off their phones",
-      "Sign an attendance sheet"
+      "Sign an attendance sheet",
+      "Introduce themselves"
+     ],
+     "answer": 0,
+     "explanation": "make sure you've picked up a handout."
+    }
+   ]
+  },
+  {
+   "id": "l3-c13",
+   "part": 3,
+   "level": "mid",
+   "title": "Choosing a room (graphic)",
+   "lines": [
+    {
+     "who": "W",
+     "text": "Hi, Tom. I'm booking a room for the training session with the new sales staff next Thursday."
+    },
+    {
+     "who": "M",
+     "text": "How many people are coming?"
+    },
+    {
+     "who": "W",
+     "text": "Eighteen, including the two trainers."
+    },
+    {
+     "who": "M",
+     "text": "Then Room 201 is too small. It only holds twelve."
+    },
+    {
+     "who": "W",
+     "text": "Right. And Room 305 doesn't have a projector, which we'll definitely need for the slides."
+    },
+    {
+     "who": "M",
+     "text": "What about the one on the fourth floor? It has a projector and enough seats."
+    },
+    {
+     "who": "W",
+     "text": "Perfect. I'll reserve it now and send everyone the details this afternoon."
+    }
+   ],
+   "ko": "여: 톰, 다음 주 목요일 신입 영업 직원 교육 장소를 예약하려고요. / 남: 몇 명이 와요? / 여: 강사 두 명 포함해서 열여덟 명이요. / 남: 그럼 201호는 작아요. 열두 명까지만 돼요. / 여: 맞아요. 305호는 프로젝터가 없는데 슬라이드 때문에 꼭 필요해요. / 남: 4층 방은요? 프로젝터도 있고 자리도 충분해요. / 여: 좋아요. 지금 예약하고 오후에 모두에게 자세한 내용을 보낼게요.",
+   "questions": [
+    {
+     "id": "l3-c13-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c13",
+     "n": 1,
+     "stem": "What event is the woman planning?",
+     "choices": [
+      "A product launch",
+      "A training session",
+      "A client dinner",
+      "A job interview"
      ],
      "answer": 1,
-     "explanation": "make sure you've picked up a handout."
+     "explanation": "training session for the new sales staff."
+    },
+    {
+     "id": "l3-c13-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c13",
+     "n": 2,
+     "stem": "Look at the graphic. Which room will the woman reserve?",
+     "choices": [
+      "Room 201",
+      "Room 305",
+      "Room 410",
+      "Room 502"
+     ],
+     "answer": 2,
+     "explanation": "4층 방(프로젝터 있고 자리 충분) → 표에서 4층은 410호. 시각 자료 문제는 대화의 단서(4층)와 표를 연결해요."
+    },
+    {
+     "id": "l3-c13-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c13",
+     "n": 3,
+     "stem": "What will the woman do this afternoon?",
+     "choices": [
+      "Meet the trainers",
+      "Print the slides",
+      "Set up a projector",
+      "Send details to attendees"
+     ],
+     "answer": 3,
+     "explanation": "send everyone the details this afternoon."
+    }
+   ],
+   "graphic": {
+    "title": "Meeting Rooms",
+    "head": [
+     "Room",
+     "Floor",
+     "Seats",
+     "Projector"
+    ],
+    "rows": [
+     [
+      "201",
+      "2",
+      "12",
+      "Yes"
+     ],
+     [
+      "305",
+      "3",
+      "20",
+      "No"
+     ],
+     [
+      "410",
+      "4",
+      "24",
+      "Yes"
+     ],
+     [
+      "502",
+      "5",
+      "40",
+      "Yes"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "l3-c14",
+   "part": 3,
+   "level": "mid",
+   "title": "Shipping options (graphic)",
+   "lines": [
+    {
+     "who": "M",
+     "text": "Hi, I need to send this package to Busan. It's a contract that must arrive by Wednesday."
+    },
+    {
+     "who": "W",
+     "text": "Today is Monday, so you have a few options. Here's our price list."
+    },
+    {
+     "who": "M",
+     "text": "Hmm, overnight delivery is a bit expensive. Will the two-day option get there in time?"
+    },
+    {
+     "who": "W",
+     "text": "Yes, it would arrive on Wednesday."
+    },
+    {
+     "who": "M",
+     "text": "Great, I'll take that. Do I need to fill out a form?"
+    },
+    {
+     "who": "W",
+     "text": "Just write the recipient's phone number here, please."
+    }
+   ],
+   "ko": "남: 이 소포를 부산에 보내야 해요. 수요일까지 꼭 도착해야 하는 계약서예요. / 여: 오늘이 월요일이니 몇 가지 방법이 있어요. 여기 요금표예요. / 남: 익일 배송은 좀 비싸네요. 이틀 배송이면 제때 도착할까요? / 여: 네, 수요일에 도착해요. / 남: 좋아요, 그걸로 할게요. 양식을 작성해야 하나요? / 여: 여기에 받는 분 전화번호만 적어 주세요.",
+   "questions": [
+    {
+     "id": "l3-c14-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c14",
+     "n": 1,
+     "stem": "What is the man sending?",
+     "choices": [
+      "A contract",
+      "A sample product",
+      "A book",
+      "A gift"
+     ],
+     "answer": 0,
+     "explanation": "It's a contract that must arrive by Wednesday."
+    },
+    {
+     "id": "l3-c14-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c14",
+     "n": 2,
+     "stem": "Look at the graphic. How much will the man pay?",
+     "choices": [
+      "$25",
+      "$15",
+      "$9",
+      "$5"
+     ],
+     "answer": 1,
+     "explanation": "이틀 배송(Two-Day)을 골랐어요 → 표에서 $15."
+    },
+    {
+     "id": "l3-c14-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "mid",
+     "set": "l3-c14",
+     "n": 3,
+     "stem": "What does the woman ask the man to do?",
+     "choices": [
+      "Come back on Wednesday",
+      "Show identification",
+      "Write a phone number",
+      "Pay in cash"
+     ],
+     "answer": 2,
+     "explanation": "write the recipient's phone number."
+    }
+   ],
+   "graphic": {
+    "title": "Shipping Rates",
+    "head": [
+     "Service",
+     "Delivery",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Overnight",
+      "1 day",
+      "$25"
+     ],
+     [
+      "Two-Day",
+      "2 days",
+      "$15"
+     ],
+     [
+      "Standard",
+      "4 days",
+      "$9"
+     ],
+     [
+      "Economy",
+      "7 days",
+      "$5"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "l3-c15",
+   "part": 3,
+   "level": "adv",
+   "title": "Report deadline (intent)",
+   "lines": [
+    {
+     "who": "W",
+     "text": "Kevin, have you finished the quarterly sales report? The director wants it by noon."
+    },
+    {
+     "who": "M",
+     "text": "Almost. I'm just waiting for the figures from the Busan branch."
+    },
+    {
+     "who": "W",
+     "text": "They sent them to me an hour ago. I'll forward them to you now."
+    },
+    {
+     "who": "M",
+     "text": "Oh, that's a relief. I thought I'd have to call them."
+    },
+    {
+     "who": "W",
+     "text": "Do you think you can still make the deadline?"
+    },
+    {
+     "who": "M",
+     "text": "It'll be tight, but I'll skip lunch if I have to."
+    },
+    {
+     "who": "W",
+     "text": "Let me know if you need help checking the numbers."
+    }
+   ],
+   "ko": "여: 케빈, 분기 영업 보고서 끝냈어요? 이사님이 정오까지 원하세요. / 남: 거의요. 부산 지점 수치만 기다리고 있어요. / 여: 한 시간 전에 저한테 보냈어요. 지금 전달할게요. / 남: 다행이네요. 전화해야 하나 했어요. / 여: 그래도 마감 맞출 수 있겠어요? / 남: 빠듯하지만 필요하면 점심 건너뛸게요. / 여: 수치 확인 도움 필요하면 말해요.",
+   "questions": [
+    {
+     "id": "l3-c15-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c15",
+     "n": 1,
+     "stem": "What is the man working on?",
+     "choices": [
+      "A presentation",
+      "A job posting",
+      "A budget proposal",
+      "A sales report"
+     ],
+     "answer": 3,
+     "explanation": "quarterly sales report."
+    },
+    {
+     "id": "l3-c15-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c15",
+     "n": 2,
+     "stem": "Why does the man say, \"Oh, that's a relief\"?",
+     "choices": [
+      "He no longer needs to contact the branch.",
+      "The deadline was extended.",
+      "The director approved the report.",
+      "He finished the report early."
+     ],
+     "answer": 0,
+     "explanation": "수치를 받으려고 전화해야 하나 했는데 여자가 이미 받아 두었다 → 연락할 필요가 없어서 안심. 화자 의도 문제는 앞뒤 맥락으로 판단해요."
+    },
+    {
+     "id": "l3-c15-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c15",
+     "n": 3,
+     "stem": "What does the woman offer to do?",
+     "choices": [
+      "Call the director",
+      "Check the numbers",
+      "Buy lunch",
+      "Present the report"
+     ],
+     "answer": 1,
+     "explanation": "Let me know if you need help checking the numbers."
+    }
+   ]
+  },
+  {
+   "id": "l3-c16",
+   "part": 3,
+   "level": "adv",
+   "title": "New coffee machine (intent, 3 speakers)",
+   "lines": [
+    {
+     "who": "M",
+     "text": "Have you two tried the new coffee machine in the break room?"
+    },
+    {
+     "who": "W",
+     "text": "I did this morning. It makes great coffee, but it took me ten minutes to figure out the buttons."
+    },
+    {
+     "who": "M2",
+     "text": "Same here. There are no instructions anywhere."
+    },
+    {
+     "who": "M",
+     "text": "I see. Well, I ordered it, so I guess that's my responsibility."
+    },
+    {
+     "who": "W",
+     "text": "Maybe you could post a simple guide next to it?"
+    },
+    {
+     "who": "M",
+     "text": "Good idea. The manual is in my desk. I'll make a one-page version this afternoon."
+    },
+    {
+     "who": "M2",
+     "text": "Thanks. That will save everyone a lot of time."
+    }
+   ],
+   "ko": "남1: 휴게실 새 커피 머신 써 봤어요? / 여: 오늘 아침에요. 커피는 맛있는데 버튼 알아내는 데 10분 걸렸어요. / 남2: 저도요. 설명서가 어디에도 없어요. / 남1: 그렇군요. 제가 주문했으니 제 책임이네요. / 여: 옆에 간단한 안내문을 붙이면 어때요? / 남1: 좋은 생각이에요. 설명서가 제 책상에 있어요. 오후에 한 장짜리로 만들게요. / 남2: 고마워요. 다들 시간이 많이 절약되겠어요.",
+   "questions": [
+    {
+     "id": "l3-c16-1",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c16",
+     "n": 1,
+     "stem": "What problem do the speakers mention?",
+     "choices": [
+      "The break room is crowded.",
+      "The machine is broken.",
+      "The machine is hard to use.",
+      "The coffee tastes bad."
+     ],
+     "answer": 2,
+     "explanation": "버튼 알아내는 데 10분, 설명서 없음 = 사용하기 어렵다."
+    },
+    {
+     "id": "l3-c16-2",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c16",
+     "n": 2,
+     "stem": "What does the man imply when he says, \"I ordered it, so I guess that's my responsibility\"?",
+     "choices": [
+      "He did not want to buy it.",
+      "He paid for it himself.",
+      "He will return the machine.",
+      "He should solve the problem."
+     ],
+     "answer": 3,
+     "explanation": "자기가 주문했으니 해결해야 한다는 뜻이에요. 실제로 바로 뒤에 안내문을 만들겠다고 해요."
+    },
+    {
+     "id": "l3-c16-3",
+     "part": 3,
+     "module": "listening",
+     "type": "lc3",
+     "level": "adv",
+     "set": "l3-c16",
+     "n": 3,
+     "stem": "What will the man do this afternoon?",
+     "choices": [
+      "Make a short guide",
+      "Order a new machine",
+      "Move the machine",
+      "Call the manufacturer"
+     ],
+     "answer": 0,
+     "explanation": "I'll make a one-page version this afternoon."
+    }
+   ]
+  },
+  {
+   "id": "l4-t13",
+   "part": 4,
+   "level": "mid",
+   "title": "Store hours (graphic)",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Thank you for calling Greenleaf Garden Center. Our spring hours are now in effect. Please note that because of the holiday, we will close early this Friday, at four o'clock. On Saturday, we're holding a free planting workshop at ten A.M. in our greenhouse. Space is limited, so please sign up at the front counter. For directions, press one."
+    }
+   ],
+   "ko": "그린리프 가든 센터에 전화해 주셔서 감사합니다. 봄 영업시간이 적용 중입니다. 공휴일 때문에 이번 금요일은 4시에 일찍 닫습니다. 토요일 오전 10시에는 온실에서 무료 식물 심기 워크숍을 엽니다. 자리가 한정되어 있으니 앞쪽 계산대에서 신청해 주세요. 오시는 길은 1번을 누르세요.",
+   "questions": [
+    {
+     "id": "l4-t13-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t13",
+     "n": 1,
+     "stem": "What kind of business is Greenleaf?",
+     "choices": [
+      "A restaurant",
+      "A garden center",
+      "A bookstore",
+      "A gym"
+     ],
+     "answer": 1,
+     "explanation": "Greenleaf Garden Center."
+    },
+    {
+     "id": "l4-t13-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t13",
+     "n": 2,
+     "stem": "Look at the graphic. Which day's hours have changed this week?",
+     "choices": [
+      "Monday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+     ],
+     "answer": 2,
+     "explanation": "이번 금요일은 4시에 닫는다 → 표의 금요일(평소 7시)이 바뀐 거예요."
+    },
+    {
+     "id": "l4-t13-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "mid",
+     "set": "l4-t13",
+     "n": 3,
+     "stem": "What are listeners asked to do to join the workshop?",
+     "choices": [
+      "Visit the website",
+      "Pay a fee",
+      "Call back later",
+      "Sign up at the counter"
+     ],
+     "answer": 3,
+     "explanation": "sign up at the front counter."
+    }
+   ],
+   "graphic": {
+    "title": "Spring Hours",
+    "head": [
+     "Day",
+     "Open",
+     "Close"
+    ],
+    "rows": [
+     [
+      "Mon–Thu",
+      "9:00",
+      "6:00"
+     ],
+     [
+      "Friday",
+      "9:00",
+      "7:00"
+     ],
+     [
+      "Saturday",
+      "8:00",
+      "7:00"
+     ],
+     [
+      "Sunday",
+      "10:00",
+      "5:00"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "l4-t14",
+   "part": 4,
+   "level": "adv",
+   "title": "Sales results (graphic)",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Let's look at last quarter's sales by region. As you can see, the Northern region had the strongest results, thanks to our new partnership with a large retail chain. However, I'm concerned about the region with the lowest sales. Next month, I'll be visiting that region myself to meet with the local team and find out what support they need. I'll share what I learn at our next meeting."
+    }
+   ],
+   "ko": "지난 분기 지역별 매출을 보죠. 보시다시피 북부 지역이 대형 소매 체인과의 새 제휴 덕분에 가장 좋은 실적을 냈습니다. 하지만 매출이 가장 낮은 지역이 걱정됩니다. 다음 달 제가 직접 그 지역을 방문해 현지 팀을 만나고 어떤 지원이 필요한지 알아보겠습니다. 다음 회의에서 알게 된 내용을 공유하겠습니다.",
+   "questions": [
+    {
+     "id": "l4-t14-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t14",
+     "n": 1,
+     "stem": "Why did the Northern region do well?",
+     "choices": [
+      "It formed a new partnership.",
+      "It lowered its prices.",
+      "It opened new stores.",
+      "It hired more staff."
+     ],
+     "answer": 0,
+     "explanation": "thanks to our new partnership with a large retail chain."
+    },
+    {
+     "id": "l4-t14-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t14",
+     "n": 2,
+     "stem": "Look at the graphic. Which region will the speaker visit?",
+     "choices": [
+      "Southern",
+      "Western",
+      "Northern",
+      "Eastern"
+     ],
+     "answer": 1,
+     "explanation": "매출이 가장 낮은 지역을 방문 → 표에서 가장 낮은 곳은 서부(Western)."
+    },
+    {
+     "id": "l4-t14-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t14",
+     "n": 3,
+     "stem": "What will the speaker do at the next meeting?",
+     "choices": [
+      "Present a new product",
+      "Announce a promotion",
+      "Share findings",
+      "Introduce a partner"
+     ],
+     "answer": 2,
+     "explanation": "I'll share what I learn at our next meeting."
+    }
+   ],
+   "graphic": {
+    "title": "Quarterly Sales (in $ millions)",
+    "head": [
+     "Region",
+     "Sales"
+    ],
+    "rows": [
+     [
+      "Northern",
+      "4.8"
+     ],
+     [
+      "Eastern",
+      "3.6"
+     ],
+     [
+      "Southern",
+      "2.9"
+     ],
+     [
+      "Western",
+      "1.7"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "l4-t15",
+   "part": 4,
+   "level": "adv",
+   "title": "Team update (intent)",
+   "lines": [
+    {
+     "who": "N",
+     "text": "Hi everyone. Quick update on the website redesign. The design team finished the new home page yesterday, and the early feedback has been very positive. The launch was planned for next Monday. But we just found out that the online payment page still has some errors. I know what you're thinking. Yes, we've been here before. This time, though, the developers say it's a small fix, so we're moving the launch back by only two days. I'll send an updated schedule this afternoon."
+    }
+   ],
+   "ko": "여러분, 웹사이트 개편 소식입니다. 디자인팀이 어제 새 홈페이지를 완성했고 초기 반응이 아주 좋습니다. 출시는 다음 주 월요일로 계획했었는데, 온라인 결제 페이지에 아직 오류가 있다는 걸 방금 알았습니다. 무슨 생각 하시는지 압니다. 네, 전에도 이런 적이 있었죠. 하지만 이번에는 개발자들이 간단한 수정이라고 해서 출시를 이틀만 미룹니다. 오늘 오후 수정 일정을 보내겠습니다.",
+   "questions": [
+    {
+     "id": "l4-t15-1",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t15",
+     "n": 1,
+     "stem": "What project is the speaker discussing?",
+     "choices": [
+      "A marketing campaign",
+      "A software training",
+      "A store opening",
+      "A website redesign"
+     ],
+     "answer": 3,
+     "explanation": "update on the website redesign."
+    },
+    {
+     "id": "l4-t15-2",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t15",
+     "n": 2,
+     "stem": "What does the speaker imply when he says, \"Yes, we've been here before\"?",
+     "choices": [
+      "There have been similar delays in the past.",
+      "The design was used before.",
+      "The listeners have met the developers.",
+      "The team has visited the office before."
+     ],
+     "answer": 0,
+     "explanation": "전에도 출시가 미뤄진 적이 있다는 뜻이에요. 바로 앞 '무슨 생각 하는지 안다'와 이어서 판단해요."
+    },
+    {
+     "id": "l4-t15-3",
+     "part": 4,
+     "module": "listening",
+     "type": "lc4",
+     "level": "adv",
+     "set": "l4-t15",
+     "n": 3,
+     "stem": "When will the website most likely launch?",
+     "choices": [
+      "Next Monday",
+      "Next Wednesday",
+      "Next Friday",
+      "Next month"
+     ],
+     "answer": 1,
+     "explanation": "월요일에서 이틀 미룸 → 수요일."
     }
    ]
   }

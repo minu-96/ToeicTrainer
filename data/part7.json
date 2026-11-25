@@ -1,0 +1,1396 @@
+{
+ "sets": [
+  {
+   "id": "p7-r01",
+   "level": "basic",
+   "double": false,
+   "docs": [
+    {
+     "kind": "공지",
+     "title": "Parking Lot Notice",
+     "sents": [
+      "Attention, all employees.",
+      "The north parking lot will be closed on Friday, June 6, for repainting.",
+      "Please use the south parking lot or the street parking on Oak Avenue instead.",
+      "The north lot will reopen on Monday morning.",
+      "We apologize for any inconvenience."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r01-1",
+    "p7-r01-2"
+   ]
+  },
+  {
+   "id": "p7-r02",
+   "level": "basic",
+   "double": false,
+   "docs": [
+    {
+     "kind": "문자 대화",
+     "title": "Text messages",
+     "sents": [
+      "Mina Park (9:12 A.M.): Hi, Jake. Are you still coming to the client meeting at ten?",
+      "Jake Ross (9:14 A.M.): Yes, but my bus is running late. I might be ten minutes behind.",
+      "Mina Park (9:15 A.M.): No problem. I'll start with the introductions.",
+      "Jake Ross (9:16 A.M.): Thanks. I'll bring the printed reports."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r02-1",
+    "p7-r02-2"
+   ]
+  },
+  {
+   "id": "p7-r03",
+   "level": "basic",
+   "double": false,
+   "docs": [
+    {
+     "kind": "광고",
+     "title": "Sunny Bakery",
+     "sents": [
+      "Sunny Bakery is celebrating its tenth anniversary!",
+      "From May 1 to May 7, all cakes are 20 percent off.",
+      "Customers who spend more than $30 will also receive a free loaf of bread.",
+      "We are open every day from 7 A.M. to 8 P.M.",
+      "Visit us at 45 River Street."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r03-1",
+    "p7-r03-2"
+   ]
+  },
+  {
+   "id": "p7-r04",
+   "level": "basic",
+   "double": false,
+   "docs": [
+    {
+     "kind": "이메일",
+     "title": "Your order",
+     "sents": [
+      "Dear Mr. Lee,",
+      "Thank you for ordering from Office Plus.",
+      "Your order of two desk lamps and a box of pens was shipped today.",
+      "It should arrive within three business days.",
+      "Unfortunately, the blue notebooks you ordered are out of stock, so we have not charged you for them.",
+      "We will e-mail you when they are available again.",
+      "Sincerely, Office Plus Customer Service"
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r04-1",
+    "p7-r04-2",
+    "p7-r04-3"
+   ]
+  },
+  {
+   "id": "p7-r05",
+   "level": "mid",
+   "double": false,
+   "docs": [
+    {
+     "kind": "기사",
+     "title": "Local café expands",
+     "sents": [
+      "Brewed Awakening, a small coffee shop that opened downtown three years ago, will open its second location next month.",
+      "The new café will be located near Westfield University.",
+      "Owner Sara Kim said that many students had asked her to open a shop closer to campus.",
+      "The new location will feature a larger seating area and longer hours to accommodate students who study late.",
+      "Ms. Kim also plans to hire about fifteen part-time workers, most of whom she hopes will be students."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r05-1",
+    "p7-r05-2",
+    "p7-r05-3"
+   ]
+  },
+  {
+   "id": "p7-r06",
+   "level": "mid",
+   "double": false,
+   "docs": [
+    {
+     "kind": "메모",
+     "title": "Office Renovation",
+     "sents": [
+      "To: All Staff",
+      "From: Facilities Department",
+      "Starting next Monday, the third floor will be renovated.",
+      "During the two-week project, employees on that floor will work from the conference rooms on the first floor.",
+      "Please pack your personal items by Friday afternoon; boxes are available in the mail room.",
+      "Computers will be moved by the IT team, so you do not need to disconnect them yourself.",
+      "If you have questions, contact Tom Hayes at extension 214."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r06-1",
+    "p7-r06-2",
+    "p7-r06-3"
+   ]
+  },
+  {
+   "id": "p7-r07",
+   "level": "mid",
+   "double": false,
+   "docs": [
+    {
+     "kind": "이메일",
+     "title": "Welcome to the team",
+     "sents": [
+      "Dear Ms. Alvarez,",
+      "On behalf of everyone at Greenline Marketing, welcome to the team!",
+      "[1]",
+      "Your first day will be Monday, March 3.",
+      "Please arrive at 9 A.M. and check in at the reception desk on the fifth floor.",
+      "[2]",
+      "During your first week, you will attend training sessions on our software and company policies.",
+      "[3]",
+      "Your manager, Mr. Gordon, will meet you for lunch on Wednesday to discuss your first project.",
+      "[4]",
+      "Best regards, Human Resources"
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r07-1",
+    "p7-r07-2",
+    "p7-r07-3"
+   ]
+  },
+  {
+   "id": "p7-r08",
+   "level": "mid",
+   "double": false,
+   "docs": [
+    {
+     "kind": "온라인 채팅",
+     "title": "Team chat",
+     "sents": [
+      "Ana Silva (2:03 P.M.): The client just moved our presentation from Thursday to Wednesday.",
+      "Ben Ortiz (2:04 P.M.): Wednesday? The slides aren't finished yet.",
+      "Chloe Wu (2:05 P.M.): I can finish the charts tonight.",
+      "Ana Silva (2:06 P.M.): That would be great. Ben, can you update the budget section?",
+      "Ben Ortiz (2:07 P.M.): I'm on it.",
+      "Chloe Wu (2:08 P.M.): Should we do a practice run Tuesday afternoon?",
+      "Ana Silva (2:09 P.M.): Yes, let's meet in Room B at three."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r08-1",
+    "p7-r08-2",
+    "p7-r08-3"
+   ]
+  },
+  {
+   "id": "p7-r09",
+   "level": "adv",
+   "double": false,
+   "docs": [
+    {
+     "kind": "기사",
+     "title": "Riverton's new transit plan",
+     "sents": [
+      "The Riverton City Council approved a plan on Tuesday to add three new bus routes connecting the suburbs to the downtown business district.",
+      "[1]",
+      "Officials say the routes, which will begin service in September, are expected to reduce traffic on Highway 9 by up to 15 percent.",
+      "[2]",
+      "The project will be funded largely through a federal transportation grant, so local taxes will not increase.",
+      "[3]",
+      "However, some residents have voiced concerns that the new routes will pass through quiet residential streets.",
+      "In response, the council has agreed to hold two public meetings in August to gather feedback before the final routes are set.",
+      "[4]"
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r09-1",
+    "p7-r09-2",
+    "p7-r09-3",
+    "p7-r09-4"
+   ]
+  },
+  {
+   "id": "p7-r10",
+   "level": "adv",
+   "double": false,
+   "docs": [
+    {
+     "kind": "편지",
+     "title": "Letter to a supplier",
+     "sents": [
+      "Dear Mr. Novak,",
+      "I am writing regarding our recent order of 500 ceramic mugs, which arrived on April 12.",
+      "While most of the mugs were in excellent condition, approximately 40 were cracked, apparently due to insufficient packaging.",
+      "As we have worked with Novak Ceramics for over six years, I am confident this was an isolated incident.",
+      "Nevertheless, our café chain needs the full order before our spring promotion begins on May 1.",
+      "I would appreciate it if you could ship replacements as soon as possible and confirm the expected delivery date.",
+      "In addition, I suggest using thicker boxes for future shipments.",
+      "Sincerely, Laura Chen, Purchasing Manager, Bean & Leaf Cafés"
+     ]
+    }
+   ],
+   "questions": [
+    "p7-r10-1",
+    "p7-r10-2",
+    "p7-r10-3",
+    "p7-r10-4"
+   ]
+  },
+  {
+   "id": "p7-d01",
+   "level": "mid",
+   "double": true,
+   "docs": [
+    {
+     "kind": "광고",
+     "title": "City Fitness Center",
+     "sents": [
+      "City Fitness Center — Summer Membership Special",
+      "Basic plan: $30 per month (gym access only).",
+      "Plus plan: $45 per month (gym access and all group classes).",
+      "Premium plan: $60 per month (Plus benefits and two personal training sessions per month).",
+      "Sign up before June 30 and pay no registration fee."
+     ]
+    },
+    {
+     "kind": "이메일",
+     "title": "Membership question",
+     "sents": [
+      "To: info@cityfitness.com",
+      "From: Daniel Park",
+      "Date: June 25",
+      "Hello, I am interested in joining your gym this summer.",
+      "I would like to take the yoga and spinning classes, but I don't need a personal trainer.",
+      "Could you tell me whether the classes are held in the evening?",
+      "I work until 6 P.M. on weekdays.",
+      "Thank you, Daniel Park"
+     ]
+    }
+   ],
+   "questions": [
+    "p7-d01-1",
+    "p7-d01-2",
+    "p7-d01-3",
+    "p7-d01-4",
+    "p7-d01-5"
+   ]
+  },
+  {
+   "id": "p7-d02",
+   "level": "adv",
+   "double": true,
+   "docs": [
+    {
+     "kind": "일정표",
+     "title": "Conference Schedule — Saturday",
+     "sents": [
+      "9:00 A.M. — Opening remarks (Hall A)",
+      "9:30 A.M. — Digital Marketing Trends, Lisa Moreno (Hall A)",
+      "11:00 A.M. — Writing for the Web, James Ito (Room 2)",
+      "1:00 P.M. — Lunch (Garden Terrace)",
+      "2:00 P.M. — Social Media Analytics, Priya Shah (Room 3)",
+      "3:30 P.M. — Closing panel (Hall A)"
+     ]
+    },
+    {
+     "kind": "이메일",
+     "title": "Schedule change",
+     "sents": [
+      "To: All registered attendees",
+      "From: Conference Organizers",
+      "Date: Thursday",
+      "Please note one change to Saturday's schedule.",
+      "Because of a flight delay, Ms. Shah will not arrive until Saturday evening.",
+      "Her session has therefore been moved to Sunday at 10 A.M. in Hall A.",
+      "To fill the open time, Mr. Ito has kindly agreed to repeat his session at 2:00 P.M. in Room 3 for those who missed it in the morning.",
+      "We apologize for the inconvenience."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-d02-1",
+    "p7-d02-2",
+    "p7-d02-3",
+    "p7-d02-4",
+    "p7-d02-5"
+   ]
+  },
+  {
+   "id": "p7-d03",
+   "level": "adv",
+   "double": true,
+   "docs": [
+    {
+     "kind": "기사",
+     "title": "Hotel chain to go paperless",
+     "sents": [
+      "Harborview Hotels announced last week that all 40 of its locations will stop printing guest receipts and room-service menus by the end of the year.",
+      "Instead, guests will receive receipts by e-mail and view menus on in-room tablets.",
+      "The company estimates the change will save about 2 million sheets of paper annually.",
+      "Guests who still prefer paper copies can request them at the front desk."
+     ]
+    },
+    {
+     "kind": "이메일",
+     "title": "Guest feedback",
+     "sents": [
+      "To: Harborview Hotels Customer Relations",
+      "From: Martin Clarke",
+      "I stayed at your Lakeside location last weekend and noticed that the room-service menu was available only on a tablet.",
+      "As someone who is not comfortable with technology, I found it confusing at first.",
+      "However, a staff member at the front desk kindly printed a menu for me within minutes.",
+      "I appreciate your environmental efforts, but I recommend placing a small card in each room explaining that paper menus are available."
+     ]
+    }
+   ],
+   "questions": [
+    "p7-d03-1",
+    "p7-d03-2",
+    "p7-d03-3",
+    "p7-d03-4",
+    "p7-d03-5"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "p7-r01-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "basic",
+   "set": "p7-r01",
+   "n": 1,
+   "stem": "What is the purpose of the notice?",
+   "choices": [
+    "To announce a new parking fee",
+    "To inform staff about a closure",
+    "To introduce a new building",
+    "To ask for volunteers"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-1"
+   ],
+   "explanation": "북쪽 주차장이 금요일에 닫는다는 안내예요. closed = closure.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r01-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "basic",
+   "set": "p7-r01",
+   "n": 2,
+   "stem": "When will the north lot reopen?",
+   "choices": [
+    "On Saturday",
+    "On Monday",
+    "On Thursday",
+    "On Friday"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-3"
+   ],
+   "explanation": "The north lot will reopen on Monday morning.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r02-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "basic",
+   "set": "p7-r02",
+   "n": 1,
+   "stem": "Why is Jake going to be late?",
+   "choices": [
+    "He is printing reports.",
+    "He has another meeting.",
+    "He forgot the meeting.",
+    "His bus is delayed."
+   ],
+   "answer": 3,
+   "ev": [
+    "0-1"
+   ],
+   "explanation": "my bus is running late = 버스가 지연됐다.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r02-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7intent",
+   "qtype": "intent",
+   "level": "basic",
+   "set": "p7-r02",
+   "n": 2,
+   "stem": "At 9:15 A.M., what does Ms. Park most likely mean when she writes, \"No problem\"?",
+   "choices": [
+    "She has already printed the reports.",
+    "She will pick Jake up.",
+    "She will cancel the meeting.",
+    "She does not mind waiting a little."
+   ],
+   "answer": 3,
+   "ev": [
+    "0-2"
+   ],
+   "explanation": "'괜찮아요, 소개부터 시작할게요' = 조금 늦어도 괜찮다는 뜻이에요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r03-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "basic",
+   "set": "p7-r03",
+   "n": 1,
+   "stem": "What is being advertised?",
+   "choices": [
+    "A new bakery opening",
+    "An anniversary sale",
+    "A baking class",
+    "A job opening"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-0",
+    "0-1"
+   ],
+   "explanation": "10주년 기념 할인 행사 광고예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r03-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "basic",
+   "set": "p7-r03",
+   "n": 2,
+   "stem": "How can customers get free bread?",
+   "choices": [
+    "By buying a cake",
+    "By spending over $30",
+    "By coming before 8 A.M.",
+    "By visiting on May 1"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-2"
+   ],
+   "explanation": "spend more than $30 → free loaf of bread.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r04-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "basic",
+   "set": "p7-r04",
+   "n": 1,
+   "stem": "What is the main purpose of the e-mail?",
+   "choices": [
+    "To advertise a sale",
+    "To request a payment",
+    "To apologize for a late delivery",
+    "To confirm a shipment"
+   ],
+   "answer": 3,
+   "ev": [
+    "0-2"
+   ],
+   "explanation": "주문품이 오늘 발송되었다는 안내(배송 확인)예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r04-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7not",
+   "qtype": "not",
+   "level": "basic",
+   "set": "p7-r04",
+   "n": 2,
+   "stem": "What item was NOT shipped?",
+   "choices": [
+    "A box",
+    "Desk lamps",
+    "Pens",
+    "Notebooks"
+   ],
+   "answer": 3,
+   "ev": [
+    "0-4"
+   ],
+   "explanation": "파란 공책은 품절이라 보내지 않았어요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r04-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "basic",
+   "set": "p7-r04",
+   "n": 3,
+   "stem": "What will Office Plus do later?",
+   "choices": [
+    "Call Mr. Lee",
+    "Offer a discount",
+    "Send a refund check",
+    "Contact Mr. Lee by e-mail"
+   ],
+   "answer": 3,
+   "ev": [
+    "0-5"
+   ],
+   "explanation": "We will e-mail you when they are available again.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r05-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "mid",
+   "set": "p7-r05",
+   "n": 1,
+   "stem": "What is the article mainly about?",
+   "choices": [
+    "A business expansion",
+    "A new coffee recipe",
+    "A student job fair",
+    "A university event"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-0"
+   ],
+   "explanation": "두 번째 지점을 연다 = 사업 확장.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r05-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r05",
+   "n": 2,
+   "stem": "Why did Ms. Kim choose the new location?",
+   "choices": [
+    "Students requested it.",
+    "Her first shop is closing.",
+    "The university invited her.",
+    "Rent is cheaper there."
+   ],
+   "answer": 0,
+   "ev": [
+    "0-2"
+   ],
+   "explanation": "many students had asked her to open a shop closer to campus.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r05-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7syn",
+   "qtype": "syn",
+   "level": "mid",
+   "set": "p7-r05",
+   "n": 3,
+   "stem": "The word \"accommodate\" in the highlighted sentence is closest in meaning to",
+   "choices": [
+    "serve",
+    "change",
+    "allow",
+    "house"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-3"
+   ],
+   "explanation": "늦게까지 공부하는 학생들을 '수용하다·맞춰 주다' → serve(응대하다). house는 '숙박시키다'라 문맥에 안 맞아요.",
+   "targetMs": 60000,
+   "word": "accommodate"
+  },
+  {
+   "id": "p7-r06-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r06",
+   "n": 1,
+   "stem": "Where will third-floor employees work during the renovation?",
+   "choices": [
+    "On the second floor",
+    "In first-floor conference rooms",
+    "In the mail room",
+    "At home"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-3"
+   ],
+   "explanation": "work from the conference rooms on the first floor.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r06-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r06",
+   "n": 2,
+   "stem": "What are employees asked to do by Friday?",
+   "choices": [
+    "Disconnect their computers",
+    "Pack their belongings",
+    "Call Tom Hayes",
+    "Clean the conference rooms"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-4"
+   ],
+   "explanation": "pack your personal items by Friday afternoon.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r06-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7not",
+   "qtype": "not",
+   "level": "mid",
+   "set": "p7-r06",
+   "n": 3,
+   "stem": "What is NOT mentioned about the renovation?",
+   "choices": [
+    "Who will move the computers",
+    "How much it will cost",
+    "How long it will last",
+    "Where boxes can be found"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-3",
+    "0-4",
+    "0-5"
+   ],
+   "explanation": "기간(2주)·상자 위치(우편실)·컴퓨터 이동(IT팀)은 나오지만 비용은 없어요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r07-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "mid",
+   "set": "p7-r07",
+   "n": 1,
+   "stem": "What is the purpose of the e-mail?",
+   "choices": [
+    "To request documents",
+    "To offer a job",
+    "To give first-day information",
+    "To schedule an interview"
+   ],
+   "answer": 2,
+   "ev": [
+    "0-3",
+    "0-4"
+   ],
+   "explanation": "첫 출근일 안내 이메일이에요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r07-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r07",
+   "n": 2,
+   "stem": "What will Ms. Alvarez do on Wednesday?",
+   "choices": [
+    "Start a new project alone",
+    "Attend software training",
+    "Meet her manager for lunch",
+    "Check in at reception"
+   ],
+   "answer": 2,
+   "ev": [
+    "0-8"
+   ],
+   "explanation": "Mr. Gordon will meet you for lunch on Wednesday.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r07-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7insert",
+   "qtype": "insert",
+   "level": "mid",
+   "set": "p7-r07",
+   "n": 3,
+   "stem": "In which of the positions marked [1], [2], [3], and [4] does the following sentence best belong?\n\"There, you will receive your ID badge and a parking pass.\"",
+   "choices": [
+    "[1]",
+    "[2]",
+    "[3]",
+    "[4]"
+   ],
+   "answer": 1,
+   "ev": [
+    "0-4"
+   ],
+   "explanation": "There(그곳에서)가 가리키는 장소가 바로 앞 문장의 reception desk예요. 그래서 [2]예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r08-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r08",
+   "n": 1,
+   "stem": "What problem does Ms. Silva mention?",
+   "choices": [
+    "A room is not available.",
+    "The budget was cut.",
+    "A client canceled a contract.",
+    "A presentation date was changed."
+   ],
+   "answer": 3,
+   "ev": [
+    "0-0"
+   ],
+   "explanation": "발표가 목요일에서 수요일로 옮겨졌어요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r08-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7intent",
+   "qtype": "intent",
+   "level": "mid",
+   "set": "p7-r08",
+   "n": 2,
+   "stem": "At 2:07 P.M., what does Mr. Ortiz mean when he writes, \"I'm on it\"?",
+   "choices": [
+    "He disagrees with the new date.",
+    "He has finished the slides.",
+    "He is already in the meeting room.",
+    "He will work on the budget section."
+   ],
+   "answer": 3,
+   "ev": [
+    "0-3",
+    "0-4"
+   ],
+   "explanation": "예산 부분을 맡아 달라는 말에 '제가 할게요'라고 답한 거예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r08-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-r08",
+   "n": 3,
+   "stem": "When will the team practice?",
+   "choices": [
+    "Wednesday morning",
+    "Thursday afternoon",
+    "Monday morning",
+    "Tuesday afternoon"
+   ],
+   "answer": 3,
+   "ev": [
+    "0-5",
+    "0-6"
+   ],
+   "explanation": "화요일 오후 3시에 B실에서 연습해요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r09-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "adv",
+   "set": "p7-r09",
+   "n": 1,
+   "stem": "What is the article mainly about?",
+   "choices": [
+    "A new public transportation plan",
+    "A change in local taxes",
+    "An election for city council",
+    "A highway construction project"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-0"
+   ],
+   "explanation": "교외와 시내를 잇는 새 버스 노선 계획이에요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r09-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "adv",
+   "set": "p7-r09",
+   "n": 2,
+   "stem": "How will the project mainly be paid for?",
+   "choices": [
+    "With a federal grant",
+    "With bus fares",
+    "By private companies",
+    "By raising local taxes"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-4"
+   ],
+   "explanation": "funded largely through a federal transportation grant.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r09-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7infer",
+   "qtype": "infer",
+   "level": "adv",
+   "set": "p7-r09",
+   "n": 3,
+   "stem": "What can be inferred about the final routes?",
+   "choices": [
+    "They may change after public meetings.",
+    "They will avoid downtown.",
+    "They will start in August.",
+    "They have already been decided."
+   ],
+   "answer": 0,
+   "ev": [
+    "0-7"
+   ],
+   "explanation": "8월 공청회에서 의견을 듣고 최종 노선을 정한다 = 바뀔 수 있다.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r09-4",
+   "part": 7,
+   "module": "part7",
+   "type": "p7insert",
+   "qtype": "insert",
+   "level": "adv",
+   "set": "p7-r09",
+   "n": 4,
+   "stem": "In which of the positions marked [1], [2], [3], and [4] does the following sentence best belong?\n\"Each route will run every fifteen minutes during rush hour.\"",
+   "choices": [
+    "[1]",
+    "[2]",
+    "[3]",
+    "[4]"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-0",
+    "0-2"
+   ],
+   "explanation": "노선을 처음 소개한 문장 바로 뒤에 운행 간격을 덧붙이는 게 자연스러워요. Each route가 앞 문장의 three new bus routes를 받아요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r10-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "adv",
+   "set": "p7-r10",
+   "n": 1,
+   "stem": "Why did Ms. Chen write the letter?",
+   "choices": [
+    "To report damaged items",
+    "To cancel a contract",
+    "To ask for a discount",
+    "To place a new order"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-2"
+   ],
+   "explanation": "약 40개가 깨져 와서 알리는 편지예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r10-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7infer",
+   "qtype": "infer",
+   "level": "adv",
+   "set": "p7-r10",
+   "n": 2,
+   "stem": "What is suggested about Bean & Leaf Cafés?",
+   "choices": [
+    "It has a long relationship with the supplier.",
+    "It will close in May.",
+    "It makes its own mugs.",
+    "It is a new customer of Novak Ceramics."
+   ],
+   "answer": 0,
+   "ev": [
+    "0-3"
+   ],
+   "explanation": "6년 넘게 거래했다 = 오래된 관계.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-r10-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7syn",
+   "qtype": "syn",
+   "level": "adv",
+   "set": "p7-r10",
+   "n": 3,
+   "stem": "The word \"isolated\" in the highlighted sentence is closest in meaning to",
+   "choices": [
+    "single",
+    "distant",
+    "quiet",
+    "lonely"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-3"
+   ],
+   "explanation": "isolated incident = 일회성(한 번뿐인) 일 → single. lonely(외로운)는 사람 감정이라 맞지 않아요.",
+   "targetMs": 60000,
+   "word": "isolated"
+  },
+  {
+   "id": "p7-r10-4",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "adv",
+   "set": "p7-r10",
+   "n": 4,
+   "stem": "What does Ms. Chen request?",
+   "choices": [
+    "Replacement items and a delivery date",
+    "A new type of mug",
+    "A visit from Mr. Novak",
+    "A full refund"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-5"
+   ],
+   "explanation": "ship replacements ... and confirm the expected delivery date.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d01-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "mid",
+   "set": "p7-d01",
+   "n": 1,
+   "stem": "What is the purpose of the advertisement?",
+   "choices": [
+    "To promote membership plans",
+    "To hire fitness trainers",
+    "To advertise a sports event",
+    "To announce a new location"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-0"
+   ],
+   "explanation": "여름 회원권 특가 광고예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d01-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7link",
+   "qtype": "link",
+   "level": "mid",
+   "set": "p7-d01",
+   "n": 2,
+   "stem": "Which plan will Mr. Park most likely choose?",
+   "choices": [
+    "Plus",
+    "Premium",
+    "He will not join.",
+    "Basic"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-2",
+    "1-4"
+   ],
+   "explanation": "이메일: 수업은 듣고 개인 트레이너는 필요 없다 → 광고: 수업 포함·트레이닝 없음 = Plus. 두 문서를 연결하는 연계 문제예요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d01-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7link",
+   "qtype": "link",
+   "level": "mid",
+   "set": "p7-d01",
+   "n": 3,
+   "stem": "What will Mr. Park NOT have to pay if he signs up now?",
+   "choices": [
+    "A registration fee",
+    "Class fees",
+    "Training fees",
+    "The monthly fee"
+   ],
+   "answer": 0,
+   "ev": [
+    "0-4",
+    "1-2"
+   ],
+   "explanation": "6월 30일 전 가입 시 등록비 없음 + 이메일 날짜 6월 25일 → 등록비를 안 내요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d01-4",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-d01",
+   "n": 4,
+   "stem": "What does Mr. Park ask about?",
+   "choices": [
+    "Class times",
+    "Parking",
+    "Lockers",
+    "Class prices"
+   ],
+   "answer": 0,
+   "ev": [
+    "1-5"
+   ],
+   "explanation": "whether the classes are held in the evening = 수업 시간.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d01-5",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "mid",
+   "set": "p7-d01",
+   "n": 5,
+   "stem": "What is indicated about Mr. Park?",
+   "choices": [
+    "He works on weekdays.",
+    "He wants a personal trainer.",
+    "He lives near the center.",
+    "He is a current member."
+   ],
+   "answer": 0,
+   "ev": [
+    "1-6"
+   ],
+   "explanation": "I work until 6 P.M. on weekdays.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d02-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "adv",
+   "set": "p7-d02",
+   "n": 1,
+   "stem": "Why was the schedule changed?",
+   "choices": [
+    "Lunch took longer than planned.",
+    "A session was canceled.",
+    "A room was unavailable.",
+    "A speaker's flight was delayed."
+   ],
+   "answer": 3,
+   "ev": [
+    "1-4"
+   ],
+   "explanation": "Ms. Shah의 비행기가 지연됐어요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d02-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7link",
+   "qtype": "link",
+   "level": "adv",
+   "set": "p7-d02",
+   "n": 2,
+   "stem": "What session will take place at 2:00 P.M. on Saturday?",
+   "choices": [
+    "Social Media Analytics",
+    "The closing panel",
+    "Digital Marketing Trends",
+    "Writing for the Web"
+   ],
+   "answer": 3,
+   "ev": [
+    "0-2",
+    "1-6"
+   ],
+   "explanation": "일정표: Writing for the Web은 이토 씨 세션 + 이메일: 이토 씨가 2시에 다시 진행 → Writing for the Web.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d02-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "adv",
+   "set": "p7-d02",
+   "n": 3,
+   "stem": "Where will Ms. Shah give her talk?",
+   "choices": [
+    "Garden Terrace",
+    "Room 2",
+    "Room 3",
+    "Hall A"
+   ],
+   "answer": 3,
+   "ev": [
+    "1-5"
+   ],
+   "explanation": "Sunday at 10 A.M. in Hall A.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d02-4",
+   "part": 7,
+   "module": "part7",
+   "type": "p7infer",
+   "qtype": "infer",
+   "level": "adv",
+   "set": "p7-d02",
+   "n": 4,
+   "stem": "What is suggested about Mr. Ito?",
+   "choices": [
+    "He arrived late.",
+    "He organized the conference.",
+    "He is replacing the opening speaker.",
+    "He will speak twice on Saturday."
+   ],
+   "answer": 3,
+   "ev": [
+    "0-2",
+    "1-6"
+   ],
+   "explanation": "오전 11시 + 오후 2시 = 토요일에 두 번 발표해요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d02-5",
+   "part": 7,
+   "module": "part7",
+   "type": "p7syn",
+   "qtype": "syn",
+   "level": "adv",
+   "set": "p7-d02",
+   "n": 5,
+   "stem": "The word \"fill\" in the highlighted sentence is closest in meaning to",
+   "choices": [
+    "complete",
+    "pack",
+    "satisfy",
+    "use"
+   ],
+   "answer": 3,
+   "ev": [
+    "1-6"
+   ],
+   "explanation": "빈 시간을 '채우다' = 그 시간을 활용하다(use). complete는 '끝내다', pack은 '짐을 싸다'라 문맥에 안 맞아요.",
+   "targetMs": 60000,
+   "word": "fill"
+  },
+  {
+   "id": "p7-d03-1",
+   "part": 7,
+   "module": "part7",
+   "type": "p7main",
+   "qtype": "main",
+   "level": "adv",
+   "set": "p7-d03",
+   "n": 1,
+   "stem": "What is the article mainly about?",
+   "choices": [
+    "A hotel's customer survey",
+    "A hotel opening new locations",
+    "A company reducing paper use",
+    "A new room-service menu"
+   ],
+   "answer": 2,
+   "ev": [
+    "0-0"
+   ],
+   "explanation": "영수증·메뉴 인쇄를 중단한다 = 종이 사용 줄이기.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d03-2",
+   "part": 7,
+   "module": "part7",
+   "type": "p7link",
+   "qtype": "link",
+   "level": "adv",
+   "set": "p7-d03",
+   "n": 2,
+   "stem": "What is indicated about the Lakeside location?",
+   "choices": [
+    "It does not offer room service.",
+    "It is the company's newest hotel.",
+    "It has already introduced tablets.",
+    "It is closing at the end of the year."
+   ],
+   "answer": 2,
+   "ev": [
+    "0-1",
+    "1-2"
+   ],
+   "explanation": "기사의 태블릿 메뉴 도입 + 이메일의 레이크사이드 객실 태블릿 메뉴 → 이미 도입했어요.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d03-3",
+   "part": 7,
+   "module": "part7",
+   "type": "p7link",
+   "qtype": "link",
+   "level": "adv",
+   "set": "p7-d03",
+   "n": 3,
+   "stem": "How did Mr. Clarke get a paper menu?",
+   "choices": [
+    "He called room service.",
+    "He downloaded it.",
+    "He asked at the front desk.",
+    "He found one in the lobby."
+   ],
+   "answer": 2,
+   "ev": [
+    "0-3",
+    "1-4"
+   ],
+   "explanation": "기사: 프런트에 요청하면 종이 사본 제공 + 이메일: 프런트 직원이 출력해 줌.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d03-4",
+   "part": 7,
+   "module": "part7",
+   "type": "p7detail",
+   "qtype": "detail",
+   "level": "adv",
+   "set": "p7-d03",
+   "n": 4,
+   "stem": "What does Mr. Clarke suggest?",
+   "choices": [
+    "Lowering room prices",
+    "Removing the tablets",
+    "Adding information cards to rooms",
+    "Training staff better"
+   ],
+   "answer": 2,
+   "ev": [
+    "1-5"
+   ],
+   "explanation": "placing a small card in each room explaining that paper menus are available.",
+   "targetMs": 60000
+  },
+  {
+   "id": "p7-d03-5",
+   "part": 7,
+   "module": "part7",
+   "type": "p7infer",
+   "qtype": "infer",
+   "level": "adv",
+   "set": "p7-d03",
+   "n": 5,
+   "stem": "What is suggested about Mr. Clarke?",
+   "choices": [
+    "He complained to the manager in person.",
+    "He works for a paper company.",
+    "He supports the hotel's environmental goals.",
+    "He will not stay at Harborview again."
+   ],
+   "answer": 2,
+   "ev": [
+    "1-5"
+   ],
+   "explanation": "I appreciate your environmental efforts = 친환경 노력을 지지한다.",
+   "targetMs": 60000
+  }
+ ]
+}

@@ -56,8 +56,12 @@ async def main():
         g = 0
         gb = await pg.evaluate("fetch('data/grammar-questions.json').then(r=>r.json())")
         gstems = [q["stem"].split("____")[0].strip()[:18] for q in gb if q.get("test")]
-        for i in range(15):
+        for i in range(18):
             await pg.wait_for_selector("[data-choice]:not([disabled])")
+            if await pg.locator("#vq-play").count():  # 진단 듣기 (v5)
+                await pg.click("[data-choice='0']")
+                await pg.wait_for_timeout(700)
+                continue
             txt = await pg.inner_text(".cloze")
             if any(s and txt.startswith(s) for s in gstems) or (await pg.inner_text(".qcard")).find("시제") >= 0 and False:
                 g += 1

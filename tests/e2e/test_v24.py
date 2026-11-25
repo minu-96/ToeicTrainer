@@ -98,13 +98,17 @@ async def main():
         bankq = await pg.evaluate("Promise.all([fetch('data/vocab-questions.json'),fetch('data/grammar-questions.json')]).then(rs=>Promise.all(rs.map(r=>r.json()))).then(([a,b])=>a.concat(b))")
         test_stems = {q["stem"] for q in bankq if q.get("test")}
         ok = True
-        for _ in range(15):
+        for _ in range(18):
             await pg.wait_for_selector("[data-choice]:not([disabled])")
+            if await pg.locator("#vq-play").count():  # 진단 듣기 (v5)
+                await pg.click("[data-choice='0']")
+                await pg.wait_for_timeout(700)
+                continue
             txt = await pg.inner_text(".cloze")
             ok = ok and any(s.split("____")[0].strip()[:20] in txt for s in test_stems)
             await pg.click("[data-choice='0']")
             await pg.wait_for_timeout(700)
-        c(ok, "진단 15문제 모두 전용 문제")
+        c(ok, "진단 18문제 모두 전용 문제")
 
         c(not errs, "콘솔 오류 없음 " + "; ".join(errs[:3]))
         await b.close()

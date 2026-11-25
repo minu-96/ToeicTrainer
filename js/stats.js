@@ -71,6 +71,7 @@ export const AREAS = [
   ['vocab', '어휘'],
   ['grammar', '문법'],
   ['part6', '장문 빈칸'],
+  ['part7', '독해'],
   ['listening', '듣기'],
 ];
 export function areaOfAttempt(a) {
@@ -78,6 +79,7 @@ export function areaOfAttempt(a) {
   if (['lc2', 'lc3', 'lc4'].includes(a.type)) return 'listening';
   if (G_TYPES.has(a.type)) return 'grammar';
   if ((a.type || '').startsWith('p6')) return 'part6';
+  if ((a.type || '').startsWith('p7')) return 'part7';
   return 'vocab';
 }
 
