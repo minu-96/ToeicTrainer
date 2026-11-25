@@ -34,6 +34,7 @@ const VOCAB_SKILLS = {
   form: { grammar: 0.6, vocab: 0.4 }, // 품사 자리
   colloc: { vocab: 1 }, // 어울리는 단어
   confuse: { vocab: 0.5, grammar: 0.5 }, // 헷갈리는 단어
+  para: { vocab: 0.5, reading: 0.5 }, // 바꿔 쓰는 표현 (Part 7 패러프레이즈)
 };
 const WORD_ADJ = { meaning: -0.5, cloze: 0, word: 0.3, recall: 0.5 };
 const WORD_WEIGHT = 0.3; // 같은 단어를 반복하는 학습이라 증거 무게를 낮춤
